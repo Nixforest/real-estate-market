@@ -43,12 +43,10 @@
     <Compile Include="AddressBLO.cs" />
     <Compile Include="BusinessParent.cs" />
     <Compile Include="CityBLO.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CompanyBLO.cs" />
     <Compile Include="CustomerBLO.cs" />
     <Compile Include="DistrictBLO.cs" />
     <Compile Include="GroupBLO.cs" />
-    <Compile Include="IBusiness.cs" />
     <Compile Include="ImageBLO.cs" />
     <Compile Include="NationBLO.cs" />
     <Compile Include="NewsBLO.cs" />
