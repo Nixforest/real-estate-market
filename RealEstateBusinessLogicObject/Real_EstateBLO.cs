@@ -11,9 +11,6 @@ namespace RealEstateBusinessLogicObject
         /// <summary>
         /// Contructor
         /// </summary>
-        /// <summary>
-        /// Contructor
-        /// </summary>
         public Real_EstateBLO()
         {
             _db = new RealEstateDataAccessObject.Real_EstateDAO();
@@ -35,9 +32,44 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.REAL_ESTATE entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(entity.TypeID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                {
+                    if ((entity.LivingRoom >= 0 || entity.LivingRoom == null) &&
+                        (entity.BedRoom >= 0 || entity.BedRoom == null) &&
+                        (entity.BathRoom >= 0 || entity.BathRoom == null) &&
+                        (entity.Storey >= 0 || entity.Storey == null))
+                    {
+                        if (entity.Price >= 0)
+                        {
+                            if (new RealEstateDataAccessObject.UnitDAO().ValidationID(entity.UnitID))
+                            {
+                                if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(entity.UnitPriceID))
+                                {
+                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)entity.ProjectID) || entity.ProjectID == null)
+                                    {
+                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)entity.ContactID) || entity.ContactID == null)
+                                        {
+                                            entity.ID = _db.CreateID();
+                                            _db.Insert(entity);
+                                            return entity.ID;
+                                        }
+                                        else throw new RealEstateDataContext.Utility.ContactID();
+                                    }
+                                    else throw new RealEstateDataContext.Utility.ProjectID();
+                                }
+                                else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                            }
+                            else throw new RealEstateDataContext.Utility.UnitID();
+                        }
+                        else throw new RealEstateDataContext.Utility.GreaterZero();
+                    }
+                    else throw new RealEstateDataContext.Utility.RoomNumber();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
         }
 
         /// <summary>
@@ -73,33 +105,68 @@ namespace RealEstateBusinessLogicObject
             string legal, string direction, string frontStreet, string location,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
         {
-            RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
-            entity.ID = _db.CreateID();
-            entity.TypeID = typeID;
-            entity.AddressID = addressID;
-            entity.LivingRoom = livingRoom;
-            entity.BedRoom = bedRoom;
-            entity.BathRoom = bathRoom;
-            entity.Storey = storey;
-            entity.TotalUseArea = totalUseArea;
-            entity.CampusFront = campusFront;
-            entity.CampusBehind = campusBehind;
-            entity.CampusLength = campusLength;
-            entity.BuildFront = buildFront;
-            entity.BuildBehind = buildBehind;
-            entity.BuildLength = buildLength;
-            entity.Legal = legal;
-            entity.Direction = direction;
-            entity.FrontStreet = frontStreet;
-            entity.Location = location;
-            entity.Price = price;
-            entity.UnitID = unitID;
-            entity.UnitPriceID = unitPriceID;
-            entity.ProjectID = projectID;
-            entity.ContactID = contactID;
+            if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(typeID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                {
+                    if ((livingRoom >= 0 || livingRoom == null) &&
+                        (bedRoom >= 0 || bedRoom == null) &&
+                        (bathRoom >= 0 || bathRoom == null) &&
+                        (storey >= 0 || storey == null))
+                    {
+                        if (price >= 0)
+                        {
+                            if (new RealEstateDataAccessObject.UnitDAO().ValidationID(unitID))
+                            {
+                                if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(unitPriceID))
+                                {
+                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)projectID) || projectID == null)
+                                    {
+                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)contactID) || contactID == null)
+                                        {
+                                            RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
+                                            entity.ID = _db.CreateID();
+                                            entity.TypeID = typeID;
+                                            entity.AddressID = addressID;
+                                            entity.LivingRoom = livingRoom;
+                                            entity.BedRoom = bedRoom;
+                                            entity.BathRoom = bathRoom;
+                                            entity.Storey = storey;
+                                            entity.TotalUseArea = totalUseArea;
+                                            entity.CampusFront = campusFront;
+                                            entity.CampusBehind = campusBehind;
+                                            entity.CampusLength = campusLength;
+                                            entity.BuildFront = buildFront;
+                                            entity.BuildBehind = buildBehind;
+                                            entity.BuildLength = buildLength;
+                                            entity.Legal = legal;
+                                            entity.Direction = direction;
+                                            entity.FrontStreet = frontStreet;
+                                            entity.Location = location;
+                                            entity.Price = price;
+                                            entity.UnitID = unitID;
+                                            entity.UnitPriceID = unitPriceID;
+                                            entity.ProjectID = projectID;
+                                            entity.ContactID = contactID;
 
-            _db.Insert(entity);
-            return entity.ID;
+                                            _db.Insert(entity);
+                                            return entity.ID;
+                                        }
+                                        else throw new RealEstateDataContext.Utility.ContactID();
+                                    }
+                                    else throw new RealEstateDataContext.Utility.ProjectID();
+                                }
+                                else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                            }
+                            else throw new RealEstateDataContext.Utility.UnitID();
+                        }
+                        else throw new RealEstateDataContext.Utility.GreaterZero();
+                    }
+                    else throw new RealEstateDataContext.Utility.RoomNumber();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
         }
 
         /// <summary>
@@ -109,8 +176,47 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.REAL_ESTATE entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(entity.TypeID))
+                {
+                    if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                    {
+                        if ((entity.LivingRoom >= 0 || entity.LivingRoom == null) &&
+                            (entity.BedRoom >= 0 || entity.BedRoom == null) &&
+                            (entity.BathRoom >= 0 || entity.BathRoom == null) &&
+                            (entity.Storey >= 0 || entity.Storey == null))
+                        {
+                            if (entity.Price >= 0)
+                            {
+                                if (new RealEstateDataAccessObject.UnitDAO().ValidationID(entity.UnitID))
+                                {
+                                    if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(entity.UnitPriceID))
+                                    {
+                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)entity.ProjectID) || entity.ProjectID == null)
+                                        {
+                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)entity.ContactID) || entity.ContactID == null)
+                                            {
+                                                _db.Update(entity);
+                                                return entity.ID;
+                                            }
+                                            else throw new RealEstateDataContext.Utility.ContactID();
+                                        }
+                                        else throw new RealEstateDataContext.Utility.ProjectID();
+                                    }
+                                    else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                }
+                                else throw new RealEstateDataContext.Utility.UnitID();
+                            }
+                            else throw new RealEstateDataContext.Utility.GreaterZero();
+                        }
+                        else throw new RealEstateDataContext.Utility.RoomNumber();
+                    }
+                    else throw new RealEstateDataContext.Utility.AddressID();
+                }
+                else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.Real_EstateID();
         }
 
         /// <summary>
@@ -147,33 +253,72 @@ namespace RealEstateBusinessLogicObject
             string legal, string direction, string frontStreet, string location,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
         {
-            RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
-            entity.ID = id;
-            entity.TypeID = typeID;
-            entity.AddressID = addressID;
-            entity.LivingRoom = livingRoom;
-            entity.BedRoom = bedRoom;
-            entity.BathRoom = bathRoom;
-            entity.Storey = storey;
-            entity.TotalUseArea = totalUseAre;
-            entity.CampusFront = campusFront;
-            entity.CampusBehind = campusBehind;
-            entity.CampusLength = campusLength;
-            entity.BuildFront = buildFront;
-            entity.BuildBehind = buildBehind;
-            entity.BuildLength = buildLength;
-            entity.Legal = legal;
-            entity.Direction = direction;
-            entity.FrontStreet = frontStreet;
-            entity.Location = location;
-            entity.Price = price;
-            entity.UnitID = unitID;
-            entity.UnitPriceID = unitPriceID;
-            entity.ProjectID = projectID;
-            entity.ContactID = contactID;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(typeID))
+                {
+                    if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                    {
+                        if ((livingRoom >= 0 || livingRoom == null) &&
+                            (bedRoom >= 0 || bedRoom == null) &&
+                            (bathRoom >= 0 || bathRoom == null) &&
+                            (storey >= 0 || storey == null))
+                        {
+                            if (price >= 0)
+                            {
+                                if (new RealEstateDataAccessObject.UnitDAO().ValidationID(unitID))
+                                {
+                                    if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(unitPriceID))
+                                    {
+                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)projectID) || projectID == null)
+                                        {
+                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)contactID) || contactID == null)
+                                            {
+                                                RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
+                                                entity.ID = id;
+                                                entity.TypeID = typeID;
+                                                entity.AddressID = addressID;
+                                                entity.LivingRoom = livingRoom;
+                                                entity.BedRoom = bedRoom;
+                                                entity.BathRoom = bathRoom;
+                                                entity.Storey = storey;
+                                                entity.TotalUseArea = totalUseAre;
+                                                entity.CampusFront = campusFront;
+                                                entity.CampusBehind = campusBehind;
+                                                entity.CampusLength = campusLength;
+                                                entity.BuildFront = buildFront;
+                                                entity.BuildBehind = buildBehind;
+                                                entity.BuildLength = buildLength;
+                                                entity.Legal = legal;
+                                                entity.Direction = direction;
+                                                entity.FrontStreet = frontStreet;
+                                                entity.Location = location;
+                                                entity.Price = price;
+                                                entity.UnitID = unitID;
+                                                entity.UnitPriceID = unitPriceID;
+                                                entity.ProjectID = projectID;
+                                                entity.ContactID = contactID;
 
-            _db.Update(entity);
-            return entity.ID;
+                                                _db.Update(entity);
+                                                return entity.ID;
+                                            }
+                                            else throw new RealEstateDataContext.Utility.ContactID();
+                                        }
+                                        else throw new RealEstateDataContext.Utility.ProjectID();
+                                    }
+                                    else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                }
+                                else throw new RealEstateDataContext.Utility.UnitID();
+                            }
+                            else throw new RealEstateDataContext.Utility.GreaterZero();
+                        }
+                        else throw new RealEstateDataContext.Utility.RoomNumber();
+                    }
+                    else throw new RealEstateDataContext.Utility.AddressID();
+                }
+                else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.Real_EstateID();
         }
 
         /// <summary>
@@ -183,7 +328,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.Real_EstateID();
         }
 
         /// <summary>
@@ -193,8 +342,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.REAL_ESTATE GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.Real_EstateID();
         }
-
     }
 }

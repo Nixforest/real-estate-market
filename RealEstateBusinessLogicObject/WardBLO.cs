@@ -32,9 +32,13 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.WARD entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(entity.DistrictID))
+            {
+                entity.ID = _db.CreateID();
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.DistrictID();
         }
 
         /// <summary>
@@ -45,13 +49,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public int Insert(string name, int districtID)
         {
-            RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
-            entity.ID = _db.CreateID();
-            entity.Name = name;
-            entity.DistrictID = districtID;
+            if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(districtID))
+            {
+                RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
+                entity.ID = _db.CreateID();
+                entity.Name = name;
+                entity.DistrictID = districtID;
 
-            _db.Insert(entity);
-            return entity.ID;
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.DistrictID();
         }
 
         /// <summary>
@@ -61,8 +69,16 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.WARD entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(entity.DistrictID))
+                {
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.DistrictID();
+            }
+            else throw new RealEstateDataContext.Utility.WardID();
         }
 
         /// <summary>
@@ -74,13 +90,21 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public int Update(int id, string name, int districtID)
         {
-            RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
-            entity.ID = id;
-            entity.Name = name;
-            entity.DistrictID = districtID;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(districtID))
+                {
+                    RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
+                    entity.ID = id;
+                    entity.Name = name;
+                    entity.DistrictID = districtID;
 
-            _db.Update(entity);
-            return entity.ID;
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.DistrictID();
+            }
+            else throw new RealEstateDataContext.Utility.WardID();
         }
 
         /// <summary>
@@ -90,7 +114,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.WardID();
         }
 
         /// <summary>
@@ -100,7 +128,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.WARD GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.WardID();
         }
     }
 }

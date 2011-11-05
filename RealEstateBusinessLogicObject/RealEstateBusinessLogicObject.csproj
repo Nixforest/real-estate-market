@@ -53,6 +53,7 @@
     <Compile Include="News_SaleBLO.cs" />
     <Compile Include="News_Sale_TypeBLO.cs" />
     <Compile Include="News_TypeBLO.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="ProjectBLO.cs" />
     <Compile Include="Project_TypeBLO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -32,9 +32,13 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.USER entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)entity.GroupID) || entity.GroupID == null)
+            {
+                entity.ID = _db.CreateID();
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
 
         /// <summary>
@@ -47,18 +51,22 @@ namespace RealEstateBusinessLogicObject
         /// <param name="groupID">ID of group user belong</param>
         /// <returns>ID of row has just inserted</returns>
         public int Insert(string username, string password,
-            string email, string phone, int groupID)
+            string email, string phone, int? groupID)
         {
-            RealEstateDataContext.USER entity = new RealEstateDataContext.USER();
-            entity.ID = _db.CreateID();
-            entity.Username = username;
-            entity.Password = password;
-            entity.Email = email;
-            entity.Phone = phone;
-            entity.GroupID = groupID;
+            if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)groupID) || groupID == null)
+            {
+                RealEstateDataContext.USER entity = new RealEstateDataContext.USER();
+                entity.ID = _db.CreateID();
+                entity.Username = username;
+                entity.Password = password;
+                entity.Email = email;
+                entity.Phone = phone;
+                entity.GroupID = groupID;
 
-            _db.Insert(entity);
-            return entity.ID;
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
 
         /// <summary>
@@ -68,8 +76,16 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.USER entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)entity.GroupID) || entity.GroupID == null)
+                {
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.GroupID();
+            }
+            else throw new RealEstateDataContext.Utility.UserID();
         }
 
         /// <summary>
@@ -85,16 +101,24 @@ namespace RealEstateBusinessLogicObject
         public int Update(int id, string username, string password,
             string email, string phone, int groupID)
         {
-            RealEstateDataContext.USER entity = new RealEstateDataContext.USER();
-            entity.ID = id;
-            entity.Username = username;
-            entity.Password = password;
-            entity.Email = email;
-            entity.Phone = phone;
-            entity.GroupID = groupID;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)groupID) || groupID == null)
+                {
+                    RealEstateDataContext.USER entity = new RealEstateDataContext.USER();
+                    entity.ID = id;
+                    entity.Username = username;
+                    entity.Password = password;
+                    entity.Email = email;
+                    entity.Phone = phone;
+                    entity.GroupID = groupID;
 
-            _db.Update(entity);
-            return entity.ID;
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.GroupID();
+            }
+            else throw new RealEstateDataContext.Utility.UserID();
         }
 
         /// <summary>
@@ -104,7 +128,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.UserID();
         }
 
         /// <summary>
@@ -114,7 +142,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.USER GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.UserID();
         }
     }
 }

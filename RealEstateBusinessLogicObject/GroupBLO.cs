@@ -61,8 +61,12 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just updated</returns>
         public override int Update(RealEstateDataContext.GROUP entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
 
         /// <summary>
@@ -74,13 +78,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just updated</returns>
         public int Update(int id, string name, string description)
         {
-            RealEstateDataContext.GROUP entity = new RealEstateDataContext.GROUP();
-            entity.ID = id;
-            entity.Name = name;
-            entity.Description = description;
+            if (ValidationID(id))
+            {
+                RealEstateDataContext.GROUP entity = new RealEstateDataContext.GROUP();
+                entity.ID = id;
+                entity.Name = name;
+                entity.Description = description;
 
-            _db.Update(entity);
-            return entity.ID;
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
 
         /// <summary>
@@ -90,7 +98,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just delete</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
 
         /// <summary>
@@ -100,7 +112,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.GROUP GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.GroupID();
         }
     }
 }

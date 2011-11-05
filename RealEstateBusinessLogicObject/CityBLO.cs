@@ -32,9 +32,13 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just insert</returns>
         public override int Insert(RealEstateDataContext.CITY entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.NationDAO().ValidationID(entity.NationID))
+            {
+                entity.ID = _db.CreateID();
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
 
         /// <summary>
@@ -45,13 +49,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just insert</returns>
         public int Insert(string name, int nationID)
         {
-            RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
-            entity.ID = _db.CreateID();
-            entity.Name = name;
-            entity.NationID = nationID;
+            if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
+            {
+                RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
+                entity.ID = _db.CreateID();
+                entity.Name = name;
+                entity.NationID = nationID;
 
-            _db.Insert(entity);
-            return entity.ID;
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
 
         /// <summary>
@@ -61,8 +69,16 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         public override int Update(RealEstateDataContext.CITY entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.NationDAO().ValidationID(entity.NationID))
+                {
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.NationID();
+            }
+            else throw new RealEstateDataContext.Utility.CityID();
         }
 
         /// <summary>
@@ -74,13 +90,21 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         public int Update(int id, string name, int nationID)
         {
-            RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
-            entity.ID = id;
-            entity.Name = name;
-            entity.NationID = nationID;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
+                {
+                    RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
+                    entity.ID = id;
+                    entity.Name = name;
+                    entity.NationID = nationID;
 
-            _db.Update(entity);
-            return entity.ID;
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.NationID();
+            }
+            else throw new RealEstateDataContext.Utility.CityID();
         }
 
         /// <summary>
@@ -90,7 +114,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just delete</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CityID();
         }
 
         /// <summary>
@@ -100,7 +128,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.CITY GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CityID();
         }
     }
 }

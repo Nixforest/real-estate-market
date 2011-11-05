@@ -70,8 +70,26 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.NEWS_SALE entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.News_Sale_TypeDAO().ValidationID(entity.TypeID))
+                {
+                    if (new RealEstateDataAccessObject.Real_EstateDAO().ValidationID(entity.RealEstateID))
+                    {
+                        if (entity.Rate == null ||
+                            (entity.Rate >= RealEstateBusinessLogicObject.Parameter.MinRate && 
+                                entity.Rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                        {
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                    }
+                    else throw new RealEstateDataContext.Utility.Real_EstateID();
+                }
+                else throw new RealEstateDataContext.Utility.News_Sale_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.News_SaleID();
         }
 
         /// <summary>
@@ -88,17 +106,35 @@ namespace RealEstateBusinessLogicObject
         public int Update(int id, int typeID, string title, string content,
             int realEstateID, int? rate, DateTime updateTime)
         {
-            RealEstateDataContext.NEWS_SALE entity = new RealEstateDataContext.NEWS_SALE();
-            entity.ID = _db.CreateID();
-            entity.TypeID = typeID;
-            entity.Title = title;
-            entity.Content = content;
-            entity.RealEstateID = realEstateID;
-            entity.Rate = rate;
-            entity.UpdateTime = updateTime;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.News_Sale_TypeDAO().ValidationID(typeID))
+                {
+                    if (new RealEstateDataAccessObject.Real_EstateDAO().ValidationID(realEstateID))
+                    {
+                        if (rate == null ||
+                            (rate >= RealEstateBusinessLogicObject.Parameter.MinRate && 
+                                rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                        {
+                            RealEstateDataContext.NEWS_SALE entity = new RealEstateDataContext.NEWS_SALE();
+                            entity.ID = _db.CreateID();
+                            entity.TypeID = typeID;
+                            entity.Title = title;
+                            entity.Content = content;
+                            entity.RealEstateID = realEstateID;
+                            entity.Rate = rate;
+                            entity.UpdateTime = updateTime;
 
-            _db.Update(entity);
-            return entity.ID;
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                    }
+                    else throw new RealEstateDataContext.Utility.Real_EstateID();
+                }
+                else throw new RealEstateDataContext.Utility.News_Sale_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.News_SaleID();
         }
 
         /// <summary>
@@ -108,7 +144,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.News_SaleID();
         }
 
         /// <summary>
@@ -118,7 +158,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.NEWS_SALE GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.News_SaleID();
         }
     }
 }

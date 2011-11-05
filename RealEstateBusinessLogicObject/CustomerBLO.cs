@@ -32,9 +32,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just inserted</returns>
         public override int Insert(RealEstateDataContext.CUSTOMER entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+            {
+                if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)entity.UserID) || entity.UserID == null)
+                {
+                    entity.ID = _db.CreateID();
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.UserID();
+            }
+            else throw new RealEstateDataContext.Utility.AddressID();
         }
 
         /// <summary>
@@ -49,20 +57,28 @@ namespace RealEstateBusinessLogicObject
         /// <param name="userID">Customer's user id</param>
         /// <returns>ID of row have just inserted</returns>
         public int Insert(string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int userID)
+            string phone, string homePhone, string email, int? userID)
         {
-            RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-            entity.ID = _db.CreateID();
-            entity.Name = name;
-            entity.AddressID = addressID;
-            entity.IdentityCard = identityCard;
-            entity.Phone = phone;
-            entity.HomePhone = homePhone;
-            entity.Email = email;
-            entity.UserID = userID;
+            if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+            {
+                if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)userID) || userID == null)
+                {
+                    RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
+                    entity.ID = _db.CreateID();
+                    entity.Name = name;
+                    entity.AddressID = addressID;
+                    entity.IdentityCard = identityCard;
+                    entity.Phone = phone;
+                    entity.HomePhone = homePhone;
+                    entity.Email = email;
+                    entity.UserID = userID;
 
-            _db.Insert(entity);
-            return entity.ID;
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.UserID();
+            }
+            else throw new RealEstateDataContext.Utility.AddressID();
         }
 
         /// <summary>
@@ -72,8 +88,20 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just updated</returns>
         public override int Update(RealEstateDataContext.CUSTOMER entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                {
+                    if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)entity.UserID) || entity.UserID == null)
+                    {
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.UserID();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.CustomerID();
         }
 
         /// <summary>
@@ -89,20 +117,32 @@ namespace RealEstateBusinessLogicObject
         /// <param name="userID">Customer's user id</param>
         /// <returns>ID of row have just updated</returns>
         public int Update(int id, string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int userID)
+            string phone, string homePhone, string email, int? userID)
         {
-            RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-            entity.ID = id;
-            entity.Name = name;
-            entity.AddressID = addressID;
-            entity.IdentityCard = identityCard;
-            entity.Phone = phone;
-            entity.HomePhone = homePhone;
-            entity.Email = email;
-            entity.UserID = userID;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                {
+                    if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)userID) || userID == null)
+                    {
+                        RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
+                        entity.ID = id;
+                        entity.Name = name;
+                        entity.AddressID = addressID;
+                        entity.IdentityCard = identityCard;
+                        entity.Phone = phone;
+                        entity.HomePhone = homePhone;
+                        entity.Email = email;
+                        entity.UserID = userID;
 
-            _db.Update(entity);
-            return entity.ID;
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.UserID();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.CustomerID();
         }
 
         /// <summary>
@@ -112,7 +152,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just delete</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CustomerID();
         }
 
         /// <summary>
@@ -122,7 +166,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.CUSTOMER GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CustomerID();
         }
     }
 }
