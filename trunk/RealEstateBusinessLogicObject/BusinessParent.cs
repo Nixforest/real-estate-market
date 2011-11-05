@@ -14,5 +14,12 @@ namespace RealEstateBusinessLogicObject
         public virtual int Update(T entity) { return 0; }
         public virtual void Delete(int ID) { }
         public virtual T GetARecord(int ID) { return default(T); }
+
+        /// <summary>
+        /// Check an ID exist in table or not
+        /// </summary>
+        /// <param name="ID">ID need to check</param>
+        /// <returns>True if ID has exist, false otherwise</returns>
+        public virtual bool ValidationID(int ID) { return _db.ValidationID(ID); }
     }
 }

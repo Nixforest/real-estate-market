@@ -7,7 +7,7 @@ namespace RealEstateDataAccessObject
 {
     public class DataParent<T>
     {
-        protected RealEstateDataContext.RealEstateDataClassesDataContext 
+        protected static RealEstateDataContext.RealEstateDataClassesDataContext 
             _db = new RealEstateDataContext.RealEstateDataClassesDataContext(RealEstateDataContext.Utility.WebConfig.MSSQL);
 
         /// <summary>
@@ -46,5 +46,12 @@ namespace RealEstateDataAccessObject
         /// <param name="ID">ID of Row</param>
         /// <returns>Entity</returns>
         public virtual T GetARecord(int ID) { return default(T); }
+
+        /// <summary>
+        /// Check an ID exist in table or not
+        /// </summary>
+        /// <param name="ID">ID need to check</param>
+        /// <returns>True if ID has exist, false otherwise</returns>
+        public virtual bool ValidationID(int ID) { return true; }
     }
 }

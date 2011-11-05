@@ -61,8 +61,12 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.RULE entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.RuleID();
         }
 
         /// <summary>
@@ -74,13 +78,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public int Update(int id, string name, string description)
         {
-            RealEstateDataContext.RULE entity = new RealEstateDataContext.RULE();
-            entity.ID = id;
-            entity.Name = name;
-            entity.Description = description;
+            if (ValidationID(id))
+            {
+                RealEstateDataContext.RULE entity = new RealEstateDataContext.RULE();
+                entity.ID = id;
+                entity.Name = name;
+                entity.Description = description;
 
-            _db.Update(entity);
-            return entity.ID;
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.RuleID();
         }
 
         /// <summary>
@@ -90,7 +98,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.RuleID();
         }
 
         /// <summary>
@@ -100,7 +112,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.RULE GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.RuleID();
         }
     }
 }

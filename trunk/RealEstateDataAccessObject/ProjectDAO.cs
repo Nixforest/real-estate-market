@@ -90,5 +90,25 @@ namespace RealEstateDataAccessObject
                          select record;
             return entity.Single();
         }
+
+        /// <summary>
+        /// Check an ID exist in table or not
+        /// </summary>
+        /// <param name="ID">ID need to check</param>
+        /// <returns>True if ID has exist, false otherwise</returns>
+        public override bool ValidationID(int ID)
+        {
+            if (_db.PROJECTs.Count() > 0)
+            {
+                foreach (RealEstateDataContext.PROJECT entity in _db.PROJECTs)
+                {
+                    if (entity.ID.Equals(ID))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

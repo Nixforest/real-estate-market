@@ -15,10 +15,10 @@ namespace RealEstateMarket
         private NationBLO _db;
         protected void Page_Load(object sender, EventArgs e)
         {
-                RealEstateDataContext.Utility.WebConfig.MSSQL = @"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True";
-                _db = new NationBLO();
-                listNationX.DataSource = _db.GetAllRows();
-                listNationX.DataBind();
+            RealEstateDataContext.Utility.WebConfig.MSSQL = @"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True";
+            _db = new NationBLO();
+            listNationX.DataSource = _db.GetAllRows();
+            listNationX.DataBind();
          
         }
 

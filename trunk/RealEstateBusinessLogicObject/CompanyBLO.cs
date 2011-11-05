@@ -32,9 +32,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just insert</returns>
         public override int Insert(RealEstateDataContext.COMPANY entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+            {
+                if (entity.ShareCapital == null || entity.ShareCapital > 0)
+                {
+                    entity.ID = _db.CreateID();
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.ShareCapital();
+            }
+            else throw new RealEstateDataContext.Utility.AddressID();
         }
         /// <summary>
         /// Insert a row into COMPANY table
@@ -56,23 +64,32 @@ namespace RealEstateBusinessLogicObject
             string fax, string email, string website, DateTime? establishDay,
             decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
         {
-            RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
-            entity.ID = _db.CreateID();
-            entity.Name = name;
-            entity.AddressID = addressID;
-            entity.Phone = phone;
-            entity.HomePhone = homePhone;
-            entity.Fax = fax;
-            entity.Email = email;
-            entity.Website = website;
-            entity.EstablishDay = establishDay;
-            entity.ShareCapital = shareCapital;
-            entity.FieldOfAction = fieldOfAction;
-            entity.BusinessRegistration = businessRegistration;
-            entity.Description = description;
+            if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+            {
+                if (shareCapital == null || shareCapital > 0)
+                {
+                    RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
 
-            _db.Insert(entity);
-            return entity.ID;
+                    entity.ID = _db.CreateID();
+                    entity.Name = name;
+                    entity.AddressID = addressID;
+                    entity.Phone = phone;
+                    entity.HomePhone = homePhone;
+                    entity.Fax = fax;
+                    entity.Email = email;
+                    entity.Website = website;
+                    entity.EstablishDay = establishDay;
+                    entity.ShareCapital = shareCapital;
+                    entity.FieldOfAction = fieldOfAction;
+                    entity.BusinessRegistration = businessRegistration;
+                    entity.Description = description;
+
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.ShareCapital();
+            }
+            else throw new RealEstateDataContext.Utility.AddressID();
         }
 
         /// <summary>
@@ -82,8 +99,20 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         public override int Update(RealEstateDataContext.COMPANY entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                {
+                    if (entity.ShareCapital == null || entity.ShareCapital > 0)
+                    {
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ShareCapital();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.CompanyID();
         }
 
         /// <summary>
@@ -107,23 +136,35 @@ namespace RealEstateBusinessLogicObject
             string fax, string email, string website, DateTime? establishDay,
             decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
         {
-            RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
-            entity.ID = id;
-            entity.Name = name;
-            entity.AddressID = addressID;
-            entity.Phone = phone;
-            entity.HomePhone = homePhone;
-            entity.Fax = fax;
-            entity.Email = email;
-            entity.Website = website;
-            entity.EstablishDay = establishDay;
-            entity.ShareCapital = shareCapital;
-            entity.FieldOfAction = fieldOfAction;
-            entity.BusinessRegistration = businessRegistration;
-            entity.Description = description;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                {
+                    if (shareCapital == null || shareCapital > 0)
+                    {
+                        RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
+                        entity.ID = id;
+                        entity.Name = name;
+                        entity.AddressID = addressID;
+                        entity.Phone = phone;
+                        entity.HomePhone = homePhone;
+                        entity.Fax = fax;
+                        entity.Email = email;
+                        entity.Website = website;
+                        entity.EstablishDay = establishDay;
+                        entity.ShareCapital = shareCapital;
+                        entity.FieldOfAction = fieldOfAction;
+                        entity.BusinessRegistration = businessRegistration;
+                        entity.Description = description;
 
-            _db.Update(entity);
-            return entity.ID;
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ShareCapital();
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.CompanyID();
         }
 
         /// <summary>
@@ -133,7 +174,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just delete</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CompanyID();
         }
 
         /// <summary>
@@ -143,7 +188,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.COMPANY GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.CompanyID();
         }
     }
 }

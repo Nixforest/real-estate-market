@@ -52,6 +52,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RealEstateDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\ExceptionMessage.cs" />
     <Compile Include="Utility\WebConfig.cs" />
   </ItemGroup>
   <ItemGroup>

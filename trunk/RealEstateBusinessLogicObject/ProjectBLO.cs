@@ -32,9 +32,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.PROJECT entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.Project_TypeDAO().ValidationID(entity.TypeID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                {
+                    entity.ID = _db.CreateID();
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.Project_TypeID();
         }
 
         /// <summary>
@@ -48,16 +56,24 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public int Insert(int typeID, string name, DateTime? beginDay, int addressID, string description)
         {
-            RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
-            entity.ID = _db.CreateID();
-            entity.TypeID = typeID;
-            entity.Name = name;
-            entity.BeginDay = beginDay;
-            entity.AddressID = addressID;
-            entity.Description = description;
+            if (new RealEstateDataAccessObject.Project_TypeDAO().ValidationID(typeID))
+            {
+                if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                {
+                    RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
+                    entity.ID = _db.CreateID();
+                    entity.TypeID = typeID;
+                    entity.Name = name;
+                    entity.BeginDay = beginDay;
+                    entity.AddressID = addressID;
+                    entity.Description = description;
 
-            _db.Insert(entity);
-            return entity.ID;
+                    _db.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.AddressID();
+            }
+            else throw new RealEstateDataContext.Utility.Project_TypeID();
         }
 
         /// <summary>
@@ -67,8 +83,20 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.PROJECT entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.Project_TypeDAO().ValidationID(entity.TypeID))
+                {
+                    if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
+                    {
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.AddressID();
+                }
+                else throw new RealEstateDataContext.Utility.Project_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.ProjectID();
         }
 
         /// <summary>
@@ -83,16 +111,28 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public int Update(int id, int typeID, string name, DateTime? beginDay, int addressID, string description)
         {
-            RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
-            entity.ID = id;
-            entity.TypeID = typeID;
-            entity.Name = name;
-            entity.BeginDay = beginDay;
-            entity.AddressID = addressID;
-            entity.Description = description;
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.Project_TypeDAO().ValidationID(typeID))
+                {
+                    if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
+                    {
+                        RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
+                        entity.ID = id;
+                        entity.TypeID = typeID;
+                        entity.Name = name;
+                        entity.BeginDay = beginDay;
+                        entity.AddressID = addressID;
+                        entity.Description = description;
 
-            _db.Update(entity);
-            return entity.ID;
+                        _db.Update(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.AddressID();
+                }
+                else throw new RealEstateDataContext.Utility.Project_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.ProjectID();
         }
 
         /// <summary>
@@ -102,7 +142,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.ProjectID();
         }
 
         /// <summary>
@@ -112,7 +156,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.PROJECT GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.ProjectID();
         }
     }
 }

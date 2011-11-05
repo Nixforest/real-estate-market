@@ -62,8 +62,12 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         public override int Update(NATION entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
 
         /// <summary>
@@ -75,12 +79,17 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         public int Update(int id, string name, string nationCode)
         {
-            NATION entity = new NATION();
-            entity.ID = _db.CreateID();
-            entity.Name = name;
-            entity.NationCode = nationCode;
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(id))
+            {
+                NATION entity = new NATION();
+                entity.ID = _db.CreateID();
+                entity.Name = name;
+                entity.NationCode = nationCode;
+
+                _db.Update(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
 
         /// <summary>
@@ -90,7 +99,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just delete</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
 
         /// <summary>
@@ -100,7 +113,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override NATION GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.NationID();
         }
     }
 }

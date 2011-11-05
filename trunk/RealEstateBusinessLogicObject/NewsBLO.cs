@@ -32,9 +32,23 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.NEW entity)
         {
-            entity.ID = _db.CreateID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (new RealEstateDataAccessObject.News_TypeDAO().ValidationID(entity.TypeID))
+            {
+                if (entity.Rate == null ||
+                    (entity.Rate >= RealEstateBusinessLogicObject.Parameter.MinRate &&
+                    entity.Rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                {
+                    if (new RealEstateDataAccessObject.ImageDAO().ValidationID(entity.ImageID))
+                    {
+                        entity.ID = _db.CreateID();
+                        _db.Insert(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ImageID();
+                }
+                else throw new RealEstateDataContext.Utility.Rate_Limitation();
+            }
+            else throw new RealEstateDataContext.Utility.News_TypeID();
         }
 
         /// <summary>
@@ -51,19 +65,32 @@ namespace RealEstateBusinessLogicObject
         public int Insert(int typeID, string title, string content,
             string author, int? rate, DateTime publishTime, int imageID)
         {
-            RealEstateDataContext.NEW entity = new RealEstateDataContext.NEW();
+            if (new RealEstateDataAccessObject.News_TypeDAO().ValidationID(typeID))
+            {
+                if (rate == null || (rate >= RealEstateBusinessLogicObject.Parameter.MinRate &&
+                    rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                {
+                    if (new RealEstateDataAccessObject.ImageDAO().ValidationID(imageID))
+                    {
+                        RealEstateDataContext.NEW entity = new RealEstateDataContext.NEW();
 
-            entity.ID = _db.CreateID();
-            entity.TypeID = typeID;
-            entity.Title = title;
-            entity.Content = content;
-            entity.Author = author;
-            entity.Rate = rate;
-            entity.PublishTime = publishTime;
-            entity.ImageID = imageID;
+                        entity.ID = _db.CreateID();
+                        entity.TypeID = typeID;
+                        entity.Title = title;
+                        entity.Content = content;
+                        entity.Author = author;
+                        entity.Rate = rate;
+                        entity.PublishTime = publishTime;
+                        entity.ImageID = imageID;
 
-            _db.Insert(entity);
-            return entity.ImageID;
+                        _db.Insert(entity);
+                        return entity.ImageID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ImageID();
+                }
+                else throw new RealEstateDataContext.Utility.Rate_Limitation();
+            }
+            else throw new RealEstateDataContext.Utility.News_TypeID();
         }
 
         /// <summary>
@@ -73,8 +100,26 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just updated</returns>
         public override int Update(RealEstateDataContext.NEW entity)
         {
-            _db.Update(entity);
-            return entity.ID;
+            if (ValidationID(entity.ID))
+            {
+                if (new RealEstateDataAccessObject.News_TypeDAO().ValidationID(entity.TypeID))
+                {
+                    if (entity.Rate == null ||
+                        (entity.Rate >= RealEstateBusinessLogicObject.Parameter.MinRate &&
+                        entity.Rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                    {
+                        if (new RealEstateDataAccessObject.ImageDAO().ValidationID(entity.ImageID))
+                        {
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.ImageID();
+                    }
+                    else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                }
+                else throw new RealEstateDataContext.Utility.News_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.NewsID();
         }
 
         /// <summary>
@@ -92,19 +137,35 @@ namespace RealEstateBusinessLogicObject
         public int Update(int id, int typeID, string title, string content,
             string author, int? rate, DateTime publishTime, int imageID)
         {
-            RealEstateDataContext.NEW entity = new RealEstateDataContext.NEW();
+            if (ValidationID(id))
+            {
+                if (new RealEstateDataAccessObject.News_TypeDAO().ValidationID(typeID))
+                {
+                    if (rate == null || (rate >= RealEstateBusinessLogicObject.Parameter.MinRate &&
+                        rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
+                    {
+                        if (new RealEstateDataAccessObject.ImageDAO().ValidationID(imageID))
+                        {
+                            RealEstateDataContext.NEW entity = new RealEstateDataContext.NEW();
+                            entity.ID = id;
+                            entity.TypeID = typeID;
+                            entity.Title = title;
+                            entity.Content = content;
+                            entity.Author = author;
+                            entity.Rate = rate;
+                            entity.PublishTime = publishTime;
+                            entity.ImageID = imageID;
 
-            entity.ID = id;
-            entity.TypeID = typeID;
-            entity.Title = title;
-            entity.Content = content;
-            entity.Author = author;
-            entity.Rate = rate;
-            entity.PublishTime = publishTime;
-            entity.ImageID = imageID;
-
-            _db.Update(entity);
-            return entity.ID;
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.ImageID();
+                    }
+                    else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                }
+                else throw new RealEstateDataContext.Utility.News_TypeID();
+            }
+            else throw new RealEstateDataContext.Utility.NewsID();
         }
 
         /// <summary>
@@ -114,7 +175,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just deleted</returns>
         public override void Delete(int ID)
         {
-            _db.Delete(ID);
+            if (ValidationID(ID))
+            {
+                _db.Delete(ID);
+            }
+            else throw new RealEstateDataContext.Utility.NewsID();
         }
 
         /// <summary>
@@ -124,7 +189,11 @@ namespace RealEstateBusinessLogicObject
         /// <returns>Entity</returns>
         public override RealEstateDataContext.NEW GetARecord(int ID)
         {
-            return _db.GetARecord(ID);
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.NewsID();
         }
     }
 }
