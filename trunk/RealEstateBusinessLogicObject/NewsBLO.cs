@@ -30,6 +30,9 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="News_TypeIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate""></exception>
+        /// <exception cref="ImageIDException"></exception>
         public override int Insert(RealEstateDataContext.NEW entity)
         {
             if (new RealEstateDataAccessObject.News_TypeDAO().ValidationID(entity.TypeID))
@@ -44,11 +47,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Insert(entity);
                         return entity.ID;
                     }
-                    else throw new RealEstateDataContext.Utility.ImageID();
+                    else throw new RealEstateDataContext.Utility.ImageIDException();
                 }
-                else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                else throw new RealEstateDataContext.Utility.Rate_LimitationException();
             }
-            else throw new RealEstateDataContext.Utility.News_TypeID();
+            else throw new RealEstateDataContext.Utility.News_TypeIDException();
         }
 
         /// <summary>
@@ -62,6 +65,9 @@ namespace RealEstateBusinessLogicObject
         /// <param name="publishTime">News's publish time</param>
         /// <param name="imageID">ID of image</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="News_TypeIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate""></exception>
+        /// <exception cref="ImageIDException"></exception>
         public int Insert(int typeID, string title, string content,
             string author, int? rate, DateTime publishTime, int imageID)
         {
@@ -86,11 +92,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Insert(entity);
                         return entity.ImageID;
                     }
-                    else throw new RealEstateDataContext.Utility.ImageID();
+                    else throw new RealEstateDataContext.Utility.ImageIDException();
                 }
-                else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                else throw new RealEstateDataContext.Utility.Rate_LimitationException();
             }
-            else throw new RealEstateDataContext.Utility.News_TypeID();
+            else throw new RealEstateDataContext.Utility.News_TypeIDException();
         }
 
         /// <summary>
@@ -98,6 +104,10 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="NewsIDException"></exception>
+        /// <exception cref="News_TypeIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate""></exception>
+        /// <exception cref="ImageIDException"></exception>
         public override int Update(RealEstateDataContext.NEW entity)
         {
             if (ValidationID(entity.ID))
@@ -113,13 +123,13 @@ namespace RealEstateBusinessLogicObject
                             _db.Update(entity);
                             return entity.ID;
                         }
-                        else throw new RealEstateDataContext.Utility.ImageID();
+                        else throw new RealEstateDataContext.Utility.ImageIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                    else throw new RealEstateDataContext.Utility.Rate_LimitationException();
                 }
-                else throw new RealEstateDataContext.Utility.News_TypeID();
+                else throw new RealEstateDataContext.Utility.News_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.NewsID();
+            else throw new RealEstateDataContext.Utility.NewsIDException();
         }
 
         /// <summary>
@@ -134,6 +144,10 @@ namespace RealEstateBusinessLogicObject
         /// <param name="publishTime">News's publish time</param>
         /// <param name="imageID">ID of image</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="NewsIDException"></exception>
+        /// <exception cref="News_TypeIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate""></exception>
+        /// <exception cref="ImageIDException"></exception>
         public int Update(int id, int typeID, string title, string content,
             string author, int? rate, DateTime publishTime, int imageID)
         {
@@ -159,13 +173,13 @@ namespace RealEstateBusinessLogicObject
                             _db.Update(entity);
                             return entity.ID;
                         }
-                        else throw new RealEstateDataContext.Utility.ImageID();
+                        else throw new RealEstateDataContext.Utility.ImageIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                    else throw new RealEstateDataContext.Utility.Rate_LimitationException();
                 }
-                else throw new RealEstateDataContext.Utility.News_TypeID();
+                else throw new RealEstateDataContext.Utility.News_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.NewsID();
+            else throw new RealEstateDataContext.Utility.NewsIDException();
         }
 
         /// <summary>
@@ -173,13 +187,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="NewsIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.NewsID();
+            else throw new RealEstateDataContext.Utility.NewsIDException();
         }
 
         /// <summary>
@@ -187,13 +202,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="NewsIDException"></exception>
         public override RealEstateDataContext.NEW GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.NewsID();
+            else throw new RealEstateDataContext.Utility.NewsIDException();
         }
     }
 }

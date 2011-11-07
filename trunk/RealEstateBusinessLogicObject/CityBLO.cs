@@ -30,6 +30,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
         public override int Insert(RealEstateDataContext.CITY entity)
         {
             if (new RealEstateDataAccessObject.NationDAO().ValidationID(entity.NationID))
@@ -38,7 +39,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
         /// <summary>
@@ -47,6 +48,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Name of city</param>
         /// <param name="nationID">ID of Nation</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
         public int Insert(string name, int nationID)
         {
             if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
@@ -59,7 +61,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
         /// <summary>
@@ -67,6 +69,8 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
         public override int Update(RealEstateDataContext.CITY entity)
         {
             if (ValidationID(entity.ID))
@@ -76,9 +80,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.NationID();
+                else throw new RealEstateDataContext.Utility.NationIDException();
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
 
         /// <summary>
@@ -88,6 +92,8 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Name of city</param>
         /// <param name="nationID">ID of Nation</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
         public int Update(int id, string name, int nationID)
         {
             if (ValidationID(id))
@@ -102,9 +108,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.NationID();
+                else throw new RealEstateDataContext.Utility.NationIDException();
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
 
         /// <summary>
@@ -112,13 +118,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
 
         /// <summary>
@@ -126,13 +133,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
         public override RealEstateDataContext.CITY GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
     }
 }

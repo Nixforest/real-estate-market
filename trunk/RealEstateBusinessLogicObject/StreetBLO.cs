@@ -57,6 +57,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="StreetIDException"></exception>
         public override int Update(RealEstateDataContext.STREET entity)
         {
             if (ValidationID(entity.ID))
@@ -64,7 +65,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.StreetID();
+            else throw new RealEstateDataContext.Utility.StreetIDException();
         }
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="id">ID of row</param>
         /// <param name="name">Name of street</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="StreetIDException"></exception>
         public int Update(int id, string name)
         {
             if (ValidationID(id))
@@ -84,7 +86,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.StreetID();
+            else throw new RealEstateDataContext.Utility.StreetIDException();
         }
 
         /// <summary>
@@ -92,13 +94,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="StreetIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.StreetID();
+            else throw new RealEstateDataContext.Utility.StreetIDException();
         }
 
         /// <summary>
@@ -106,13 +109,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="StreetIDException"></exception>
         public override RealEstateDataContext.STREET GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.StreetID();
+            else throw new RealEstateDataContext.Utility.StreetIDException();
         }
     }
 }

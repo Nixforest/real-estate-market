@@ -60,6 +60,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="ImageIDException"></exception>
         public override int Update(RealEstateDataContext.IMAGE entity)
         {
             if (ValidationID(entity.ID))
@@ -67,7 +68,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.ImageID();
+            else throw new RealEstateDataContext.Utility.ImageIDException();
         }
 
         /// <summary>
@@ -78,6 +79,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="path">Image's source path</param>
         /// <param name="description">Image's description</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="ImageIDException"></exception>
         public int Update(int id, string name, string path, string description)
         {
             if (ValidationID(id))
@@ -91,7 +93,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.ImageID();
+            else throw new RealEstateDataContext.Utility.ImageIDException();
         }
 
         /// <summary>
@@ -99,13 +101,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="ImageIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.ImageID();
+            else throw new RealEstateDataContext.Utility.ImageIDException();
         }
 
         /// <summary>
@@ -113,13 +116,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="ImageIDException"></exception>
         public override RealEstateDataContext.IMAGE GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.ImageID();
+            else throw new RealEstateDataContext.Utility.ImageIDException();
         }
     }
 }

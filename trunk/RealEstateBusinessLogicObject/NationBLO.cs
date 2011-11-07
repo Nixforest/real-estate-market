@@ -60,6 +60,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="NationIDException"></exception>
         public override int Update(NATION entity)
         {
             if (ValidationID(entity.ID))
@@ -67,7 +68,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
         /// <summary>
@@ -77,6 +78,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Name of Nation</param>
         /// <param name="nationCode">National code</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="NationIDException"></exception>
         public int Update(int id, string name, string nationCode)
         {
             if (ValidationID(id))
@@ -89,7 +91,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
         /// <summary>
@@ -97,13 +99,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
+        /// <exception cref="NationIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
         /// <summary>
@@ -111,13 +114,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="NationIDException"></exception>
         public override NATION GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
     }
 }

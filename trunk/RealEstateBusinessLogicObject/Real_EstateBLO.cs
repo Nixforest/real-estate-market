@@ -30,6 +30,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="Real_Estate_TypeIDException"></exception>
+        /// <exception cref="AddressIDException"></exception>
+        /// <exception cref="RoomNumberException: Room number must greater than 0"></exception>
+        /// <exception cref="GreaterZeroException: Price must greater than 0"></exception>
+        /// <exception cref="UnitIDException"></exception>
+        /// <exception cref="Unit_PriceIDException"></exception>
+        /// <exception cref="ProjectIDException"></exception>
+        /// <exception cref="ContactIDException"></exception>
         public override int Insert(RealEstateDataContext.REAL_ESTATE entity)
         {
             if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(entity.TypeID))
@@ -55,21 +63,21 @@ namespace RealEstateBusinessLogicObject
                                             _db.Insert(entity);
                                             return entity.ID;
                                         }
-                                        else throw new RealEstateDataContext.Utility.ContactID();
+                                        else throw new RealEstateDataContext.Utility.ContactIDException();
                                     }
-                                    else throw new RealEstateDataContext.Utility.ProjectID();
+                                    else throw new RealEstateDataContext.Utility.ProjectIDException();
                                 }
-                                else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                else throw new RealEstateDataContext.Utility.Unit_PriceIDException();
                             }
-                            else throw new RealEstateDataContext.Utility.UnitID();
+                            else throw new RealEstateDataContext.Utility.UnitIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.GreaterZero();
+                        else throw new RealEstateDataContext.Utility.GreaterZeroException();
                     }
-                    else throw new RealEstateDataContext.Utility.RoomNumber();
+                    else throw new RealEstateDataContext.Utility.RoomNumberException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+            else throw new RealEstateDataContext.Utility.Real_Estate_TypeIDException();
         }
 
         /// <summary>
@@ -98,6 +106,14 @@ namespace RealEstateBusinessLogicObject
         /// <param name="projectID">ID of project</param>
         /// <param name="contactID">ID of contact</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="Real_Estate_TypeIDException"></exception>
+        /// <exception cref="AddressIDException"></exception>
+        /// <exception cref="RoomNumberException: Room number must greater than 0"></exception>
+        /// <exception cref="GreaterZeroException: Price must greater than 0"></exception>
+        /// <exception cref="UnitIDException"></exception>
+        /// <exception cref="Unit_PriceIDException"></exception>
+        /// <exception cref="ProjectIDException"></exception>
+        /// <exception cref="ContactIDException"></exception>
         public int Insert(int typeID, int addressID, int? livingRoom,
             int? bedRoom, int? bathRoom, int? storey, double? totalUseArea,
             double? campusFront, double? campusBehind, double? campusLength,
@@ -152,21 +168,21 @@ namespace RealEstateBusinessLogicObject
                                             _db.Insert(entity);
                                             return entity.ID;
                                         }
-                                        else throw new RealEstateDataContext.Utility.ContactID();
+                                        else throw new RealEstateDataContext.Utility.ContactIDException();
                                     }
-                                    else throw new RealEstateDataContext.Utility.ProjectID();
+                                    else throw new RealEstateDataContext.Utility.ProjectIDException();
                                 }
-                                else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                else throw new RealEstateDataContext.Utility.Unit_PriceIDException();
                             }
-                            else throw new RealEstateDataContext.Utility.UnitID();
+                            else throw new RealEstateDataContext.Utility.UnitIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.GreaterZero();
+                        else throw new RealEstateDataContext.Utility.GreaterZeroException();
                     }
-                    else throw new RealEstateDataContext.Utility.RoomNumber();
+                    else throw new RealEstateDataContext.Utility.RoomNumberException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+            else throw new RealEstateDataContext.Utility.Real_Estate_TypeIDException();
         }
 
         /// <summary>
@@ -174,6 +190,15 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="Real_EstateIDException"></exception>
+        /// <exception cref="Real_Estate_TypeIDException"></exception>
+        /// <exception cref="AddressIDException"></exception>
+        /// <exception cref="RoomNumberException: Room number must greater than 0"></exception>
+        /// <exception cref="GreaterZeroException: Price must greater than 0"></exception>
+        /// <exception cref="UnitIDException"></exception>
+        /// <exception cref="Unit_PriceIDException"></exception>
+        /// <exception cref="ProjectIDException"></exception>
+        /// <exception cref="ContactIDException"></exception>
         public override int Update(RealEstateDataContext.REAL_ESTATE entity)
         {
             if (ValidationID(entity.ID))
@@ -200,23 +225,23 @@ namespace RealEstateBusinessLogicObject
                                                 _db.Update(entity);
                                                 return entity.ID;
                                             }
-                                            else throw new RealEstateDataContext.Utility.ContactID();
+                                            else throw new RealEstateDataContext.Utility.ContactIDException();
                                         }
-                                        else throw new RealEstateDataContext.Utility.ProjectID();
+                                        else throw new RealEstateDataContext.Utility.ProjectIDException();
                                     }
-                                    else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                    else throw new RealEstateDataContext.Utility.Unit_PriceIDException();
                                 }
-                                else throw new RealEstateDataContext.Utility.UnitID();
+                                else throw new RealEstateDataContext.Utility.UnitIDException();
                             }
-                            else throw new RealEstateDataContext.Utility.GreaterZero();
+                            else throw new RealEstateDataContext.Utility.GreaterZeroException();
                         }
-                        else throw new RealEstateDataContext.Utility.RoomNumber();
+                        else throw new RealEstateDataContext.Utility.RoomNumberException();
                     }
-                    else throw new RealEstateDataContext.Utility.AddressID();
+                    else throw new RealEstateDataContext.Utility.AddressIDException();
                 }
-                else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+                else throw new RealEstateDataContext.Utility.Real_Estate_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.Real_EstateID();
+            else throw new RealEstateDataContext.Utility.Real_EstateIDException();
         }
 
         /// <summary>
@@ -246,6 +271,15 @@ namespace RealEstateBusinessLogicObject
         /// <param name="projectID">ID of project</param>
         /// <param name="contactID">ID of contact</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="Real_EstateIDException"></exception>
+        /// <exception cref="Real_Estate_TypeIDException"></exception>
+        /// <exception cref="AddressIDException"></exception>
+        /// <exception cref="RoomNumberException: Room number must greater than 0"></exception>
+        /// <exception cref="GreaterZeroException: Price must greater than 0"></exception>
+        /// <exception cref="UnitIDException"></exception>
+        /// <exception cref="Unit_PriceIDException"></exception>
+        /// <exception cref="ProjectIDException"></exception>
+        /// <exception cref="ContactIDException"></exception>
         public int Update(int id, int typeID, int addressID, int? livingRoom,
             int? bedRoom, int? bathRoom, int? storey, double? totalUseAre,
             double? campusFront, double? campusBehind, double? campusLength,
@@ -302,23 +336,23 @@ namespace RealEstateBusinessLogicObject
                                                 _db.Update(entity);
                                                 return entity.ID;
                                             }
-                                            else throw new RealEstateDataContext.Utility.ContactID();
+                                            else throw new RealEstateDataContext.Utility.ContactIDException();
                                         }
-                                        else throw new RealEstateDataContext.Utility.ProjectID();
+                                        else throw new RealEstateDataContext.Utility.ProjectIDException();
                                     }
-                                    else throw new RealEstateDataContext.Utility.Unit_PriceID();
+                                    else throw new RealEstateDataContext.Utility.Unit_PriceIDException();
                                 }
-                                else throw new RealEstateDataContext.Utility.UnitID();
+                                else throw new RealEstateDataContext.Utility.UnitIDException();
                             }
-                            else throw new RealEstateDataContext.Utility.GreaterZero();
+                            else throw new RealEstateDataContext.Utility.GreaterZeroException();
                         }
-                        else throw new RealEstateDataContext.Utility.RoomNumber();
+                        else throw new RealEstateDataContext.Utility.RoomNumberException();
                     }
-                    else throw new RealEstateDataContext.Utility.AddressID();
+                    else throw new RealEstateDataContext.Utility.AddressIDException();
                 }
-                else throw new RealEstateDataContext.Utility.Real_Estate_TypeID();
+                else throw new RealEstateDataContext.Utility.Real_Estate_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.Real_EstateID();
+            else throw new RealEstateDataContext.Utility.Real_EstateIDException();
         }
 
         /// <summary>
@@ -326,13 +360,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="Real_EstateIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.Real_EstateID();
+            else throw new RealEstateDataContext.Utility.Real_EstateIDException();
         }
 
         /// <summary>
@@ -340,13 +375,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="Real_EstateIDException"></exception>
         public override RealEstateDataContext.REAL_ESTATE GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.Real_EstateID();
+            else throw new RealEstateDataContext.Utility.Real_EstateIDException();
         }
     }
 }

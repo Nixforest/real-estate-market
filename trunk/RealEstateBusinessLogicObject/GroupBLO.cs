@@ -59,6 +59,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="GroupIDException"></exception>
         public override int Update(RealEstateDataContext.GROUP entity)
         {
             if (ValidationID(entity.ID))
@@ -66,7 +67,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Group's name</param>
         /// <param name="description">Description</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="GroupIDException"></exception>
         public int Update(int id, string name, string description)
         {
             if (ValidationID(id))
@@ -88,7 +90,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
 
         /// <summary>
@@ -96,13 +98,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
+        /// <exception cref="GroupIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
 
         /// <summary>
@@ -110,13 +113,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="GroupIDException"></exception>
         public override RealEstateDataContext.GROUP GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
     }
 }

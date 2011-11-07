@@ -30,6 +30,11 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="DistrictIDException: ID not exist in DISTRICT table"></exception>
+        /// <exception cref="WardIDException: ID not exist in WARD table"></exception>
+        /// <exception cref="StreetIDException: ID not exist in STREET table"></exception>
         public override int Insert(RealEstateDataContext.ADDRESS entity)
         {
             if ((new RealEstateDataAccessObject.NationDAO()).ValidationID(entity.NationID))
@@ -46,15 +51,15 @@ namespace RealEstateBusinessLogicObject
                                 _db.Insert(entity);
                                 return entity.ID;
                             }
-                            else throw new RealEstateDataContext.Utility.StreetID();
+                            else throw new RealEstateDataContext.Utility.StreetIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.WardID();
+                        else throw new RealEstateDataContext.Utility.WardIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.DistrictID();
+                    else throw new RealEstateDataContext.Utility.DistrictIDException();
                 }
-                else throw new RealEstateDataContext.Utility.CityID();
+                else throw new RealEstateDataContext.Utility.CityIDException();
             }
-            else throw new RealEstateDataContext.Utility.NationID();
+            else throw new RealEstateDataContext.Utility.NationIDException();
             
         }
 
@@ -68,6 +73,11 @@ namespace RealEstateBusinessLogicObject
         /// <param name="streetID">ID of street</param>
         /// <param name="detail">Detail Address</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="DistrictIDException: ID not exist in DISTRICT table"></exception>
+        /// <exception cref="WardIDException: ID not exist in WARD table"></exception>
+        /// <exception cref="StreetIDException: ID not exist in STREET table"></exception>
         public int Insert(int nationID, int cityID, int? districtID, int? wardID, int? streetID, string detail)
         {
             if ((new RealEstateDataAccessObject.NationDAO()).ValidationID(nationID))
@@ -92,15 +102,15 @@ namespace RealEstateBusinessLogicObject
                                 _db.Insert(entity);
                                 return entity.ID;
                             }
-                            else throw new RealEstateDataContext.Utility.StreetID();
+                            else throw new RealEstateDataContext.Utility.StreetIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.WardID();
+                        else throw new RealEstateDataContext.Utility.WardIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.DistrictID();
+                    else throw new RealEstateDataContext.Utility.DistrictIDException();
                 }
-                else throw new RealEstateDataContext.Utility.CityID();
+                else throw new RealEstateDataContext.Utility.CityIDException();
             }
-            else throw new RealEstateDataContext.Utility.NationID();         
+            else throw new RealEstateDataContext.Utility.NationIDException();         
         }
 
         /// <summary>
@@ -108,6 +118,12 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="DistrictIDException: ID not exist in DISTRICT table"></exception>
+        /// <exception cref="WardIDException: ID not exist in WARD table"></exception>
+        /// <exception cref="StreetIDException: ID not exist in STREET table"></exception>
         public override int Update(RealEstateDataContext.ADDRESS entity)
         {
             if (ValidationID(entity.ID))
@@ -125,17 +141,17 @@ namespace RealEstateBusinessLogicObject
                                     _db.Update(entity);
                                     return entity.ID;
                                 }
-                                else throw new RealEstateDataContext.Utility.StreetID();
+                                else throw new RealEstateDataContext.Utility.StreetIDException();
                             }
-                            else throw new RealEstateDataContext.Utility.WardID();
+                            else throw new RealEstateDataContext.Utility.WardIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.DistrictID();
+                        else throw new RealEstateDataContext.Utility.DistrictIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.CityID();
+                    else throw new RealEstateDataContext.Utility.CityIDException();
                 }
-                else throw new RealEstateDataContext.Utility.NationID();
+                else throw new RealEstateDataContext.Utility.NationIDException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
         /// <summary>
@@ -149,6 +165,12 @@ namespace RealEstateBusinessLogicObject
         /// <param name="streetID">ID of street</param>
         /// <param name="detail">Detail Address</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        /// <exception cref="DistrictIDException: ID not exist in DISTRICT table"></exception>
+        /// <exception cref="WardIDException: ID not exist in WARD table"></exception>
+        /// <exception cref="StreetIDException: ID not exist in STREET table"></exception>
         public int Update(int id, int nationID, int cityID, int? districtID, int? wardID, int? streetID, string detail)
         {
             if (ValidationID(id))
@@ -175,17 +197,17 @@ namespace RealEstateBusinessLogicObject
                                 _db.Update(entity);
                                 return entity.ID;
                             }
-                            else throw new RealEstateDataContext.Utility.StreetID();
+                            else throw new RealEstateDataContext.Utility.StreetIDException();
                         }
-                        else throw new RealEstateDataContext.Utility.WardID();
+                        else throw new RealEstateDataContext.Utility.WardIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.DistrictID();
+                    else throw new RealEstateDataContext.Utility.DistrictIDException();
                     }
-                    else throw new RealEstateDataContext.Utility.CityID();
+                    else throw new RealEstateDataContext.Utility.CityIDException();
                 }
-                else throw new RealEstateDataContext.Utility.NationID();
+                else throw new RealEstateDataContext.Utility.NationIDException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
 
@@ -193,23 +215,29 @@ namespace RealEstateBusinessLogicObject
         /// Delete a row from ADDRESS table
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
-        /// <exception cref="AddressID"></exception>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
+        /// <summary>
+        /// Get a row in ADDRESS table
+        /// </summary>
+        /// <param name="ID">ID of row</param>
+        /// <returns>Entity</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         public override RealEstateDataContext.ADDRESS GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
     }
 }
