@@ -30,7 +30,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just inserted</returns>
-        /// <exception cref="Exception">CityID Not Exist</exception>
+        /// <exception cref="CityIDException"></exception>
         public override int Insert(RealEstateDataContext.DISTRICT entity)
         {
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(entity.CityID))
@@ -39,7 +39,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
 
         /// <summary>
@@ -48,6 +48,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">District's name</param>
         /// <param name="cityID">ID of city</param>
         /// <returns>ID of row have just inserted</returns>
+        /// <exception cref="CityIDException"></exception>
         public int Insert(string name, int cityID)
         {
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
@@ -60,7 +61,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.CityID();
+            else throw new RealEstateDataContext.Utility.CityIDException();
         }
 
         /// <summary>
@@ -68,6 +69,8 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        /// <exception cref="CityIDException"></exception>
         public override int Update(RealEstateDataContext.DISTRICT entity)
         {
             if (ValidationID(entity.ID))
@@ -77,9 +80,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.CityID();
+                else throw new RealEstateDataContext.Utility.CityIDException();
             }
-            else throw new RealEstateDataContext.Utility.DistrictID();
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
         }
 
         /// <summary>
@@ -89,6 +92,8 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">District's name</param>
         /// <param name="cityID">ID of city</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        /// <exception cref="CityIDException"></exception>
         public int Update(int id, string name, int cityID)
         {
             if (ValidationID(id))
@@ -103,9 +108,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.CityID();
+                else throw new RealEstateDataContext.Utility.CityIDException();
             }
-            else throw new RealEstateDataContext.Utility.DistrictID();
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
         }
 
         /// <summary>
@@ -113,13 +118,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row have just deleted</returns>
+        /// <exception cref="DistrictIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.DistrictID();
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
         }
 
         /// <summary>
@@ -127,13 +133,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="DistrictIDException"></exception>
         public override RealEstateDataContext.DISTRICT GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.DistrictID();
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
         }
     }
 }

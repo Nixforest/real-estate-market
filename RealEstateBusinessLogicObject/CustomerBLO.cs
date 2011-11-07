@@ -30,6 +30,8 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just inserted</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         public override int Insert(RealEstateDataContext.CUSTOMER entity)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
@@ -40,9 +42,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Insert(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.UserID();
+                else throw new RealEstateDataContext.Utility.UserIDException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
         /// <summary>
@@ -56,6 +58,8 @@ namespace RealEstateBusinessLogicObject
         /// <param name="email">Customer's email</param>
         /// <param name="userID">Customer's user id</param>
         /// <returns>ID of row have just inserted</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         public int Insert(string name, int addressID, string identityCard,
             string phone, string homePhone, string email, int? userID)
         {
@@ -76,9 +80,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Insert(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.UserID();
+                else throw new RealEstateDataContext.Utility.UserIDException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
         /// <summary>
@@ -86,6 +90,9 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         public override int Update(RealEstateDataContext.CUSTOMER entity)
         {
             if (ValidationID(entity.ID))
@@ -97,11 +104,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Update(entity);
                         return entity.ID;
                     }
-                    else throw new RealEstateDataContext.Utility.UserID();
+                    else throw new RealEstateDataContext.Utility.UserIDException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.CustomerID();
+            else throw new RealEstateDataContext.Utility.CustomerIDException();
         }
 
         /// <summary>
@@ -116,6 +123,9 @@ namespace RealEstateBusinessLogicObject
         /// <param name="email">Customer's email</param>
         /// <param name="userID">Customer's user id</param>
         /// <returns>ID of row have just updated</returns>
+        /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         public int Update(int id, string name, int addressID, string identityCard,
             string phone, string homePhone, string email, int? userID)
         {
@@ -138,11 +148,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Update(entity);
                         return entity.ID;
                     }
-                    else throw new RealEstateDataContext.Utility.UserID();
+                    else throw new RealEstateDataContext.Utility.UserIDException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.CustomerID();
+            else throw new RealEstateDataContext.Utility.CustomerIDException();
         }
 
         /// <summary>
@@ -150,13 +160,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
+        /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.CustomerID();
+            else throw new RealEstateDataContext.Utility.CustomerIDException();
         }
 
         /// <summary>
@@ -164,13 +175,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
         public override RealEstateDataContext.CUSTOMER GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.CustomerID();
+            else throw new RealEstateDataContext.Utility.CustomerIDException();
         }
     }
 }

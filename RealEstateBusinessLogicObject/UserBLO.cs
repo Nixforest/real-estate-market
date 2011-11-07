@@ -30,6 +30,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="GroupIDException"></exception>
         public override int Insert(RealEstateDataContext.USER entity)
         {
             if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)entity.GroupID) || entity.GroupID == null)
@@ -38,7 +39,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
 
         /// <summary>
@@ -50,6 +51,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="phone">Phone</param>
         /// <param name="groupID">ID of group user belong</param>
         /// <returns>ID of row has just inserted</returns>
+        /// <exception cref="GroupIDException"></exception>
         public int Insert(string username, string password,
             string email, string phone, int? groupID)
         {
@@ -66,7 +68,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Insert(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.GroupID();
+            else throw new RealEstateDataContext.Utility.GroupIDException();
         }
 
         /// <summary>
@@ -74,6 +76,8 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="UserIDException"></exception>
+        /// <exception cref="GroupIDException"></exception>
         public override int Update(RealEstateDataContext.USER entity)
         {
             if (ValidationID(entity.ID))
@@ -83,9 +87,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.GroupID();
+                else throw new RealEstateDataContext.Utility.GroupIDException();
             }
-            else throw new RealEstateDataContext.Utility.UserID();
+            else throw new RealEstateDataContext.Utility.UserIDException();
         }
 
         /// <summary>
@@ -98,6 +102,8 @@ namespace RealEstateBusinessLogicObject
         /// <param name="phone">Phone</param>
         /// <param name="groupID">ID of group user belong</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="UserIDException"></exception>
+        /// <exception cref="GroupIDException"></exception>
         public int Update(int id, string username, string password,
             string email, string phone, int groupID)
         {
@@ -116,9 +122,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Update(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.GroupID();
+                else throw new RealEstateDataContext.Utility.GroupIDException();
             }
-            else throw new RealEstateDataContext.Utility.UserID();
+            else throw new RealEstateDataContext.Utility.UserIDException();
         }
 
         /// <summary>
@@ -126,13 +132,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="UserIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.UserID();
+            else throw new RealEstateDataContext.Utility.UserIDException();
         }
 
         /// <summary>
@@ -140,13 +147,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="UserIDException"></exception>
         public override RealEstateDataContext.USER GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.UserID();
+            else throw new RealEstateDataContext.Utility.UserIDException();
         }
     }
 }

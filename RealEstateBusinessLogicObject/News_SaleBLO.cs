@@ -68,6 +68,10 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="News_SaleIDException"></exception>
+        /// <exception cref="News_Sale_TypeIDException"></exception>
+        /// <exception cref="Real_EstateIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate"></exception>
         public override int Update(RealEstateDataContext.NEWS_SALE entity)
         {
             if (ValidationID(entity.ID))
@@ -83,13 +87,13 @@ namespace RealEstateBusinessLogicObject
                             _db.Update(entity);
                             return entity.ID;
                         }
-                        else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                        else throw new RealEstateDataContext.Utility.Rate_LimitationException();
                     }
-                    else throw new RealEstateDataContext.Utility.Real_EstateID();
+                    else throw new RealEstateDataContext.Utility.Real_EstateIDException();
                 }
-                else throw new RealEstateDataContext.Utility.News_Sale_TypeID();
+                else throw new RealEstateDataContext.Utility.News_Sale_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.News_SaleID();
+            else throw new RealEstateDataContext.Utility.News_SaleIDException();
         }
 
         /// <summary>
@@ -103,6 +107,10 @@ namespace RealEstateBusinessLogicObject
         /// <param name="rate">News sale's rate</param>
         /// <param name="updateTime">News sale's update time</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="News_SaleIDException"></exception>
+        /// <exception cref="News_Sale_TypeIDException"></exception>
+        /// <exception cref="Real_EstateIDException"></exception>
+        /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate"></exception>
         public int Update(int id, int typeID, string title, string content,
             int realEstateID, int? rate, DateTime updateTime)
         {
@@ -128,13 +136,13 @@ namespace RealEstateBusinessLogicObject
                             _db.Update(entity);
                             return entity.ID;
                         }
-                        else throw new RealEstateDataContext.Utility.Rate_Limitation();
+                        else throw new RealEstateDataContext.Utility.Rate_LimitationException();
                     }
-                    else throw new RealEstateDataContext.Utility.Real_EstateID();
+                    else throw new RealEstateDataContext.Utility.Real_EstateIDException();
                 }
-                else throw new RealEstateDataContext.Utility.News_Sale_TypeID();
+                else throw new RealEstateDataContext.Utility.News_Sale_TypeIDException();
             }
-            else throw new RealEstateDataContext.Utility.News_SaleID();
+            else throw new RealEstateDataContext.Utility.News_SaleIDException();
         }
 
         /// <summary>
@@ -142,13 +150,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="News_SaleIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.News_SaleID();
+            else throw new RealEstateDataContext.Utility.News_SaleIDException();
         }
 
         /// <summary>
@@ -156,13 +165,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="News_SaleIDException"></exception>
         public override RealEstateDataContext.NEWS_SALE GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.News_SaleID();
+            else throw new RealEstateDataContext.Utility.News_SaleIDException();
         }
     }
 }

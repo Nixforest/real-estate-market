@@ -30,6 +30,8 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         public override int Insert(RealEstateDataContext.COMPANY entity)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
@@ -40,9 +42,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Insert(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.ShareCapital();
+                else throw new RealEstateDataContext.Utility.ShareCapitalException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
         /// <summary>
         /// Insert a row into COMPANY table
@@ -60,6 +62,8 @@ namespace RealEstateBusinessLogicObject
         /// <param name="businessRegistration">Company's business registration</param>
         /// <param name="description">Description</param>
         /// <returns>ID of row just insert</returns>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         public int Insert(string name, int addressID, string phone, string homePhone,
             string fax, string email, string website, DateTime? establishDay,
             decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
@@ -87,9 +91,9 @@ namespace RealEstateBusinessLogicObject
                     _db.Insert(entity);
                     return entity.ID;
                 }
-                else throw new RealEstateDataContext.Utility.ShareCapital();
+                else throw new RealEstateDataContext.Utility.ShareCapitalException();
             }
-            else throw new RealEstateDataContext.Utility.AddressID();
+            else throw new RealEstateDataContext.Utility.AddressIDException();
         }
 
         /// <summary>
@@ -97,6 +101,9 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         public override int Update(RealEstateDataContext.COMPANY entity)
         {
             if (ValidationID(entity.ID))
@@ -108,11 +115,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Update(entity);
                         return entity.ID;
                     }
-                    else throw new RealEstateDataContext.Utility.ShareCapital();
+                    else throw new RealEstateDataContext.Utility.ShareCapitalException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.CompanyID();
+            else throw new RealEstateDataContext.Utility.CompanyIDException();
         }
 
         /// <summary>
@@ -132,6 +139,9 @@ namespace RealEstateBusinessLogicObject
         /// <param name="businessRegistration">Company's business registration</param>
         /// <param name="description">Description</param>
         /// <returns>ID of row just update</returns>
+        /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
+        /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
+        /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         public int Update(int id, string name, int addressID, string phone, string homePhone,
             string fax, string email, string website, DateTime? establishDay,
             decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
@@ -160,11 +170,11 @@ namespace RealEstateBusinessLogicObject
                         _db.Update(entity);
                         return entity.ID;
                     }
-                    else throw new RealEstateDataContext.Utility.ShareCapital();
+                    else throw new RealEstateDataContext.Utility.ShareCapitalException();
                 }
-                else throw new RealEstateDataContext.Utility.AddressID();
+                else throw new RealEstateDataContext.Utility.AddressIDException();
             }
-            else throw new RealEstateDataContext.Utility.CompanyID();
+            else throw new RealEstateDataContext.Utility.CompanyIDException();
         }
 
         /// <summary>
@@ -172,13 +182,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
+        /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.CompanyID();
+            else throw new RealEstateDataContext.Utility.CompanyIDException();
         }
 
         /// <summary>
@@ -186,13 +197,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
         public override RealEstateDataContext.COMPANY GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.CompanyID();
+            else throw new RealEstateDataContext.Utility.CompanyIDException();
         }
     }
 }

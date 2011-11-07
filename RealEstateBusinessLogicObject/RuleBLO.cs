@@ -59,6 +59,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="RuleIDException"></exception>
         public override int Update(RealEstateDataContext.RULE entity)
         {
             if (ValidationID(entity.ID))
@@ -66,7 +67,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.RuleID();
+            else throw new RealEstateDataContext.Utility.RuleIDException();
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Name of rule</param>
         /// <param name="description">Description of rule</param>
         /// <returns>ID of row has just updated</returns>
+        /// <exception cref="RuleIDException"></exception>
         public int Update(int id, string name, string description)
         {
             if (ValidationID(id))
@@ -88,7 +90,7 @@ namespace RealEstateBusinessLogicObject
                 _db.Update(entity);
                 return entity.ID;
             }
-            else throw new RealEstateDataContext.Utility.RuleID();
+            else throw new RealEstateDataContext.Utility.RuleIDException();
         }
 
         /// <summary>
@@ -96,13 +98,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
+        /// <exception cref="RuleIDException"></exception>
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
             {
                 _db.Delete(ID);
             }
-            else throw new RealEstateDataContext.Utility.RuleID();
+            else throw new RealEstateDataContext.Utility.RuleIDException();
         }
 
         /// <summary>
@@ -110,13 +113,14 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
+        /// <exception cref="RuleIDException"></exception>
         public override RealEstateDataContext.RULE GetARecord(int ID)
         {
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
             }
-            else throw new RealEstateDataContext.Utility.RuleID();
+            else throw new RealEstateDataContext.Utility.RuleIDException();
         }
     }
 }
