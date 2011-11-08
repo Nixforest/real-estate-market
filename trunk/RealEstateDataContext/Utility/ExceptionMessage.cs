@@ -5,34 +5,34 @@ using System.Text;
 
 namespace RealEstateDataContext.Utility
 {
-    public class AddressID : Exception { }
-    public class NationID : Exception { }
-    public class CityID : Exception { }
-    public class DistrictID : Exception { }
-    public class WardID : Exception { }
-    public class StreetID : Exception { }
-    public class ShareCapital : Exception { }
-    public class RoomNumber : Exception { }
-    public class CompanyID : Exception { }
-    public class UserID : Exception { }
-    public class CustomerID : Exception { }
-    public class GroupID : Exception { }
-    public class ImageID : Exception { }
-    public class News_Sale_TypeID : Exception { }
-    public class News_SaleID : Exception { }
-    public class Real_EstateID : Exception { }
-    public class Real_Estate_TypeID : Exception { }
-    public class Rate_Limitation : Exception { }
-    public class News_TypeID : Exception { }
-    public class NewsID : Exception { }
-    public class Project_TypeID : Exception { }
-    public class ProjectID : Exception { }
-    public class GreaterZero : Exception { }
-    public class UnitID : Exception { }
-    public class Unit_PriceID : Exception { }
-    public class ContactID : Exception { }
-    public class RuleID : Exception { }
-    public class UtilityID : Exception { }
+    public class AddressIDException : Exception { }
+    public class NationIDException : Exception { }
+    public class CityIDException : Exception { }
+    public class DistrictIDException : Exception { }
+    public class WardIDException : Exception { }
+    public class StreetIDException : Exception { }
+    public class ShareCapitalException : Exception { }
+    public class RoomNumberException : Exception { }
+    public class CompanyIDException : Exception { }
+    public class UserIDException : Exception { }
+    public class CustomerIDException : Exception { }
+    public class GroupIDException : Exception { }
+    public class ImageIDException : Exception { }
+    public class News_Sale_TypeIDException : Exception { }
+    public class News_SaleIDException : Exception { }
+    public class Real_EstateIDException : Exception { }
+    public class Real_Estate_TypeIDException : Exception { }
+    public class Rate_LimitationException : Exception { }
+    public class News_TypeIDException : Exception { }
+    public class NewsIDException : Exception { }
+    public class Project_TypeIDException : Exception { }
+    public class ProjectIDException : Exception { }
+    public class GreaterZeroException : Exception { }
+    public class UnitIDException : Exception { }
+    public class Unit_PriceIDException : Exception { }
+    public class ContactIDException : Exception { }
+    public class RuleIDException : Exception { }
+    public class UtilityIDException : Exception { }
 
     public class ExceptionMessage
     {

@@ -105,7 +105,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="UserIDException"></exception>
         /// <exception cref="GroupIDException"></exception>
         public int Update(int id, string username, string password,
-            string email, string phone, int groupID)
+            string email, string phone, int? groupID)
         {
             if (ValidationID(id))
             {
