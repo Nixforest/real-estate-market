@@ -42,9 +42,6 @@ namespace RealEstateDataContext
     partial void InsertCOMPANY(COMPANY instance);
     partial void UpdateCOMPANY(COMPANY instance);
     partial void DeleteCOMPANY(COMPANY instance);
-    partial void InsertCOMPANY_IMAGE(COMPANY_IMAGE instance);
-    partial void UpdateCOMPANY_IMAGE(COMPANY_IMAGE instance);
-    partial void DeleteCOMPANY_IMAGE(COMPANY_IMAGE instance);
     partial void InsertCONTACT(CONTACT instance);
     partial void UpdateCONTACT(CONTACT instance);
     partial void DeleteCONTACT(CONTACT instance);
@@ -184,14 +181,6 @@ namespace RealEstateDataContext
 			get
 			{
 				return this.GetTable<COMPANY>();
-			}
-		}
-		
-		public System.Data.Linq.Table<COMPANY_IMAGE> COMPANY_IMAGEs
-		{
-			get
-			{
-				return this.GetTable<COMPANY_IMAGE>();
 			}
 		}
 		
@@ -1263,11 +1252,13 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<COMPANY_IMAGE> _COMPANY_IMAGEs;
+		private int _Logo;
 		
 		private EntitySet<PROPERTY_COMPANY> _PROPERTY_COMPANies;
 		
 		private EntityRef<ADDRESS> _ADDRESS;
+		
+		private EntityRef<IMAGE> _IMAGE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1299,13 +1290,15 @@ namespace RealEstateDataContext
     partial void OnBusinessRegistrationChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
+    partial void OnLogoChanging(int value);
+    partial void OnLogoChanged();
     #endregion
 		
 		public COMPANY()
 		{
-			this._COMPANY_IMAGEs = new EntitySet<COMPANY_IMAGE>(new Action<COMPANY_IMAGE>(this.attach_COMPANY_IMAGEs), new Action<COMPANY_IMAGE>(this.detach_COMPANY_IMAGEs));
 			this._PROPERTY_COMPANies = new EntitySet<PROPERTY_COMPANY>(new Action<PROPERTY_COMPANY>(this.attach_PROPERTY_COMPANies), new Action<PROPERTY_COMPANY>(this.detach_PROPERTY_COMPANies));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
+			this._IMAGE = default(EntityRef<IMAGE>);
 			OnCreated();
 		}
 		
@@ -1573,16 +1566,27 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="COMPANY_COMPANY_IMAGE", Storage="_COMPANY_IMAGEs", ThisKey="ID", OtherKey="CompanyID")]
-		public EntitySet<COMPANY_IMAGE> COMPANY_IMAGEs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logo", DbType="Int NOT NULL")]
+		public int Logo
 		{
 			get
 			{
-				return this._COMPANY_IMAGEs;
+				return this._Logo;
 			}
 			set
 			{
-				this._COMPANY_IMAGEs.Assign(value);
+				if ((this._Logo != value))
+				{
+					if (this._IMAGE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLogoChanging(value);
+					this.SendPropertyChanging();
+					this._Logo = value;
+					this.SendPropertyChanged("Logo");
+					this.OnLogoChanged();
+				}
 			}
 		}
 		
@@ -1633,189 +1637,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_COMPANY_IMAGEs(COMPANY_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = this;
-		}
-		
-		private void detach_COMPANY_IMAGEs(COMPANY_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = null;
-		}
-		
-		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = this;
-		}
-		
-		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.COMPANY_IMAGE")]
-	public partial class COMPANY_IMAGE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _CompanyID;
-		
-		private int _ImageID;
-		
-		private EntityRef<COMPANY> _COMPANY;
-		
-		private EntityRef<IMAGE> _IMAGE;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnCompanyIDChanging(int value);
-    partial void OnCompanyIDChanged();
-    partial void OnImageIDChanging(int value);
-    partial void OnImageIDChanged();
-    #endregion
-		
-		public COMPANY_IMAGE()
-		{
-			this._COMPANY = default(EntityRef<COMPANY>);
-			this._IMAGE = default(EntityRef<IMAGE>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", DbType="Int NOT NULL")]
-		public int CompanyID
-		{
-			get
-			{
-				return this._CompanyID;
-			}
-			set
-			{
-				if ((this._CompanyID != value))
-				{
-					if (this._COMPANY.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCompanyIDChanging(value);
-					this.SendPropertyChanging();
-					this._CompanyID = value;
-					this.SendPropertyChanged("CompanyID");
-					this.OnCompanyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageID", DbType="Int NOT NULL")]
-		public int ImageID
-		{
-			get
-			{
-				return this._ImageID;
-			}
-			set
-			{
-				if ((this._ImageID != value))
-				{
-					if (this._IMAGE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnImageIDChanging(value);
-					this.SendPropertyChanging();
-					this._ImageID = value;
-					this.SendPropertyChanged("ImageID");
-					this.OnImageIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="COMPANY_COMPANY_IMAGE", Storage="_COMPANY", ThisKey="CompanyID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public COMPANY COMPANY
-		{
-			get
-			{
-				return this._COMPANY.Entity;
-			}
-			set
-			{
-				COMPANY previousValue = this._COMPANY.Entity;
-				if (((previousValue != value) 
-							|| (this._COMPANY.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._COMPANY.Entity = null;
-						previousValue.COMPANY_IMAGEs.Remove(this);
-					}
-					this._COMPANY.Entity = value;
-					if ((value != null))
-					{
-						value.COMPANY_IMAGEs.Add(this);
-						this._CompanyID = value.ID;
-					}
-					else
-					{
-						this._CompanyID = default(int);
-					}
-					this.SendPropertyChanged("COMPANY");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_COMPANY_IMAGE", Storage="_IMAGE", ThisKey="ImageID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_COMPANY", Storage="_IMAGE", ThisKey="Logo", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public IMAGE IMAGE
 		{
 			get
@@ -1832,17 +1654,17 @@ namespace RealEstateDataContext
 					if ((previousValue != null))
 					{
 						this._IMAGE.Entity = null;
-						previousValue.COMPANY_IMAGEs.Remove(this);
+						previousValue.COMPANies.Remove(this);
 					}
 					this._IMAGE.Entity = value;
 					if ((value != null))
 					{
-						value.COMPANY_IMAGEs.Add(this);
-						this._ImageID = value.ID;
+						value.COMPANies.Add(this);
+						this._Logo = value.ID;
 					}
 					else
 					{
-						this._ImageID = default(int);
+						this._Logo = default(int);
 					}
 					this.SendPropertyChanged("IMAGE");
 				}
@@ -1867,6 +1689,18 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
+		{
+			this.SendPropertyChanging();
+			entity.COMPANY = this;
+		}
+		
+		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
+		{
+			this.SendPropertyChanging();
+			entity.COMPANY = null;
 		}
 	}
 	
@@ -3191,7 +3025,7 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<COMPANY_IMAGE> _COMPANY_IMAGEs;
+		private EntitySet<COMPANY> _COMPANies;
 		
 		private EntitySet<NEW> _NEWs;
 		
@@ -3213,7 +3047,7 @@ namespace RealEstateDataContext
 		
 		public IMAGE()
 		{
-			this._COMPANY_IMAGEs = new EntitySet<COMPANY_IMAGE>(new Action<COMPANY_IMAGE>(this.attach_COMPANY_IMAGEs), new Action<COMPANY_IMAGE>(this.detach_COMPANY_IMAGEs));
+			this._COMPANies = new EntitySet<COMPANY>(new Action<COMPANY>(this.attach_COMPANies), new Action<COMPANY>(this.detach_COMPANies));
 			this._NEWs = new EntitySet<NEW>(new Action<NEW>(this.attach_NEWs), new Action<NEW>(this.detach_NEWs));
 			this._REAL_ESTATE_IMAGEs = new EntitySet<REAL_ESTATE_IMAGE>(new Action<REAL_ESTATE_IMAGE>(this.attach_REAL_ESTATE_IMAGEs), new Action<REAL_ESTATE_IMAGE>(this.detach_REAL_ESTATE_IMAGEs));
 			OnCreated();
@@ -3299,16 +3133,16 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_COMPANY_IMAGE", Storage="_COMPANY_IMAGEs", ThisKey="ID", OtherKey="ImageID")]
-		public EntitySet<COMPANY_IMAGE> COMPANY_IMAGEs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_COMPANY", Storage="_COMPANies", ThisKey="ID", OtherKey="Logo")]
+		public EntitySet<COMPANY> COMPANies
 		{
 			get
 			{
-				return this._COMPANY_IMAGEs;
+				return this._COMPANies;
 			}
 			set
 			{
-				this._COMPANY_IMAGEs.Assign(value);
+				this._COMPANies.Assign(value);
 			}
 		}
 		
@@ -3358,13 +3192,13 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		private void attach_COMPANY_IMAGEs(COMPANY_IMAGE entity)
+		private void attach_COMPANies(COMPANY entity)
 		{
 			this.SendPropertyChanging();
 			entity.IMAGE = this;
 		}
 		
-		private void detach_COMPANY_IMAGEs(COMPANY_IMAGE entity)
+		private void detach_COMPANies(COMPANY entity)
 		{
 			this.SendPropertyChanging();
 			entity.IMAGE = null;

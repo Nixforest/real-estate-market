@@ -68,6 +68,7 @@ namespace RealEstateDataAccessObject
             oldEntity.FieldOfAction = entity.FieldOfAction;
             oldEntity.BusinessRegistration = entity.BusinessRegistration;
             oldEntity.Description = entity.Description;
+            oldEntity.Logo = entity.Logo;
 
             _db.SubmitChanges();
         }

@@ -32,15 +32,20 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just insert</returns>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
+        /// <exception cref="ImageIDException"></exception>
         public override int Insert(RealEstateDataContext.COMPANY entity)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
             {
                 if (entity.ShareCapital == null || entity.ShareCapital > 0)
                 {
-                    entity.ID = _db.CreateID();
-                    _db.Insert(entity);
-                    return entity.ID;
+                    if (new RealEstateDataAccessObject.ImageDAO().ValidationID(entity.Logo))
+                    {
+                        entity.ID = _db.CreateID();
+                        _db.Insert(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ImageIDException();
                 }
                 else throw new RealEstateDataContext.Utility.ShareCapitalException();
             }
@@ -61,35 +66,42 @@ namespace RealEstateBusinessLogicObject
         /// <param name="fieldOfAction">Company's field of action</param>
         /// <param name="businessRegistration">Company's business registration</param>
         /// <param name="description">Description</param>
+        /// <param name="logo">Company's Logo image</param>
         /// <returns>ID of row just insert</returns>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
+        /// <exception cref="ImageIDException"></exception>
         public int Insert(string name, int addressID, string phone, string homePhone,
-            string fax, string email, string website, DateTime? establishDay,
-            decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
+            string fax, string email, string website, DateTime? establishDay, decimal? shareCapital,
+            string fieldOfAction, bool businessRegistration, string description, int logo)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
             {
                 if (shareCapital == null || shareCapital > 0)
                 {
-                    RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
+                    if (new RealEstateDataAccessObject.ImageDAO().ValidationID(logo))
+                    {
+                        RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
 
-                    entity.ID = _db.CreateID();
-                    entity.Name = name;
-                    entity.AddressID = addressID;
-                    entity.Phone = phone;
-                    entity.HomePhone = homePhone;
-                    entity.Fax = fax;
-                    entity.Email = email;
-                    entity.Website = website;
-                    entity.EstablishDay = establishDay;
-                    entity.ShareCapital = shareCapital;
-                    entity.FieldOfAction = fieldOfAction;
-                    entity.BusinessRegistration = businessRegistration;
-                    entity.Description = description;
+                        entity.ID = _db.CreateID();
+                        entity.Name = name;
+                        entity.AddressID = addressID;
+                        entity.Phone = phone;
+                        entity.HomePhone = homePhone;
+                        entity.Fax = fax;
+                        entity.Email = email;
+                        entity.Website = website;
+                        entity.EstablishDay = establishDay;
+                        entity.ShareCapital = shareCapital;
+                        entity.FieldOfAction = fieldOfAction;
+                        entity.BusinessRegistration = businessRegistration;
+                        entity.Description = description;
+                        entity.Logo = logo;
 
-                    _db.Insert(entity);
-                    return entity.ID;
+                        _db.Insert(entity);
+                        return entity.ID;
+                    }
+                    else throw new RealEstateDataContext.Utility.ImageIDException();
                 }
                 else throw new RealEstateDataContext.Utility.ShareCapitalException();
             }
@@ -104,6 +116,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
+        /// <exception cref="ImageIDException"></exception>
         public override int Update(RealEstateDataContext.COMPANY entity)
         {
             if (ValidationID(entity.ID))
@@ -112,8 +125,12 @@ namespace RealEstateBusinessLogicObject
                 {
                     if (entity.ShareCapital == null || entity.ShareCapital > 0)
                     {
-                        _db.Update(entity);
-                        return entity.ID;
+                        if (new RealEstateDataAccessObject.ImageDAO().ValidationID(entity.Logo))
+                        {
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.ImageIDException();
                     }
                     else throw new RealEstateDataContext.Utility.ShareCapitalException();
                 }
@@ -138,13 +155,15 @@ namespace RealEstateBusinessLogicObject
         /// <param name="fieldOfAction">Company's field of action</param>
         /// <param name="businessRegistration">Company's business registration</param>
         /// <param name="description">Description</param>
+        /// <param name="logo">Company's Logo image</param>
         /// <returns>ID of row just update</returns>
         /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
+        /// <exception cref="ImageIDException"></exception>
         public int Update(int id, string name, int addressID, string phone, string homePhone,
-            string fax, string email, string website, DateTime? establishDay,
-            decimal? shareCapital, string fieldOfAction, bool businessRegistration, string description)
+            string fax, string email, string website, DateTime? establishDay, decimal? shareCapital,
+            string fieldOfAction, bool businessRegistration, string description, int logo)
         {
             if (ValidationID(id))
             {
@@ -152,23 +171,27 @@ namespace RealEstateBusinessLogicObject
                 {
                     if (shareCapital == null || shareCapital > 0)
                     {
-                        RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
-                        entity.ID = id;
-                        entity.Name = name;
-                        entity.AddressID = addressID;
-                        entity.Phone = phone;
-                        entity.HomePhone = homePhone;
-                        entity.Fax = fax;
-                        entity.Email = email;
-                        entity.Website = website;
-                        entity.EstablishDay = establishDay;
-                        entity.ShareCapital = shareCapital;
-                        entity.FieldOfAction = fieldOfAction;
-                        entity.BusinessRegistration = businessRegistration;
-                        entity.Description = description;
+                        if (new RealEstateDataAccessObject.ImageDAO().ValidationID(logo))
+                        {
+                            RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
+                            entity.ID = id;
+                            entity.Name = name;
+                            entity.AddressID = addressID;
+                            entity.Phone = phone;
+                            entity.HomePhone = homePhone;
+                            entity.Fax = fax;
+                            entity.Email = email;
+                            entity.Website = website;
+                            entity.EstablishDay = establishDay;
+                            entity.ShareCapital = shareCapital;
+                            entity.FieldOfAction = fieldOfAction;
+                            entity.BusinessRegistration = businessRegistration;
+                            entity.Description = description;
 
-                        _db.Update(entity);
-                        return entity.ID;
+                            _db.Update(entity);
+                            return entity.ID;
+                        }
+                        else throw new RealEstateDataContext.Utility.ImageIDException();
                     }
                     else throw new RealEstateDataContext.Utility.ShareCapitalException();
                 }
