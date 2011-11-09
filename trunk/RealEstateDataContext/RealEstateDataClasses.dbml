@@ -52,18 +52,10 @@
       <Column Name="FieldOfAction" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="BusinessRegistration" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Association Name="COMPANY_COMPANY_IMAGE" Member="COMPANY_IMAGEs" ThisKey="ID" OtherKey="CompanyID" Type="COMPANY_IMAGE" />
+      <Column Name="Logo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="COMPANY_PROPERTY_COMPANY" Member="PROPERTY_COMPANies" ThisKey="ID" OtherKey="CompanyID" Type="PROPERTY_COMPANY" />
       <Association Name="ADDRESS_COMPANY" Member="ADDRESS" ThisKey="AddressID" OtherKey="ID" Type="ADDRESS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.COMPANY_IMAGE" Member="COMPANY_IMAGEs">
-    <Type Name="COMPANY_IMAGE">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ImageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="COMPANY_COMPANY_IMAGE" Member="COMPANY" ThisKey="CompanyID" OtherKey="ID" Type="COMPANY" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="IMAGE_COMPANY_IMAGE" Member="IMAGE" ThisKey="ImageID" OtherKey="ID" Type="IMAGE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IMAGE_COMPANY" Member="IMAGE" ThisKey="Logo" OtherKey="ID" Type="IMAGE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CONTACT" Member="CONTACTs">
@@ -135,7 +127,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Path" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Association Name="IMAGE_COMPANY_IMAGE" Member="COMPANY_IMAGEs" ThisKey="ID" OtherKey="ImageID" Type="COMPANY_IMAGE" />
+      <Association Name="IMAGE_COMPANY" Member="COMPANies" ThisKey="ID" OtherKey="Logo" Type="COMPANY" />
       <Association Name="IMAGE_NEW" Member="NEWs" ThisKey="ID" OtherKey="ImageID" Type="NEW" />
       <Association Name="IMAGE_REAL_ESTATE_IMAGE" Member="REAL_ESTATE_IMAGEs" ThisKey="ID" OtherKey="ImageID" Type="REAL_ESTATE_IMAGE" />
     </Type>

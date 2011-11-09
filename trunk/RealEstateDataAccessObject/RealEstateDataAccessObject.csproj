@@ -44,7 +44,6 @@
     <Compile Include="AddressDAO.cs" />
     <Compile Include="CityDAO.cs" />
     <Compile Include="CompanyDAO.cs" />
-    <Compile Include="Company_ImageDAO.cs" />
     <Compile Include="ContactDAO.cs" />
     <Compile Include="CustomerDAO.cs" />
     <Compile Include="DataParent.cs" />
