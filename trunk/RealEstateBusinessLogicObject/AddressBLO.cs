@@ -5,8 +5,8 @@ using System.Text;
 using System.Collections.ObjectModel;
 
 namespace RealEstateBusinessLogicObject
-{// Ta la Tran Quoc Cong
-
+{
+    // Ta la Tran Quoc Cong
     public class AddressBLO : BusinessParent<RealEstateDataContext.ADDRESS>
     {
         /// <summary>
