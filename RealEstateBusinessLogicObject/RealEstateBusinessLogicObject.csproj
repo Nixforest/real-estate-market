@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressBLO.cs" />
     <Compile Include="BusinessParent.cs" />
     <Compile Include="CityBLO.cs" />
     <Compile Include="CompanyBLO.cs" />
