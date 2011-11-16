@@ -40,7 +40,7 @@ namespace RealEstateBusinessLogicObject
             {
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
                 {
-                    entity.ID = _db.CreateID();
+                    entity.ID = this.CreateNewID();
                     _db.Insert(entity);
                     return entity.ID;
                 }
@@ -67,7 +67,7 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
                 {
                     RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
-                    entity.ID = _db.CreateID();
+                    entity.ID = this.CreateNewID();
                     entity.TypeID = typeID;
                     entity.Name = name;
                     entity.BeginDay = beginDay;

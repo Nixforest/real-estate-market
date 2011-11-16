@@ -450,31 +450,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="DISTRICT_DETAILs" type="tns:ArrayOfDISTRICT_DETAIL" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Insert_x0020_Entity">
+      <s:element name="Insert_x0020_Entity_x0027_s_x0020_properties">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:NATION" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nationCode" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Insert_x0020_EntityResponse">
+      <s:element name="Insert_x0020_Entity_x0027_s_x0020_propertiesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Insert_x0020_EntityResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Update_x0020_Entity">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:NATION" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Update_x0020_EntityResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Update_x0020_EntityResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Insert_x0020_Entity_x0027_s_x0020_propertiesResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -552,17 +539,11 @@
   <wsdl:message name="GetAllRowsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllRowsResponse" />
   </wsdl:message>
-  <wsdl:message name="Insert_x0020_EntitySoapIn">
-    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity" />
+  <wsdl:message name="Insert_x0020_Entity_x0027_s_x0020_propertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity_x0027_s_x0020_properties" />
   </wsdl:message>
-  <wsdl:message name="Insert_x0020_EntitySoapOut">
-    <wsdl:part name="parameters" element="tns:Insert_x0020_EntityResponse" />
-  </wsdl:message>
-  <wsdl:message name="Update_x0020_EntitySoapIn">
-    <wsdl:part name="parameters" element="tns:Update_x0020_Entity" />
-  </wsdl:message>
-  <wsdl:message name="Update_x0020_EntitySoapOut">
-    <wsdl:part name="parameters" element="tns:Update_x0020_EntityResponse" />
+  <wsdl:message name="Insert_x0020_Entity_x0027_s_x0020_propertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesResponse" />
   </wsdl:message>
   <wsdl:message name="Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn">
     <wsdl:part name="parameters" element="tns:Update_x0020_Entity_x0027_s_x0020_properties" />
@@ -602,12 +583,8 @@
       <wsdl:output message="tns:GetAllRowsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Insert">
-      <wsdl:input name="Insert_x0020_Entity" message="tns:Insert_x0020_EntitySoapIn" />
-      <wsdl:output name="Insert_x0020_Entity" message="tns:Insert_x0020_EntitySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Update">
-      <wsdl:input name="Update_x0020_Entity" message="tns:Update_x0020_EntitySoapIn" />
-      <wsdl:output name="Update_x0020_Entity" message="tns:Update_x0020_EntitySoapOut" />
+      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties" message="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesSoapIn" />
+      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties" message="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Update">
       <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties" message="tns:Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn" />
@@ -656,20 +633,11 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Insert">
-      <soap:operation soapAction="http://tempuri.org/Insert Entity" style="document" />
-      <wsdl:input name="Insert_x0020_Entity">
+      <soap:operation soapAction="http://tempuri.org/Insert Entity's properties" style="document" />
+      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Insert_x0020_Entity">
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Update">
-      <soap:operation soapAction="http://tempuri.org/Update Entity" style="document" />
-      <wsdl:input name="Update_x0020_Entity">
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="Update_x0020_Entity">
+      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -740,20 +708,11 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Insert">
-      <soap12:operation soapAction="http://tempuri.org/Insert Entity" style="document" />
-      <wsdl:input name="Insert_x0020_Entity">
+      <soap12:operation soapAction="http://tempuri.org/Insert Entity's properties" style="document" />
+      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties">
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Insert_x0020_Entity">
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Update">
-      <soap12:operation soapAction="http://tempuri.org/Update Entity" style="document" />
-      <wsdl:input name="Update_x0020_Entity">
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output name="Update_x0020_Entity">
+      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties">
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

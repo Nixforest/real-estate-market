@@ -11,10 +11,10 @@ namespace RealEstateDataAccessObject
             _db = new RealEstateDataContext.RealEstateDataClassesDataContext(RealEstateDataContext.Utility.WebConfig.MSSQL);
 
         /// <summary>
-        /// Create a new ID for new entity in table
+        /// Get Max ID in table
         /// </summary>
-        /// <returns>ID just create.</returns>
-        public virtual int CreateID(){return 0;}
+        /// <returns>Max ID</returns>
+        public virtual int GetMaxID() { return 0; }
 
         /// <summary>
         /// Get all rows in table

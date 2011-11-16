@@ -4299,17 +4299,13 @@ namespace RealEstateMarket.RealEstateServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllRows", ReplyAction="*")]
         RealEstateMarket.RealEstateServiceReference.GetAllRowsResponse GetAllRows(RealEstateMarket.RealEstateServiceReference.GetAllRowsRequest request);
         
-        // CODEGEN: Generating message contract since the wrapper name (Insert_x0020_Entity) of message Insert_x0020_Entity does not match the default value (Insert)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Insert Entity", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.InsertEntity1 Insert(RealEstateMarket.RealEstateServiceReference.InsertEntity request);
+        // CODEGEN: Generating message contract since the wrapper name (Insert_x0020_Entity_x0027_s_x0020_properties) of message Insert_x0020_Entity_x0027_s_x0020_properties does not match the default value (Insert)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Insert Entity\'s properties", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties1 Insert(RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties request);
         
-        // CODEGEN: Generating message contract since the wrapper name (Update_x0020_Entity) of message Update_x0020_Entity does not match the default value (Update)
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Update Entity", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.UpdateEntity1 Update(RealEstateMarket.RealEstateServiceReference.UpdateEntity request);
-        
-        // CODEGEN: Generating message contract since the wrapper name (Update_x0020_Entity_x0027_s_x0020_properties) of message Update_x0020_Entity_x0027_s_x0020_properties does not match the default value (Update1)
+        // CODEGEN: Generating message contract since the wrapper name (Update_x0020_Entity_x0027_s_x0020_properties) of message Update_x0020_Entity_x0027_s_x0020_properties does not match the default value (Update)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Update Entity\'s properties", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 Update1(RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties request);
+        RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 Update(RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Delete", ReplyAction="*")]
         void Delete(int id);
@@ -4509,68 +4505,38 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Insert Entity", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class InsertEntity {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Insert Entity\'s properties", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class InsertEntitysproperties {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.NATION entity;
+        public string name;
         
-        public InsertEntity() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string nationCode;
+        
+        public InsertEntitysproperties() {
         }
         
-        public InsertEntity(RealEstateMarket.RealEstateServiceReference.NATION entity) {
-            this.entity = entity;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Insert EntityResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class InsertEntity1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Insert_x0020_EntityResult", Namespace="http://tempuri.org/", Order=0)]
-        public int InsertEntityResult;
-        
-        public InsertEntity1() {
-        }
-        
-        public InsertEntity1(int InsertEntityResult) {
-            this.InsertEntityResult = InsertEntityResult;
+        public InsertEntitysproperties(string name, string nationCode) {
+            this.name = name;
+            this.nationCode = nationCode;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Update Entity", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateEntity {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Insert Entity\'s propertiesResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class InsertEntitysproperties1 {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.NATION entity;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Insert_x0020_Entity_x0027_s_x0020_propertiesResult", Namespace="http://tempuri.org/", Order=0)]
+        public int InsertEntityspropertiesResult;
         
-        public UpdateEntity() {
+        public InsertEntitysproperties1() {
         }
         
-        public UpdateEntity(RealEstateMarket.RealEstateServiceReference.NATION entity) {
-            this.entity = entity;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Update EntityResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class UpdateEntity1 {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Update_x0020_EntityResult", Namespace="http://tempuri.org/", Order=0)]
-        public int UpdateEntityResult;
-        
-        public UpdateEntity1() {
-        }
-        
-        public UpdateEntity1(int UpdateEntityResult) {
-            this.UpdateEntityResult = UpdateEntityResult;
+        public InsertEntitysproperties1(int InsertEntityspropertiesResult) {
+            this.InsertEntityspropertiesResult = InsertEntityspropertiesResult;
         }
     }
     
@@ -4816,40 +4782,29 @@ namespace RealEstateMarket.RealEstateServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.InsertEntity1 RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.Insert(RealEstateMarket.RealEstateServiceReference.InsertEntity request) {
+        RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties1 RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.Insert(RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties request) {
             return base.Channel.Insert(request);
         }
         
-        public int Insert(RealEstateMarket.RealEstateServiceReference.NATION entity) {
-            RealEstateMarket.RealEstateServiceReference.InsertEntity inValue = new RealEstateMarket.RealEstateServiceReference.InsertEntity();
-            inValue.entity = entity;
-            RealEstateMarket.RealEstateServiceReference.InsertEntity1 retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).Insert(inValue);
-            return retVal.InsertEntityResult;
+        public int Insert(string name, string nationCode) {
+            RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties inValue = new RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties();
+            inValue.name = name;
+            inValue.nationCode = nationCode;
+            RealEstateMarket.RealEstateServiceReference.InsertEntitysproperties1 retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).Insert(inValue);
+            return retVal.InsertEntityspropertiesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.UpdateEntity1 RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.Update(RealEstateMarket.RealEstateServiceReference.UpdateEntity request) {
+        RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.Update(RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties request) {
             return base.Channel.Update(request);
         }
         
-        public int Update(RealEstateMarket.RealEstateServiceReference.NATION entity) {
-            RealEstateMarket.RealEstateServiceReference.UpdateEntity inValue = new RealEstateMarket.RealEstateServiceReference.UpdateEntity();
-            inValue.entity = entity;
-            RealEstateMarket.RealEstateServiceReference.UpdateEntity1 retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).Update(inValue);
-            return retVal.UpdateEntityResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.Update1(RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties request) {
-            return base.Channel.Update1(request);
-        }
-        
-        public int Update1(int id, string name, string nationCode) {
+        public int Update(int id, string name, string nationCode) {
             RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties inValue = new RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties();
             inValue.id = id;
             inValue.name = name;
             inValue.nationCode = nationCode;
-            RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).Update1(inValue);
+            RealEstateMarket.RealEstateServiceReference.UpdateEntitysproperties1 retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).Update(inValue);
             return retVal.UpdateEntityspropertiesResult;
         }
         

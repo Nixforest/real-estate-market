@@ -89,16 +89,18 @@ namespace RealEstateMarket
 
         protected void Insert_Click(object sender, EventArgs e)
         {
-            RealEstateServiceReference.NATION entity = new RealEstateServiceReference.NATION();
-            entity.Name = textboxName.Text;
-            entity.NationCode = textboxNationCode.Text;
+            //RealEstateServiceReference.NATION entity = new RealEstateServiceReference.NATION();
+            //entity.Name = textboxName.Text;
+            //entity.NationCode = textboxNationCode.Text;
             if (textboxName.Text != "" && textboxNationCode.Text != "")
             {
 
-                nation.Insert(entity);
+                nation.Insert(textboxName.Text, textboxNationCode.Text);
                 nationGridView.DataSource = nation.GetAllRows();
                 nationGridView.DataBind();
             }
+
+            //nation.Delete(5);
         }
     }
 }

@@ -61,7 +61,7 @@ namespace RealEstateBusinessLogicObject
                                     {
                                         if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)entity.ContactID) || entity.ContactID == null)
                                         {
-                                            entity.ID = _db.CreateID();
+                                            entity.ID = this.CreateNewID();
                                             _db.Insert(entity);
                                             return entity.ID;
                                         }
@@ -143,7 +143,7 @@ namespace RealEstateBusinessLogicObject
                                         if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)contactID) || contactID == null)
                                         {
                                             RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
-                                            entity.ID = _db.CreateID();
+                                            entity.ID = this.CreateNewID();
                                             entity.TypeID = typeID;
                                             entity.AddressID = addressID;
                                             entity.LivingRoom = livingRoom;

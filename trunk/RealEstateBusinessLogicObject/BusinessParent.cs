@@ -9,6 +9,7 @@ namespace RealEstateBusinessLogicObject
     {
         protected RealEstateDataAccessObject.DataParent<T> _db;
 
+        public virtual int CreateNewID() { return _db.GetMaxID(); }
         public virtual ICollection<T> GetAllRows() { return null; }
         public virtual int Insert(T entity) { return 0; }
         public virtual int Update(T entity) { return 0; }
