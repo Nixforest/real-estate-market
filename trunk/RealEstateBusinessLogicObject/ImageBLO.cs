@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class ImageBLO : BusinessParent<RealEstateDataContext.IMAGE>
     {
         /// <summary>
@@ -19,6 +21,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table IMAGE
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.IMAGE> GetAllRows()
         {
             return new System.Collections.ObjectModel.ObservableCollection<RealEstateDataContext.IMAGE>(_db.GetAllRows());
@@ -29,6 +32,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.IMAGE entity)
         {
             entity.ID = _db.CreateID();
@@ -43,6 +47,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="path">Image's source path</param>
         /// <param name="description">Image's description</param>
         /// <returns>ID of row have just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, string path, string description)
         {
             RealEstateDataContext.IMAGE entity = new RealEstateDataContext.IMAGE();
@@ -61,6 +66,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.IMAGE entity)
         {
             if (ValidationID(entity.ID))
@@ -80,6 +86,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="description">Image's description</param>
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, string path, string description)
         {
             if (ValidationID(id))
@@ -102,6 +109,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -117,6 +125,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.IMAGE GetARecord(int ID)
         {
             if (ValidationID(ID))

@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetConnection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="connection" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetConnectionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllRows">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllRowsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRowsResult" type="tns:ArrayOfNATION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNATION">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NATION" nillable="true" type="tns:NATION" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NATION">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESSes" type="tns:ArrayOfADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfADDRESS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ADDRESS" nillable="true" type="tns:ADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADDRESS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WardID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StreetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANies" type="tns:ArrayOfCOMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACTs" type="tns:ArrayOfCONTACT" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMERs" type="tns:ArrayOfCUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROJECTs" type="tns:ArrayOfPROJECT" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="WARD" type="tns:WARD" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="tns:CITY" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT" type="tns:DISTRICT" />
+          <s:element minOccurs="0" maxOccurs="1" name="NATION" type="tns:NATION" />
+          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCOMPANY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="COMPANY" nillable="true" type="tns:COMPANY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COMPANY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstablishDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShareCapital" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldOfAction" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessRegistration" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Logo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROPERTY_COMPANY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_COMPANY" nillable="true" type="tns:PROPERTY_COMPANY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_COMPANY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANY" type="tns:COMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LivingRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BedRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BathRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Storey" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalUseArea" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusFront" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusBehind" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusLength" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildFront" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildBehind" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildLength" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Legal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrontStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPriceID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALEs" type="tns:ArrayOfNEWS_SALE" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
+          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACT" type="tns:CONTACT" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROJECT" type="tns:PROJECT" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_TYPE" type="tns:REAL_ESTATE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT" type="tns:UNIT" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT_PRICE" type="tns:UNIT_PRICE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE" nillable="true" type="tns:NEWS_SALE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALE_TYPE" type="tns:NEWS_SALE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_SALE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALEs" type="tns:ArrayOfNEWS_SALE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROPERTY_CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_CUSTOMER" nillable="true" type="tns:PROPERTY_CUSTOMER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER" type="tns:CUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="USER" type="tns:USER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="USER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMERs" type="tns:ArrayOfCUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="GROUP" type="tns:GROUP" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CUSTOMER" nillable="true" type="tns:CUSTOMER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GROUP">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GROUP_DETAILs" type="tns:ArrayOfGROUP_DETAIL" />
+          <s:element minOccurs="0" maxOccurs="1" name="USERs" type="tns:ArrayOfUSER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGROUP_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GROUP_DETAIL" nillable="true" type="tns:GROUP_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GROUP_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RuleID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GROUP" type="tns:GROUP" />
+          <s:element minOccurs="0" maxOccurs="1" name="RULE" type="tns:RULE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RULE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GROUP_DETAILs" type="tns:ArrayOfGROUP_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUSER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="USER" nillable="true" type="tns:USER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfREAL_ESTATE_IMAGE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE_IMAGE" nillable="true" type="tns:REAL_ESTATE_IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE_IMAGE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IMAGE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANies" type="tns:ArrayOfCOMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNEW">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NEW" nillable="true" type="tns:NEW" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEW">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PublishTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWS_TYPE" type="tns:NEWS_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUTILITY_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UTILITY_DETAIL" nillable="true" type="tns:UTILITY_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UTILITY_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UtilityID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="UTILITY" type="tns:UTILITY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UTILITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CONTACT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfREAL_ESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE" nillable="true" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROJECT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROJECT_TYPE" type="tns:PROJECT_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROJECT_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROJECTs" type="tns:ArrayOfPROJECT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROJECT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT" nillable="true" type="tns:PROJECT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT_PRICE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCONTACT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CONTACT" nillable="true" type="tns:CONTACT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WARD">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESSes" type="tns:ArrayOfADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESSes" type="tns:ArrayOfADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DISTRICT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESSes" type="tns:ArrayOfADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT_DETAILs" type="tns:ArrayOfDISTRICT_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDISTRICT_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DISTRICT_DETAIL" nillable="true" type="tns:DISTRICT_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DISTRICT_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StreetID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT" type="tns:DISTRICT" />
+          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="STREET">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESSes" type="tns:ArrayOfADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT_DETAILs" type="tns:ArrayOfDISTRICT_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Insert_x0020_Entity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:NATION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_x0020_EntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Insert_x0020_EntityResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_x0020_Entity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:NATION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_x0020_EntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Update_x0020_EntityResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_x0020_Entity_x0027_s_x0020_properties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nationCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_x0020_Entity_x0027_s_x0020_propertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Update_x0020_Entity_x0027_s_x0020_propertiesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetARecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetARecordResult" type="tns:NATION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIPforHostName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strHostname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIPforHostNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIPforHostNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:SetConnection" />
+  </wsdl:message>
+  <wsdl:message name="SetConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:SetConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRowsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRows" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRowsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRowsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_x0020_EntitySoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity" />
+  </wsdl:message>
+  <wsdl:message name="Insert_x0020_EntitySoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_x0020_EntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_x0020_EntitySoapIn">
+    <wsdl:part name="parameters" element="tns:Update_x0020_Entity" />
+  </wsdl:message>
+  <wsdl:message name="Update_x0020_EntitySoapOut">
+    <wsdl:part name="parameters" element="tns:Update_x0020_EntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_x0020_Entity_x0027_s_x0020_properties" />
+  </wsdl:message>
+  <wsdl:message name="Update_x0020_Entity_x0027_s_x0020_propertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_x0020_Entity_x0027_s_x0020_propertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetARecordSoapIn">
+    <wsdl:part name="parameters" element="tns:GetARecord" />
+  </wsdl:message>
+  <wsdl:message name="GetARecordSoapOut">
+    <wsdl:part name="parameters" element="tns:GetARecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="getIPforHostNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getIPforHostName" />
+  </wsdl:message>
+  <wsdl:message name="getIPforHostNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getIPforHostNameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RealEstateWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetConnection">
+      <wsdl:input message="tns:SetConnectionSoapIn" />
+      <wsdl:output message="tns:SetConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRows">
+      <wsdl:input message="tns:GetAllRowsSoapIn" />
+      <wsdl:output message="tns:GetAllRowsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <wsdl:input name="Insert_x0020_Entity" message="tns:Insert_x0020_EntitySoapIn" />
+      <wsdl:output name="Insert_x0020_Entity" message="tns:Insert_x0020_EntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input name="Update_x0020_Entity" message="tns:Update_x0020_EntitySoapIn" />
+      <wsdl:output name="Update_x0020_Entity" message="tns:Update_x0020_EntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties" message="tns:Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn" />
+      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties" message="tns:Update_x0020_Entity_x0027_s_x0020_propertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetARecord">
+      <wsdl:input message="tns:GetARecordSoapIn" />
+      <wsdl:output message="tns:GetARecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getIPforHostName">
+      <wsdl:input message="tns:getIPforHostNameSoapIn" />
+      <wsdl:output message="tns:getIPforHostNameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RealEstateWebServiceSoap" type="tns:RealEstateWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConnection">
+      <soap:operation soapAction="http://tempuri.org/SetConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRows">
+      <soap:operation soapAction="http://tempuri.org/GetAllRows" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap:operation soapAction="http://tempuri.org/Insert Entity" style="document" />
+      <wsdl:input name="Insert_x0020_Entity">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Insert_x0020_Entity">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update Entity" style="document" />
+      <wsdl:input name="Update_x0020_Entity">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Update_x0020_Entity">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update Entity's properties" style="document" />
+      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARecord">
+      <soap:operation soapAction="http://tempuri.org/GetARecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIPforHostName">
+      <soap:operation soapAction="http://tempuri.org/getIPforHostName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RealEstateWebServiceSoap12" type="tns:RealEstateWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConnection">
+      <soap12:operation soapAction="http://tempuri.org/SetConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRows">
+      <soap12:operation soapAction="http://tempuri.org/GetAllRows" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap12:operation soapAction="http://tempuri.org/Insert Entity" style="document" />
+      <wsdl:input name="Insert_x0020_Entity">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Insert_x0020_Entity">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update Entity" style="document" />
+      <wsdl:input name="Update_x0020_Entity">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Update_x0020_Entity">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update Entity's properties" style="document" />
+      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARecord">
+      <soap12:operation soapAction="http://tempuri.org/GetARecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIPforHostName">
+      <soap12:operation soapAction="http://tempuri.org/getIPforHostName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RealEstateWebService">
+    <wsdl:port name="RealEstateWebServiceSoap" binding="tns:RealEstateWebServiceSoap">
+      <soap:address location="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RealEstateWebServiceSoap12" binding="tns:RealEstateWebServiceSoap12">
+      <soap12:address location="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

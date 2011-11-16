@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class CustomerBLO : BusinessParent<RealEstateDataContext.CUSTOMER>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table CUSTOMER
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.CUSTOMER> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.CUSTOMER>(_db.GetAllRows());
@@ -32,6 +35,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just inserted</returns>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.CUSTOMER entity)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
@@ -60,6 +64,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just inserted</returns>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, int addressID, string identityCard,
             string phone, string homePhone, string email, int? userID)
         {
@@ -93,6 +98,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.CUSTOMER entity)
         {
             if (ValidationID(entity.ID))
@@ -126,6 +132,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, int addressID, string identityCard,
             string phone, string homePhone, string email, int? userID)
         {
@@ -161,6 +168,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
         /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -176,6 +184,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.CUSTOMER GetARecord(int ID)
         {
             if (ValidationID(ID))
