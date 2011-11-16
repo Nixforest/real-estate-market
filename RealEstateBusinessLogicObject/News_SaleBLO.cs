@@ -36,7 +36,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.NEWS_SALE entity)
         {
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             _db.Insert(entity);
             return entity.ID;
         }
@@ -56,7 +56,7 @@ namespace RealEstateBusinessLogicObject
             int realEstateID, int? rate, DateTime updateTime)
         {
             RealEstateDataContext.NEWS_SALE entity = new RealEstateDataContext.NEWS_SALE();
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             entity.TypeID = typeID;
             entity.Title = title;
             entity.Content = content;
@@ -132,7 +132,7 @@ namespace RealEstateBusinessLogicObject
                                 rate <= RealEstateBusinessLogicObject.Parameter.MaxRate))
                         {
                             RealEstateDataContext.NEWS_SALE entity = new RealEstateDataContext.NEWS_SALE();
-                            entity.ID = _db.CreateID();
+                            entity.ID = id;
                             entity.TypeID = typeID;
                             entity.Title = title;
                             entity.Content = content;

@@ -36,7 +36,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.NEWS_SALE_TYPE entity)
         {
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             _db.Insert(entity);
             return entity.ID;
         }
@@ -51,7 +51,7 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string description)
         {
             RealEstateDataContext.NEWS_SALE_TYPE entity = new RealEstateDataContext.NEWS_SALE_TYPE();
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             entity.Name = name;
             entity.Description = description;
 

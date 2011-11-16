@@ -11,27 +11,16 @@ namespace RealEstateDataAccessObject
     public class District_DetailDAO : DataParent<RealEstateDataContext.DISTRICT_DETAIL>
     {
         /// <summary>
-        /// Create a new ID for new entity in table
+        /// Get Max ID
         /// </summary>
-        /// <returns>ID just create.</returns>
-        public override int CreateID()
+        /// <returns>Max ID</returns>
+        public override int GetMaxID()
         {
-            int numberRecord;
-            int value;
-            numberRecord = _db.DISTRICT_DETAILs.Count();
-            if (numberRecord == 0)
-            {
-                value = 1;
-            }
-            else
-            {
-                value = numberRecord + 1;
-            }
-            return value;
+            return _db.DISTRICT_DETAILs.Max(entity => entity.ID);
         }
 
         /// <summary>
-        /// Get all rows in table CITY
+        /// Get all rows in table DISTRICT_DETAIL
         /// </summary>
         /// <returns>List of entity</returns>
         public override ICollection<RealEstateDataContext.DISTRICT_DETAIL> GetAllRows()

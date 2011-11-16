@@ -10,24 +10,13 @@ namespace RealEstateDataAccessObject
     /// </summary>
     public class News_TypeDAO : DataParent<RealEstateDataContext.NEWS_TYPE>
     {
-        public override int CreateID()
+        /// <summary>
+        /// Get Max ID
+        /// </summary>
+        /// <returns>Max ID</returns>
+        public override int GetMaxID()
         {
-            /// <summary>
-            /// Create a new ID for new entity in table
-            /// </summary>
-            /// <returns>ID just create.</returns>
-            int numberRecord;
-            int value;
-            numberRecord = _db.NEWS_TYPEs.Count();
-            if (numberRecord == 0)
-            {
-                value = 1;
-            }
-            else
-            {
-                value = numberRecord + 1;
-            }
-            return value;
+            return _db.NEWS_TYPEs.Max(entity => entity.ID);
         }
 
         /// <summary>

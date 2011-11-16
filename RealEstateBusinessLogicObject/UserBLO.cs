@@ -37,7 +37,7 @@ namespace RealEstateBusinessLogicObject
         {
             if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)entity.GroupID) || entity.GroupID == null)
             {
-                entity.ID = _db.CreateID();
+                entity.ID = this.CreateNewID();
                 _db.Insert(entity);
                 return entity.ID;
             }
@@ -60,7 +60,7 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.GroupDAO().ValidationID((int)groupID) || groupID == null)
             {
                 RealEstateDataContext.USER entity = new RealEstateDataContext.USER();
-                entity.ID = _db.CreateID();
+                entity.ID = this.CreateNewID();
                 entity.Username = username;
                 entity.Password = password;
                 entity.Email = email;

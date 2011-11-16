@@ -11,23 +11,12 @@ namespace RealEstateDataAccessObject
     public class Unit_PriceDAO : DataParent<RealEstateDataContext.UNIT_PRICE>
     {
         /// <summary>
-        /// Create a new ID for new entity in table
+        /// Get Max ID
         /// </summary>
-        /// <returns>ID just create.</returns>
-        public override int CreateID()
+        /// <returns>Max ID</returns>
+        public override int GetMaxID()
         {
-            int numberRecord;
-            int value;
-            numberRecord = _db.UNIT_PRICEs.Count();
-            if (numberRecord == 0)
-            {
-                value = 1;
-            }
-            else
-            {
-                value = numberRecord + 1;
-            }
-            return value;
+            return _db.UNIT_PRICEs.Max(entity => entity.ID);
         }
 
         /// <summary>

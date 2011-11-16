@@ -45,7 +45,7 @@ namespace RealEstateBusinessLogicObject
                 {
                     if (new RealEstateDataAccessObject.ImageDAO().ValidationID(entity.Logo))
                     {
-                        entity.ID = _db.CreateID();
+                        entity.ID = this.CreateNewID();
                         _db.Insert(entity);
                         return entity.ID;
                     }
@@ -88,7 +88,7 @@ namespace RealEstateBusinessLogicObject
                     {
                         RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
 
-                        entity.ID = _db.CreateID();
+                        entity.ID = this.CreateNewID();
                         entity.Name = name;
                         entity.AddressID = addressID;
                         entity.Phone = phone;

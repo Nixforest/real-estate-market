@@ -34,7 +34,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.STREET entity)
         {
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             _db.Insert(entity);
             return entity.ID;
         }
@@ -47,7 +47,7 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name)
         {
             RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
-            entity.ID = _db.CreateID();
+            entity.ID = this.CreateNewID();
             entity.Name = name;
 
             _db.Insert(entity);

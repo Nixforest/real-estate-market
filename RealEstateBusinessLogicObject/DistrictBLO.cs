@@ -39,7 +39,7 @@ namespace RealEstateBusinessLogicObject
         {
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(entity.CityID))
             {
-                entity.ID = _db.CreateID();
+                entity.ID = this.CreateNewID();
                 _db.Insert(entity);
                 return entity.ID;
             }
@@ -59,7 +59,7 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
             {
                 RealEstateDataContext.DISTRICT entity = new RealEstateDataContext.DISTRICT();
-                entity.ID = _db.CreateID();
+                entity.ID = this.CreateNewID();
                 entity.Name = name;
                 entity.CityID = cityID;
 

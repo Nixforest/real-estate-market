@@ -42,7 +42,7 @@ namespace RealEstateBusinessLogicObject
             {
                 if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)entity.UserID) || entity.UserID == null)
                 {
-                    entity.ID = _db.CreateID();
+                    entity.ID = this.CreateNewID();
                     _db.Insert(entity);
                     return entity.ID;
                 }
@@ -73,7 +73,7 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)userID) || userID == null)
                 {
                     RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-                    entity.ID = _db.CreateID();
+                    entity.ID = this.CreateNewID();
                     entity.Name = name;
                     entity.AddressID = addressID;
                     entity.IdentityCard = identityCard;
