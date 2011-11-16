@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class CompanyBLO : BusinessParent<RealEstateDataContext.COMPANY>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table COMPANY
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.COMPANY> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.COMPANY>(_db.GetAllRows());
@@ -33,6 +36,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.COMPANY entity)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
@@ -71,6 +75,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, int addressID, string phone, string homePhone,
             string fax, string email, string website, DateTime? establishDay, decimal? shareCapital,
             string fieldOfAction, bool businessRegistration, string description, int logo)
@@ -117,6 +122,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.COMPANY entity)
         {
             if (ValidationID(entity.ID))
@@ -161,6 +167,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="ShareCapitalException: Share capital must greater than zero"></exception>
         /// <exception cref="ImageIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, int addressID, string phone, string homePhone,
             string fax, string email, string website, DateTime? establishDay, decimal? shareCapital,
             string fieldOfAction, bool businessRegistration, string description, int logo)
@@ -206,6 +213,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
         /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -221,6 +229,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="CompanyIDException: ID not exist in COMPANY table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.COMPANY GetARecord(int ID)
         {
             if (ValidationID(ID))

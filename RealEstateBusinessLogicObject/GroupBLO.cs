@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class GroupBLO : BusinessParent<RealEstateDataContext.GROUP>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table GROUP
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.GROUP> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.GROUP>(_db.GetAllRows());
@@ -30,6 +33,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.GROUP entity)
         {
             entity.ID = _db.CreateID();
@@ -43,6 +47,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="name">Group's name</param>
         /// <param name="description">Description</param>
         /// <returns>ID of row have just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, string description)
         {
             RealEstateDataContext.GROUP entity = new RealEstateDataContext.GROUP();
@@ -60,6 +65,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="GroupIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.GROUP entity)
         {
             if (ValidationID(entity.ID))
@@ -78,6 +84,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="description">Description</param>
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="GroupIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, string description)
         {
             if (ValidationID(id))
@@ -99,6 +106,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
         /// <exception cref="GroupIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -114,6 +122,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="GroupIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.GROUP GetARecord(int ID)
         {
             if (ValidationID(ID))

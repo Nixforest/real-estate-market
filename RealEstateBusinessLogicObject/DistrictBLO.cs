@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class DistrictBLO : BusinessParent<RealEstateDataContext.DISTRICT>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table DISTRICT
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.DISTRICT> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.DISTRICT>(_db.GetAllRows());
@@ -31,6 +34,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="entity">Entity</param>
         /// <returns>ID of row have just inserted</returns>
         /// <exception cref="CityIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.DISTRICT entity)
         {
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(entity.CityID))
@@ -49,6 +53,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="cityID">ID of city</param>
         /// <returns>ID of row have just inserted</returns>
         /// <exception cref="CityIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, int cityID)
         {
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
@@ -71,6 +76,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="DistrictIDException"></exception>
         /// <exception cref="CityIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.DISTRICT entity)
         {
             if (ValidationID(entity.ID))
@@ -94,6 +100,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="DistrictIDException"></exception>
         /// <exception cref="CityIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, int cityID)
         {
             if (ValidationID(id))
@@ -119,6 +126,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row have just deleted</returns>
         /// <exception cref="DistrictIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -134,6 +142,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="DistrictIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.DISTRICT GetARecord(int ID)
         {
             if (ValidationID(ID))

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class CityBLO : BusinessParent<RealEstateDataContext.CITY>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table CITY
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.CITY> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.CITY>(_db.GetAllRows());
@@ -31,6 +34,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="entity">Entity</param>
         /// <returns>ID of row just insert</returns>
         /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.CITY entity)
         {
             if (new RealEstateDataAccessObject.NationDAO().ValidationID(entity.NationID))
@@ -49,6 +53,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="nationID">ID of Nation</param>
         /// <returns>ID of row just insert</returns>
         /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, int nationID)
         {
             if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
@@ -71,6 +76,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
         /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.CITY entity)
         {
             if (ValidationID(entity.ID))
@@ -94,6 +100,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row just update</returns>
         /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
         /// <exception cref="NationIDException: ID not exist in NATION table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, int nationID)
         {
             if (ValidationID(id))
@@ -119,6 +126,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row just delete</returns>
         /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -134,6 +142,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.CITY GetARecord(int ID)
         {
             if (ValidationID(ID))

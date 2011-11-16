@@ -13,13 +13,13 @@ namespace RealEstateMarket {
     public partial class TestPage {
         
         /// <summary>
-        /// listNationX control.
+        /// nationGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listNationX;
+        protected global::System.Web.UI.WebControls.GridView nationGridView;
         
         /// <summary>
         /// lblName control.
@@ -31,31 +31,31 @@ namespace RealEstateMarket {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// txbName control.
+        /// textboxName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbName;
+        protected global::System.Web.UI.WebControls.TextBox textboxName;
         
         /// <summary>
-        /// lblCode control.
+        /// lblNationCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCode;
+        protected global::System.Web.UI.WebControls.Label lblNationCode;
         
         /// <summary>
-        /// txbCode control.
+        /// textboxNationCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbCode;
+        protected global::System.Web.UI.WebControls.TextBox textboxNationCode;
         
         /// <summary>
         /// Insert control.

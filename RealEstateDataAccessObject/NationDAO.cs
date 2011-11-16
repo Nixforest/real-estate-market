@@ -97,7 +97,7 @@ namespace RealEstateDataAccessObject
             {
                 foreach (RealEstateDataContext.NATION entity in _db.NATIONs)
                 {
-                    if (entity.ID.Equals(ID))
+                    if (entity.ID == ID)
                     {
                         return true;
                     }

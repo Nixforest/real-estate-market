@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealEstateBusinessLogicObject
 {
+    [DataObject(true)]
     public class News_SaleBLO : BusinessParent<RealEstateDataContext.NEWS_SALE>
     {
         /// <summary>
@@ -20,6 +22,7 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table NEWS_SALE
         /// </summary>
         /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<RealEstateDataContext.NEWS_SALE> GetAllRows()
         {
             return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows());
@@ -30,6 +33,7 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>ID of row has just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public override int Insert(RealEstateDataContext.NEWS_SALE entity)
         {
             entity.ID = _db.CreateID();
@@ -47,6 +51,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="rate">News sale's rate</param>
         /// <param name="updateTime">News sale's update time</param>
         /// <returns>ID of row has just inserted</returns>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(int typeID, string title, string content,
             int realEstateID, int? rate, DateTime updateTime)
         {
@@ -72,6 +77,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="News_Sale_TypeIDException"></exception>
         /// <exception cref="Real_EstateIDException"></exception>
         /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.NEWS_SALE entity)
         {
             if (ValidationID(entity.ID))
@@ -111,6 +117,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="News_Sale_TypeIDException"></exception>
         /// <exception cref="Real_EstateIDException"></exception>
         /// <exception cref="Rate_LimitationException: Rate value must between MinRate and MaxRate"></exception>
+        [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, int typeID, string title, string content,
             int realEstateID, int? rate, DateTime updateTime)
         {
@@ -151,6 +158,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row want to delete</param>
         /// <returns>ID of row has just deleted</returns>
         /// <exception cref="News_SaleIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
             if (ValidationID(ID))
@@ -166,6 +174,7 @@ namespace RealEstateBusinessLogicObject
         /// <param name="ID">ID of row</param>
         /// <returns>Entity</returns>
         /// <exception cref="News_SaleIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public override RealEstateDataContext.NEWS_SALE GetARecord(int ID)
         {
             if (ValidationID(ID))
