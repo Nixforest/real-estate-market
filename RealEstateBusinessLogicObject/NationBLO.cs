@@ -90,7 +90,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, string nationCode)
         {
-            if (_db.ValidationID(id))
+            if (ValidationID(id))
             {
                 NATION entity = new NATION();
                 entity.ID = id;
