@@ -58,7 +58,73 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.ADDRESS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CITY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.COMPANY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CUSTOMER.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.DISTRICT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.GROUP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.IMAGE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NATION.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEW.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.RULE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.STREET.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT_PRICE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.USER.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UTILITY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.WARD.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateWebService.disco" />

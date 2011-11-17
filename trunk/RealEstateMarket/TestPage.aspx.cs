@@ -18,7 +18,7 @@ namespace RealEstateMarket
             nation = new RealEstateServiceReference.RealEstateWebServiceSoapClient();
             nation.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
 
-            nationGridView.DataSource = nation.GetAllRows();
+            nationGridView.DataSource = nation.GetAllNations();
             nationGridView.DataBind();
          
         }
@@ -94,10 +94,27 @@ namespace RealEstateMarket
             //entity.NationCode = textboxNationCode.Text;
             if (textboxName.Text != "" && textboxNationCode.Text != "")
             {
-
-                nation.Insert(textboxName.Text, textboxNationCode.Text);
-                nationGridView.DataSource = nation.GetAllRows();
-                nationGridView.DataBind();
+                try
+                {
+                    RealEstateDataContext.NATION entity = new NATION();
+                    entity.Name = textboxName.Text;
+                    entity.NationCode = textboxNationCode.Text;
+                    RealEstateServiceReference.NATION entityx = new RealEstateServiceReference.NATION();
+                    entityx.Name = textboxName.Text;
+                    entityx.NationCode = textboxNationCode.Text;
+                    //nation.InsertNation(entityx);
+                    nation.InsertNation(textboxName.Text, textboxNationCode.Text);
+                    nationGridView.DataSource = nation.GetAllNations();
+                    nationGridView.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    //error.Text = ex.ToString();
+                    if (ex.ToString().Contains("NationIDException"))
+                    {
+                        error.Text = "NationID Exception";
+                    }
+                }
             }
 
             //nation.Delete(5);
