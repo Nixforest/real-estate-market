@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="XZdoh7qSu/cG5ChDRDUlo9GptZk=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="73JASJfY8QX6tyZ9y4psreDuFcY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="RealEstateWebServiceSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="RealEstateWebServiceSoap" contract="RealEstateServiceReference.RealEstateWebServiceSoap" bindingType="basicHttpBinding" address="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" bindingConfiguration="RealEstateWebServiceSoap">
+    <endpoint name="RealEstateWebServiceSoap" contract="RealEstateServiceReference.RealEstateWebServiceSoap" bindingType="basicHttpBinding" address="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" bindingConfiguration="RealEstateWebServiceSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:33614/RealEstateService/RealEstateWebService.asmx</serializedValue>
+          <serializedValue>http://localhost:43955/RealEstateService/RealEstateWebService.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

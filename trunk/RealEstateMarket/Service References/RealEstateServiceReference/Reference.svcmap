@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RealEstateWebService.disco" MetadataType="Disco" ID="5f7eaf2e-876b-4d0a-bdb7-eda2adf2c1a2" SourceId="1" SourceUrl="http://localhost:33614/RealEstateService/RealEstateWebService.asmx?disco" />
-    <MetadataFile FileName="RealEstateWebService.wsdl" MetadataType="Wsdl" ID="bd17dcc3-9d6b-4d58-b057-8af91dde7ce2" SourceId="1" SourceUrl="http://localhost:33614/RealEstateService/RealEstateWebService.asmx?wsdl" />
+    <MetadataFile FileName="RealEstateWebService1.wsdl" MetadataType="Wsdl" ID="c618db6e-2d91-40d8-9e05-fdc4cf5aebe6" SourceId="1" SourceUrl="http://localhost:43955/RealEstateService/RealEstateWebService.asmx?wsdl" />
+    <MetadataFile FileName="RealEstateWebService1.disco" MetadataType="Disco" ID="987b5587-9ba4-4243-a48b-6233836e192c" SourceId="1" SourceUrl="http://localhost:43955/RealEstateService/RealEstateWebService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

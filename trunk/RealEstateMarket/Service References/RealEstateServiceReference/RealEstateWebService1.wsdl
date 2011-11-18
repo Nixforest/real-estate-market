@@ -5365,10 +5365,10 @@
   </wsdl:binding>
   <wsdl:service name="RealEstateWebService">
     <wsdl:port name="RealEstateWebServiceSoap" binding="tns:RealEstateWebServiceSoap">
-      <soap:address location="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" />
+      <soap:address location="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="RealEstateWebServiceSoap12" binding="tns:RealEstateWebServiceSoap12">
-      <soap12:address location="http://localhost:33614/RealEstateService/RealEstateWebService.asmx" />
+      <soap12:address location="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
