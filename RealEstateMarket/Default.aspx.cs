@@ -9,9 +9,10 @@ namespace RealEstateMarket
 {
     public partial class _Default : System.Web.UI.Page
     {
+        public static RealEstateServiceReference.RealEstateWebServiceSoapClient db = new RealEstateServiceReference.RealEstateWebServiceSoapClient();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            db.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
         }
     }
 }

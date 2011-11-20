@@ -33,6 +33,7 @@ namespace RealEstateDataContext.Utility
     public class ContactIDException : Exception { }
     public class RuleIDException : Exception { }
     public class UtilityIDException : Exception { }
+    public class DoubleStreetNameException : Exception { }
 
     public class ExceptionMessage
     {

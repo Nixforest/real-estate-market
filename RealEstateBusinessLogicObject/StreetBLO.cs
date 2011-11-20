@@ -34,9 +34,13 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public override int Insert(RealEstateDataContext.STREET entity)
         {
-            entity.ID = this.CreateNewID();
-            _db.Insert(entity);
-            return entity.ID;
+            if (!ValidationName(entity.Name))
+            {
+                entity.ID = this.CreateNewID();
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.DoubleStreetNameException();
         }
 
         /// <summary>
@@ -46,12 +50,16 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         public int Insert(string name)
         {
-            RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            if (!ValidationName(name))
+            {
+                RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
+                entity.ID = this.CreateNewID();
+                entity.Name = name;
 
-            _db.Insert(entity);
-            return entity.ID;
+                _db.Insert(entity);
+                return entity.ID;
+            }
+            else throw new RealEstateDataContext.Utility.DoubleStreetNameException();
         }
 
         /// <summary>
@@ -64,8 +72,12 @@ namespace RealEstateBusinessLogicObject
         {
             if (ValidationID(entity.ID))
             {
-                _db.Update(entity);
-                return entity.ID;
+                if (!ValidationName(entity.Name))
+                {
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.DoubleStreetNameException();
             }
             else throw new RealEstateDataContext.Utility.StreetIDException();
         }
@@ -81,12 +93,17 @@ namespace RealEstateBusinessLogicObject
         {
             if (ValidationID(id))
             {
-                RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
-                entity.ID = id;
-                entity.Name = name;
+                if (!ValidationName(name)
+                    || (ValidationName(name) && GetIDFromName(name) == id))
+                {
+                    RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
+                    entity.ID = id;
+                    entity.Name = name;
 
-                _db.Update(entity);
-                return entity.ID;
+                    _db.Update(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.DoubleStreetNameException();
             }
             else throw new RealEstateDataContext.Utility.StreetIDException();
         }
@@ -119,6 +136,43 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.StreetIDException();
+        }
+
+        /// <summary>
+        /// Check a name exist in table STREET
+        /// </summary>
+        /// <param name="name">Street's name</param>
+        /// <returns>True if name exist, false if otherwise</returns>
+        public bool ValidationName(string name)
+        {
+            foreach (RealEstateDataContext.STREET entity in _db.GetAllRows())
+            {
+                if (entity.Name.ToLower().Equals(name.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Get ID of Street if Street's name exist in table STREET
+        /// </summary>
+        /// <param name="name">Street's name</param>
+        /// <returns>ID of name or 0 if name does not exist!</returns>
+        public int GetIDFromName(string name)
+        {
+            if (ValidationName(name))
+            {
+                foreach (RealEstateDataContext.STREET entity in _db.GetAllRows())
+                {
+                    if (entity.Name.ToLower().Equals(name.ToLower()))
+                    {
+                        return entity.ID;
+                    }
+                }
+            }
+            return 0;
         }
     }
 }

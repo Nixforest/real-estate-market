@@ -135,6 +135,12 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateWebService1.disco" />
+    <Content Include="Admin\AdminPage.aspx" />
+    <Content Include="Admin\Dashboard\CityAdmin.aspx" />
+    <Content Include="Admin\Dashboard\DistrictAdmin.aspx" />
+    <Content Include="Admin\Dashboard\NationAdmin.aspx" />
+    <Content Include="Admin\Dashboard\StreetAdmin.aspx" />
+    <Content Include="Admin\Dashboard\WardAdmin.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -188,6 +194,48 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminPage.aspx.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminPage.aspx.designer.cs">
+      <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard\CityAdmin.aspx.cs">
+      <DependentUpon>CityAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\CityAdmin.aspx.designer.cs">
+      <DependentUpon>CityAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard\DistrictAdmin.aspx.cs">
+      <DependentUpon>DistrictAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\DistrictAdmin.aspx.designer.cs">
+      <DependentUpon>DistrictAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard\NationAdmin.aspx.cs">
+      <DependentUpon>NationAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\NationAdmin.aspx.designer.cs">
+      <DependentUpon>NationAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard\StreetAdmin.aspx.cs">
+      <DependentUpon>StreetAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\StreetAdmin.aspx.designer.cs">
+      <DependentUpon>StreetAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard\WardAdmin.aspx.cs">
+      <DependentUpon>WardAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\WardAdmin.aspx.designer.cs">
+      <DependentUpon>WardAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +275,10 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RealEstateBusinessLogicObject\RealEstateBusinessLogicObject.csproj">
+      <Project>{C9CFF725-09C8-4624-8C5C-72B58D724BC3}</Project>
+      <Name>RealEstateBusinessLogicObject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RealEstateDataContext\RealEstateDataContext.csproj">
       <Project>{9FD986AF-CDB3-4044-92CA-B2D100824896}</Project>
       <Name>RealEstateDataContext</Name>

@@ -12,13 +12,16 @@ namespace RealEstateMarket
     {
 
         private RealEstateServiceReference.RealEstateWebServiceSoapClient nation;
+        private RealEstateBusinessLogicObject.NationBLO nationX;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //RealEstateDataContext.Utility.WebConfig.MSSQL = @"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True";
             nation = new RealEstateServiceReference.RealEstateWebServiceSoapClient();
             nation.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
-
+            //nationX = new RealEstateBusinessLogicObject.NationBLO();
             nationGridView.DataSource = nation.GetAllNations();
+            //nationGridView.DataSource = nationX.GetAllRows();
             nationGridView.DataBind();
          
         }

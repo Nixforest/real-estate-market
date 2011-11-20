@@ -9,6 +9,7 @@ namespace RealEstateDataAccessObject
 {
     public class NationDAO: DataParent<NATION>
     {
+
         /// <summary>
         /// Get Max ID
         /// </summary>

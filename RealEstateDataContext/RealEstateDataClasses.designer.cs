@@ -727,7 +727,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CITY_ADDRESS", Storage="_CITY", ThisKey="CityID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CITY_ADDRESS", Storage="_CITY", ThisKey="CityID", OtherKey="ID", IsForeignKey=true)]
 		public CITY CITY
 		{
 			get
@@ -795,7 +795,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NATION_ADDRESS", Storage="_NATION", ThisKey="NationID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NATION_ADDRESS", Storage="_NATION", ThisKey="NationID", OtherKey="ID", IsForeignKey=true)]
 		public NATION NATION
 		{
 			get

@@ -162,7 +162,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(RealEstateDataContext.ADDRESS entity)
         {
-            if (ValidationID(entity.ID))
+            if (_db.ValidationID(entity.ID))
             {
                 if (new RealEstateDataAccessObject.NationDAO().ValidationID(entity.NationID))
                 {
