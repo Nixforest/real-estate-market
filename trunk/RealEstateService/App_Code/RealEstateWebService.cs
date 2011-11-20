@@ -200,6 +200,20 @@ public class RealEstateWebService : System.Web.Services.WebService
             throw e;
         }
     }
+
+    //[WebMethod]
+    //public ObservableCollection<RealEstateDataContext.DISTRICT> GetDistrictsInCity(int id)
+    //{
+    //    try
+    //    {
+    //        return nation.GetARecord(id).
+    //    }
+    //    catch (Exception)
+    //    {
+            
+    //        throw;
+    //    }
+    //}
     #endregion
 
     #region Company Service
@@ -523,20 +537,7 @@ public class RealEstateWebService : System.Web.Services.WebService
         return new ObservableCollection<RealEstateDataContext.NATION>(nation.GetAllRows());
     }
 
-    //[WebMethod(MessageName = "Insert Entity")]
-    //public int InsertNation(RealEstateDataContext.NATION entity)
-    //{        
-    //    try
-    //    {
-    //        return nation.Insert(entity);
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        throw e;
-    //    }
-    //}
-
-    [WebMethod(MessageName = "Insert Entity's properties")]
+    [WebMethod]
     public int InsertNation(string name, string nationCode)
     {
         try
@@ -549,13 +550,7 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
     }
 
-    //[WebMethod(MessageName = "Update Entity")]
-    //public int Update(RealEstateDataContext.NATION entity)
-    //{
-    //    return _db.Update(entity);
-    //}
-
-    [WebMethod(MessageName = "Update Entity's properties")]
+    [WebMethod]
     public int UpdateNation(int id, string name, string nationCode)
     {
         try
@@ -590,6 +585,19 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
         catch (Exception e)
         {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.CITY> GetCitiesByNationID(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.CITY>(nation.GetCitiesByNationID(id));
+        }
+        catch (Exception e)
+        {            
             throw e;
         }
     }

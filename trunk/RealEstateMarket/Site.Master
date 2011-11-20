@@ -14,8 +14,11 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    My ASP.NET Application
+                    Cổng thông tin giao dịch Địa ốc
                 </h1>
+                <h2>                    
+                       RealEstateMarket.com
+                </h2>
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -34,6 +37,7 @@
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
                         <asp:MenuItem NavigateUrl="~/TestPage.aspx" Text="Test Page"/>
+                        <asp:MenuItem NavigateUrl="~/Admin/AdminPage.aspx" Text="Dashboard"/>
                     </Items>
                 </asp:Menu>
             </div>

@@ -2,6 +2,22 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://realestatemarket.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://realestatemarket.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://realestatemarket.com/">
+      <s:element name="UpdateRule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRuleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateRuleResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DeleteRule">
         <s:complexType>
           <s:sequence>
@@ -1400,7 +1416,7 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="NATION" nillable="true" type="tns:NATION" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Insert_x0020_Entity_x0027_s_x0020_properties">
+      <s:element name="InsertNation">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
@@ -1408,14 +1424,14 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Insert_x0020_Entity_x0027_s_x0020_propertiesResponse">
+      <s:element name="InsertNationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Insert_x0020_Entity_x0027_s_x0020_propertiesResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="InsertNationResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Update_x0020_Entity_x0027_s_x0020_properties">
+      <s:element name="UpdateNation">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
@@ -1424,10 +1440,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Update_x0020_Entity_x0027_s_x0020_propertiesResponse">
+      <s:element name="UpdateNationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Update_x0020_Entity_x0027_s_x0020_propertiesResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateNationResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1452,6 +1468,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetNationResult" type="tns:NATION" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCitiesByNationID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCitiesByNationIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCitiesByNationIDResult" type="tns:ArrayOfCITY" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2089,24 +2119,14 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UpdateRule">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateRuleResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdateRuleResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="UpdateRuleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRule" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRuleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRuleResponse" />
+  </wsdl:message>
   <wsdl:message name="DeleteRuleSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteRule" />
   </wsdl:message>
@@ -2521,17 +2541,17 @@
   <wsdl:message name="GetAllNationsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllNationsResponse" />
   </wsdl:message>
-  <wsdl:message name="Insert_x0020_Entity_x0027_s_x0020_propertiesSoapIn">
-    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity_x0027_s_x0020_properties" />
+  <wsdl:message name="InsertNationSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNation" />
   </wsdl:message>
-  <wsdl:message name="Insert_x0020_Entity_x0027_s_x0020_propertiesSoapOut">
-    <wsdl:part name="parameters" element="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesResponse" />
+  <wsdl:message name="InsertNationSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNationResponse" />
   </wsdl:message>
-  <wsdl:message name="Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn">
-    <wsdl:part name="parameters" element="tns:Update_x0020_Entity_x0027_s_x0020_properties" />
+  <wsdl:message name="UpdateNationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNation" />
   </wsdl:message>
-  <wsdl:message name="Update_x0020_Entity_x0027_s_x0020_propertiesSoapOut">
-    <wsdl:part name="parameters" element="tns:Update_x0020_Entity_x0027_s_x0020_propertiesResponse" />
+  <wsdl:message name="UpdateNationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNationResponse" />
   </wsdl:message>
   <wsdl:message name="DeleteNationSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteNation" />
@@ -2544,6 +2564,12 @@
   </wsdl:message>
   <wsdl:message name="GetNationSoapOut">
     <wsdl:part name="parameters" element="tns:GetNationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCitiesByNationIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCitiesByNationID" />
+  </wsdl:message>
+  <wsdl:message name="GetCitiesByNationIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCitiesByNationIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllNewsSaleTypesSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllNewsSaleTypes" />
@@ -2797,13 +2823,11 @@
   <wsdl:message name="InsertRuleSoapOut">
     <wsdl:part name="parameters" element="tns:InsertRuleResponse" />
   </wsdl:message>
-  <wsdl:message name="UpdateRuleSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateRule" />
-  </wsdl:message>
-  <wsdl:message name="UpdateRuleSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateRuleResponse" />
-  </wsdl:message>
   <wsdl:portType name="RealEstateWebServiceSoap">
+    <wsdl:operation name="UpdateRule">
+      <wsdl:input message="tns:UpdateRuleSoapIn" />
+      <wsdl:output message="tns:UpdateRuleSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteRule">
       <wsdl:input message="tns:DeleteRuleSoapIn" />
       <wsdl:output message="tns:DeleteRuleSoapOut" />
@@ -3081,12 +3105,12 @@
       <wsdl:output message="tns:GetAllNationsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InsertNation">
-      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties" message="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesSoapIn" />
-      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties" message="tns:Insert_x0020_Entity_x0027_s_x0020_propertiesSoapOut" />
+      <wsdl:input message="tns:InsertNationSoapIn" />
+      <wsdl:output message="tns:InsertNationSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateNation">
-      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties" message="tns:Update_x0020_Entity_x0027_s_x0020_propertiesSoapIn" />
-      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties" message="tns:Update_x0020_Entity_x0027_s_x0020_propertiesSoapOut" />
+      <wsdl:input message="tns:UpdateNationSoapIn" />
+      <wsdl:output message="tns:UpdateNationSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeleteNation">
       <wsdl:input message="tns:DeleteNationSoapIn" />
@@ -3095,6 +3119,10 @@
     <wsdl:operation name="GetNation">
       <wsdl:input message="tns:GetNationSoapIn" />
       <wsdl:output message="tns:GetNationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCitiesByNationID">
+      <wsdl:input message="tns:GetCitiesByNationIDSoapIn" />
+      <wsdl:output message="tns:GetCitiesByNationIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllNewsSaleTypes">
       <wsdl:input message="tns:GetAllNewsSaleTypesSoapIn" />
@@ -3264,13 +3292,18 @@
       <wsdl:input message="tns:InsertRuleSoapIn" />
       <wsdl:output message="tns:InsertRuleSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateRule">
-      <wsdl:input message="tns:UpdateRuleSoapIn" />
-      <wsdl:output message="tns:UpdateRuleSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RealEstateWebServiceSoap" type="tns:RealEstateWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateRule">
+      <soap:operation soapAction="http://realestatemarket.com/UpdateRule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteRule">
       <soap:operation soapAction="http://realestatemarket.com/DeleteRule" style="document" />
       <wsdl:input>
@@ -3893,20 +3926,20 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="InsertNation">
-      <soap:operation soapAction="http://realestatemarket.com/Insert Entity's properties" style="document" />
-      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties">
+      <soap:operation soapAction="http://realestatemarket.com/InsertNation" style="document" />
+      <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties">
+      <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateNation">
-      <soap:operation soapAction="http://realestatemarket.com/Update Entity's properties" style="document" />
-      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties">
+      <soap:operation soapAction="http://realestatemarket.com/UpdateNation" style="document" />
+      <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties">
+      <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -3921,6 +3954,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetNation">
       <soap:operation soapAction="http://realestatemarket.com/GetNation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCitiesByNationID">
+      <soap:operation soapAction="http://realestatemarket.com/GetCitiesByNationID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4306,18 +4348,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateRule">
-      <soap:operation soapAction="http://realestatemarket.com/UpdateRule" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="RealEstateWebServiceSoap12" type="tns:RealEstateWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateRule">
+      <soap12:operation soapAction="http://realestatemarket.com/UpdateRule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteRule">
       <soap12:operation soapAction="http://realestatemarket.com/DeleteRule" style="document" />
       <wsdl:input>
@@ -4940,20 +4982,20 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="InsertNation">
-      <soap12:operation soapAction="http://realestatemarket.com/Insert Entity's properties" style="document" />
-      <wsdl:input name="Insert_x0020_Entity_x0027_s_x0020_properties">
+      <soap12:operation soapAction="http://realestatemarket.com/InsertNation" style="document" />
+      <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Insert_x0020_Entity_x0027_s_x0020_properties">
+      <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateNation">
-      <soap12:operation soapAction="http://realestatemarket.com/Update Entity's properties" style="document" />
-      <wsdl:input name="Update_x0020_Entity_x0027_s_x0020_properties">
+      <soap12:operation soapAction="http://realestatemarket.com/UpdateNation" style="document" />
+      <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="Update_x0020_Entity_x0027_s_x0020_properties">
+      <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -4968,6 +5010,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetNation">
       <soap12:operation soapAction="http://realestatemarket.com/GetNation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCitiesByNationID">
+      <soap12:operation soapAction="http://realestatemarket.com/GetCitiesByNationID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -5346,15 +5397,6 @@
     </wsdl:operation>
     <wsdl:operation name="InsertRule">
       <soap12:operation soapAction="http://realestatemarket.com/InsertRule" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRule">
-      <soap12:operation soapAction="http://realestatemarket.com/UpdateRule" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

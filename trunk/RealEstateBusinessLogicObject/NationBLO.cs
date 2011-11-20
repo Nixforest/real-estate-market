@@ -71,7 +71,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Update)]
         public override int Update(NATION entity)
         {
-            if (ValidationID(entity.ID))
+            if (_db.ValidationID(entity.ID))
             {
                 _db.Update(entity);
                 return entity.ID;
@@ -90,7 +90,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, string nationCode)
         {
-            if (ValidationID(id))
+            if (_db.ValidationID(id))
             {
                 NATION entity = new NATION();
                 entity.ID = id;
@@ -112,7 +112,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public override void Delete(int ID)
         {
-            if (ValidationID(ID))
+            if (_db.ValidationID(ID))
             {
                 _db.Delete(ID);
             }
@@ -126,7 +126,7 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete(RealEstateDataContext.NATION entity)
         {
-            if (ValidationID(entity.ID))
+            if (_db.ValidationID(entity.ID))
             {
                 _db.Delete(entity.ID);
             }
@@ -142,9 +142,28 @@ namespace RealEstateBusinessLogicObject
         [DataObjectMethod(DataObjectMethodType.Select)]
         public override NATION GetARecord(int ID)
         {
-            if (ValidationID(ID))
+            if (_db.ValidationID(ID))
             {
                 return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.NationIDException();
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.CITY> GetCitiesByNationID(int ID)
+        {
+            ObservableCollection<RealEstateDataContext.CITY> result = new ObservableCollection<CITY>();
+            if (_db.ValidationID(ID))
+            {
+                RealEstateDataAccessObject.CityDAO city = new CityDAO();
+                foreach (var entity in city.GetAllRows())
+                {
+                    if (entity.NationID == ID)
+                    {
+                        result.Add(entity);
+                    }
+                }
+                return result;
             }
             else throw new RealEstateDataContext.Utility.NationIDException();
         }

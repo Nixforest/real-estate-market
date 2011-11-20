@@ -33,5 +33,16 @@ namespace RealEstateDataContext.Properties {
                 return ((string)(this["RealEstateConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NIX-MACHINE\\SQLEXPRESS;Initial Catalog=RealEstate;Persist Security In" +
+            "fo=True;User ID=sa")]
+        public string RealEstateConnectionString1 {
+            get {
+                return ((string)(this["RealEstateConnectionString1"]));
+            }
+        }
     }
 }
