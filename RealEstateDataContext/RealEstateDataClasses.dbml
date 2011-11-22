@@ -27,6 +27,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="DistrictID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="WARD_ADDRESS" Member="ADDRESSes" ThisKey="ID" OtherKey="WardID" Type="ADDRESS" />
+      <Association Name="DISTRICT_WARD" Member="DISTRICT" AccessModifier="Internal" ThisKey="DistrictID" OtherKey="ID" Type="DISTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CITY" Member="CITies">
@@ -35,6 +36,8 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="NationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="CITY_ADDRESS" Member="ADDRESSes" ThisKey="ID" OtherKey="CityID" Type="ADDRESS" />
+      <Association Name="CITY_DISTRICT" Member="DISTRICTs" ThisKey="ID" OtherKey="CityID" Type="DISTRICT" />
+      <Association Name="NATION_CITY" Member="NATION" AccessModifier="Internal" ThisKey="NationID" OtherKey="ID" Type="NATION" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.COMPANY" Member="COMPANies">
@@ -91,7 +94,9 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="DISTRICT_ADDRESS" Member="ADDRESSes" ThisKey="ID" OtherKey="DistrictID" Type="ADDRESS" />
+      <Association Name="DISTRICT_WARD" Member="WARDs" ThisKey="ID" OtherKey="DistrictID" Type="WARD" />
       <Association Name="DISTRICT_DISTRICT_DETAIL" Member="DISTRICT_DETAILs" ThisKey="ID" OtherKey="DistrictID" Type="DISTRICT_DETAIL" />
+      <Association Name="CITY_DISTRICT" Member="CITY" AccessModifier="Internal" ThisKey="CityID" OtherKey="ID" Type="CITY" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.DISTRICT_DETAIL" Member="DISTRICT_DETAILs">
@@ -99,7 +104,7 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="DistrictID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="StreetID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="DISTRICT_DISTRICT_DETAIL" Member="DISTRICT" ThisKey="DistrictID" OtherKey="ID" Type="DISTRICT" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DISTRICT_DISTRICT_DETAIL" Member="DISTRICT" AccessModifier="Internal" ThisKey="DistrictID" OtherKey="ID" Type="DISTRICT" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="STREET_DISTRICT_DETAIL" Member="STREET" ThisKey="StreetID" OtherKey="ID" Type="STREET" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
@@ -138,6 +143,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="NationCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Association Name="NATION_ADDRESS" Member="ADDRESSes" ThisKey="ID" OtherKey="NationID" Type="ADDRESS" />
+      <Association Name="NATION_CITY" Member="CITies" ThisKey="ID" OtherKey="NationID" Type="CITY" />
     </Type>
   </Table>
   <Table Name="dbo.NEWS" Member="NEWs">
@@ -290,7 +296,7 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Association Name="STREET_ADDRESS" Member="ADDRESSes" ThisKey="ID" OtherKey="StreetID" Type="ADDRESS" />
-      <Association Name="STREET_DISTRICT_DETAIL" Member="DISTRICT_DETAILs" ThisKey="ID" OtherKey="StreetID" Type="DISTRICT_DETAIL" />
+      <Association Name="STREET_DISTRICT_DETAIL" Member="DISTRICT_DETAILs" AccessModifier="Internal" ThisKey="ID" OtherKey="StreetID" Type="DISTRICT_DETAIL" />
     </Type>
   </Table>
   <Table Name="dbo.UNIT" Member="UNITs">

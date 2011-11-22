@@ -151,5 +151,21 @@ namespace RealEstateBusinessLogicObject
             }
             else throw new RealEstateDataContext.Utility.CityIDException();
         }
+
+        /// <summary>
+        /// Get Districts in a City
+        /// </summary>
+        /// <param name="ID">City's ID</param>
+        /// <returns>List of Districts</returns>
+        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.DISTRICT> GetDistrictsByCityID(int ID)
+        {
+            if (_db.ValidationID(ID))
+            {
+                return new ObservableCollection<RealEstateDataContext.DISTRICT>(_db.GetARecord(ID).DISTRICTs);
+            }
+            else throw new RealEstateDataContext.Utility.CityIDException();
+        }
     }
 }
