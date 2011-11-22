@@ -958,6 +958,8 @@ namespace RealEstateDataContext
 		
 		private EntitySet<ADDRESS> _ADDRESSes;
 		
+		private EntityRef<DISTRICT> _DISTRICT;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -973,6 +975,7 @@ namespace RealEstateDataContext
 		public WARD()
 		{
 			this._ADDRESSes = new EntitySet<ADDRESS>(new Action<ADDRESS>(this.attach_ADDRESSes), new Action<ADDRESS>(this.detach_ADDRESSes));
+			this._DISTRICT = default(EntityRef<DISTRICT>);
 			OnCreated();
 		}
 		
@@ -1027,6 +1030,10 @@ namespace RealEstateDataContext
 			{
 				if ((this._DistrictID != value))
 				{
+					if (this._DISTRICT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnDistrictIDChanging(value);
 					this.SendPropertyChanging();
 					this._DistrictID = value;
@@ -1046,6 +1053,40 @@ namespace RealEstateDataContext
 			set
 			{
 				this._ADDRESSes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DISTRICT_WARD", Storage="_DISTRICT", ThisKey="DistrictID", OtherKey="ID", IsForeignKey=true)]
+		internal DISTRICT DISTRICT
+		{
+			get
+			{
+				return this._DISTRICT.Entity;
+			}
+			set
+			{
+				DISTRICT previousValue = this._DISTRICT.Entity;
+				if (((previousValue != value) 
+							|| (this._DISTRICT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DISTRICT.Entity = null;
+						previousValue.WARDs.Remove(this);
+					}
+					this._DISTRICT.Entity = value;
+					if ((value != null))
+					{
+						value.WARDs.Add(this);
+						this._DistrictID = value.ID;
+					}
+					else
+					{
+						this._DistrictID = default(int);
+					}
+					this.SendPropertyChanged("DISTRICT");
+				}
 			}
 		}
 		
@@ -1096,6 +1137,10 @@ namespace RealEstateDataContext
 		
 		private EntitySet<ADDRESS> _ADDRESSes;
 		
+		private EntitySet<DISTRICT> _DISTRICTs;
+		
+		private EntityRef<NATION> _NATION;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1111,6 +1156,8 @@ namespace RealEstateDataContext
 		public CITY()
 		{
 			this._ADDRESSes = new EntitySet<ADDRESS>(new Action<ADDRESS>(this.attach_ADDRESSes), new Action<ADDRESS>(this.detach_ADDRESSes));
+			this._DISTRICTs = new EntitySet<DISTRICT>(new Action<DISTRICT>(this.attach_DISTRICTs), new Action<DISTRICT>(this.detach_DISTRICTs));
+			this._NATION = default(EntityRef<NATION>);
 			OnCreated();
 		}
 		
@@ -1165,6 +1212,10 @@ namespace RealEstateDataContext
 			{
 				if ((this._NationID != value))
 				{
+					if (this._NATION.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNationIDChanging(value);
 					this.SendPropertyChanging();
 					this._NationID = value;
@@ -1184,6 +1235,53 @@ namespace RealEstateDataContext
 			set
 			{
 				this._ADDRESSes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CITY_DISTRICT", Storage="_DISTRICTs", ThisKey="ID", OtherKey="CityID")]
+		public EntitySet<DISTRICT> DISTRICTs
+		{
+			get
+			{
+				return this._DISTRICTs;
+			}
+			set
+			{
+				this._DISTRICTs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NATION_CITY", Storage="_NATION", ThisKey="NationID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		internal NATION NATION
+		{
+			get
+			{
+				return this._NATION.Entity;
+			}
+			set
+			{
+				NATION previousValue = this._NATION.Entity;
+				if (((previousValue != value) 
+							|| (this._NATION.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NATION.Entity = null;
+						previousValue.CITies.Remove(this);
+					}
+					this._NATION.Entity = value;
+					if ((value != null))
+					{
+						value.CITies.Add(this);
+						this._NationID = value.ID;
+					}
+					else
+					{
+						this._NationID = default(int);
+					}
+					this.SendPropertyChanged("NATION");
+				}
 			}
 		}
 		
@@ -1214,6 +1312,18 @@ namespace RealEstateDataContext
 		}
 		
 		private void detach_ADDRESSes(ADDRESS entity)
+		{
+			this.SendPropertyChanging();
+			entity.CITY = null;
+		}
+		
+		private void attach_DISTRICTs(DISTRICT entity)
+		{
+			this.SendPropertyChanging();
+			entity.CITY = this;
+		}
+		
+		private void detach_DISTRICTs(DISTRICT entity)
 		{
 			this.SendPropertyChanging();
 			entity.CITY = null;
@@ -2309,7 +2419,11 @@ namespace RealEstateDataContext
 		
 		private EntitySet<ADDRESS> _ADDRESSes;
 		
+		private EntitySet<WARD> _WARDs;
+		
 		private EntitySet<DISTRICT_DETAIL> _DISTRICT_DETAILs;
+		
+		private EntityRef<CITY> _CITY;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2326,7 +2440,9 @@ namespace RealEstateDataContext
 		public DISTRICT()
 		{
 			this._ADDRESSes = new EntitySet<ADDRESS>(new Action<ADDRESS>(this.attach_ADDRESSes), new Action<ADDRESS>(this.detach_ADDRESSes));
+			this._WARDs = new EntitySet<WARD>(new Action<WARD>(this.attach_WARDs), new Action<WARD>(this.detach_WARDs));
 			this._DISTRICT_DETAILs = new EntitySet<DISTRICT_DETAIL>(new Action<DISTRICT_DETAIL>(this.attach_DISTRICT_DETAILs), new Action<DISTRICT_DETAIL>(this.detach_DISTRICT_DETAILs));
+			this._CITY = default(EntityRef<CITY>);
 			OnCreated();
 		}
 		
@@ -2381,6 +2497,10 @@ namespace RealEstateDataContext
 			{
 				if ((this._CityID != value))
 				{
+					if (this._CITY.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCityIDChanging(value);
 					this.SendPropertyChanging();
 					this._CityID = value;
@@ -2403,6 +2523,19 @@ namespace RealEstateDataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DISTRICT_WARD", Storage="_WARDs", ThisKey="ID", OtherKey="DistrictID")]
+		public EntitySet<WARD> WARDs
+		{
+			get
+			{
+				return this._WARDs;
+			}
+			set
+			{
+				this._WARDs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DISTRICT_DISTRICT_DETAIL", Storage="_DISTRICT_DETAILs", ThisKey="ID", OtherKey="DistrictID")]
 		public EntitySet<DISTRICT_DETAIL> DISTRICT_DETAILs
 		{
@@ -2413,6 +2546,40 @@ namespace RealEstateDataContext
 			set
 			{
 				this._DISTRICT_DETAILs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CITY_DISTRICT", Storage="_CITY", ThisKey="CityID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		internal CITY CITY
+		{
+			get
+			{
+				return this._CITY.Entity;
+			}
+			set
+			{
+				CITY previousValue = this._CITY.Entity;
+				if (((previousValue != value) 
+							|| (this._CITY.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CITY.Entity = null;
+						previousValue.DISTRICTs.Remove(this);
+					}
+					this._CITY.Entity = value;
+					if ((value != null))
+					{
+						value.DISTRICTs.Add(this);
+						this._CityID = value.ID;
+					}
+					else
+					{
+						this._CityID = default(int);
+					}
+					this.SendPropertyChanged("CITY");
+				}
 			}
 		}
 		
@@ -2443,6 +2610,18 @@ namespace RealEstateDataContext
 		}
 		
 		private void detach_ADDRESSes(ADDRESS entity)
+		{
+			this.SendPropertyChanging();
+			entity.DISTRICT = null;
+		}
+		
+		private void attach_WARDs(WARD entity)
+		{
+			this.SendPropertyChanging();
+			entity.DISTRICT = this;
+		}
+		
+		private void detach_WARDs(WARD entity)
 		{
 			this.SendPropertyChanging();
 			entity.DISTRICT = null;
@@ -2565,7 +2744,7 @@ namespace RealEstateDataContext
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DISTRICT_DISTRICT_DETAIL", Storage="_DISTRICT", ThisKey="DistrictID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public DISTRICT DISTRICT
+		internal DISTRICT DISTRICT
 		{
 			get
 			{
@@ -3243,6 +3422,8 @@ namespace RealEstateDataContext
 		
 		private EntitySet<ADDRESS> _ADDRESSes;
 		
+		private EntitySet<CITY> _CITies;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3258,6 +3439,7 @@ namespace RealEstateDataContext
 		public NATION()
 		{
 			this._ADDRESSes = new EntitySet<ADDRESS>(new Action<ADDRESS>(this.attach_ADDRESSes), new Action<ADDRESS>(this.detach_ADDRESSes));
+			this._CITies = new EntitySet<CITY>(new Action<CITY>(this.attach_CITies), new Action<CITY>(this.detach_CITies));
 			OnCreated();
 		}
 		
@@ -3334,6 +3516,19 @@ namespace RealEstateDataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NATION_CITY", Storage="_CITies", ThisKey="ID", OtherKey="NationID")]
+		public EntitySet<CITY> CITies
+		{
+			get
+			{
+				return this._CITies;
+			}
+			set
+			{
+				this._CITies.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3361,6 +3556,18 @@ namespace RealEstateDataContext
 		}
 		
 		private void detach_ADDRESSes(ADDRESS entity)
+		{
+			this.SendPropertyChanging();
+			entity.NATION = null;
+		}
+		
+		private void attach_CITies(CITY entity)
+		{
+			this.SendPropertyChanging();
+			entity.NATION = this;
+		}
+		
+		private void detach_CITies(CITY entity)
 		{
 			this.SendPropertyChanging();
 			entity.NATION = null;
@@ -6586,7 +6793,7 @@ namespace RealEstateDataContext
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="STREET_DISTRICT_DETAIL", Storage="_DISTRICT_DETAILs", ThisKey="ID", OtherKey="StreetID")]
-		public EntitySet<DISTRICT_DETAIL> DISTRICT_DETAILs
+		internal EntitySet<DISTRICT_DETAIL> DISTRICT_DETAILs
 		{
 			get
 			{

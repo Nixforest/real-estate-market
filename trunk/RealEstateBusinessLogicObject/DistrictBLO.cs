@@ -70,6 +70,41 @@ namespace RealEstateBusinessLogicObject
         }
 
         /// <summary>
+        /// Insert a record in DISTRICT_DETAIL table
+        /// </summary>
+        /// <param name="districtID">District's ID</param>
+        /// <param name="streetID">Street ID</param>
+        /// <returns>ID of record has inserted</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        /// <exception cref="StreetIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Insert)]
+        public int InsertDistrictDetail(int districtID, int streetID)
+        {
+            if (ValidationID(districtID))
+            {
+                if (new RealEstateDataAccessObject.StreetDAO().ValidationID(streetID))
+                {
+                    RealEstateDataContext.DISTRICT_DETAIL entity = new RealEstateDataContext.DISTRICT_DETAIL();
+                    RealEstateDataAccessObject.District_DetailDAO detail = new RealEstateDataAccessObject.District_DetailDAO();
+                    try
+                    {
+                        entity.ID = detail.GetMaxID() + 1;
+                    }
+                    catch (System.InvalidOperationException)
+                    {
+                        entity.ID = 1;
+                    }
+                    entity.DistrictID = districtID;
+                    entity.StreetID = streetID;
+                    detail.Insert(entity);
+                    return entity.ID;
+                }
+                else throw new RealEstateDataContext.Utility.StreetIDException();
+            }
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
+        }
+
+        /// <summary>
         /// Update a row in DISTRICT table
         /// </summary>
         /// <param name="entity">Entity</param>
@@ -148,6 +183,65 @@ namespace RealEstateBusinessLogicObject
             if (ValidationID(ID))
             {
                 return _db.GetARecord(ID);
+            }
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
+        }
+
+        /// <summary>
+        /// Get Streets in a District
+        /// </summary>
+        /// <param name="ID">District' ID</param>
+        /// <returns>List of Streets</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.STREET> GetStreetsByDistrictID(int ID)
+        {
+            ObservableCollection<RealEstateDataContext.STREET> result = new ObservableCollection<RealEstateDataContext.STREET>();            
+            if (ValidationID(ID))
+            {
+                foreach (RealEstateDataContext.DISTRICT_DETAIL entity in _db.GetARecord(ID).DISTRICT_DETAILs)
+                {
+                    result.Add(entity.STREET);
+                }
+                return result;
+            }
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
+        }
+
+        /// <summary>
+        /// Get Streets not exist in a District
+        /// </summary>
+        /// <param name="ID">District's ID</param>
+        /// <returns>List Streets</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.STREET> GetStreetsNotInDistrict(int ID)
+        {
+            if (ValidationID(ID))
+            {
+                ObservableCollection<RealEstateDataContext.STREET> result 
+                    = new ObservableCollection<RealEstateDataContext.STREET>(new RealEstateDataAccessObject.StreetDAO().GetAllRows());
+                foreach (RealEstateDataContext.STREET entity in GetStreetsByDistrictID(ID))
+                {
+                    result.Remove(entity);
+                }
+                return result;
+            }
+            else throw new RealEstateDataContext.Utility.DistrictIDException();
+        }
+
+        /// <summary>
+        /// Get Wards in a District
+        /// </summary>
+        /// <param name="ID">District's ID</param>
+        /// <returns>List of Wards</returns>
+        /// <exception cref="DistrictIDException"></exception>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.WARD> GetWardsByDistrictID(int ID)
+        {
+            if (_db.ValidationID(ID))
+            {
+                return new ObservableCollection<RealEstateDataContext.WARD>(_db.GetARecord(ID).WARDs);
             }
             else throw new RealEstateDataContext.Utility.DistrictIDException();
         }

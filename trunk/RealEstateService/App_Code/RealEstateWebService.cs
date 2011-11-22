@@ -201,19 +201,19 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
     }
 
-    //[WebMethod]
-    //public ObservableCollection<RealEstateDataContext.DISTRICT> GetDistrictsInCity(int id)
-    //{
-    //    try
-    //    {
-    //        return nation.GetARecord(id).
-    //    }
-    //    catch (Exception)
-    //    {
-            
-    //        throw;
-    //    }
-    //}
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.DISTRICT> GetDistrictsByCityID(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.DISTRICT>(city.GetDistrictsByCityID(id));
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
     #endregion
 
     #region Company Service
@@ -369,7 +369,24 @@ public class RealEstateWebService : System.Web.Services.WebService
             throw e;
         }
     }
-
+    /// <summary>
+    /// Insert a record to DISTRICT_DETAIL table
+    /// </summary>
+    /// <param name="districtID">District's ID</param>
+    /// <param name="streetID">Street's ID</param>
+    /// <returns>ID of record has inserted</returns>
+    [WebMethod]
+    public int InsertDistrictDetail(int districtID, int streetID)
+    {
+        try
+        {
+            return district.InsertDistrictDetail(districtID, streetID);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
     [WebMethod()]
     public int UpdateDistrict(int id, string name, int cityID)
     {
@@ -402,6 +419,44 @@ public class RealEstateWebService : System.Web.Services.WebService
         try
         {
             return district.GetARecord(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.STREET> GetStreetsByDistrictID(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.STREET>(district.GetStreetsByDistrictID(id));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.STREET> GetStreetsNotInDistrict(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.STREET>(district.GetStreetsNotInDistrict(id));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.WARD> GetWardsByDistrictID(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.WARD>(district.GetWardsByDistrictID(id));
         }
         catch (Exception e)
         {

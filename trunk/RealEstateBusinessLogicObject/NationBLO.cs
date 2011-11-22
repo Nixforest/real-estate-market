@@ -25,7 +25,6 @@ namespace RealEstateBusinessLogicObject
         /// Get all row in table NATION
         /// </summary>
         /// <returns>List of entities</returns>
-
         [DataObjectMethod(DataObjectMethodType.Select)]
         public override ICollection<NATION> GetAllRows()
         {
@@ -149,21 +148,18 @@ namespace RealEstateBusinessLogicObject
             else throw new RealEstateDataContext.Utility.NationIDException();
         }
 
+        /// <summary>
+        /// Get Cities in a Nation
+        /// </summary>
+        /// <param name="ID">Nation's ID</param>
+        /// <returns>List of Cities</returns>
+        /// <exception cref="NationIDException"></exception>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public ICollection<RealEstateDataContext.CITY> GetCitiesByNationID(int ID)
         {
-            ObservableCollection<RealEstateDataContext.CITY> result = new ObservableCollection<CITY>();
             if (_db.ValidationID(ID))
             {
-                RealEstateDataAccessObject.CityDAO city = new CityDAO();
-                foreach (var entity in city.GetAllRows())
-                {
-                    if (entity.NationID == ID)
-                    {
-                        result.Add(entity);
-                    }
-                }
-                return result;
+                return new ObservableCollection<RealEstateDataContext.CITY>(_db.GetARecord(ID).CITies);
             }
             else throw new RealEstateDataContext.Utility.NationIDException();
         }

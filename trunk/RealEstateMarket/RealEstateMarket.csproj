@@ -141,6 +141,7 @@
     <Content Include="Admin\Dashboard\NationAdmin.aspx" />
     <Content Include="Admin\Dashboard\StreetAdmin.aspx" />
     <Content Include="Admin\Dashboard\WardAdmin.aspx" />
+    <Content Include="CustomControl\AddressControl.ascx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="Admin\Dashboard\WardAdmin.aspx.designer.cs">
       <DependentUpon>WardAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\AddressControl.ascx.cs">
+      <DependentUpon>AddressControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\AddressControl.ascx.designer.cs">
+      <DependentUpon>AddressControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
