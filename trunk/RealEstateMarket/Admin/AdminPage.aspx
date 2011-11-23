@@ -3,17 +3,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:HyperLink ID="HyperLink1" runat="server" 
-        NavigateUrl="~/Admin/Dashboard/NationAdmin.aspx">Nation</asp:HyperLink>
+        NavigateUrl="~/Admin/Dashboard/NationAdmin.aspx">Quốc gia</asp:HyperLink>
     <br />
     <asp:HyperLink ID="HyperLink2" runat="server" 
-        NavigateUrl="~/Admin/Dashboard/CityAdmin.aspx">City</asp:HyperLink>
+        NavigateUrl="~/Admin/Dashboard/CityAdmin.aspx">Tỉnh / Thành phố</asp:HyperLink>
     <br />
     <asp:HyperLink ID="HyperLink3" runat="server" 
-        NavigateUrl="~/Admin/Dashboard/DistrictAdmin.aspx">District</asp:HyperLink>
+        NavigateUrl="~/Admin/Dashboard/DistrictAdmin.aspx">Quận / Huyện</asp:HyperLink>
     <br />
     <asp:HyperLink ID="HyperLink4" runat="server" 
-        NavigateUrl="~/Admin/Dashboard/WardAdmin.aspx">Ward</asp:HyperLink>
+        NavigateUrl="~/Admin/Dashboard/WardAdmin.aspx">Phường / Xã</asp:HyperLink>
     <br />
     <asp:HyperLink ID="HyperLink5" runat="server" 
-        NavigateUrl="~/Admin/Dashboard/StreetAdmin.aspx">Street</asp:HyperLink>
+        NavigateUrl="~/Admin/Dashboard/StreetAdmin.aspx">Đường Phố</asp:HyperLink>
+    <br />
+    <asp:HyperLink ID="HyperLink6" runat="server" 
+        NavigateUrl="~/Admin/Dashboard/RealEstateTypeAdmin.aspx">Loại Địa Ốc</asp:HyperLink>
 </asp:Content>

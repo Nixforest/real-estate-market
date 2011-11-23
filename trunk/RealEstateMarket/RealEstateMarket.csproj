@@ -139,9 +139,12 @@
     <Content Include="Admin\Dashboard\CityAdmin.aspx" />
     <Content Include="Admin\Dashboard\DistrictAdmin.aspx" />
     <Content Include="Admin\Dashboard\NationAdmin.aspx" />
+    <Content Include="Admin\Dashboard\RealEstateTypeAdmin.aspx" />
     <Content Include="Admin\Dashboard\StreetAdmin.aspx" />
     <Content Include="Admin\Dashboard\WardAdmin.aspx" />
     <Content Include="CustomControl\AddressControl.ascx" />
+    <Content Include="Member\MemberInformation.aspx" />
+    <Content Include="Member\NewsSaleRegistration.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -223,6 +226,13 @@
     <Compile Include="Admin\Dashboard\NationAdmin.aspx.designer.cs">
       <DependentUpon>NationAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Dashboard\RealEstateTypeAdmin.aspx.cs">
+      <DependentUpon>RealEstateTypeAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\RealEstateTypeAdmin.aspx.designer.cs">
+      <DependentUpon>RealEstateTypeAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard\StreetAdmin.aspx.cs">
       <DependentUpon>StreetAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -253,6 +263,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Member\MemberInformation.aspx.cs">
+      <DependentUpon>MemberInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\MemberInformation.aspx.designer.cs">
+      <DependentUpon>MemberInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member\NewsSaleRegistration.aspx.cs">
+      <DependentUpon>NewsSaleRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\NewsSaleRegistration.aspx.designer.cs">
+      <DependentUpon>NewsSaleRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\RealEstateServiceReference\Reference.cs">

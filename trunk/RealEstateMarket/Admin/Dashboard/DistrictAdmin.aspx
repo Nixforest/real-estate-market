@@ -9,7 +9,7 @@
 		DeleteMethod="DeleteDistrict" InsertMethod="InsertDistrict" 
 		SelectMethod="GetAllDistricts" 
 		TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient" 
-		UpdateMethod="UpdateDistrict">
+		UpdateMethod="UpdateDistrict" OldValuesParameterFormatString="original_{0}">
 		<DeleteParameters>
 			<asp:Parameter Name="id" Type="Int32" />
 		</DeleteParameters>
