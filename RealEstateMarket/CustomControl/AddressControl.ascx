@@ -40,7 +40,7 @@
     </SelectParameters>
 </asp:ObjectDataSource>
 
-<asp:Panel ID="mainPanel" runat="server" Width="500px" Height="300px" 
+<asp:Panel ID="mainPanel" runat="server"
     BorderStyle="Solid">
             <asp:Table ID="Table1" runat="server">
             <asp:TableHeaderRow>
@@ -92,6 +92,9 @@
                         DataTextField="Name"
                         DataValueField="ID"></asp:DropDownList>
                 </asp:TableCell>
+                <asp:TableCell>
+                    <asp:CheckBox ID="cbWard" runat="server" Text="Khác" />
+                </asp:TableCell>
             </asp:TableRow>
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell ColumnSpan="2">
@@ -104,6 +107,9 @@
                         DataSourceID="dataSourceStreet"
                         DataTextField="Name"
                         DataValueField="ID"></asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:CheckBox ID="cbStreet" runat="server" Text="Khác" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
