@@ -15,7 +15,6 @@
         You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
             title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
     </p>
-    <p>
-        &nbsp;<nixforest:address runat="server"></nixforest:address>
-    </p>
+    <asp:HyperLink ID="adad" runat="server" NavigateUrl="~/Pages/Project.aspx">Dự án</asp:HyperLink>
+   
 </asp:Content>

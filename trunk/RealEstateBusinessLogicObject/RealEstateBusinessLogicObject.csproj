@@ -50,6 +50,8 @@
     <Compile Include="DistrictBLO.cs" />
     <Compile Include="GroupBLO.cs" />
     <Compile Include="ImageBLO.cs" />
+    <Compile Include="LegalBLO.cs" />
+    <Compile Include="LocationBLO.cs" />
     <Compile Include="NationBLO.cs" />
     <Compile Include="NewsBLO.cs" />
     <Compile Include="News_SaleBLO.cs" />

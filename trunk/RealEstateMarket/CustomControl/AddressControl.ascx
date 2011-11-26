@@ -22,7 +22,7 @@
     </SelectParameters>    
 </asp:ObjectDataSource>
 
-<asp:ObjectDataSource ID="dataSourceWard" runat="server" 
+<asp:ObjectDataSource ID="dataSourceWard" runat="server"
     SelectMethod="GetWardsByDistrictID" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient" >
     <SelectParameters>
@@ -90,23 +90,31 @@
                     <asp:DropDownList ID="ddlWard" runat="server"
                         DataSourceID="dataSourceWard"
                         DataTextField="Name"
-                        DataValueField="ID"></asp:DropDownList>
+                        DataValueField="ID"
+                        onselectedindexchanged="ddlWard_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:CheckBox ID="cbWard" runat="server" Text="Khác" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableHeaderRow>
-                <asp:TableHeaderCell ColumnSpan="2">
+                <asp:TableHeaderCell>
+                    <asp:Label ID="lblDetail" runat="server">Số nhà / Số lô</asp:Label>
+                </asp:TableHeaderCell>
+                <asp:TableHeaderCell>
                     <asp:Label runat="server" ID="lblStreet">Tên Đường / Tên Phố</asp:Label>
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow>
-                <asp:TableCell ColumnSpan="2">
+                <asp:TableCell>
+                    <asp:TextBox ID="tbxDetail" runat="server"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
                     <asp:DropDownList ID="ddlStreet" runat="server"
                         DataSourceID="dataSourceStreet"
                         DataTextField="Name"
-                        DataValueField="ID"></asp:DropDownList>
+                        DataValueField="ID"
+                        onselectedindexchanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:CheckBox ID="cbStreet" runat="server" Text="Khác" />

@@ -39,6 +39,8 @@ public class RealEstateWebService : System.Web.Services.WebService
     private RealEstateBusinessLogicObject.UserBLO user;
     private RealEstateBusinessLogicObject.UtilityBLO utility;
     private RealEstateBusinessLogicObject.WardBLO ward;
+    private RealEstateBusinessLogicObject.LegalBLO legal;
+    private RealEstateBusinessLogicObject.LocationBLO location;
 
     public RealEstateWebService()
     {
@@ -70,6 +72,8 @@ public class RealEstateWebService : System.Web.Services.WebService
         user = new RealEstateBusinessLogicObject.UserBLO();
         utility = new RealEstateBusinessLogicObject.UtilityBLO();
         ward = new RealEstateBusinessLogicObject.WardBLO();
+        legal = new RealEstateBusinessLogicObject.LegalBLO();
+        location = new RealEstateBusinessLogicObject.LocationBLO();
     }
 
     /// <summary>
@@ -585,6 +589,126 @@ public class RealEstateWebService : System.Web.Services.WebService
     }
     #endregion
 
+    #region Legal Service
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.LEGAL> GetAllLegals()
+    {
+        return new ObservableCollection<RealEstateDataContext.LEGAL>(legal.GetAllRows());
+    }
+
+    [WebMethod()]
+    public int InsertLegal(string name, string description)
+    {
+        try
+        {
+            return legal.Insert(name, description);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public int UpdateLegal(int id, string name, string description)
+    {
+        try
+        {
+            return legal.Update(id, name, description);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public void DeleteLegal(int id)
+    {
+        try
+        {
+            legal.Delete(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public RealEstateDataContext.LEGAL GetLegal(int id)
+    {
+        try
+        {
+            return legal.GetARecord(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+    #endregion
+
+    #region Location Service
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.LOCATION> GetAllLocations()
+    {
+        return new ObservableCollection<RealEstateDataContext.LOCATION>(location.GetAllRows());
+    }
+
+    [WebMethod()]
+    public int InsertLocation(string name, string description)
+    {
+        try
+        {
+            return location.Insert(name, description);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public int UpdateLocation(int id, string name, string description)
+    {
+        try
+        {
+            return location.Update(id, name, description);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public void DeleteLocation(int id)
+    {
+        try
+        {
+            location.Delete(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public RealEstateDataContext.LOCATION GetLocation(int id)
+    {
+        try
+        {
+            return location.GetARecord(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+    #endregion
+
     #region Nation Service
     [WebMethod]
     public ObservableCollection<RealEstateDataContext.NATION> GetAllNations()
@@ -901,6 +1025,19 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
         catch (Exception e)
         {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public string GetSummary(int id)
+    {
+        try
+        {
+            return news.GetSummary(id);
+        }
+        catch (Exception e)
+        {            
             throw e;
         }
     }

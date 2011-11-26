@@ -7,198 +7,153 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RealEstateMarket.CustomControl {
+namespace RealEstateMarket.Admin.Project {
     
     
-    public partial class AddressControl {
+    public partial class NewProject {
         
         /// <summary>
-        /// dataSourceNation control.
+        /// error control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceNation;
+        protected global::System.Web.UI.WebControls.Label error;
         
         /// <summary>
-        /// dataSourceCity control.
+        /// dataSourceProjectType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceCity;
+        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceProjectType;
         
         /// <summary>
-        /// dataSourceDistrict control.
+        /// validationSum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceDistrict;
+        protected global::System.Web.UI.WebControls.ValidationSummary validationSum;
         
         /// <summary>
-        /// dataSourceWard control.
+        /// lblProjectType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceWard;
+        protected global::System.Web.UI.WebControls.Label lblProjectType;
         
         /// <summary>
-        /// dataSourceStreet control.
+        /// ddlProjectType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceStreet;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProjectType;
         
         /// <summary>
-        /// mainPanel control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel mainPanel;
+        protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// Table1 control.
+        /// tbxName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.TextBox tbxName;
         
         /// <summary>
-        /// lblNation control.
+        /// rfvName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNation;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
         
         /// <summary>
-        /// lblCity control.
+        /// lblAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCity;
+        protected global::System.Web.UI.WebControls.Label lblAddress;
         
         /// <summary>
-        /// ddlNation control.
+        /// address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNation;
+        protected global::RealEstateMarket.CustomControl.AddressControl address;
         
         /// <summary>
-        /// ddlCity control.
+        /// lblBeginDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCity;
+        protected global::System.Web.UI.WebControls.Label lblBeginDay;
         
         /// <summary>
-        /// lblDistrict control.
+        /// cldBeginDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDistrict;
+        protected global::System.Web.UI.WebControls.Calendar cldBeginDay;
         
         /// <summary>
-        /// lblWard control.
+        /// lblDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWard;
+        protected global::System.Web.UI.WebControls.Label lblDescription;
         
         /// <summary>
-        /// ddlDistrict control.
+        /// editor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
+        protected global::CKEditor.NET.CKEditorControl editor;
         
         /// <summary>
-        /// ddlWard control.
+        /// btnPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlWard;
+        protected global::System.Web.UI.WebControls.Button btnPost;
         
         /// <summary>
-        /// cbWard control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbWard;
-        
-        /// <summary>
-        /// lblDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDetail;
-        
-        /// <summary>
-        /// lblStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStreet;
-        
-        /// <summary>
-        /// tbxDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxDetail;
-        
-        /// <summary>
-        /// ddlStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStreet;
-        
-        /// <summary>
-        /// cbStreet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbStreet;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

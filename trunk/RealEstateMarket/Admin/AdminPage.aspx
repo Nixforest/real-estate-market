@@ -19,4 +19,7 @@
     <br />
     <asp:HyperLink ID="HyperLink6" runat="server" 
         NavigateUrl="~/Admin/Dashboard/RealEstateTypeAdmin.aspx">Loại Địa Ốc</asp:HyperLink>
+    <br />
+    <asp:HyperLink ID="HyperLink7" runat="server" 
+        NavigateUrl="~/Admin/Project/NewProject.aspx">Đăng dự án</asp:HyperLink>
 </asp:Content>

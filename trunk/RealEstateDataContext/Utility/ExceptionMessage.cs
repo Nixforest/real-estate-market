@@ -34,6 +34,8 @@ namespace RealEstateDataContext.Utility
     public class RuleIDException : Exception { }
     public class UtilityIDException : Exception { }
     public class DoubleStreetNameException : Exception { }
+    public class LegalIDException : Exception { }
+    public class LocationIDException : Exception { }
 
     public class ExceptionMessage
     {
