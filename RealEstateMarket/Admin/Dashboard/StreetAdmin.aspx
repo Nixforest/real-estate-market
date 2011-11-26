@@ -14,7 +14,8 @@
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="name" Type="String" />
+            <asp:ControlParameter ControlID="txbName" Name="name" PropertyName="Text" 
+                Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="id" Type="Int32" />

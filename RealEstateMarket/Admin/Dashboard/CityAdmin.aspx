@@ -50,7 +50,9 @@
 								<%# Container.DataItemIndex + 1 %>
 							</ItemTemplate>
 						</asp:TemplateField>
-							<asp:BoundField DataField="Name" HeaderText="Tên thành phố" ControlStyle-Width="300px"/>
+							<asp:BoundField DataField="Name" HeaderText="Tên thành phố" 
+                                ControlStyle-Width="300px"><ControlStyle Width="300px"></ControlStyle>
+                            </asp:BoundField>
 							<asp:TemplateField HeaderText="Quốc gia">
 								<EditItemTemplate>
 									<asp:DropDownList ID="DropDownList1" runat="server"

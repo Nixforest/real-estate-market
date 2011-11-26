@@ -9,5 +9,6 @@ namespace RealEstateBusinessLogicObject
     {
         public static int MinRate = 1;
         public static int MaxRate = 5;
+        public static int MaxSummaryLength = 160;
     }
 }

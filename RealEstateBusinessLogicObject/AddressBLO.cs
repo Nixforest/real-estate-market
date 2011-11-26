@@ -18,6 +18,11 @@ namespace RealEstateBusinessLogicObject
             _db = new RealEstateDataAccessObject.AddressDAO();
         }
 
+        public override int CreateNewID()
+        {
+            return base.CreateNewID();
+        }
+
         /// <summary>
         /// Get all row in table ADDRESS
         /// </summary>

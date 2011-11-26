@@ -52,6 +52,8 @@
     <Compile Include="GroupDAO.cs" />
     <Compile Include="Group_DetailDAO.cs" />
     <Compile Include="ImageDAO.cs" />
+    <Compile Include="LegalDAO.cs" />
+    <Compile Include="LocationDAO.cs" />
     <Compile Include="NationDAO.cs" />
     <Compile Include="NewsDAO.cs" />
     <Compile Include="News_SaleDAO.cs" />

@@ -100,7 +100,6 @@ namespace RealEstateBusinessLogicObject
             }
             else throw new RealEstateDataContext.Utility.News_TypeIDException();
         }
-
         /// <summary>
         /// Update a row in NEWS table
         /// </summary>
@@ -212,6 +211,20 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.NewsIDException();
+        }
+
+        /// <summary>
+        /// Get a Summary from News
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public string GetSummary(int ID)
+        {
+            if (ValidationID(ID))
+            {
+                return _db.GetARecord(ID).Content.Substring(0, Parameter.MaxSummaryLength);
+            }
+            else throw new RealEstateDataContext.Utility.NationIDException();
         }
     }
 }

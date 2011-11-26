@@ -16,20 +16,31 @@ namespace RealEstateMarket.Admin.Dashboard
 
         protected void Insert_Click(object sender, EventArgs e)
         {
-            if (txbName.Text.Trim() != "")
+            //if (txbName.Text.Trim() != "")
+            //{
+            //    try
+            //    {
+            //        error.Text = "Bạn đã cập nhật Đường phố có ID = " + RealEstateMarket._Default.db.InsertStreet(txbName.Text);
+            //        //Response.Redirect(Request.RawUrl);
+            //        dataTable.DataBind();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        if (ex.ToString().Contains(new RealEstateDataContext.Utility.DoubleStreetNameException().ToString()))
+            //        {
+            //            error.Text = "Bạn đã nhập một đường đã có trong cơ sở dữ liệu của Website!";
+            //        }
+            //    }
+            //}
+            try
             {
-                try
+                dataSource.Insert();
+            }
+            catch (Exception ex)
+            {
+                if (ex.ToString().Contains(new RealEstateDataContext.Utility.DoubleStreetNameException().ToString()))
                 {
-                    error.Text = "Bạn đã cập nhật Đường phố có ID = " + RealEstateMarket._Default.db.InsertStreet(txbName.Text);
-                    //Response.Redirect(Request.RawUrl);
-                    dataTable.DataBind();
-                }
-                catch (Exception ex)
-                {
-                    if (ex.ToString().Contains(new RealEstateDataContext.Utility.DoubleStreetNameException().ToString()))
-                    {
-                        error.Text = "Bạn đã nhập một đường đã có trong cơ sở dữ liệu của Website!";
-                    }
+                    error.Text = "Bạn đã nhập một đường đã có trong cơ sở dữ liệu của Website!";
                 }
             }
         }

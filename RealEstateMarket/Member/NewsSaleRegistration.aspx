@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewsSaleRegistration.aspx.cs" Inherits="RealEstateMarket.Member.NewsSaleRegistration" %>
 <%@ Register TagPrefix="nixforest" TagName="address" Src="~/CustomControl/AddressControl.ascx" %>
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
     <asp:ObjectDataSource ID="dataSourceRealEstateType" runat="server" 
         SelectMethod="GetAllRealEstateTypes" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
@@ -30,6 +33,9 @@
                 tài sản của bạn xuất hiện chính xác và đầy đủ trong các kết quả theo nhu cầu của người dùng, 
                 việc này giúp cho giao dịch của bạn sẽ nhanh hơn.</asp:Label><br />
         <br />
+        <asp:ValidationSummary ID="validationSum" runat="server"
+            ForeColor="Red"
+            HeaderText="Vui lòng cập nhật các thông tin tài sản còn thiếu" />
         <asp:Table ID="tblInfo" runat="server" GridLines="Both">
             <asp:TableRow>
                 <asp:TableCell>
@@ -113,6 +119,10 @@
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="tbxTotalUseArea" runat="server" Text="0"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvTotalUseArea" runat="server"
+                        ControlToValidate="tbxTotalUseArea"
+                        ErrorMessage="Tổng diện tích sử dụng"
+                        ForeColor="Red" InitialValue="0"></asp:RequiredFieldValidator>
                 </asp:TableCell>
                 <asp:TableCell>
                     m2
@@ -131,9 +141,12 @@
                     m
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="cbCampusOpenBehind" runat="server" Text="Nở hậu" Font-Bold="true" />
-                    <asp:TextBox ID="tbxCampusBehind" runat="server" Text="Chiều ngang sau"></asp:TextBox>
-                    m
+                    <asp:CheckBox ID="cbCampusOpenBehind" runat="server"
+                        Text="Nở hậu" Font-Bold="true" AutoPostBack="true"
+                        oncheckedchanged="cbCampusOpenBehind_CheckedChanged" />
+                    <asp:TextBox ID="tbxCampusBehind" runat="server"
+                        Text="Chiều ngang sau" Visible="false"></asp:TextBox>
+                    <asp:Label ID="lblCampusM" runat="server" Visible="false">m</asp:Label>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -149,9 +162,11 @@
                     m
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="CheckBox1" runat="server" Text="Nở hậu" Font-Bold="true" />
-                    <asp:TextBox ID="TextBox1" runat="server" Text="Chiều ngang sau"></asp:TextBox>
-                    m
+                    <asp:CheckBox ID="cbBuildOpenBehind" runat="server" Text="Nở hậu" Font-Bold="true" 
+                        AutoPostBack="true"
+                        OnCheckedChanged="cbBuildOpenBehind_CheckedChanged"/>
+                    <asp:TextBox ID="tbxBuildBehind" runat="server" Text="Chiều ngang sau" Visible="false"></asp:TextBox>
+                    <asp:Label ID="lblBuilM" runat="server" Visible="false">m</asp:Label>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
@@ -517,13 +532,15 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell HorizontalAlign="Right"><b>Nội dung mô tả:</b></asp:TableCell>
-                <asp:TableCell></asp:TableCell>
+                <asp:TableCell>
+                    <CKEditor:CKEditorControl ID="editor" runat="server"></CKEditor:CKEditorControl>
+                </asp:TableCell>
                 <asp:TableCell></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell HorizontalAlign="Right"><b>Bộ gõ Tiếng Việt:</b></asp:TableCell>
                 <asp:TableCell>
-                    <asp:RadioButtonList ID="rblKey" runat="server">
+                    <asp:RadioButtonList ID="rblKey" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>VNI</asp:ListItem>
                         <asp:ListItem>TELEX</asp:ListItem>
                         <asp:ListItem>Tắt bộ gõ</asp:ListItem>
@@ -535,6 +552,72 @@
     </asp:Panel>
 
     <asp:Panel ID="pnlImage" runat="server" BorderStyle="Groove">
-        
+        <h4>Cập nhật hình ảnh</h4>
+        <asp:Label ID="lbl2" runat="server" ForeColor="Blue" Text="Cập nhật hình ảnh tài sản: (Tối đa 10 hình)"></asp:Label><br />
+        <asp:FileUpload ID="fuImage" runat="server" />
+        <br />
+        - Không đăng các hình ảnh mờ hoặc hình có kích thước nhỏ hơn 360x300 pixel.<br />
+        - Không đăng các hình ảnh có gắn kèm logo hoặc thông điệp quảng cáo.<br />
+        - Nếu bạn không tải hình ảnh, hệ thống sẽ lấy hình minh hoạ tự động tương ứng với loại địa ốc mà bạn chọn.
+    </asp:Panel>
+    <asp:Panel ID="pnlMap" runat="server" BorderStyle="Groove">
+        <h4>Cập nhật vị trí Địa ốc trên bản đồ</h4>
+        <asp:ImageButton ID="imgButtonMap" runat="server" />
+        Click vào đây để tiến hành cập nhật vị trí tài sản trên bản đồ
+        Tài sản của quý vị sẽ được giao dịch nhanh hơn khi cập nhật vị trí chính xác của tài sản
+    </asp:Panel>
+    <asp:Panel ID="pnlContact" runat="server" BorderStyle="Groove">
+        <asp:Table runat="server" ID="tblContact">
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label ID="lblContactName" runat="server" Text="Người liên hệ:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="tbxContactName" runat="server"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label ID="lblContactHomePhone" runat="server" Text="Điện thoại:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="tbxContactHomePhone" runat="server"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label ID="lblContactPhone" runat="server" Text="Di động:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="tbxContactPhone" runat="server"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label ID="lblContactAddress" runat="server" Text="Địa chỉ:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <nixforest:address ID="addressContact" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label ID="lblContactNote" runat="server" Text="Ghi chú:"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="tbxContactNote" TextMode="MultiLine" runat="server"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+    </asp:Panel>
+    <asp:Panel ID="pnlNote" runat="server" BorderStyle="Groove" HorizontalAlign="Center">
+        Những mục có dấu * là thông tin phải điền đầy đủ. Chỉ khi bạn hoàn tất những thông tin được yêu cầu 
+        điền đầy đủ thì các chức năng Xem trước hay Đăng tài sản mới được kích hoạt
+        RealEstateMarket không chịu trách nhiệm về những nội dung (chữ/ hình ảnh/ Video) do bạn đăng tải
+        Khi nhấn nút đăng tài sản, bạn đã xác nhận hoàn toàn đồng ý với những Điều khoản đăng tin.
+        <br />
+        <asp:Button ID="btnPreview" runat="server" Text="Xem trước" />
+        <asp:Button ID="btnSave" runat="server" Text="Lưu lại" />
+        <asp:Button ID="btnPost" runat="server" Text="Đăng tài sản" OnClick="btnPost_Click"/>
     </asp:Panel>
 </asp:Content>
