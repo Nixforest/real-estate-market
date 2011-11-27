@@ -87,9 +87,6 @@ namespace RealEstateDataContext
     partial void InsertPROPERTY_CUSTOMER(PROPERTY_CUSTOMER instance);
     partial void UpdatePROPERTY_CUSTOMER(PROPERTY_CUSTOMER instance);
     partial void DeletePROPERTY_CUSTOMER(PROPERTY_CUSTOMER instance);
-    partial void InsertREAL_ESTATE(REAL_ESTATE instance);
-    partial void UpdateREAL_ESTATE(REAL_ESTATE instance);
-    partial void DeleteREAL_ESTATE(REAL_ESTATE instance);
     partial void InsertREAL_ESTATE_IMAGE(REAL_ESTATE_IMAGE instance);
     partial void UpdateREAL_ESTATE_IMAGE(REAL_ESTATE_IMAGE instance);
     partial void DeleteREAL_ESTATE_IMAGE(REAL_ESTATE_IMAGE instance);
@@ -126,6 +123,9 @@ namespace RealEstateDataContext
     partial void InsertLOCATION(LOCATION instance);
     partial void UpdateLOCATION(LOCATION instance);
     partial void DeleteLOCATION(LOCATION instance);
+    partial void InsertREAL_ESTATE(REAL_ESTATE instance);
+    partial void UpdateREAL_ESTATE(REAL_ESTATE instance);
+    partial void DeleteREAL_ESTATE(REAL_ESTATE instance);
     #endregion
 		
 		public RealEstateDataClassesDataContext() : 
@@ -310,14 +310,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		public System.Data.Linq.Table<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this.GetTable<REAL_ESTATE>();
-			}
-		}
-		
 		public System.Data.Linq.Table<REAL_ESTATE_IMAGE> REAL_ESTATE_IMAGEs
 		{
 			get
@@ -411,6 +403,14 @@ namespace RealEstateDataContext
 			get
 			{
 				return this.GetTable<LOCATION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<REAL_ESTATE> REAL_ESTATEs
+		{
+			get
+			{
+				return this.GetTable<REAL_ESTATE>();
 			}
 		}
 	}
@@ -3921,7 +3921,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_NEWS_SALE", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_NEWS_SALE", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public REAL_ESTATE REAL_ESTATE
 		{
 			get
@@ -4527,7 +4527,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_COMPANY", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_COMPANY", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true)]
 		public REAL_ESTATE REAL_ESTATE
 		{
 			get
@@ -4774,982 +4774,6 @@ namespace RealEstateDataContext
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.REAL_ESTATE")]
-	public partial class REAL_ESTATE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _TypeID;
-		
-		private int _AddressID;
-		
-		private System.Nullable<int> _LivingRoom;
-		
-		private System.Nullable<int> _BedRoom;
-		
-		private System.Nullable<int> _BathRoom;
-		
-		private System.Nullable<int> _Storey;
-		
-		private System.Nullable<double> _TotalUseArea;
-		
-		private System.Nullable<double> _CampusFront;
-		
-		private System.Nullable<double> _CampusBehind;
-		
-		private System.Nullable<double> _CampusLength;
-		
-		private System.Nullable<double> _BuildFront;
-		
-		private System.Nullable<double> _BuildBehind;
-		
-		private System.Nullable<double> _BuildLength;
-		
-		private string _Legal;
-		
-		private string _Direction;
-		
-		private string _FrontStreet;
-		
-		private string _Location;
-		
-		private decimal _Price;
-		
-		private int _UnitID;
-		
-		private int _UnitPriceID;
-		
-		private System.Nullable<int> _ProjectID;
-		
-		private System.Nullable<int> _ContactID;
-		
-		private EntitySet<NEWS_SALE> _NEWS_SALEs;
-		
-		private EntitySet<PROPERTY_COMPANY> _PROPERTY_COMPANies;
-		
-		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
-		
-		private EntitySet<REAL_ESTATE_IMAGE> _REAL_ESTATE_IMAGEs;
-		
-		private EntitySet<UTILITY_DETAIL> _UTILITY_DETAILs;
-		
-		private EntityRef<ADDRESS> _ADDRESS;
-		
-		private EntityRef<CONTACT> _CONTACT;
-		
-		private EntityRef<REAL_ESTATE_TYPE> _REAL_ESTATE_TYPE;
-		
-		private EntityRef<UNIT> _UNIT;
-		
-		private EntityRef<UNIT_PRICE> _UNIT_PRICE;
-		
-		private EntityRef<PROJECT> _PROJECT;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnTypeIDChanging(int value);
-    partial void OnTypeIDChanged();
-    partial void OnAddressIDChanging(int value);
-    partial void OnAddressIDChanged();
-    partial void OnLivingRoomChanging(System.Nullable<int> value);
-    partial void OnLivingRoomChanged();
-    partial void OnBedRoomChanging(System.Nullable<int> value);
-    partial void OnBedRoomChanged();
-    partial void OnBathRoomChanging(System.Nullable<int> value);
-    partial void OnBathRoomChanged();
-    partial void OnStoreyChanging(System.Nullable<int> value);
-    partial void OnStoreyChanged();
-    partial void OnTotalUseAreaChanging(System.Nullable<double> value);
-    partial void OnTotalUseAreaChanged();
-    partial void OnCampusFrontChanging(System.Nullable<double> value);
-    partial void OnCampusFrontChanged();
-    partial void OnCampusBehindChanging(System.Nullable<double> value);
-    partial void OnCampusBehindChanged();
-    partial void OnCampusLengthChanging(System.Nullable<double> value);
-    partial void OnCampusLengthChanged();
-    partial void OnBuildFrontChanging(System.Nullable<double> value);
-    partial void OnBuildFrontChanged();
-    partial void OnBuildBehindChanging(System.Nullable<double> value);
-    partial void OnBuildBehindChanged();
-    partial void OnBuildLengthChanging(System.Nullable<double> value);
-    partial void OnBuildLengthChanged();
-    partial void OnLegalChanging(string value);
-    partial void OnLegalChanged();
-    partial void OnDirectionChanging(string value);
-    partial void OnDirectionChanged();
-    partial void OnFrontStreetChanging(string value);
-    partial void OnFrontStreetChanged();
-    partial void OnLocationChanging(string value);
-    partial void OnLocationChanged();
-    partial void OnPriceChanging(decimal value);
-    partial void OnPriceChanged();
-    partial void OnUnitIDChanging(int value);
-    partial void OnUnitIDChanged();
-    partial void OnUnitPriceIDChanging(int value);
-    partial void OnUnitPriceIDChanged();
-    partial void OnProjectIDChanging(System.Nullable<int> value);
-    partial void OnProjectIDChanged();
-    partial void OnContactIDChanging(System.Nullable<int> value);
-    partial void OnContactIDChanged();
-    #endregion
-		
-		public REAL_ESTATE()
-		{
-			this._NEWS_SALEs = new EntitySet<NEWS_SALE>(new Action<NEWS_SALE>(this.attach_NEWS_SALEs), new Action<NEWS_SALE>(this.detach_NEWS_SALEs));
-			this._PROPERTY_COMPANies = new EntitySet<PROPERTY_COMPANY>(new Action<PROPERTY_COMPANY>(this.attach_PROPERTY_COMPANies), new Action<PROPERTY_COMPANY>(this.detach_PROPERTY_COMPANies));
-			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
-			this._REAL_ESTATE_IMAGEs = new EntitySet<REAL_ESTATE_IMAGE>(new Action<REAL_ESTATE_IMAGE>(this.attach_REAL_ESTATE_IMAGEs), new Action<REAL_ESTATE_IMAGE>(this.detach_REAL_ESTATE_IMAGEs));
-			this._UTILITY_DETAILs = new EntitySet<UTILITY_DETAIL>(new Action<UTILITY_DETAIL>(this.attach_UTILITY_DETAILs), new Action<UTILITY_DETAIL>(this.detach_UTILITY_DETAILs));
-			this._ADDRESS = default(EntityRef<ADDRESS>);
-			this._CONTACT = default(EntityRef<CONTACT>);
-			this._REAL_ESTATE_TYPE = default(EntityRef<REAL_ESTATE_TYPE>);
-			this._UNIT = default(EntityRef<UNIT>);
-			this._UNIT_PRICE = default(EntityRef<UNIT_PRICE>);
-			this._PROJECT = default(EntityRef<PROJECT>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int NOT NULL")]
-		public int TypeID
-		{
-			get
-			{
-				return this._TypeID;
-			}
-			set
-			{
-				if ((this._TypeID != value))
-				{
-					if (this._REAL_ESTATE_TYPE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._TypeID = value;
-					this.SendPropertyChanged("TypeID");
-					this.OnTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
-		public int AddressID
-		{
-			get
-			{
-				return this._AddressID;
-			}
-			set
-			{
-				if ((this._AddressID != value))
-				{
-					if (this._ADDRESS.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAddressIDChanging(value);
-					this.SendPropertyChanging();
-					this._AddressID = value;
-					this.SendPropertyChanged("AddressID");
-					this.OnAddressIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LivingRoom", DbType="Int")]
-		public System.Nullable<int> LivingRoom
-		{
-			get
-			{
-				return this._LivingRoom;
-			}
-			set
-			{
-				if ((this._LivingRoom != value))
-				{
-					this.OnLivingRoomChanging(value);
-					this.SendPropertyChanging();
-					this._LivingRoom = value;
-					this.SendPropertyChanged("LivingRoom");
-					this.OnLivingRoomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="Int")]
-		public System.Nullable<int> BedRoom
-		{
-			get
-			{
-				return this._BedRoom;
-			}
-			set
-			{
-				if ((this._BedRoom != value))
-				{
-					this.OnBedRoomChanging(value);
-					this.SendPropertyChanging();
-					this._BedRoom = value;
-					this.SendPropertyChanged("BedRoom");
-					this.OnBedRoomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BathRoom", DbType="Int")]
-		public System.Nullable<int> BathRoom
-		{
-			get
-			{
-				return this._BathRoom;
-			}
-			set
-			{
-				if ((this._BathRoom != value))
-				{
-					this.OnBathRoomChanging(value);
-					this.SendPropertyChanging();
-					this._BathRoom = value;
-					this.SendPropertyChanged("BathRoom");
-					this.OnBathRoomChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Storey", DbType="Int")]
-		public System.Nullable<int> Storey
-		{
-			get
-			{
-				return this._Storey;
-			}
-			set
-			{
-				if ((this._Storey != value))
-				{
-					this.OnStoreyChanging(value);
-					this.SendPropertyChanging();
-					this._Storey = value;
-					this.SendPropertyChanged("Storey");
-					this.OnStoreyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalUseArea", DbType="Float")]
-		public System.Nullable<double> TotalUseArea
-		{
-			get
-			{
-				return this._TotalUseArea;
-			}
-			set
-			{
-				if ((this._TotalUseArea != value))
-				{
-					this.OnTotalUseAreaChanging(value);
-					this.SendPropertyChanging();
-					this._TotalUseArea = value;
-					this.SendPropertyChanged("TotalUseArea");
-					this.OnTotalUseAreaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusFront", DbType="Float")]
-		public System.Nullable<double> CampusFront
-		{
-			get
-			{
-				return this._CampusFront;
-			}
-			set
-			{
-				if ((this._CampusFront != value))
-				{
-					this.OnCampusFrontChanging(value);
-					this.SendPropertyChanging();
-					this._CampusFront = value;
-					this.SendPropertyChanged("CampusFront");
-					this.OnCampusFrontChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusBehind", DbType="Float")]
-		public System.Nullable<double> CampusBehind
-		{
-			get
-			{
-				return this._CampusBehind;
-			}
-			set
-			{
-				if ((this._CampusBehind != value))
-				{
-					this.OnCampusBehindChanging(value);
-					this.SendPropertyChanging();
-					this._CampusBehind = value;
-					this.SendPropertyChanged("CampusBehind");
-					this.OnCampusBehindChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusLength", DbType="Float")]
-		public System.Nullable<double> CampusLength
-		{
-			get
-			{
-				return this._CampusLength;
-			}
-			set
-			{
-				if ((this._CampusLength != value))
-				{
-					this.OnCampusLengthChanging(value);
-					this.SendPropertyChanging();
-					this._CampusLength = value;
-					this.SendPropertyChanged("CampusLength");
-					this.OnCampusLengthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildFront", DbType="Float")]
-		public System.Nullable<double> BuildFront
-		{
-			get
-			{
-				return this._BuildFront;
-			}
-			set
-			{
-				if ((this._BuildFront != value))
-				{
-					this.OnBuildFrontChanging(value);
-					this.SendPropertyChanging();
-					this._BuildFront = value;
-					this.SendPropertyChanged("BuildFront");
-					this.OnBuildFrontChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildBehind", DbType="Float")]
-		public System.Nullable<double> BuildBehind
-		{
-			get
-			{
-				return this._BuildBehind;
-			}
-			set
-			{
-				if ((this._BuildBehind != value))
-				{
-					this.OnBuildBehindChanging(value);
-					this.SendPropertyChanging();
-					this._BuildBehind = value;
-					this.SendPropertyChanged("BuildBehind");
-					this.OnBuildBehindChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildLength", DbType="Float")]
-		public System.Nullable<double> BuildLength
-		{
-			get
-			{
-				return this._BuildLength;
-			}
-			set
-			{
-				if ((this._BuildLength != value))
-				{
-					this.OnBuildLengthChanging(value);
-					this.SendPropertyChanging();
-					this._BuildLength = value;
-					this.SendPropertyChanged("BuildLength");
-					this.OnBuildLengthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Legal", DbType="NVarChar(500)")]
-		public string Legal
-		{
-			get
-			{
-				return this._Legal;
-			}
-			set
-			{
-				if ((this._Legal != value))
-				{
-					this.OnLegalChanging(value);
-					this.SendPropertyChanging();
-					this._Legal = value;
-					this.SendPropertyChanged("Legal");
-					this.OnLegalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Direction", DbType="NVarChar(100)")]
-		public string Direction
-		{
-			get
-			{
-				return this._Direction;
-			}
-			set
-			{
-				if ((this._Direction != value))
-				{
-					this.OnDirectionChanging(value);
-					this.SendPropertyChanging();
-					this._Direction = value;
-					this.SendPropertyChanged("Direction");
-					this.OnDirectionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FrontStreet", DbType="NVarChar(100)")]
-		public string FrontStreet
-		{
-			get
-			{
-				return this._FrontStreet;
-			}
-			set
-			{
-				if ((this._FrontStreet != value))
-				{
-					this.OnFrontStreetChanging(value);
-					this.SendPropertyChanging();
-					this._FrontStreet = value;
-					this.SendPropertyChanged("FrontStreet");
-					this.OnFrontStreetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="NVarChar(100)")]
-		public string Location
-		{
-			get
-			{
-				return this._Location;
-			}
-			set
-			{
-				if ((this._Location != value))
-				{
-					this.OnLocationChanging(value);
-					this.SendPropertyChanging();
-					this._Location = value;
-					this.SendPropertyChanged("Location");
-					this.OnLocationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Money NOT NULL")]
-		public decimal Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL")]
-		public int UnitID
-		{
-			get
-			{
-				return this._UnitID;
-			}
-			set
-			{
-				if ((this._UnitID != value))
-				{
-					if (this._UNIT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUnitIDChanging(value);
-					this.SendPropertyChanging();
-					this._UnitID = value;
-					this.SendPropertyChanged("UnitID");
-					this.OnUnitIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPriceID", DbType="Int NOT NULL")]
-		public int UnitPriceID
-		{
-			get
-			{
-				return this._UnitPriceID;
-			}
-			set
-			{
-				if ((this._UnitPriceID != value))
-				{
-					if (this._UNIT_PRICE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUnitPriceIDChanging(value);
-					this.SendPropertyChanging();
-					this._UnitPriceID = value;
-					this.SendPropertyChanged("UnitPriceID");
-					this.OnUnitPriceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectID", DbType="Int")]
-		public System.Nullable<int> ProjectID
-		{
-			get
-			{
-				return this._ProjectID;
-			}
-			set
-			{
-				if ((this._ProjectID != value))
-				{
-					if (this._PROJECT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectID = value;
-					this.SendPropertyChanged("ProjectID");
-					this.OnProjectIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactID", DbType="Int")]
-		public System.Nullable<int> ContactID
-		{
-			get
-			{
-				return this._ContactID;
-			}
-			set
-			{
-				if ((this._ContactID != value))
-				{
-					if (this._CONTACT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnContactIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContactID = value;
-					this.SendPropertyChanged("ContactID");
-					this.OnContactIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_NEWS_SALE", Storage="_NEWS_SALEs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<NEWS_SALE> NEWS_SALEs
-		{
-			get
-			{
-				return this._NEWS_SALEs;
-			}
-			set
-			{
-				this._NEWS_SALEs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_COMPANY", Storage="_PROPERTY_COMPANies", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<PROPERTY_COMPANY> PROPERTY_COMPANies
-		{
-			get
-			{
-				return this._PROPERTY_COMPANies;
-			}
-			set
-			{
-				this._PROPERTY_COMPANies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
-		{
-			get
-			{
-				return this._PROPERTY_CUSTOMERs;
-			}
-			set
-			{
-				this._PROPERTY_CUSTOMERs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE_IMAGEs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<REAL_ESTATE_IMAGE> REAL_ESTATE_IMAGEs
-		{
-			get
-			{
-				return this._REAL_ESTATE_IMAGEs;
-			}
-			set
-			{
-				this._REAL_ESTATE_IMAGEs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_UTILITY_DETAIL", Storage="_UTILITY_DETAILs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<UTILITY_DETAIL> UTILITY_DETAILs
-		{
-			get
-			{
-				return this._UTILITY_DETAILs;
-			}
-			set
-			{
-				this._UTILITY_DETAILs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_REAL_ESTATE", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ADDRESS ADDRESS
-		{
-			get
-			{
-				return this._ADDRESS.Entity;
-			}
-			set
-			{
-				ADDRESS previousValue = this._ADDRESS.Entity;
-				if (((previousValue != value) 
-							|| (this._ADDRESS.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ADDRESS.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._ADDRESS.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._AddressID = value.ID;
-					}
-					else
-					{
-						this._AddressID = default(int);
-					}
-					this.SendPropertyChanged("ADDRESS");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTACT_REAL_ESTATE", Storage="_CONTACT", ThisKey="ContactID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public CONTACT CONTACT
-		{
-			get
-			{
-				return this._CONTACT.Entity;
-			}
-			set
-			{
-				CONTACT previousValue = this._CONTACT.Entity;
-				if (((previousValue != value) 
-							|| (this._CONTACT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CONTACT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._CONTACT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._ContactID = value.ID;
-					}
-					else
-					{
-						this._ContactID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("CONTACT");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_TYPE_REAL_ESTATE", Storage="_REAL_ESTATE_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public REAL_ESTATE_TYPE REAL_ESTATE_TYPE
-		{
-			get
-			{
-				return this._REAL_ESTATE_TYPE.Entity;
-			}
-			set
-			{
-				REAL_ESTATE_TYPE previousValue = this._REAL_ESTATE_TYPE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE_TYPE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE_TYPE.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._REAL_ESTATE_TYPE.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._TypeID = value.ID;
-					}
-					else
-					{
-						this._TypeID = default(int);
-					}
-					this.SendPropertyChanged("REAL_ESTATE_TYPE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_REAL_ESTATE", Storage="_UNIT", ThisKey="UnitID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public UNIT UNIT
-		{
-			get
-			{
-				return this._UNIT.Entity;
-			}
-			set
-			{
-				UNIT previousValue = this._UNIT.Entity;
-				if (((previousValue != value) 
-							|| (this._UNIT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UNIT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._UNIT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._UnitID = value.ID;
-					}
-					else
-					{
-						this._UnitID = default(int);
-					}
-					this.SendPropertyChanged("UNIT");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_PRICE_REAL_ESTATE", Storage="_UNIT_PRICE", ThisKey="UnitPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public UNIT_PRICE UNIT_PRICE
-		{
-			get
-			{
-				return this._UNIT_PRICE.Entity;
-			}
-			set
-			{
-				UNIT_PRICE previousValue = this._UNIT_PRICE.Entity;
-				if (((previousValue != value) 
-							|| (this._UNIT_PRICE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UNIT_PRICE.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._UNIT_PRICE.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._UnitPriceID = value.ID;
-					}
-					else
-					{
-						this._UnitPriceID = default(int);
-					}
-					this.SendPropertyChanged("UNIT_PRICE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_PROJECT", ThisKey="ProjectID", OtherKey="ID", IsForeignKey=true)]
-		public PROJECT PROJECT
-		{
-			get
-			{
-				return this._PROJECT.Entity;
-			}
-			set
-			{
-				PROJECT previousValue = this._PROJECT.Entity;
-				if (((previousValue != value) 
-							|| (this._PROJECT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PROJECT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._PROJECT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._ProjectID = value.ID;
-					}
-					else
-					{
-						this._ProjectID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PROJECT");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_UTILITY_DETAILs(UTILITY_DETAIL entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_UTILITY_DETAILs(UTILITY_DETAIL entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.REAL_ESTATE_IMAGE")]
 	public partial class REAL_ESTATE_IMAGE : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5887,7 +4911,7 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public REAL_ESTATE REAL_ESTATE
 		{
 			get
@@ -7009,9 +6033,9 @@ namespace RealEstateDataContext
 		
 		private int _UtilityID;
 		
-		private EntityRef<REAL_ESTATE> _REAL_ESTATE;
-		
 		private EntityRef<UTILITY> _UTILITY;
+		
+		private EntityRef<REAL_ESTATE> _REAL_ESTATE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -7027,8 +6051,8 @@ namespace RealEstateDataContext
 		
 		public UTILITY_DETAIL()
 		{
-			this._REAL_ESTATE = default(EntityRef<REAL_ESTATE>);
 			this._UTILITY = default(EntityRef<UTILITY>);
+			this._REAL_ESTATE = default(EntityRef<REAL_ESTATE>);
 			OnCreated();
 		}
 		
@@ -7100,40 +6124,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_UTILITY_DETAIL", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public REAL_ESTATE REAL_ESTATE
-		{
-			get
-			{
-				return this._REAL_ESTATE.Entity;
-			}
-			set
-			{
-				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE.Entity = null;
-						previousValue.UTILITY_DETAILs.Remove(this);
-					}
-					this._REAL_ESTATE.Entity = value;
-					if ((value != null))
-					{
-						value.UTILITY_DETAILs.Add(this);
-						this._RealEstateID = value.ID;
-					}
-					else
-					{
-						this._RealEstateID = default(int);
-					}
-					this.SendPropertyChanged("REAL_ESTATE");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UTILITY_UTILITY_DETAIL", Storage="_UTILITY", ThisKey="UtilityID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public UTILITY UTILITY
 		{
@@ -7164,6 +6154,40 @@ namespace RealEstateDataContext
 						this._UtilityID = default(int);
 					}
 					this.SendPropertyChanged("UTILITY");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_UTILITY_DETAIL", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public REAL_ESTATE REAL_ESTATE
+		{
+			get
+			{
+				return this._REAL_ESTATE.Entity;
+			}
+			set
+			{
+				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
+				if (((previousValue != value) 
+							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._REAL_ESTATE.Entity = null;
+						previousValue.UTILITY_DETAILs.Remove(this);
+					}
+					this._REAL_ESTATE.Entity = value;
+					if ((value != null))
+					{
+						value.UTILITY_DETAILs.Add(this);
+						this._RealEstateID = value.ID;
+					}
+					else
+					{
+						this._RealEstateID = default(int);
+					}
+					this.SendPropertyChanged("REAL_ESTATE");
 				}
 			}
 		}
@@ -7477,6 +6501,8 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
+		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -7491,6 +6517,7 @@ namespace RealEstateDataContext
 		
 		public LEGAL()
 		{
+			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -7554,6 +6581,19 @@ namespace RealEstateDataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LEGAL_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="LegalID")]
+		public EntitySet<REAL_ESTATE> REAL_ESTATEs
+		{
+			get
+			{
+				return this._REAL_ESTATEs;
+			}
+			set
+			{
+				this._REAL_ESTATEs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -7572,6 +6612,18 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.LEGAL = this;
+		}
+		
+		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.LEGAL = null;
 		}
 	}
 	
@@ -7587,6 +6639,8 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
+		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -7601,6 +6655,7 @@ namespace RealEstateDataContext
 		
 		public LOCATION()
 		{
+			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -7664,6 +6719,19 @@ namespace RealEstateDataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOCATION_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="LocationID")]
+		public EntitySet<REAL_ESTATE> REAL_ESTATEs
+		{
+			get
+			{
+				return this._REAL_ESTATEs;
+			}
+			set
+			{
+				this._REAL_ESTATEs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -7682,6 +6750,1076 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.LOCATION = this;
+		}
+		
+		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.LOCATION = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.REAL_ESTATE")]
+	public partial class REAL_ESTATE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _TypeID;
+		
+		private int _AddressID;
+		
+		private System.Nullable<int> _LivingRoom;
+		
+		private System.Nullable<int> _BedRoom;
+		
+		private System.Nullable<int> _BathRoom;
+		
+		private System.Nullable<int> _Storey;
+		
+		private System.Nullable<double> _TotalUseArea;
+		
+		private System.Nullable<double> _CampusFront;
+		
+		private System.Nullable<double> _CampusBehind;
+		
+		private System.Nullable<double> _CampusLength;
+		
+		private System.Nullable<double> _BuildFront;
+		
+		private System.Nullable<double> _BuildBehind;
+		
+		private System.Nullable<double> _BuildLength;
+		
+		private System.Nullable<int> _LegalID;
+		
+		private string _Direction;
+		
+		private string _FrontStreet;
+		
+		private System.Nullable<int> _LocationID;
+		
+		private decimal _Price;
+		
+		private int _UnitID;
+		
+		private int _UnitPriceID;
+		
+		private System.Nullable<int> _ProjectID;
+		
+		private System.Nullable<int> _ContactID;
+		
+		private EntitySet<NEWS_SALE> _NEWS_SALEs;
+		
+		private EntitySet<PROPERTY_COMPANY> _PROPERTY_COMPANies;
+		
+		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
+		
+		private EntitySet<REAL_ESTATE_IMAGE> _REAL_ESTATE_IMAGEs;
+		
+		private EntitySet<UTILITY_DETAIL> _UTILITY_DETAILs;
+		
+		private EntityRef<ADDRESS> _ADDRESS;
+		
+		private EntityRef<CONTACT> _CONTACT;
+		
+		private EntityRef<LEGAL> _LEGAL;
+		
+		private EntityRef<LOCATION> _LOCATION;
+		
+		private EntityRef<PROJECT> _PROJECT;
+		
+		private EntityRef<REAL_ESTATE_TYPE> _REAL_ESTATE_TYPE;
+		
+		private EntityRef<UNIT> _UNIT;
+		
+		private EntityRef<UNIT_PRICE> _UNIT_PRICE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTypeIDChanging(int value);
+    partial void OnTypeIDChanged();
+    partial void OnAddressIDChanging(int value);
+    partial void OnAddressIDChanged();
+    partial void OnLivingRoomChanging(System.Nullable<int> value);
+    partial void OnLivingRoomChanged();
+    partial void OnBedRoomChanging(System.Nullable<int> value);
+    partial void OnBedRoomChanged();
+    partial void OnBathRoomChanging(System.Nullable<int> value);
+    partial void OnBathRoomChanged();
+    partial void OnStoreyChanging(System.Nullable<int> value);
+    partial void OnStoreyChanged();
+    partial void OnTotalUseAreaChanging(System.Nullable<double> value);
+    partial void OnTotalUseAreaChanged();
+    partial void OnCampusFrontChanging(System.Nullable<double> value);
+    partial void OnCampusFrontChanged();
+    partial void OnCampusBehindChanging(System.Nullable<double> value);
+    partial void OnCampusBehindChanged();
+    partial void OnCampusLengthChanging(System.Nullable<double> value);
+    partial void OnCampusLengthChanged();
+    partial void OnBuildFrontChanging(System.Nullable<double> value);
+    partial void OnBuildFrontChanged();
+    partial void OnBuildBehindChanging(System.Nullable<double> value);
+    partial void OnBuildBehindChanged();
+    partial void OnBuildLengthChanging(System.Nullable<double> value);
+    partial void OnBuildLengthChanged();
+    partial void OnLegalIDChanging(System.Nullable<int> value);
+    partial void OnLegalIDChanged();
+    partial void OnDirectionChanging(string value);
+    partial void OnDirectionChanged();
+    partial void OnFrontStreetChanging(string value);
+    partial void OnFrontStreetChanged();
+    partial void OnLocationIDChanging(System.Nullable<int> value);
+    partial void OnLocationIDChanged();
+    partial void OnPriceChanging(decimal value);
+    partial void OnPriceChanged();
+    partial void OnUnitIDChanging(int value);
+    partial void OnUnitIDChanged();
+    partial void OnUnitPriceIDChanging(int value);
+    partial void OnUnitPriceIDChanged();
+    partial void OnProjectIDChanging(System.Nullable<int> value);
+    partial void OnProjectIDChanged();
+    partial void OnContactIDChanging(System.Nullable<int> value);
+    partial void OnContactIDChanged();
+    #endregion
+		
+		public REAL_ESTATE()
+		{
+			this._NEWS_SALEs = new EntitySet<NEWS_SALE>(new Action<NEWS_SALE>(this.attach_NEWS_SALEs), new Action<NEWS_SALE>(this.detach_NEWS_SALEs));
+			this._PROPERTY_COMPANies = new EntitySet<PROPERTY_COMPANY>(new Action<PROPERTY_COMPANY>(this.attach_PROPERTY_COMPANies), new Action<PROPERTY_COMPANY>(this.detach_PROPERTY_COMPANies));
+			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
+			this._REAL_ESTATE_IMAGEs = new EntitySet<REAL_ESTATE_IMAGE>(new Action<REAL_ESTATE_IMAGE>(this.attach_REAL_ESTATE_IMAGEs), new Action<REAL_ESTATE_IMAGE>(this.detach_REAL_ESTATE_IMAGEs));
+			this._UTILITY_DETAILs = new EntitySet<UTILITY_DETAIL>(new Action<UTILITY_DETAIL>(this.attach_UTILITY_DETAILs), new Action<UTILITY_DETAIL>(this.detach_UTILITY_DETAILs));
+			this._ADDRESS = default(EntityRef<ADDRESS>);
+			this._CONTACT = default(EntityRef<CONTACT>);
+			this._LEGAL = default(EntityRef<LEGAL>);
+			this._LOCATION = default(EntityRef<LOCATION>);
+			this._PROJECT = default(EntityRef<PROJECT>);
+			this._REAL_ESTATE_TYPE = default(EntityRef<REAL_ESTATE_TYPE>);
+			this._UNIT = default(EntityRef<UNIT>);
+			this._UNIT_PRICE = default(EntityRef<UNIT_PRICE>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int NOT NULL")]
+		public int TypeID
+		{
+			get
+			{
+				return this._TypeID;
+			}
+			set
+			{
+				if ((this._TypeID != value))
+				{
+					if (this._REAL_ESTATE_TYPE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._TypeID = value;
+					this.SendPropertyChanged("TypeID");
+					this.OnTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
+		public int AddressID
+		{
+			get
+			{
+				return this._AddressID;
+			}
+			set
+			{
+				if ((this._AddressID != value))
+				{
+					if (this._ADDRESS.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAddressIDChanging(value);
+					this.SendPropertyChanging();
+					this._AddressID = value;
+					this.SendPropertyChanged("AddressID");
+					this.OnAddressIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LivingRoom", DbType="Int")]
+		public System.Nullable<int> LivingRoom
+		{
+			get
+			{
+				return this._LivingRoom;
+			}
+			set
+			{
+				if ((this._LivingRoom != value))
+				{
+					this.OnLivingRoomChanging(value);
+					this.SendPropertyChanging();
+					this._LivingRoom = value;
+					this.SendPropertyChanged("LivingRoom");
+					this.OnLivingRoomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="Int")]
+		public System.Nullable<int> BedRoom
+		{
+			get
+			{
+				return this._BedRoom;
+			}
+			set
+			{
+				if ((this._BedRoom != value))
+				{
+					this.OnBedRoomChanging(value);
+					this.SendPropertyChanging();
+					this._BedRoom = value;
+					this.SendPropertyChanged("BedRoom");
+					this.OnBedRoomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BathRoom", DbType="Int")]
+		public System.Nullable<int> BathRoom
+		{
+			get
+			{
+				return this._BathRoom;
+			}
+			set
+			{
+				if ((this._BathRoom != value))
+				{
+					this.OnBathRoomChanging(value);
+					this.SendPropertyChanging();
+					this._BathRoom = value;
+					this.SendPropertyChanged("BathRoom");
+					this.OnBathRoomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Storey", DbType="Int")]
+		public System.Nullable<int> Storey
+		{
+			get
+			{
+				return this._Storey;
+			}
+			set
+			{
+				if ((this._Storey != value))
+				{
+					this.OnStoreyChanging(value);
+					this.SendPropertyChanging();
+					this._Storey = value;
+					this.SendPropertyChanged("Storey");
+					this.OnStoreyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalUseArea", DbType="Float")]
+		public System.Nullable<double> TotalUseArea
+		{
+			get
+			{
+				return this._TotalUseArea;
+			}
+			set
+			{
+				if ((this._TotalUseArea != value))
+				{
+					this.OnTotalUseAreaChanging(value);
+					this.SendPropertyChanging();
+					this._TotalUseArea = value;
+					this.SendPropertyChanged("TotalUseArea");
+					this.OnTotalUseAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusFront", DbType="Float")]
+		public System.Nullable<double> CampusFront
+		{
+			get
+			{
+				return this._CampusFront;
+			}
+			set
+			{
+				if ((this._CampusFront != value))
+				{
+					this.OnCampusFrontChanging(value);
+					this.SendPropertyChanging();
+					this._CampusFront = value;
+					this.SendPropertyChanged("CampusFront");
+					this.OnCampusFrontChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusBehind", DbType="Float")]
+		public System.Nullable<double> CampusBehind
+		{
+			get
+			{
+				return this._CampusBehind;
+			}
+			set
+			{
+				if ((this._CampusBehind != value))
+				{
+					this.OnCampusBehindChanging(value);
+					this.SendPropertyChanging();
+					this._CampusBehind = value;
+					this.SendPropertyChanged("CampusBehind");
+					this.OnCampusBehindChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CampusLength", DbType="Float")]
+		public System.Nullable<double> CampusLength
+		{
+			get
+			{
+				return this._CampusLength;
+			}
+			set
+			{
+				if ((this._CampusLength != value))
+				{
+					this.OnCampusLengthChanging(value);
+					this.SendPropertyChanging();
+					this._CampusLength = value;
+					this.SendPropertyChanged("CampusLength");
+					this.OnCampusLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildFront", DbType="Float")]
+		public System.Nullable<double> BuildFront
+		{
+			get
+			{
+				return this._BuildFront;
+			}
+			set
+			{
+				if ((this._BuildFront != value))
+				{
+					this.OnBuildFrontChanging(value);
+					this.SendPropertyChanging();
+					this._BuildFront = value;
+					this.SendPropertyChanged("BuildFront");
+					this.OnBuildFrontChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildBehind", DbType="Float")]
+		public System.Nullable<double> BuildBehind
+		{
+			get
+			{
+				return this._BuildBehind;
+			}
+			set
+			{
+				if ((this._BuildBehind != value))
+				{
+					this.OnBuildBehindChanging(value);
+					this.SendPropertyChanging();
+					this._BuildBehind = value;
+					this.SendPropertyChanged("BuildBehind");
+					this.OnBuildBehindChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BuildLength", DbType="Float")]
+		public System.Nullable<double> BuildLength
+		{
+			get
+			{
+				return this._BuildLength;
+			}
+			set
+			{
+				if ((this._BuildLength != value))
+				{
+					this.OnBuildLengthChanging(value);
+					this.SendPropertyChanging();
+					this._BuildLength = value;
+					this.SendPropertyChanged("BuildLength");
+					this.OnBuildLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalID", DbType="Int")]
+		public System.Nullable<int> LegalID
+		{
+			get
+			{
+				return this._LegalID;
+			}
+			set
+			{
+				if ((this._LegalID != value))
+				{
+					if (this._LEGAL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLegalIDChanging(value);
+					this.SendPropertyChanging();
+					this._LegalID = value;
+					this.SendPropertyChanged("LegalID");
+					this.OnLegalIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Direction", DbType="NVarChar(100)")]
+		public string Direction
+		{
+			get
+			{
+				return this._Direction;
+			}
+			set
+			{
+				if ((this._Direction != value))
+				{
+					this.OnDirectionChanging(value);
+					this.SendPropertyChanging();
+					this._Direction = value;
+					this.SendPropertyChanged("Direction");
+					this.OnDirectionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FrontStreet", DbType="NVarChar(100)")]
+		public string FrontStreet
+		{
+			get
+			{
+				return this._FrontStreet;
+			}
+			set
+			{
+				if ((this._FrontStreet != value))
+				{
+					this.OnFrontStreetChanging(value);
+					this.SendPropertyChanging();
+					this._FrontStreet = value;
+					this.SendPropertyChanged("FrontStreet");
+					this.OnFrontStreetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int")]
+		public System.Nullable<int> LocationID
+		{
+			get
+			{
+				return this._LocationID;
+			}
+			set
+			{
+				if ((this._LocationID != value))
+				{
+					if (this._LOCATION.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLocationIDChanging(value);
+					this.SendPropertyChanging();
+					this._LocationID = value;
+					this.SendPropertyChanged("LocationID");
+					this.OnLocationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Money NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL")]
+		public int UnitID
+		{
+			get
+			{
+				return this._UnitID;
+			}
+			set
+			{
+				if ((this._UnitID != value))
+				{
+					if (this._UNIT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUnitIDChanging(value);
+					this.SendPropertyChanging();
+					this._UnitID = value;
+					this.SendPropertyChanged("UnitID");
+					this.OnUnitIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPriceID", DbType="Int NOT NULL")]
+		public int UnitPriceID
+		{
+			get
+			{
+				return this._UnitPriceID;
+			}
+			set
+			{
+				if ((this._UnitPriceID != value))
+				{
+					if (this._UNIT_PRICE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUnitPriceIDChanging(value);
+					this.SendPropertyChanging();
+					this._UnitPriceID = value;
+					this.SendPropertyChanged("UnitPriceID");
+					this.OnUnitPriceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectID", DbType="Int")]
+		public System.Nullable<int> ProjectID
+		{
+			get
+			{
+				return this._ProjectID;
+			}
+			set
+			{
+				if ((this._ProjectID != value))
+				{
+					if (this._PROJECT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectID = value;
+					this.SendPropertyChanged("ProjectID");
+					this.OnProjectIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactID", DbType="Int")]
+		public System.Nullable<int> ContactID
+		{
+			get
+			{
+				return this._ContactID;
+			}
+			set
+			{
+				if ((this._ContactID != value))
+				{
+					if (this._CONTACT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnContactIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContactID = value;
+					this.SendPropertyChanged("ContactID");
+					this.OnContactIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_NEWS_SALE", Storage="_NEWS_SALEs", ThisKey="ID", OtherKey="RealEstateID")]
+		public EntitySet<NEWS_SALE> NEWS_SALEs
+		{
+			get
+			{
+				return this._NEWS_SALEs;
+			}
+			set
+			{
+				this._NEWS_SALEs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_COMPANY", Storage="_PROPERTY_COMPANies", ThisKey="ID", OtherKey="RealEstateID")]
+		public EntitySet<PROPERTY_COMPANY> PROPERTY_COMPANies
+		{
+			get
+			{
+				return this._PROPERTY_COMPANies;
+			}
+			set
+			{
+				this._PROPERTY_COMPANies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="RealEstateID")]
+		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
+		{
+			get
+			{
+				return this._PROPERTY_CUSTOMERs;
+			}
+			set
+			{
+				this._PROPERTY_CUSTOMERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE_IMAGEs", ThisKey="ID", OtherKey="RealEstateID")]
+		public EntitySet<REAL_ESTATE_IMAGE> REAL_ESTATE_IMAGEs
+		{
+			get
+			{
+				return this._REAL_ESTATE_IMAGEs;
+			}
+			set
+			{
+				this._REAL_ESTATE_IMAGEs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_UTILITY_DETAIL", Storage="_UTILITY_DETAILs", ThisKey="ID", OtherKey="RealEstateID")]
+		public EntitySet<UTILITY_DETAIL> UTILITY_DETAILs
+		{
+			get
+			{
+				return this._UTILITY_DETAILs;
+			}
+			set
+			{
+				this._UTILITY_DETAILs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_REAL_ESTATE", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public ADDRESS ADDRESS
+		{
+			get
+			{
+				return this._ADDRESS.Entity;
+			}
+			set
+			{
+				ADDRESS previousValue = this._ADDRESS.Entity;
+				if (((previousValue != value) 
+							|| (this._ADDRESS.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ADDRESS.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._ADDRESS.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._AddressID = value.ID;
+					}
+					else
+					{
+						this._AddressID = default(int);
+					}
+					this.SendPropertyChanged("ADDRESS");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTACT_REAL_ESTATE", Storage="_CONTACT", ThisKey="ContactID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public CONTACT CONTACT
+		{
+			get
+			{
+				return this._CONTACT.Entity;
+			}
+			set
+			{
+				CONTACT previousValue = this._CONTACT.Entity;
+				if (((previousValue != value) 
+							|| (this._CONTACT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CONTACT.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._CONTACT.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._ContactID = value.ID;
+					}
+					else
+					{
+						this._ContactID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CONTACT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LEGAL_REAL_ESTATE", Storage="_LEGAL", ThisKey="LegalID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public LEGAL LEGAL
+		{
+			get
+			{
+				return this._LEGAL.Entity;
+			}
+			set
+			{
+				LEGAL previousValue = this._LEGAL.Entity;
+				if (((previousValue != value) 
+							|| (this._LEGAL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LEGAL.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._LEGAL.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._LegalID = value.ID;
+					}
+					else
+					{
+						this._LegalID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("LEGAL");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOCATION_REAL_ESTATE", Storage="_LOCATION", ThisKey="LocationID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public LOCATION LOCATION
+		{
+			get
+			{
+				return this._LOCATION.Entity;
+			}
+			set
+			{
+				LOCATION previousValue = this._LOCATION.Entity;
+				if (((previousValue != value) 
+							|| (this._LOCATION.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LOCATION.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._LOCATION.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._LocationID = value.ID;
+					}
+					else
+					{
+						this._LocationID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("LOCATION");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_PROJECT", ThisKey="ProjectID", OtherKey="ID", IsForeignKey=true)]
+		public PROJECT PROJECT
+		{
+			get
+			{
+				return this._PROJECT.Entity;
+			}
+			set
+			{
+				PROJECT previousValue = this._PROJECT.Entity;
+				if (((previousValue != value) 
+							|| (this._PROJECT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PROJECT.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._PROJECT.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._ProjectID = value.ID;
+					}
+					else
+					{
+						this._ProjectID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PROJECT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_TYPE_REAL_ESTATE", Storage="_REAL_ESTATE_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public REAL_ESTATE_TYPE REAL_ESTATE_TYPE
+		{
+			get
+			{
+				return this._REAL_ESTATE_TYPE.Entity;
+			}
+			set
+			{
+				REAL_ESTATE_TYPE previousValue = this._REAL_ESTATE_TYPE.Entity;
+				if (((previousValue != value) 
+							|| (this._REAL_ESTATE_TYPE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._REAL_ESTATE_TYPE.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._REAL_ESTATE_TYPE.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._TypeID = value.ID;
+					}
+					else
+					{
+						this._TypeID = default(int);
+					}
+					this.SendPropertyChanged("REAL_ESTATE_TYPE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_REAL_ESTATE", Storage="_UNIT", ThisKey="UnitID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public UNIT UNIT
+		{
+			get
+			{
+				return this._UNIT.Entity;
+			}
+			set
+			{
+				UNIT previousValue = this._UNIT.Entity;
+				if (((previousValue != value) 
+							|| (this._UNIT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UNIT.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._UNIT.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._UnitID = value.ID;
+					}
+					else
+					{
+						this._UnitID = default(int);
+					}
+					this.SendPropertyChanged("UNIT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_PRICE_REAL_ESTATE", Storage="_UNIT_PRICE", ThisKey="UnitPriceID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public UNIT_PRICE UNIT_PRICE
+		{
+			get
+			{
+				return this._UNIT_PRICE.Entity;
+			}
+			set
+			{
+				UNIT_PRICE previousValue = this._UNIT_PRICE.Entity;
+				if (((previousValue != value) 
+							|| (this._UNIT_PRICE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UNIT_PRICE.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._UNIT_PRICE.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._UnitPriceID = value.ID;
+					}
+					else
+					{
+						this._UnitPriceID = default(int);
+					}
+					this.SendPropertyChanged("UNIT_PRICE");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_NEWS_SALEs(NEWS_SALE entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = this;
+		}
+		
+		private void detach_NEWS_SALEs(NEWS_SALE entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = null;
+		}
+		
+		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = this;
+		}
+		
+		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = null;
+		}
+		
+		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = this;
+		}
+		
+		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = null;
+		}
+		
+		private void attach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = this;
+		}
+		
+		private void detach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = null;
+		}
+		
+		private void attach_UTILITY_DETAILs(UTILITY_DETAIL entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = this;
+		}
+		
+		private void detach_UTILITY_DETAILs(UTILITY_DETAIL entity)
+		{
+			this.SendPropertyChanging();
+			entity.REAL_ESTATE = null;
 		}
 	}
 }

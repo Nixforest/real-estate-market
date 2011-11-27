@@ -1041,6 +1041,19 @@ public class RealEstateWebService : System.Web.Services.WebService
             throw e;
         }
     }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEW> GetNewsByTypeID(int id)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEW>(news.GetNewsByTypeID(id));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
     #endregion
 
     #region Project Type Service
@@ -1237,15 +1250,15 @@ public class RealEstateWebService : System.Web.Services.WebService
             int? bedRoom, int? bathRoom, int? storey, double? totalUseArea,
             double? campusFront, double? campusBehind, double? campusLength,
             double? buildFront, double? buildBehind, double? buildLength,
-            string legal, string direction, string frontStreet, string location,
+            int? legalID, string direction, string frontStreet, int? locationID,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
     {
         try
         {
             return realEstate.Insert(typeID, addressID, livingRoom, bedRoom, bathRoom,
                 storey, totalUseArea, campusFront, campusBehind, campusLength,
-                buildFront, buildBehind, buildLength, legal, direction, frontStreet,
-                location, price, unitID, unitPriceID, projectID, contactID);
+                buildFront, buildBehind, buildLength, legalID, direction, frontStreet,
+                locationID, price, unitID, unitPriceID, projectID, contactID);
         }
         catch (Exception e)
         {
@@ -1258,15 +1271,15 @@ public class RealEstateWebService : System.Web.Services.WebService
             int? bedRoom, int? bathRoom, int? storey, double? totalUseArea,
             double? campusFront, double? campusBehind, double? campusLength,
             double? buildFront, double? buildBehind, double? buildLength,
-            string legal, string direction, string frontStreet, string location,
+            int? legalID, string direction, string frontStreet, int? locationID,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
     {
         try
         {
             return realEstate.Update(id, typeID, addressID, livingRoom, bedRoom, bathRoom,
                 storey, totalUseArea, campusFront, campusBehind, campusLength,
-                buildFront, buildBehind, buildLength, legal, direction, frontStreet,
-                location, price, unitID, unitPriceID, projectID, contactID);
+                buildFront, buildBehind, buildLength, legalID, direction, frontStreet,
+                locationID, price, unitID, unitPriceID, projectID, contactID);
         }
         catch (Exception e)
         {

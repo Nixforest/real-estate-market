@@ -99,6 +99,12 @@
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.IMAGE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LEGAL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LOCATION.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NATION.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
