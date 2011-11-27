@@ -98,10 +98,10 @@ namespace RealEstateBusinessLogicObject
         /// <param name="buildFront">Size in front of build area</param>
         /// <param name="buildBehind">Size in behind of build area</param>
         /// <param name="buildLength">Length of build area</param>
-        /// <param name="legal">Real estate's legal</param>
+        /// <param name="legal">Real estate's legal id</param>
         /// <param name="direction">Real estate's direction</param>
         /// <param name="frontStreet">Front street</param>
-        /// <param name="location">Location</param>
+        /// <param name="location">Location's id</param>
         /// <param name="price">Price</param>
         /// <param name="unitID">ID of unit</param>
         /// <param name="unitPriceID">ID of unit price</param>
@@ -120,7 +120,7 @@ namespace RealEstateBusinessLogicObject
             int? bedRoom, int? bathRoom, int? storey, double? totalUseArea,
             double? campusFront, double? campusBehind, double? campusLength,
             double? buildFront, double? buildBehind, double? buildLength,
-            string legal, string direction, string frontStreet, string location,
+            int? legalID, string direction, string frontStreet, int? locationID,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
         {
             if (new RealEstateDataAccessObject.Real_Estate_TypeDAO().ValidationID(typeID))
@@ -157,10 +157,10 @@ namespace RealEstateBusinessLogicObject
                                             entity.BuildFront = buildFront;
                                             entity.BuildBehind = buildBehind;
                                             entity.BuildLength = buildLength;
-                                            entity.Legal = legal;
+                                            entity.LegalID = legalID;
                                             entity.Direction = direction;
                                             entity.FrontStreet = frontStreet;
-                                            entity.Location = location;
+                                            entity.LocationID = locationID;
                                             entity.Price = price;
                                             entity.UnitID = unitID;
                                             entity.UnitPriceID = unitPriceID;
@@ -263,10 +263,10 @@ namespace RealEstateBusinessLogicObject
         /// <param name="buildFront">Size in front of build area</param>
         /// <param name="buildBehind">Size in behind of build area</param>
         /// <param name="buildLength">Length of build area</param>
-        /// <param name="legal">Real estate's legal</param>
+        /// <param name="legal">Real estate's legal id</param>
         /// <param name="direction">Real estate's direction</param>
         /// <param name="frontStreet">Front street</param>
-        /// <param name="location">Location</param>
+        /// <param name="location">Location's id</param>
         /// <param name="price">Price</param>
         /// <param name="unitID">ID of unit</param>
         /// <param name="unitPriceID">ID of unit price</param>
@@ -286,7 +286,7 @@ namespace RealEstateBusinessLogicObject
             int? bedRoom, int? bathRoom, int? storey, double? totalUseAre,
             double? campusFront, double? campusBehind, double? campusLength,
             double? buildFront, double? buildBehind, double? buildLength,
-            string legal, string direction, string frontStreet, string location,
+            int? legalID, string direction, string frontStreet, int? locationID,
             decimal price, int unitID, int unitPriceID, int? projectID, int? contactID)
         {
             if (ValidationID(id))
@@ -325,10 +325,10 @@ namespace RealEstateBusinessLogicObject
                                                 entity.BuildFront = buildFront;
                                                 entity.BuildBehind = buildBehind;
                                                 entity.BuildLength = buildLength;
-                                                entity.Legal = legal;
+                                                entity.LegalID = legalID;
                                                 entity.Direction = direction;
                                                 entity.FrontStreet = frontStreet;
-                                                entity.Location = location;
+                                                entity.LocationID = locationID;
                                                 entity.Price = price;
                                                 entity.UnitID = unitID;
                                                 entity.UnitPriceID = unitPriceID;

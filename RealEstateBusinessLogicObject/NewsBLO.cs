@@ -226,5 +226,15 @@ namespace RealEstateBusinessLogicObject
             }
             else throw new RealEstateDataContext.Utility.NationIDException();
         }
+
+        /// <summary>
+        /// Get News by Type ID
+        /// </summary>
+        /// <param name="ID">Type ID</param>
+        /// <returns>List News</returns>
+        public ICollection<RealEstateDataContext.NEW> GetNewsByTypeID(int ID)
+        {
+            return new ObservableCollection<RealEstateDataContext.NEW>(new RealEstateDataAccessObject.News_TypeDAO().GetARecord(ID).NEWs);
+        }
     }
 }

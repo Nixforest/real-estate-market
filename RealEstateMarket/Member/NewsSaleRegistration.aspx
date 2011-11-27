@@ -22,9 +22,14 @@
     <asp:ObjectDataSource ID="dataSourceUnitPrice" runat="server" 
         SelectMethod="GetAllUnitPrices" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dataSourceLocation" runat="server" 
+        SelectMethod="GetAllLocations" 
+        TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
     <h3>
         Đăng tài sản mới
     </h3>
+    <asp:Label ID="error" runat="server" ForeColor="Red">ABC</asp:Label><br />
+    <asp:Button ID="test" runat="server" Text="Test" onclick="test_Click" />
     <asp:Panel ID="pnlBasicInfo" runat="server" BorderStyle="Groove">
         <h4>
             Thông tin cơ bản
@@ -42,7 +47,8 @@
                     <b>Loại tin rao:</b>
                 </asp:TableCell>
                 <asp:TableCell ColumnSpan="3">
-                    <asp:RadioButtonList ID="rblNewsSaleType" runat="server" 
+                    <asp:RadioButtonList ID="rblNewsSaleType"
+                        runat="server" 
                         DataSourceID="dataSourceNewsSaleType"
                         DataTextField="Name"
                         DataValueField="ID" RepeatDirection="Horizontal">
@@ -53,9 +59,15 @@
                 <asp:TableCell>
                     <b>Loại Địa ốc:</b>
                 </asp:TableCell>
-                <asp:TableCell ColumnSpan="3">
+                <asp:TableCell>
                     <asp:DropDownList ID="ddlRealEstateType" runat="server"
                         DataSourceID="dataSourceRealEstateType"
+                        DataTextField="Name"
+                        DataValueField="ID"></asp:DropDownList>
+                </asp:TableCell>
+                <asp:TableCell ColumnSpan="2">
+                    <asp:DropDownList ID="ddlLocation" runat="server"
+                        DataSourceID="dataSourceLocation"
                         DataTextField="Name"
                         DataValueField="ID"></asp:DropDownList>
                 </asp:TableCell>
@@ -175,6 +187,9 @@
     <asp:ObjectDataSource ID="dataSourceUtility" runat="server" 
         SelectMethod="GetAllUtilities" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="dataSourceLegal" runat="server"
+        SelectMethod="GetAllLegals"
+        TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
     <asp:Panel ID="pnlUtility" runat="server" BorderStyle="Groove">
         <h4>
             Đặc điểm & Tiện ích
@@ -183,16 +198,10 @@
             <asp:TableRow>
                 <asp:TableCell>
                     <b>Tình trạng pháp lý:</b><br />
-                    <asp:DropDownList ID="ddlLegal" runat="server">
-                        <asp:ListItem>Vui lòng chọn...</asp:ListItem>
-                        <asp:ListItem>Sổ hồng</asp:ListItem>
-                        <asp:ListItem>Giấy đỏ</asp:ListItem>
-                        <asp:ListItem>Giấy tay</asp:ListItem>
-                        <asp:ListItem>Đang hợp thức hóa</asp:ListItem>
-                        <asp:ListItem>Giấy tờ hợp lệ</asp:ListItem>
-                        <asp:ListItem>Chủ quyền tư nhân</asp:ListItem>
-                        <asp:ListItem>Hợp đồng</asp:ListItem>
-                        <asp:ListItem>Không xác định</asp:ListItem>
+                    <asp:DropDownList ID="ddlLegal" runat="server"
+                        DataSourceID="dataSourceLegal"
+                        DataTextField="Name"
+                        DataValueField="ID">
                     </asp:DropDownList>
                 </asp:TableCell>
                 <asp:TableCell>
@@ -616,8 +625,8 @@
         RealEstateMarket không chịu trách nhiệm về những nội dung (chữ/ hình ảnh/ Video) do bạn đăng tải
         Khi nhấn nút đăng tài sản, bạn đã xác nhận hoàn toàn đồng ý với những Điều khoản đăng tin.
         <br />
-        <asp:Button ID="btnPreview" runat="server" Text="Xem trước" />
-        <asp:Button ID="btnSave" runat="server" Text="Lưu lại" />
-        <asp:Button ID="btnPost" runat="server" Text="Đăng tài sản" OnClick="btnPost_Click"/>
     </asp:Panel>
+    <asp:Button ID="btnPreview" runat="server" Text="Xem trước" />
+    <asp:Button ID="btnSave" runat="server" Text="Lưu lại" />
+    <asp:Button ID="btnPost" runat="server" Text="Đăng tài sản" OnClick="btnPost_Click"/>
 </asp:Content>

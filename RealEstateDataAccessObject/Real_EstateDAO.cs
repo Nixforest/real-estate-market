@@ -58,10 +58,10 @@ namespace RealEstateDataAccessObject
             oldEntity.BuildFront = entity.BuildFront;
             oldEntity.BuildBehind = entity.BuildBehind;
             oldEntity.BuildLength = entity.BuildLength;
-            oldEntity.Legal = entity.Legal;
+            oldEntity.LegalID = entity.LegalID;
             oldEntity.Direction = entity.Direction;
             oldEntity.FrontStreet = entity.FrontStreet;
-            oldEntity.Location = entity.Location;
+            oldEntity.LocationID = entity.LocationID;
             oldEntity.Price = entity.Price;
             oldEntity.UnitID = entity.UnitID;
             oldEntity.UnitPriceID = entity.UnitPriceID;
