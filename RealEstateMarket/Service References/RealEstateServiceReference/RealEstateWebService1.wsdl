@@ -46,7 +46,6 @@
           <s:element minOccurs="1" maxOccurs="1" name="PublishTime" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWS_TYPE" type="tns:NEWS_TYPE" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="IMAGE">
@@ -55,49 +54,131 @@
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="COMPANies" type="tns:ArrayOfCOMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfCOMPANY">
+      <s:element name="GetAllProjectTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProjectTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProjectTypesResult" type="tns:ArrayOfPROJECT_TYPE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPROJECT_TYPE">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="COMPANY" nillable="true" type="tns:COMPANY" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT_TYPE" nillable="true" type="tns:PROJECT_TYPE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="COMPANY">
+      <s:complexType name="PROJECT_TYPE">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="EstablishDay" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ShareCapital" nillable="true" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="FieldOfAction" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="BusinessRegistration" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Logo" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfPROPERTY_COMPANY">
+      <s:element name="InsertProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertProjectTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertProjectTypeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProjectTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateProjectTypeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectTypeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProjectType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProjectTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectTypeResult" type="tns:PROJECT_TYPE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllProjects">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProjectsResult" type="tns:ArrayOfPROJECT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPROJECT">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_COMPANY" nillable="true" type="tns:PROPERTY_COMPANY" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT" nillable="true" type="tns:PROJECT" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="PROPERTY_COMPANY">
+      <s:complexType name="PROJECT">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="COMPANY" type="tns:COMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADDRESS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WardID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StreetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="WARD" type="tns:WARD" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="tns:CITY" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT" type="tns:DISTRICT" />
+          <s:element minOccurs="0" maxOccurs="1" name="NATION" type="tns:NATION" />
+          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfREAL_ESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE" nillable="true" type="tns:REAL_ESTATE" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="REAL_ESTATE">
@@ -125,11 +206,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="UnitPriceID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ProjectID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ContactID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALEs" type="tns:ArrayOfNEWS_SALE" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
           <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
-          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
           <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
           <s:element minOccurs="0" maxOccurs="1" name="CONTACT" type="tns:CONTACT" />
           <s:element minOccurs="0" maxOccurs="1" name="LEGAL" type="tns:LEGAL" />
@@ -140,82 +217,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="UNIT_PRICE" type="tns:UNIT_PRICE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfNEWS_SALE">
+      <s:complexType name="ArrayOfREAL_ESTATE_IMAGE">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE" nillable="true" type="tns:NEWS_SALE" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE_IMAGE" nillable="true" type="tns:REAL_ESTATE_IMAGE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="NEWS_SALE">
+      <s:complexType name="REAL_ESTATE_IMAGE">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALE_TYPE" type="tns:NEWS_SALE_TYPE" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
           <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="NEWS_SALE_TYPE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALEs" type="tns:ArrayOfNEWS_SALE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfPROPERTY_CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_CUSTOMER" nillable="true" type="tns:PROPERTY_CUSTOMER" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROPERTY_CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER" type="tns:CUSTOMER" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ADDRESS">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WardID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StreetID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="COMPANies" type="tns:ArrayOfCOMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="CONTACTs" type="tns:ArrayOfCONTACT" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-          <s:element minOccurs="0" maxOccurs="1" name="WARD" type="tns:WARD" />
-          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="tns:CITY" />
-          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT" type="tns:DISTRICT" />
-          <s:element minOccurs="0" maxOccurs="1" name="NATION" type="tns:NATION" />
-          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCONTACT">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CONTACT" nillable="true" type="tns:CONTACT" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="CONTACT">
@@ -226,13 +239,42 @@
           <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
           <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfREAL_ESTATE">
+      <s:complexType name="LEGAL">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE" nillable="true" type="tns:REAL_ESTATE" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LOCATION">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT_PRICE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="WARD">
@@ -301,195 +343,6 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="CITY" nillable="true" type="tns:CITY" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfREAL_ESTATE_IMAGE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE_IMAGE" nillable="true" type="tns:REAL_ESTATE_IMAGE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="REAL_ESTATE_IMAGE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfUTILITY_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="UTILITY_DETAIL" nillable="true" type="tns:UTILITY_DETAIL" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UTILITY_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UtilityID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="UTILITY" type="tns:UTILITY" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UTILITY">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LEGAL">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LOCATION">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROJECT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="BeginDay" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="REAL_ESTATE_TYPE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UNIT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UNIT_PRICE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="NEWS_TYPE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetAllProjectTypes">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllProjectTypesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllProjectTypesResult" type="tns:ArrayOfPROJECT_TYPE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfPROJECT_TYPE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT_TYPE" nillable="true" type="tns:PROJECT_TYPE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROJECT_TYPE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROJECTs" type="tns:ArrayOfPROJECT" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfPROJECT">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT" nillable="true" type="tns:PROJECT" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="InsertProjectType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="InsertProjectTypeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="InsertProjectTypeResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProjectType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="UpdateProjectTypeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdateProjectTypeResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProjectType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteProjectTypeResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetProjectType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetProjectTypeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetProjectTypeResult" type="tns:PROJECT_TYPE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetAllProjects">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllProjectsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllProjectsResult" type="tns:ArrayOfPROJECT" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="InsertProject">
         <s:complexType>
           <s:sequence>
@@ -1159,6 +1012,13 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="UTILITY" nillable="true" type="tns:UTILITY" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="UTILITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertUtility">
         <s:complexType>
           <s:sequence>
@@ -1486,6 +1346,31 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfCOMPANY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="COMPANY" nillable="true" type="tns:COMPANY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COMPANY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstablishDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShareCapital" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldOfAction" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessRegistration" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Logo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertCompany">
         <s:complexType>
           <s:sequence>
@@ -1576,6 +1461,19 @@
       <s:complexType name="ArrayOfCUSTOMER">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="CUSTOMER" nillable="true" type="tns:CUSTOMER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
         </s:sequence>
       </s:complexType>
       <s:element name="InsertCustomer">
@@ -1678,6 +1576,11 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfCONTACT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CONTACT" nillable="true" type="tns:CONTACT" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertContact">
         <s:complexType>
           <s:sequence>
@@ -2242,6 +2145,13 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE_TYPE" nillable="true" type="tns:NEWS_SALE_TYPE" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="NEWS_SALE_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertNewsSaleType">
         <s:complexType>
           <s:sequence>
@@ -2307,6 +2217,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfNEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE" nillable="true" type="tns:NEWS_SALE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALE_TYPE" type="tns:NEWS_SALE_TYPE" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertNewsSale">
         <s:complexType>
           <s:sequence>
@@ -2383,6 +2311,14 @@
       <s:complexType name="ArrayOfNEWS_TYPE">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_TYPE" nillable="true" type="tns:NEWS_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
         </s:sequence>
       </s:complexType>
       <s:element name="InsertNewsType">
