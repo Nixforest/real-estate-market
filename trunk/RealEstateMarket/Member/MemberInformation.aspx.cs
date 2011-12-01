@@ -11,7 +11,10 @@ namespace RealEstateMarket.Member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!User.IsInRole("Customer"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
         }
     }
 }

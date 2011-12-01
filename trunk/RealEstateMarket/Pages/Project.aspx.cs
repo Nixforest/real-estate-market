@@ -10,17 +10,26 @@ namespace RealEstateMarket.Pages
     public partial class Project : System.Web.UI.Page
     {
         private RealEstateServiceReference.PROJECT project = new RealEstateServiceReference.PROJECT();
+        private RealEstateServiceReference.ADDRESS address = new RealEstateServiceReference.ADDRESS();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ProjectDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            project = RealEstateMarket._Default.db.GetProject(Convert.ToInt32(ddlProject.SelectedValue));
-            lblName.Text = project.Name;
-            lblBeginDay.Text = project.BeginDay.ToString();
-            lblContent.Text = project.Description;
+            project = RealEstateMarket._Default.db.GetProject(Convert.ToInt32(ProjectDropDownList.SelectedValue));
+            ProjectNameLabel.Text = project.Name;
+            address = project.ADDRESS;
+            AddressLabel.Text = "Vị trí: " +
+                address.Detail + " " +
+                address.STREET.Name + ", " +
+                address.WARD.Name + ", " + 
+                address.DISTRICT.Name + ", " +
+                address.CITY.Name + ", " +
+                address.NATION.Name + ".";
+            BeginDayLabel.Text = project.BeginDay.ToString();
+            ContentLabel.Text = project.Description;
         }
     }
 }

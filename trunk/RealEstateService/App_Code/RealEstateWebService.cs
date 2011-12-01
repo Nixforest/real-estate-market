@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Services;
 using System.Collections.ObjectModel;
 using System.Net;
+using System.Security.Permissions;
+using System.Web.Security;
+using System.Configuration;
 
 /// <summary>
 /// Summary description for RealEstateWebService
@@ -41,6 +44,7 @@ public class RealEstateWebService : System.Web.Services.WebService
     private RealEstateBusinessLogicObject.WardBLO ward;
     private RealEstateBusinessLogicObject.LegalBLO legal;
     private RealEstateBusinessLogicObject.LocationBLO location;
+    private RealEstateBusinessLogicObject.ContactBLO contact;
 
     public RealEstateWebService()
     {
@@ -49,6 +53,7 @@ public class RealEstateWebService : System.Web.Services.WebService
         //InitializeComponent();
 
         // Initialize Component
+        this.SetConnection(ConfigurationManager.ConnectionStrings["MSSQLConnectString"].ConnectionString);
         address = new RealEstateBusinessLogicObject.AddressBLO();
         city = new RealEstateBusinessLogicObject.CityBLO();
         company = new RealEstateBusinessLogicObject.CompanyBLO();
@@ -74,6 +79,8 @@ public class RealEstateWebService : System.Web.Services.WebService
         ward = new RealEstateBusinessLogicObject.WardBLO();
         legal = new RealEstateBusinessLogicObject.LegalBLO();
         location = new RealEstateBusinessLogicObject.LocationBLO();
+        contact = new RealEstateBusinessLogicObject.ContactBLO();
+
     }
 
     /// <summary>
@@ -85,6 +92,8 @@ public class RealEstateWebService : System.Web.Services.WebService
     {
         RealEstateDataContext.Utility.WebConfig.MSSQL = connection;
     }
+
+    
 
     #region Address Service
     [WebMethod]
@@ -299,12 +308,12 @@ public class RealEstateWebService : System.Web.Services.WebService
 
     [WebMethod()]
     public int InsertCustomer(string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int? userID)
+            string phone, string homePhone, string email, string userName)
     {
         try
         {
             return customer.Insert(name, addressID, identityCard, phone, homePhone,
-                email, userID);
+                email, userName);
         }
         catch (Exception e)
         {
@@ -314,12 +323,12 @@ public class RealEstateWebService : System.Web.Services.WebService
 
     [WebMethod()]
     public int UpdateCustomer(int id, string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int? userID)
+            string phone, string homePhone, string email, string userName)
     {
         try
         {
             return customer.Update(id, name, addressID, identityCard, phone, homePhone,
-                email, userID);
+                email, userName);
         }
         catch (Exception e)
         {
@@ -346,6 +355,96 @@ public class RealEstateWebService : System.Web.Services.WebService
         try
         {
             return customer.GetARecord(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public RealEstateDataContext.CUSTOMER GetCustomerByUserName(string userName)
+    {
+        try
+        {
+            return customer.GetCustomerByUserName(userName);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public void InsertRealEstateToCustomer(int realEstateID, int customerID)
+    {
+        try
+        {
+            customer.InsertRealEstateToCustomer(realEstateID, customerID);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+    #endregion
+
+    #region Contact Service
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.CONTACT> GetAllContacts()
+    {
+        return new ObservableCollection<RealEstateDataContext.CONTACT>(contact.GetAllRows());
+    }
+
+    [WebMethod()]
+    public int InsertContact(string name, int addressID, string phone, string homePhone,
+            string note)
+    {
+        try
+        {
+            return contact.Insert(name, addressID, phone, homePhone,
+                note);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public int UpdateContact(int id, string name, int addressID, string phone, string homePhone,
+            string note)
+    {
+        try
+        {
+            return contact.Update(id, name, addressID, phone, homePhone,
+                note);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public void DeleteContact(int id)
+    {
+        try
+        {
+            contact.Delete(id);
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod()]
+    public RealEstateDataContext.CONTACT GetContact(int id)
+    {
+        try
+        {
+            return contact.GetARecord(id);
         }
         catch (Exception e)
         {
@@ -409,7 +508,7 @@ public class RealEstateWebService : System.Web.Services.WebService
     {
         try
         {
-            city.Delete(id);
+            district.Delete(id);
         }
         catch (Exception e)
         {
@@ -1312,6 +1411,31 @@ public class RealEstateWebService : System.Web.Services.WebService
             throw e;
         }
     }
+    [WebMethod]
+    public void InsertImageToRealEstate(int imageID, int realEstateID)
+    {
+        try
+        {
+            realEstate.InsertImageToRealEstate(imageID, realEstateID);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public void InsertUtilityToRealEstate(int utilityID, int realEstateID)
+    {
+        try
+        {
+            realEstate.InsertUtilityToRealEstate(utilityID, realEstateID);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
     #endregion
 
     #region Rule Service
@@ -1733,6 +1857,26 @@ public class RealEstateWebService : System.Web.Services.WebService
         {
             throw e;
         }
+    }
+    #endregion
+
+    #region Parameter Service
+    [WebMethod]
+    public int GetMinRate()
+    {
+        return RealEstateBusinessLogicObject.Parameter.MinRate;
+    }
+
+    [WebMethod]
+    public int GetMaxRate()
+    {
+        return RealEstateBusinessLogicObject.Parameter.MaxRate;
+    }
+
+    [WebMethod]
+    public int GetMaxSummaryLength()
+    {
+        return RealEstateBusinessLogicObject.Parameter.MaxSummaryLength;
     }
     #endregion
 }

@@ -11,23 +11,28 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-        protected void Insert_Click(object sender, EventArgs e)
-        {
-            if (textboxName.Text != "")
+            // Only Moderator or Administrator can access
+            if (!User.IsInRole("Moderator"))
             {
-                try
+                Response.Redirect("~/AccessDEny.aspx");
+            }
+        }
+
+        // Insert a City
+        protected void InsertButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Call a method from Web Service
+                ErrorLabel.Text = "Bạn đã cập nhật Thành phố có ID = " + RealEstateMarket._Default.db.InsertCity(
+                    CityNameTextBox.Text.Trim(), NationDropDownList.SelectedIndex + 1).ToString();
+                CityGridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                if (ex.ToString().Contains("NationIDException"))
                 {
-                    RealEstateMarket._Default.db.InsertCity(textboxName.Text, ddlNation.SelectedIndex + 1);
-                    Response.Redirect(Request.RawUrl);
-                }
-                catch (Exception ex)
-                {
-                    if (ex.ToString().Contains("NationIDException"))
-                    {
-                        error.Text = "NationID Exception";
-                    }
+                    ErrorLabel.Text = "NationID Exception";
                 }
             }
 

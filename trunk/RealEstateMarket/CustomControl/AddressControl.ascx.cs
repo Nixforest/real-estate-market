@@ -18,45 +18,34 @@ namespace RealEstateMarket.CustomControl
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Attributes.Add("NationID", ddlNation.SelectedValue);
-            this.Attributes.Add("CityID", ddlCity.SelectedValue);
-            this.Attributes.Add("DistrictID", ddlDistrict.SelectedValue);
-            this.Attributes.Add("WardID", ddlWard.SelectedValue);
-            this.Attributes.Add("StreetID", ddlStreet.SelectedValue);
-            this.Attributes.Add("Detail", tbxDetail.Text.Trim());
+            this.Attributes.Add("NationID", NationDropDownList.SelectedValue);
+            this.Attributes.Add("CityID", CityDropDownList.SelectedValue);
+            this.Attributes.Add("DistrictID", DistrictDropDownList.SelectedValue);
+            this.Attributes.Add("WardID", WardDropDownList.SelectedValue);
+            this.Attributes.Add("StreetID", StreetDropDownList.SelectedValue);
+            this.Attributes.Add("Detail", DetailTextBox.Text.Trim());
         }
 
-        protected void SetProperties()
+        protected void NationDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //nationID = Convert.ToInt32(ddlNation.SelectedValue);
-            //cityID = Convert.ToInt32(ddlCity.SelectedValue);
-            //districtID = Convert.ToInt32(ddlDistrict.SelectedValue);
-            //wardID = Convert.ToInt32(ddlWard.SelectedValue);
-            //streetID = Convert.ToInt32(ddlStreet.SelectedValue);
-            //detail = tbxDetail.Text.Trim();
+            CityDropDownList.DataBind();
         }
-
-        protected void ddlNation_SelectedIndexChanged(object sender, EventArgs e)
+        protected void CityDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlCity.DataBind();
+            DistrictDropDownList.DataBind();
             //SetProperties();
         }
-        protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DistrictDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlDistrict.DataBind();
+            WardDropDownList.DataBind();
+            StreetDropDownList.DataBind();
             //SetProperties();
         }
-        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlWard.DataBind();
-            ddlStreet.DataBind();
-            //SetProperties();
-        }
-        protected void ddlWard_SelectedIndexChanged(object sender, EventArgs e)
+        protected void WardDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //SetProperties();
         }
-        protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
+        protected void StreetDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //SetProperties();
         }

@@ -5,7 +5,7 @@
     <h4>
         Cập nhật thông tin các con đường chính
     </h4>
-    <asp:ObjectDataSource ID="dataSource" runat="server" 
+    <asp:ObjectDataSource ID="StreetObjectDataSource" runat="server" 
         DeleteMethod="DeleteStreet" InsertMethod="InsertStreet" 
         SelectMethod="GetAllStreets" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient" 
@@ -14,8 +14,7 @@
             <asp:Parameter Name="id" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:ControlParameter ControlID="txbName" Name="name" PropertyName="Text" 
-                Type="String" />
+            <asp:Parameter Name="name" Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="id" Type="Int32" />
@@ -26,10 +25,10 @@
     <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:GridView ID="dataTable" DataKeyNames="ID" runat="server" AllowPaging="True" 
-                    AutoGenerateColumns="False" DataSourceID="dataSource" 
-        BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
-        CellPadding="4" GridLines="Horizontal">
+                <asp:GridView ID="StreetGridView" DataKeyNames="ID" runat="server" AllowPaging="True" 
+                    AutoGenerateColumns="False" DataSourceID="StreetObjectDataSource" 
+                    BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
+                    CellPadding="4" GridLines="Horizontal">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                         <asp:TemplateField HeaderText="STT">
@@ -52,13 +51,31 @@
                 </asp:GridView>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Label ID="lblName" runat="server" Text="Tên đường:"></asp:Label>
-                <br />
-                <asp:TextBox ID="txbName" TabIndex="1" runat="server"></asp:TextBox>
-                <br />
-                <asp:Button ID="Insert" runat="server" OnClick="Insert_Click" Text="Insert" />
-                <br />
-                <asp:Label ID="error" runat="server" ForeColor="Red"></asp:Label>
+                <table>
+                    <tr>
+                        <p>
+                            <asp:ValidationSummary ID="InsertStreetValidationSummary" runat="server" HeaderText="Bạn phải điền vào các phần còn thiếu"
+                                CssClass="failureNotification" ValidationGroup="InsertStreetValidationGroup" />
+                        </p>
+                        <p>
+                            <asp:Label ID="ErrorLabel" runat="server" CssClass="failureNotification"></asp:Label>
+                        </p>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="StreetNameLabel" runat="server" AssociatedControlID="StreetNameTextBox" Text="Tên đường:"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="StreetNameTextBox" TabIndex="1" ToolTip="Nhập tên đường" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="StreetNameRequiredFieldValidator" runat="server"
+                                CssClass="failureNotification" InitialValue=""
+                                ValidationGroup="InsertStreetValidationGroup" ControlToValidate="StreetNameTextBox"
+                                ErrorMessage="Bạn chưa nhập tên đường">*</asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                </table>
+                <asp:Button ID="InsertButton" runat="server"
+                            ValidationGroup="InsertStreetValidationGroup" OnClick="InsertButton_Click" Text="Thêm mới" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

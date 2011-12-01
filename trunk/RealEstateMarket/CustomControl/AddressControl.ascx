@@ -1,123 +1,151 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AddressControl.ascx.cs" Inherits="RealEstateMarket.CustomControl.AddressControl" %>
 
-<asp:ObjectDataSource ID="dataSourceNation" runat="server" 
+<asp:ObjectDataSource ID="NationObjectDataSource" runat="server" 
     SelectMethod="GetAllNations" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
 
-<asp:ObjectDataSource ID="dataSourceCity" runat="server" 
+<asp:ObjectDataSource ID="CityObjectDataSource" runat="server" 
     SelectMethod="GetCitiesByNationID" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient">
     <SelectParameters>
-        <asp:ControlParameter ControlID="ddlNation" Name="id" PropertyName="SelectedValue" 
+        <asp:ControlParameter ControlID="NationDropDownList" Name="id" PropertyName="SelectedValue" 
             Type="Int32" />
     </SelectParameters>
 </asp:ObjectDataSource>
 
-<asp:ObjectDataSource ID="dataSourceDistrict" runat="server" 
+<asp:ObjectDataSource ID="DistrictObjectDataSource" runat="server" 
     SelectMethod="GetDistrictsByCityID" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient">
     <SelectParameters>
-        <asp:ControlParameter ControlID="ddlCity" Name="id" 
+        <asp:ControlParameter ControlID="CityDropDownList" Name="id" 
             PropertyName="SelectedValue" Type="Int32" />
     </SelectParameters>    
 </asp:ObjectDataSource>
 
-<asp:ObjectDataSource ID="dataSourceWard" runat="server"
+<asp:ObjectDataSource ID="WardObjectDataSource" runat="server"
     SelectMethod="GetWardsByDistrictID" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient" >
     <SelectParameters>
-        <asp:ControlParameter ControlID="ddlDistrict" Name="id" 
+        <asp:ControlParameter ControlID="DistrictDropDownList" Name="id" 
             PropertyName="SelectedValue" Type="Int32" />
     </SelectParameters>
 </asp:ObjectDataSource>
 
-<asp:ObjectDataSource ID="dataSourceStreet" runat="server" 
+<asp:ObjectDataSource ID="StreetObjectDataSource" runat="server" 
     SelectMethod="GetStreetsByDistrictID" 
     TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient">
     <SelectParameters>
-        <asp:ControlParameter ControlID="ddlDistrict" Name="id" 
+        <asp:ControlParameter ControlID="DistrictDropDownList" Name="id" 
             PropertyName="SelectedValue" Type="Int32" />
     </SelectParameters>
 </asp:ObjectDataSource>
 
 <asp:Panel ID="mainPanel" runat="server"
-    BorderStyle="Solid">
-            <asp:Table ID="Table1" runat="server">
+    BorderStyle="None">
+            <asp:Table ID="AddressTable" runat="server">
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell>
-                    <asp:Label runat="server" ID="lblNation">Quốc gia</asp:Label>
+                    <asp:Label runat="server" ID="NationLabel" AssociatedControlID="NationDropDownList">Quốc gia</asp:Label>
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    <asp:Label runat="server" ID="lblCity">Tỉnh / Thành phố</asp:Label>
+                    <asp:Label runat="server" ID="CityLabel" AssociatedControlID="CityDropDownList">Tỉnh / Thành phố</asp:Label>
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:DropDownList ID="ddlNation" runat="server"
-                        DataSourceID="dataSourceNation"
+                    <asp:DropDownList ID="NationDropDownList" runat="server"
+                        DataSourceID="NationObjectDataSource"
                         DataTextField="Name"
                         DataValueField="ID"
-                        onselectedindexchanged="ddlNation_SelectedIndexChanged"
+                        onselectedindexchanged="NationDropDownList_SelectedIndexChanged"
                         AutoPostBack="true"></asp:DropDownList>
                 </asp:TableCell>
-                <asp:TableCell>
-                    <asp:DropDownList ID="ddlCity" runat="server"
-                        DataSourceID="dataSourceCity"
-                        DataTextField="Name"
-                        DataValueField="ID"
-                        onselectedindexchanged="ddlCity_SelectedIndexChanged"
-                        AutoPostBack="true"></asp:DropDownList>
+                <asp:TableCell>                    
+                    <asp:UpdatePanel ID="CityUpdatePanel" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="CityDropDownList" runat="server"
+                                DataSourceID="CityObjectDataSource"
+                                DataTextField="Name"
+                                DataValueField="ID"
+                                onselectedindexchanged="CityDropDownList_SelectedIndexChanged"
+                                AutoPostBack="true"></asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="NationDropDownList" EventName="selectedindexchanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>                    
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell>
-                    <asp:Label runat="server" ID="lblDistrict">Quận / Huyện</asp:Label>
+                    <asp:Label runat="server" ID="DistrictLabel" AssociatedControlID="DistrictDropDownList">Quận / Huyện</asp:Label>
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    <asp:Label runat="server" ID="lblWard">Phường / Xã</asp:Label>
+                    <asp:Label runat="server" ID="WardLabel" AssociatedControlID="WardDropDownList">Phường / Xã</asp:Label>
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:DropDownList ID="ddlDistrict" runat="server"
-                        DataSourceID="dataSourceDistrict"
-                        DataTextField="Name"
-                        DataValueField="ID"
-                        onselectedindexchanged="ddlDistrict_SelectedIndexChanged"
-                        AutoPostBack="true"></asp:DropDownList>
+                    <asp:UpdatePanel ID="DistrictUpdatePanel" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="DistrictDropDownList" runat="server"
+                                DataSourceID="DistrictObjectDataSource"
+                                DataTextField="Name"
+                                DataValueField="ID"
+                                onselectedindexchanged="DistrictDropDownList_SelectedIndexChanged"
+                                AutoPostBack="true"></asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="CityDropDownList" EventName="selectedindexchanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList ID="ddlWard" runat="server"
-                        DataSourceID="dataSourceWard"
-                        DataTextField="Name"
-                        DataValueField="ID"
-                        onselectedindexchanged="ddlWard_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:UpdatePanel ID="WardUpdatePanel" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="WardDropDownList" runat="server"
+                                DataSourceID="WardObjectDataSource"
+                                DataTextField="Name"
+                                DataValueField="ID"
+                                onselectedindexchanged="WardDropDownList_SelectedIndexChanged"></asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="DistrictDropDownList" EventName="selectedindexchanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="cbWard" runat="server" Text="Khác" />
+                    <asp:CheckBox ID="WardCheckBox" runat="server" Text="Khác" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableHeaderRow>
                 <asp:TableHeaderCell>
-                    <asp:Label ID="lblDetail" runat="server">Số nhà / Số lô</asp:Label>
+                    <asp:Label ID="DetailLabel" runat="server" AssociatedControlID="DetailTextBox">Số nhà / Số lô</asp:Label>
                 </asp:TableHeaderCell>
                 <asp:TableHeaderCell>
-                    <asp:Label runat="server" ID="lblStreet">Tên Đường / Tên Phố</asp:Label>
+                    <asp:Label runat="server" ID="StreetLabel" AssociatedControlID="StreetDropDownList">Tên Đường / Tên Phố</asp:Label>
                 </asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:TextBox ID="tbxDetail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="DetailTextBox" runat="server"></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList ID="ddlStreet" runat="server"
-                        DataSourceID="dataSourceStreet"
-                        DataTextField="Name"
-                        DataValueField="ID"
-                        onselectedindexchanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="StreetDropDownList" runat="server"
+                                DataSourceID="StreetObjectDataSource"
+                                DataTextField="Name"
+                                DataValueField="ID"
+                                onselectedindexchanged="StreetDropDownList_SelectedIndexChanged"></asp:DropDownList>        
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="DistrictDropDownList" EventName="selectedindexchanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="cbStreet" runat="server" Text="Khác" />
+                    <asp:CheckBox ID="StreetCheckBox" runat="server" Text="Khác" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

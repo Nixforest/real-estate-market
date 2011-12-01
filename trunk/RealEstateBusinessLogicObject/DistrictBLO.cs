@@ -192,11 +192,10 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">District' ID</param>
         /// <returns>List of Streets</returns>
-        /// <exception cref="DistrictIDException"></exception>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public ICollection<RealEstateDataContext.STREET> GetStreetsByDistrictID(int ID)
         {
-            ObservableCollection<RealEstateDataContext.STREET> result = new ObservableCollection<RealEstateDataContext.STREET>();            
+            ObservableCollection<RealEstateDataContext.STREET> result = new ObservableCollection<RealEstateDataContext.STREET>();
             if (ValidationID(ID))
             {
                 foreach (RealEstateDataContext.DISTRICT_DETAIL entity in _db.GetARecord(ID).DISTRICT_DETAILs)
@@ -205,7 +204,7 @@ namespace RealEstateBusinessLogicObject
                 }
                 return result;
             }
-            else throw new RealEstateDataContext.Utility.DistrictIDException();
+            else return null;
         }
 
         /// <summary>
@@ -235,7 +234,6 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">District's ID</param>
         /// <returns>List of Wards</returns>
-        /// <exception cref="DistrictIDException"></exception>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public ICollection<RealEstateDataContext.WARD> GetWardsByDistrictID(int ID)
         {
@@ -243,7 +241,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.WARD>(_db.GetARecord(ID).WARDs);
             }
-            else throw new RealEstateDataContext.Utility.DistrictIDException();
+            else return null;
         }
     }
 }

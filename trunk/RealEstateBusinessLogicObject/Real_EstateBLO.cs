@@ -386,5 +386,31 @@ namespace RealEstateBusinessLogicObject
             }
             else throw new RealEstateDataContext.Utility.Real_EstateIDException();
         }
+
+        /// <summary>
+        /// Insert Image to RealEstate
+        /// </summary>
+        /// <param name="imageID">Image ID</param>
+        /// <param name="realEstateID">Real Estate ID</param>
+        public void InsertImageToRealEstate(int imageID, int realEstateID)
+        {
+            RealEstateDataContext.REAL_ESTATE_IMAGE entity = new RealEstateDataContext.REAL_ESTATE_IMAGE();
+            entity.ImageID = imageID;
+            entity.RealEstateID = realEstateID;
+            new RealEstateDataAccessObject.Real_Estate_ImageDAO().Insert(entity);
+        }
+
+        /// <summary>
+        /// Insert Utility to Real Estate
+        /// </summary>
+        /// <param name="utilityID">Utility ID</param>
+        /// <param name="realEstateID">Real Estate ID</param>
+        public void InsertUtilityToRealEstate(int utilityID, int realEstateID)
+        {
+            RealEstateDataContext.UTILITY_DETAIL entity = new RealEstateDataContext.UTILITY_DETAIL();
+            entity.UtilityID = utilityID;
+            entity.RealEstateID = realEstateID;
+            new RealEstateDataAccessObject.Utility_DetailDAO().Insert(entity);
+        }
     }
 }

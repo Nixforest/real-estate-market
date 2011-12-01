@@ -153,7 +153,6 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">Nation's ID</param>
         /// <returns>List of Cities</returns>
-        /// <exception cref="NationIDException"></exception>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public ICollection<RealEstateDataContext.CITY> GetCitiesByNationID(int ID)
         {
@@ -161,7 +160,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.CITY>(_db.GetARecord(ID).CITies);
             }
-            else throw new RealEstateDataContext.Utility.NationIDException();
+            else return null;
         }
     }
 }

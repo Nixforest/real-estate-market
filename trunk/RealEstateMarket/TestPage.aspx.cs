@@ -15,6 +15,7 @@ namespace RealEstateMarket
         private RealEstateBusinessLogicObject.NationBLO nationX;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //error.Text = RealEstateMarket._Default.db.HelloWorld();
 
             //RealEstateDataContext.Utility.WebConfig.MSSQL = @"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True";
             nation = new RealEstateServiceReference.RealEstateWebServiceSoapClient();
@@ -25,7 +26,11 @@ namespace RealEstateMarket
             nationGridView.DataBind();
          
         }
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            //RealEstateServiceReference.RealEstateWebServiceSoapClient.C
 
+        }
         protected void btnInsert_Click(object sender, EventArgs e)
         {
             //if (Insert.Text.Equals("Insert"))
@@ -121,6 +126,11 @@ namespace RealEstateMarket
             }
 
             //nation.Delete(5);
+        }
+
+        protected void tbxTest_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

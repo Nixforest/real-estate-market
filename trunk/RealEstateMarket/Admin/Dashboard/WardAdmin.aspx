@@ -5,7 +5,7 @@
     <h4>
         Cập nhật thông tin các Phường, Xã
     </h4>
-    <asp:ObjectDataSource ID="dataSource" runat="server" DeleteMethod="DeleteWard" 
+    <asp:ObjectDataSource ID="WardObjectDataSource" runat="server" DeleteMethod="DeleteWard" 
         InsertMethod="InsertWard" SelectMethod="GetAllWards" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient" UpdateMethod="UpdateWard"
         >
@@ -23,16 +23,16 @@
         </UpdateParameters>
     </asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="dataSourceDistrict" runat="server" 
+    <asp:ObjectDataSource ID="DistrictObjectDataSource" runat="server" 
         SelectMethod="GetAllDistricts" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
 
     <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:GridView ID="dataTable" runat="server" AllowPaging="True"
+                <asp:GridView ID="WardGridView" runat="server" AllowPaging="True"
                     DataKeyNames="ID" 
-                    AutoGenerateColumns="False" DataSourceID="dataSource" BackColor="White" 
+                    AutoGenerateColumns="False" DataSourceID="WardObjectDataSource" BackColor="White" 
                     BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" 
                     GridLines="Horizontal">
                     <Columns>
@@ -45,16 +45,11 @@
                         <asp:BoundField DataField="Name" HeaderText="Tên" />
                         <asp:TemplateField HeaderText="Quận">
                             <ItemTemplate>
-                                <asp:DropDownList ID="ddl" runat="server"
-                                    DataSourceID="dataSourceDistrict"
-                                    DataTextField="Name"
-                                    DataValueField="ID"
-                                    Enabled="false"
-                                    SelectedValue='<%# Bind("DistrictID") %>'></asp:DropDownList>
+                                <%# RealEstateMarket._Default.db.GetDistrict(Convert.ToInt32(Eval("DistrictID"))).Name %>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddl" runat="server"
-                                    DataSourceID="dataSourceDistrict"
+                                    DataSourceID="DistrictObjectDataSource"
                                     DataTextField="Name"
                                     DataValueField="ID"
                                     SelectedValue='<%# Bind("DistrictID") %>'></asp:DropDownList>
@@ -75,20 +70,40 @@
                 </asp:GridView>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Label ID="Label1" runat="server">Tên Phường/Xã:</asp:Label>
-				<br />
-				<asp:TextBox runat="server" ID="txtName"></asp:TextBox>
-				<br />
-				<asp:Label ID="Label2" runat="server">Quận:</asp:Label>
-				<br />
-				<asp:DropDownList runat="server" ID="ddlDistrict"
-					DataSourceID="dataSourceDistrict"
-					DataTextField="Name"
-					DataValueField="ID"></asp:DropDownList>
-				<br />
-				<asp:Button ID="Insert" runat="server" OnClick="Insert_Click" Text="Insert" />
-				<br />
-				<asp:Label ID="error" runat="server" Text="Label"></asp:Label>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <asp:ValidationSummary ID="InsertWardValidationSummary" runat="server"
+                                HeaderText="Bạn phải điền vào các phần còn thiếu" 
+                                CssClass="failureNotification" ValidationGroup="InsertWardValidationGroup" />
+                            <asp:Label ID="ErrorLabel" runat="server" CssClass="failureNotification"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="WardNameLabel" runat="server" AssociatedControlID="WardNameTextBox">Tên Phường/Xã:</asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox runat="server" ID="WardNameTextBox" CssClass="textEntry" ToolTip="Nhập Tên Phường/Xã"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="WardNameRequiredFieldValidator" runat="server"
+                                ControlToValidate="WardNameTextBox" CssClass="failureNotification"
+                                ErrorMessage="Bạn chưa nhập tên Phường/Xã" InitialValue=""
+                                ValidationGroup="InsertWardValidationGroup">*</asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="InDistrictLabel" runat="server" AssociatedControlID="InDistrictDropDownList">Quận:</asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="InDistrictDropDownList"
+					            DataSourceID="DistrictObjectDataSource"
+					            DataTextField="Name"
+					            DataValueField="ID"></asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>
+				<asp:Button ID="InsertButton" runat="server" ValidationGroup="InsertWardValidationGroup" OnClick="InsertButton_Click" Text="Thêm mới" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

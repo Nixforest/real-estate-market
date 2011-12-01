@@ -22,4 +22,7 @@
     <br />
     <asp:HyperLink ID="HyperLink7" runat="server" 
         NavigateUrl="~/Admin/Project/NewProject.aspx">Đăng dự án</asp:HyperLink>
+    <br />
+    <asp:HyperLink ID="HyperLink8" runat="server" 
+        NavigateUrl="~/Admin/Users/UsersManager.aspx">Quản lý người dùng</asp:HyperLink>
 </asp:Content>

@@ -34,6 +34,14 @@ namespace RealEstateDataAccessObject
         /// <param name="entity">Entity</param>
         public override void Insert(RealEstateDataContext.REAL_ESTATE_IMAGE entity)
         {
+            try
+            {
+                entity.ID = this.GetMaxID() + 1;
+            }
+            catch (System.InvalidOperationException)
+            {
+                entity.ID = 1;
+            }
             _db.REAL_ESTATE_IMAGEs.InsertOnSubmit(entity);
             _db.SubmitChanges();
         }

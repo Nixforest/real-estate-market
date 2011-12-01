@@ -11,22 +11,24 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Only Moderator or Administrator can access
+            if (!User.IsInRole("Moderator"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
         }
 
-        protected void Insert_Click(object sender, EventArgs e)
+        protected void InsertButton_Click(object sender, EventArgs e)
         {
-            if (txtName.Text.Trim() != "")
+            try
             {
-                try
-                {
-                    error.Text = "Bạn đã nhập Loại Địa ốc có ID = " + 
-                        RealEstateMarket._Default.db.InsertRealEstateType(txtName.Text.Trim(), txtDescription.Text.Trim()).ToString();
-                    dataTable.DataBind();
-                }
-                catch (Exception ex)
-                {
-                }
+                ErrorLabel.Text = "Bạn đã nhập Loại Địa ốc có ID = " + 
+                    RealEstateMarket._Default.db.InsertRealEstateType(RETypeNameTextBox.Text.Trim(), DescriptionTextBox.Text.Trim()).ToString();
+                RealEstateTypeGridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.ToString();
             }
         }
     }

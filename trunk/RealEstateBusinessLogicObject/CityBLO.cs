@@ -157,7 +157,6 @@ namespace RealEstateBusinessLogicObject
         /// </summary>
         /// <param name="ID">City's ID</param>
         /// <returns>List of Districts</returns>
-        /// <exception cref="CityIDException: ID not exist in CITY table"></exception>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public ICollection<RealEstateDataContext.DISTRICT> GetDistrictsByCityID(int ID)
         {
@@ -165,7 +164,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.DISTRICT>(_db.GetARecord(ID).DISTRICTs);
             }
-            else throw new RealEstateDataContext.Utility.CityIDException();
+            else return null;
         }
     }
 }

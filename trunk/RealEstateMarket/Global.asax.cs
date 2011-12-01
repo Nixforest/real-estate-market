@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Security.Principal;
 
 namespace RealEstateMarket
 {
@@ -41,6 +42,29 @@ namespace RealEstateMarket
             // is set to InProc in the Web.config file. If session mode is set to StateServer 
             // or SQLServer, the event is not raised.
 
+        }
+
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
+        {
+            try
+            {
+                HttpCookie authenCookie = Context.Request.Cookies.Get(FormsAuthentication.FormsCookieName);
+                if (authenCookie == null)
+                {
+                    return;                    
+                }
+                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authenCookie.Value);
+                FormsIdentity id = new FormsIdentity(ticket);
+                string[] astrRols = ticket.UserData.Split(new char[] { ',' });
+                GenericPrincipal principal = new GenericPrincipal(id, astrRols);
+                Context.User = principal;
+            }
+            catch (Exception ex)
+            {
+                System.IO.StreamWriter wr = new System.IO.StreamWriter(Context.Request.MapPath("log.txt"));
+                wr.WriteLine(ex.Message);
+                wr.Close();
+            }
         }
 
     }
