@@ -11,29 +11,46 @@ namespace RealEstateMarket.Admin.Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Only Author or Moderator or Administrator can access
+            if (!User.IsInRole("Author"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
         }
 
-        protected void btnPreview_Click(object sender, EventArgs e)
-        {
-            error.Text = "Preview";
-        }
-
-        protected void btnPost_Click(object sender, EventArgs e)
+        protected void PreviewButton_Click(object sender, EventArgs e)
         {
             try
             {
-                int nationID = Convert.ToInt32(address.Attributes["NationID"]);
-                int cityID = Convert.ToInt32(address.Attributes["CityID"]);
-                int districtID = Convert.ToInt32(address.Attributes["DistrictID"]);
-                int wardID = Convert.ToInt32(address.Attributes["WardID"]);
-                int streetID = Convert.ToInt32(address.Attributes["StreetID"]);
-                string detail = address.Attributes["Detail"];
+                Convert.ToDateTime(BeginDayTextBox.Text);
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Text = ex.ToString();
+            }
+            //ErrorLabel.Text = BeginDayTextBox.Text.Trim(); ;
+        }
+
+        protected void PostButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int nationID = Convert.ToInt32(AddressCustomControl.Attributes["NationID"]);
+                int cityID = Convert.ToInt32(AddressCustomControl.Attributes["CityID"]);
+                int districtID = Convert.ToInt32(AddressCustomControl.Attributes["DistrictID"]);
+                int wardID = Convert.ToInt32(AddressCustomControl.Attributes["WardID"]);
+                int streetID = Convert.ToInt32(AddressCustomControl.Attributes["StreetID"]);
+                string detail = AddressCustomControl.Attributes["Detail"];
                 int addressID = RealEstateMarket._Default.db.InsertAddress(nationID, cityID, 
                    districtID, wardID, streetID, detail);
 
-                int projectID = RealEstateMarket._Default.db.InsertProject(Convert.ToInt32(ddlProjectType.SelectedValue),
-                    tbxName.Text.Trim(), cldBeginDay.SelectedDate, addressID, editor.Text);
+                DateTime? beginDay = null;
+                if (BeginDayTextBox.Text != "")
+                {
+                    beginDay = Convert.ToDateTime(BeginDayTextBox.Text);
+                }
+                int projectID = RealEstateMarket._Default.db.InsertProject(Convert.ToInt32(ProjectTypeDropDownList.SelectedValue),
+                    ProjectNameTextBox.Text.Trim(), beginDay, addressID, DescriptionCKEditor.Text);
                 //error.Text = ddlProjectType.SelectedValue;
                 //error.Text = tbxName.Text.Trim();
                 //error.Text = cldBeginDay.SelectedDate.ToLongDateString();
@@ -44,17 +61,17 @@ namespace RealEstateMarket.Admin.Project
                 //    address.Attributes["WardID"] + " " +
                 //    address.Attributes["StreetID"] + " " + 
                 //    address.Attributes["Detail"];
-                error.Text = projectID.ToString();
+                ErrorLabel.Text = "Bạn đã đăng tin về Dự án có ID = " + projectID.ToString() + "thành công.";
             }
             catch (Exception ex)
             {
-                error.Text = ex.ToString();
+                ErrorLabel.Text = ex.ToString();
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            error.Text = "Nixforest";
+            ErrorLabel.Text = "Nixforest";
         }
     }
 }

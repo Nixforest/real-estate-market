@@ -25,9 +25,19 @@ namespace RealEstateDataAccessObject
         /// <returns>List of entity</returns>
         public override ICollection<RealEstateDataContext.NEW> GetAllRows()
         {
-            return _db.NEWs.ToList();
+            var news = from entity in _db.NEWs
+                       orderby entity.ID descending
+                       select entity;
+            return news.ToList();
         }
 
+        public override ICollection<RealEstateDataContext.NEW> GetAllRows(int numrow)
+        {
+            var news = from entity in _db.NEWs
+                       orderby entity.ID descending
+                       select entity;
+            return news.Skip(0).Take(numrow).ToList();
+        }
         /// <summary>
         /// Insert a row into table NEWS
         /// </summary>

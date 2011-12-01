@@ -11,24 +11,26 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Only Moderator or Administrator can access
+            if (!User.IsInRole("Moderator"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
         }
 
-        protected void Insert_Click(object sender, EventArgs e)
+        protected void InsertButton_Click(object sender, EventArgs e)
         {
-            if (txtName.Text != "")
+            try
             {
-                try
+                ErrorLabel.Text= "Bạn đã cập nhật Phường có ID = " +
+                    RealEstateMarket._Default.db.InsertWard(WardNameTextBox.Text.Trim(), Convert.ToInt32(InDistrictDropDownList.SelectedValue));
+                WardGridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
                 {
-                    RealEstateMarket._Default.db.InsertWard(txtName.Text, ddlDistrict.SelectedIndex + 1);
-                    Response.Redirect(Request.RawUrl);
-                }
-                catch (Exception ex)
-                {
-                    if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
-                    {
-                        error.Text = "Not exist district";
-                    }
+                    ErrorLabel.Text = "Not exist district";
                 }
             }
         }

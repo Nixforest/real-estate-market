@@ -40,13 +40,9 @@ namespace RealEstateBusinessLogicObject
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
             {
-                if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)entity.UserID) || entity.UserID == null)
-                {
-                    entity.ID = this.CreateNewID();
-                    _db.Insert(entity);
-                    return entity.ID;
-                }
-                else throw new RealEstateDataContext.Utility.UserIDException();
+                entity.ID = this.CreateNewID();
+                _db.Insert(entity);
+                return entity.ID;
             }
             else throw new RealEstateDataContext.Utility.AddressIDException();
         }
@@ -60,32 +56,28 @@ namespace RealEstateBusinessLogicObject
         /// <param name="phone">Customer's phone</param>
         /// <param name="homePhone">Customer's home phone</param>
         /// <param name="email">Customer's email</param>
-        /// <param name="userID">Customer's user id</param>
+        /// <param name="userID">Customer's user name</param>
         /// <returns>ID of row have just inserted</returns>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public int Insert(string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int? userID)
+            string phone, string homePhone, string email, string userName)
         {
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
             {
-                if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)userID) || userID == null)
-                {
-                    RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-                    entity.ID = this.CreateNewID();
-                    entity.Name = name;
-                    entity.AddressID = addressID;
-                    entity.IdentityCard = identityCard;
-                    entity.Phone = phone;
-                    entity.HomePhone = homePhone;
-                    entity.Email = email;
-                    entity.UserID = userID;
+                RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
+                entity.ID = this.CreateNewID();
+                entity.Name = name;
+                entity.AddressID = addressID;
+                entity.IdentityCard = identityCard;
+                entity.Phone = phone;
+                entity.HomePhone = homePhone;
+                entity.Email = email;
+                entity.UserName = userName;
 
-                    _db.Insert(entity);
-                    return entity.ID;
-                }
-                else throw new RealEstateDataContext.Utility.UserIDException();
+                _db.Insert(entity);
+                return entity.ID;
             }
             else throw new RealEstateDataContext.Utility.AddressIDException();
         }
@@ -105,12 +97,8 @@ namespace RealEstateBusinessLogicObject
             {
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(entity.AddressID))
                 {
-                    if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)entity.UserID) || entity.UserID == null)
-                    {
-                        _db.Update(entity);
-                        return entity.ID;
-                    }
-                    else throw new RealEstateDataContext.Utility.UserIDException();
+                    _db.Update(entity);
+                    return entity.ID;
                 }
                 else throw new RealEstateDataContext.Utility.AddressIDException();
             }
@@ -127,35 +115,31 @@ namespace RealEstateBusinessLogicObject
         /// <param name="phone">Customer's phone</param>
         /// <param name="homePhone">Customer's home phone</param>
         /// <param name="email">Customer's email</param>
-        /// <param name="userID">Customer's user id</param>
+        /// <param name="userID">Customer's user name</param>
         /// <returns>ID of row have just updated</returns>
         /// <exception cref="CustomerIDException: ID not exist in CUSTOMER table"></exception>
         /// <exception cref="AddressIDException: ID not exist in ADDRESS table"></exception>
         /// <exception cref="UserIDException: ID not exist in USER table"></exception>
         [DataObjectMethod(DataObjectMethodType.Update)]
         public int Update(int id, string name, int addressID, string identityCard,
-            string phone, string homePhone, string email, int? userID)
+            string phone, string homePhone, string email, string userName)
         {
             if (ValidationID(id))
             {
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
                 {
-                    if (new RealEstateDataAccessObject.UserDAO().ValidationID((int)userID) || userID == null)
-                    {
-                        RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-                        entity.ID = id;
-                        entity.Name = name;
-                        entity.AddressID = addressID;
-                        entity.IdentityCard = identityCard;
-                        entity.Phone = phone;
-                        entity.HomePhone = homePhone;
-                        entity.Email = email;
-                        entity.UserID = userID;
+                    RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
+                    entity.ID = id;
+                    entity.Name = name;
+                    entity.AddressID = addressID;
+                    entity.IdentityCard = identityCard;
+                    entity.Phone = phone;
+                    entity.HomePhone = homePhone;
+                    entity.Email = email;
+                    entity.UserName = userName;
 
-                        _db.Update(entity);
-                        return entity.ID;
-                    }
-                    else throw new RealEstateDataContext.Utility.UserIDException();
+                    _db.Update(entity);
+                    return entity.ID;
                 }
                 else throw new RealEstateDataContext.Utility.AddressIDException();
             }
@@ -192,6 +176,49 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.CustomerIDException();
+        }
+
+        /// <summary>
+        /// Get a Customer by Username
+        /// </summary>
+        /// <param name="userName">UserName</param>
+        /// <returns>CUSTOMER</returns>
+        public RealEstateDataContext.CUSTOMER GetCustomerByUserName(string userName)
+        {
+            foreach (RealEstateDataContext.CUSTOMER entity in _db.GetAllRows())
+            {
+                if (entity.UserName.Equals(userName))
+                {
+                    return entity;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Insert Property for Customer
+        /// </summary>
+        /// <param name="realEstate">Real Estate</param>
+        /// <param name="customer">Customer</param>
+        public void InsertRealEstateToCustomer(RealEstateDataContext.REAL_ESTATE realEstate, RealEstateDataContext.CUSTOMER customer)
+        {
+            RealEstateDataContext.PROPERTY_CUSTOMER entity = new RealEstateDataContext.PROPERTY_CUSTOMER();
+            entity.CustomerID = customer.ID;
+            entity.RealEstateID = realEstate.ID;
+            new RealEstateDataAccessObject.Property_CustomerDAO().Insert(entity);
+        }
+
+        /// <summary>
+        /// Insert Property for Customer
+        /// </summary>
+        /// <param name="realEstate">Real Estate ID</param>
+        /// <param name="customer">Customer ID</param>
+        public void InsertRealEstateToCustomer(int realEstateID, int customerID)
+        {
+            RealEstateDataContext.PROPERTY_CUSTOMER entity = new RealEstateDataContext.PROPERTY_CUSTOMER();
+            entity.CustomerID = customerID;
+            entity.RealEstateID = realEstateID;
+            new RealEstateDataAccessObject.Property_CustomerDAO().Insert(entity);
         }
     }
 }

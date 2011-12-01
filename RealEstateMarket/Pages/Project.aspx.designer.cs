@@ -13,75 +13,84 @@ namespace RealEstateMarket.Pages {
     public partial class Project {
         
         /// <summary>
-        /// dataSource control.
+        /// ProjectObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSource;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ProjectObjectDataSource;
         
         /// <summary>
-        /// dataSourceProject control.
+        /// ProjectsObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceProject;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ProjectsObjectDataSource;
         
         /// <summary>
-        /// ddlProject control.
+        /// ProjectDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProject;
+        protected global::System.Web.UI.WebControls.DropDownList ProjectDropDownList;
         
         /// <summary>
-        /// pnlMain control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMain;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// lblName control.
+        /// MainPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.Panel MainPanel;
         
         /// <summary>
-        /// lblAddress control.
+        /// ProjectNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddress;
+        protected global::System.Web.UI.WebControls.Label ProjectNameLabel;
         
         /// <summary>
-        /// lblBeginDay control.
+        /// AddressLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBeginDay;
+        protected global::System.Web.UI.WebControls.Label AddressLabel;
         
         /// <summary>
-        /// lblContent control.
+        /// BeginDayLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContent;
+        protected global::System.Web.UI.WebControls.Label BeginDayLabel;
+        
+        /// <summary>
+        /// ContentLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ContentLabel;
     }
 }

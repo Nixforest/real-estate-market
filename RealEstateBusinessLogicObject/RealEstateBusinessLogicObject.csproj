@@ -46,6 +46,7 @@
     <Compile Include="BusinessParent.cs" />
     <Compile Include="CityBLO.cs" />
     <Compile Include="CompanyBLO.cs" />
+    <Compile Include="ContactBLO.cs" />
     <Compile Include="CustomerBLO.cs" />
     <Compile Include="DistrictBLO.cs" />
     <Compile Include="GroupBLO.cs" />

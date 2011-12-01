@@ -51,7 +51,7 @@ namespace RealEstateDataAccessObject
             oldEntity.Phone = entity.Phone;
             oldEntity.HomePhone = entity.HomePhone;
             oldEntity.Email = entity.Email;
-            oldEntity.UserID = entity.UserID;
+            oldEntity.UserName = entity.UserName;
 
             _db.SubmitChanges();
         }

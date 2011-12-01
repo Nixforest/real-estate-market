@@ -13,75 +13,93 @@ namespace RealEstateMarket.Admin.Dashboard {
     public partial class NationAdmin {
         
         /// <summary>
-        /// dataTable control.
+        /// NationGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dataTable;
+        protected global::System.Web.UI.WebControls.GridView NationGridView;
         
         /// <summary>
-        /// lblName control.
+        /// InsertNationValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.ValidationSummary InsertNationValidationSummary;
         
         /// <summary>
-        /// textboxName control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxName;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// lblNationCode control.
+        /// NationNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNationCode;
+        protected global::System.Web.UI.WebControls.Label NationNameLabel;
         
         /// <summary>
-        /// textboxNationCode control.
+        /// NationNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxNationCode;
+        protected global::System.Web.UI.WebControls.TextBox NationNameTextBox;
         
         /// <summary>
-        /// Insert control.
+        /// NationNameTextBoxRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Insert;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NationNameTextBoxRequiredFieldValidator;
         
         /// <summary>
-        /// error control.
+        /// NationCodeLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label error;
+        protected global::System.Web.UI.WebControls.Label NationCodeLabel;
         
         /// <summary>
-        /// dataSource control.
+        /// NationCodeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSource;
+        protected global::System.Web.UI.WebControls.TextBox NationCodeTextBox;
+        
+        /// <summary>
+        /// InsertNationButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button InsertNationButton;
+        
+        /// <summary>
+        /// NationObjectDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource NationObjectDataSource;
     }
 }

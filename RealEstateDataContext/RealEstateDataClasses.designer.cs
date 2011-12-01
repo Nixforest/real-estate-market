@@ -45,9 +45,6 @@ namespace RealEstateDataContext
     partial void InsertCONTACT(CONTACT instance);
     partial void UpdateCONTACT(CONTACT instance);
     partial void DeleteCONTACT(CONTACT instance);
-    partial void InsertCUSTOMER(CUSTOMER instance);
-    partial void UpdateCUSTOMER(CUSTOMER instance);
-    partial void DeleteCUSTOMER(CUSTOMER instance);
     partial void InsertDISTRICT(DISTRICT instance);
     partial void UpdateDISTRICT(DISTRICT instance);
     partial void DeleteDISTRICT(DISTRICT instance);
@@ -126,6 +123,9 @@ namespace RealEstateDataContext
     partial void InsertREAL_ESTATE(REAL_ESTATE instance);
     partial void UpdateREAL_ESTATE(REAL_ESTATE instance);
     partial void DeleteREAL_ESTATE(REAL_ESTATE instance);
+    partial void InsertCUSTOMER(CUSTOMER instance);
+    partial void UpdateCUSTOMER(CUSTOMER instance);
+    partial void DeleteCUSTOMER(CUSTOMER instance);
     #endregion
 		
 		public RealEstateDataClassesDataContext() : 
@@ -195,14 +195,6 @@ namespace RealEstateDataContext
 			get
 			{
 				return this.GetTable<CONTACT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CUSTOMER> CUSTOMERs
-		{
-			get
-			{
-				return this.GetTable<CUSTOMER>();
 			}
 		}
 		
@@ -413,6 +405,14 @@ namespace RealEstateDataContext
 				return this.GetTable<REAL_ESTATE>();
 			}
 		}
+		
+		public System.Data.Linq.Table<CUSTOMER> CUSTOMERs
+		{
+			get
+			{
+				return this.GetTable<CUSTOMER>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ADDRESS")]
@@ -438,8 +438,6 @@ namespace RealEstateDataContext
 		private EntitySet<COMPANY> _COMPANies;
 		
 		private EntitySet<CONTACT> _CONTACTs;
-		
-		private EntitySet<CUSTOMER> _CUSTOMERs;
 		
 		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
 		
@@ -477,7 +475,6 @@ namespace RealEstateDataContext
 		{
 			this._COMPANies = new EntitySet<COMPANY>(new Action<COMPANY>(this.attach_COMPANies), new Action<COMPANY>(this.detach_COMPANies));
 			this._CONTACTs = new EntitySet<CONTACT>(new Action<CONTACT>(this.attach_CONTACTs), new Action<CONTACT>(this.detach_CONTACTs));
-			this._CUSTOMERs = new EntitySet<CUSTOMER>(new Action<CUSTOMER>(this.attach_CUSTOMERs), new Action<CUSTOMER>(this.detach_CUSTOMERs));
 			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			this._WARD = default(EntityRef<WARD>);
 			this._CITY = default(EntityRef<CITY>);
@@ -673,19 +670,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CUSTOMER", Storage="_CUSTOMERs", ThisKey="ID", OtherKey="AddressID")]
-		public EntitySet<CUSTOMER> CUSTOMERs
-		{
-			get
-			{
-				return this._CUSTOMERs;
-			}
-			set
-			{
-				this._CUSTOMERs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="AddressID")]
 		public EntitySet<REAL_ESTATE> REAL_ESTATEs
 		{
@@ -828,18 +812,6 @@ namespace RealEstateDataContext
 		}
 		
 		private void detach_CONTACTs(CONTACT entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = null;
-		}
-		
-		private void attach_CUSTOMERs(CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = this;
-		}
-		
-		private void detach_CUSTOMERs(CUSTOMER entity)
 		{
 			this.SendPropertyChanging();
 			entity.ADDRESS = null;
@@ -1920,346 +1892,6 @@ namespace RealEstateDataContext
 		{
 			this.SendPropertyChanging();
 			entity.CONTACT = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CUSTOMER")]
-	public partial class CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Name;
-		
-		private int _AddressID;
-		
-		private string _IdentityCard;
-		
-		private string _Phone;
-		
-		private string _HomePhone;
-		
-		private string _Email;
-		
-		private System.Nullable<int> _UserID;
-		
-		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
-		
-		private EntityRef<ADDRESS> _ADDRESS;
-		
-		private EntityRef<USER> _USER;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnAddressIDChanging(int value);
-    partial void OnAddressIDChanged();
-    partial void OnIdentityCardChanging(string value);
-    partial void OnIdentityCardChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnHomePhoneChanging(string value);
-    partial void OnHomePhoneChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    #endregion
-		
-		public CUSTOMER()
-		{
-			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
-			this._ADDRESS = default(EntityRef<ADDRESS>);
-			this._USER = default(EntityRef<USER>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
-		public int AddressID
-		{
-			get
-			{
-				return this._AddressID;
-			}
-			set
-			{
-				if ((this._AddressID != value))
-				{
-					if (this._ADDRESS.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAddressIDChanging(value);
-					this.SendPropertyChanging();
-					this._AddressID = value;
-					this.SendPropertyChanged("AddressID");
-					this.OnAddressIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdentityCard", DbType="VarChar(20)")]
-		public string IdentityCard
-		{
-			get
-			{
-				return this._IdentityCard;
-			}
-			set
-			{
-				if ((this._IdentityCard != value))
-				{
-					this.OnIdentityCardChanging(value);
-					this.SendPropertyChanging();
-					this._IdentityCard = value;
-					this.SendPropertyChanged("IdentityCard");
-					this.OnIdentityCardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="VarChar(20)")]
-		public string HomePhone
-		{
-			get
-			{
-				return this._HomePhone;
-			}
-			set
-			{
-				if ((this._HomePhone != value))
-				{
-					this.OnHomePhoneChanging(value);
-					this.SendPropertyChanging();
-					this._HomePhone = value;
-					this.SendPropertyChanged("HomePhone");
-					this.OnHomePhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._USER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CUSTOMER_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="CustomerID")]
-		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
-		{
-			get
-			{
-				return this._PROPERTY_CUSTOMERs;
-			}
-			set
-			{
-				this._PROPERTY_CUSTOMERs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CUSTOMER", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ADDRESS ADDRESS
-		{
-			get
-			{
-				return this._ADDRESS.Entity;
-			}
-			set
-			{
-				ADDRESS previousValue = this._ADDRESS.Entity;
-				if (((previousValue != value) 
-							|| (this._ADDRESS.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ADDRESS.Entity = null;
-						previousValue.CUSTOMERs.Remove(this);
-					}
-					this._ADDRESS.Entity = value;
-					if ((value != null))
-					{
-						value.CUSTOMERs.Add(this);
-						this._AddressID = value.ID;
-					}
-					else
-					{
-						this._AddressID = default(int);
-					}
-					this.SendPropertyChanged("ADDRESS");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="USER_CUSTOMER", Storage="_USER", ThisKey="UserID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public USER USER
-		{
-			get
-			{
-				return this._USER.Entity;
-			}
-			set
-			{
-				USER previousValue = this._USER.Entity;
-				if (((previousValue != value) 
-							|| (this._USER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._USER.Entity = null;
-						previousValue.CUSTOMERs.Remove(this);
-					}
-					this._USER.Entity = value;
-					if ((value != null))
-					{
-						value.CUSTOMERs.Add(this);
-						this._UserID = value.ID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("USER");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.CUSTOMER = this;
-		}
-		
-		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.CUSTOMER = null;
 		}
 	}
 	
@@ -4594,9 +4226,9 @@ namespace RealEstateDataContext
 		
 		private int _RealEstateID;
 		
-		private EntityRef<CUSTOMER> _CUSTOMER;
-		
 		private EntityRef<REAL_ESTATE> _REAL_ESTATE;
+		
+		private EntityRef<CUSTOMER> _CUSTOMER;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4612,8 +4244,8 @@ namespace RealEstateDataContext
 		
 		public PROPERTY_CUSTOMER()
 		{
-			this._CUSTOMER = default(EntityRef<CUSTOMER>);
 			this._REAL_ESTATE = default(EntityRef<REAL_ESTATE>);
+			this._CUSTOMER = default(EntityRef<CUSTOMER>);
 			OnCreated();
 		}
 		
@@ -4685,40 +4317,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CUSTOMER_PROPERTY_CUSTOMER", Storage="_CUSTOMER", ThisKey="CustomerID", OtherKey="ID", IsForeignKey=true)]
-		public CUSTOMER CUSTOMER
-		{
-			get
-			{
-				return this._CUSTOMER.Entity;
-			}
-			set
-			{
-				CUSTOMER previousValue = this._CUSTOMER.Entity;
-				if (((previousValue != value) 
-							|| (this._CUSTOMER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CUSTOMER.Entity = null;
-						previousValue.PROPERTY_CUSTOMERs.Remove(this);
-					}
-					this._CUSTOMER.Entity = value;
-					if ((value != null))
-					{
-						value.PROPERTY_CUSTOMERs.Add(this);
-						this._CustomerID = value.ID;
-					}
-					else
-					{
-						this._CustomerID = default(int);
-					}
-					this.SendPropertyChanged("CUSTOMER");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_CUSTOMER", Storage="_REAL_ESTATE", ThisKey="RealEstateID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public REAL_ESTATE REAL_ESTATE
 		{
@@ -4749,6 +4347,40 @@ namespace RealEstateDataContext
 						this._RealEstateID = default(int);
 					}
 					this.SendPropertyChanged("REAL_ESTATE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CUSTOMER_PROPERTY_CUSTOMER", Storage="_CUSTOMER", ThisKey="CustomerID", OtherKey="ID", IsForeignKey=true)]
+		public CUSTOMER CUSTOMER
+		{
+			get
+			{
+				return this._CUSTOMER.Entity;
+			}
+			set
+			{
+				CUSTOMER previousValue = this._CUSTOMER.Entity;
+				if (((previousValue != value) 
+							|| (this._CUSTOMER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CUSTOMER.Entity = null;
+						previousValue.PROPERTY_CUSTOMERs.Remove(this);
+					}
+					this._CUSTOMER.Entity = value;
+					if ((value != null))
+					{
+						value.PROPERTY_CUSTOMERs.Add(this);
+						this._CustomerID = value.ID;
+					}
+					else
+					{
+						this._CustomerID = default(int);
+					}
+					this.SendPropertyChanged("CUSTOMER");
 				}
 			}
 		}
@@ -5650,8 +5282,6 @@ namespace RealEstateDataContext
 		
 		private System.Nullable<int> _GroupID;
 		
-		private EntitySet<CUSTOMER> _CUSTOMERs;
-		
 		private EntityRef<GROUP> _GROUP;
 		
     #region Extensibility Method Definitions
@@ -5674,7 +5304,6 @@ namespace RealEstateDataContext
 		
 		public USER()
 		{
-			this._CUSTOMERs = new EntitySet<CUSTOMER>(new Action<CUSTOMER>(this.attach_CUSTOMERs), new Action<CUSTOMER>(this.detach_CUSTOMERs));
 			this._GROUP = default(EntityRef<GROUP>);
 			OnCreated();
 		}
@@ -5803,19 +5432,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="USER_CUSTOMER", Storage="_CUSTOMERs", ThisKey="ID", OtherKey="UserID")]
-		public EntitySet<CUSTOMER> CUSTOMERs
-		{
-			get
-			{
-				return this._CUSTOMERs;
-			}
-			set
-			{
-				this._CUSTOMERs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER", Storage="_GROUP", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
 		public GROUP GROUP
 		{
@@ -5868,18 +5484,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_CUSTOMERs(CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.USER = this;
-		}
-		
-		private void detach_CUSTOMERs(CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.USER = null;
 		}
 	}
 	
@@ -7820,6 +7424,289 @@ namespace RealEstateDataContext
 		{
 			this.SendPropertyChanging();
 			entity.REAL_ESTATE = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CUSTOMER")]
+	public partial class CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private int _AddressID;
+		
+		private string _IdentityCard;
+		
+		private string _Phone;
+		
+		private string _HomePhone;
+		
+		private string _Email;
+		
+		private string _UserName;
+		
+		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
+		
+		private EntityRef<ADDRESS> _ADDRESS;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAddressIDChanging(int value);
+    partial void OnAddressIDChanged();
+    partial void OnIdentityCardChanging(string value);
+    partial void OnIdentityCardChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnHomePhoneChanging(string value);
+    partial void OnHomePhoneChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    #endregion
+		
+		public CUSTOMER()
+		{
+			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
+			this._ADDRESS = default(EntityRef<ADDRESS>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
+		public int AddressID
+		{
+			get
+			{
+				return this._AddressID;
+			}
+			set
+			{
+				if ((this._AddressID != value))
+				{
+					if (this._ADDRESS.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAddressIDChanging(value);
+					this.SendPropertyChanging();
+					this._AddressID = value;
+					this.SendPropertyChanged("AddressID");
+					this.OnAddressIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdentityCard", DbType="VarChar(20)")]
+		public string IdentityCard
+		{
+			get
+			{
+				return this._IdentityCard;
+			}
+			set
+			{
+				if ((this._IdentityCard != value))
+				{
+					this.OnIdentityCardChanging(value);
+					this.SendPropertyChanging();
+					this._IdentityCard = value;
+					this.SendPropertyChanged("IdentityCard");
+					this.OnIdentityCardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="VarChar(20)")]
+		public string HomePhone
+		{
+			get
+			{
+				return this._HomePhone;
+			}
+			set
+			{
+				if ((this._HomePhone != value))
+				{
+					this.OnHomePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._HomePhone = value;
+					this.SendPropertyChanged("HomePhone");
+					this.OnHomePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(256) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CUSTOMER_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="CustomerID")]
+		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
+		{
+			get
+			{
+				return this._PROPERTY_CUSTOMERs;
+			}
+			set
+			{
+				this._PROPERTY_CUSTOMERs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CUSTOMER", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true)]
+		public ADDRESS ADDRESS
+		{
+			get
+			{
+				return this._ADDRESS.Entity;
+			}
+			set
+			{
+				if ((this._ADDRESS.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._ADDRESS.Entity = value;
+					this.SendPropertyChanged("ADDRESS");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.CUSTOMER = this;
+		}
+		
+		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.CUSTOMER = null;
 		}
 	}
 }

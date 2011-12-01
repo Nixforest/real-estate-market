@@ -11,69 +11,53 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void Insert_Click(object sender, EventArgs e)
-        {
-            if (txtName.Text != "")
+            // Only Moderator and Administrator can access
+            if (!User.IsInRole("Moderator"))
             {
-                try
-                {
-                    RealEstateMarket._Default.db.InsertDistrict(txtName.Text, ddlCity.SelectedIndex + 1);
-                    dataTable.DataBind();
-                }
-                catch (Exception ex)
-                {
-                    if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
-                    {
-                        error.Text = "Not exist city";
-                    }
-                }
+                Response.Redirect("~/AccessDeny.aspx");
             }
         }
 
-        protected void addStreet_Click(object sender, EventArgs e)
+        protected void InsertDistrictButton_Click(object sender, EventArgs e)
         {
-            //int index = Convert.ToInt32(dataTableStreet.);
-            //int id = Convert.ToInt32(dataTableStreet.SelectedRow.Cells[3].Text);
-            //error.Text = index.ToString();
-            //try
-            //{
-            //    RealEstateMarket._Default.db.InsertDistrictDetail(Convert.ToInt32(ddlDistrict.SelectedValue), id);
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
-            //    {
-            //        error.Text = "District ID not valid!";
-            //    }
-            //}
-        }
-
-        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dataSourceStreet.DataBind();
-            dataTableStreet.DataBind();
-        }
-
-        protected void dataTableStreet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(dataTableStreet.SelectedRow.Cells[3].Text);
-            error.Text = id.ToString();
             try
             {
-                RealEstateMarket._Default.db.InsertDistrictDetail(Convert.ToInt32(ddlDistrict.SelectedValue), id);
-                dataTableStreet.DataBind();
+                ErrorLabel.Text= "Bạn đã cập nhật Quận có ID = "+ 
+                    RealEstateMarket._Default.db.InsertDistrict(DistrictNameTextBox.Text.Trim(), Convert.ToInt32(CityDropDownList.SelectedValue));
+                DistrictGridView.DataBind();
             }
             catch (Exception ex)
             {
                 if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
                 {
-                    error.Text = "District ID not valid!";
+                    ErrorLabel.Text = "Not exist city";
                 }
             }
         }
 
+        protected void DistrictDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StreetObjectDataSource.DataBind();
+            StreetGridView.DataBind();
+        }
+
+        protected void StreetGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(StreetGridView.SelectedRow.Cells[3].Text);
+            ErrorLabel.Text = id.ToString();
+            try
+            {
+                RealEstateMarket._Default.db.InsertDistrictDetail(Convert.ToInt32(DistrictDropDownList.SelectedValue), id);
+                StreetObjectDataSource.DataBind();
+                StreetGridView.DataBind();
+            }
+            catch (Exception ex)
+            {
+                if (ex.ToString().Contains(new RealEstateDataContext.Utility.DistrictIDException().ToString()))
+                {
+                    ErrorLabel.Text = "District ID not valid!";
+                }
+            }
+        }
     }
 }

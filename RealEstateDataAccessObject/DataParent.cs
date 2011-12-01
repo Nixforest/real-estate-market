@@ -23,6 +23,13 @@ namespace RealEstateDataAccessObject
         public virtual ICollection<T> GetAllRows() { return null; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numrow"></param>
+        /// <returns></returns>
+        public virtual ICollection<T> GetAllRows(int numrow) { return null; }
+
+        /// <summary>
         /// Insert a row to table
         /// </summary>
         /// <param name="entity">Entity</param>

@@ -11,6 +11,8 @@
 <body>
     <form runat="server">
     <div class="page">
+<asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
         <div class="header">
             <div class="title">
                 <h1>

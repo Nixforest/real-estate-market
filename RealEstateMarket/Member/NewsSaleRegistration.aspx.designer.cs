@@ -13,526 +13,625 @@ namespace RealEstateMarket.Member {
     public partial class NewsSaleRegistration {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// RETypeObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource RETypeObjectDataSource;
         
         /// <summary>
-        /// dataSourceRealEstateType control.
+        /// NewsSaleTypeObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceRealEstateType;
+        protected global::System.Web.UI.WebControls.ObjectDataSource NewsSaleTypeObjectDataSource;
         
         /// <summary>
-        /// dataSourceNewsSaleType control.
+        /// ProjectsObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceNewsSaleType;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ProjectsObjectDataSource;
         
         /// <summary>
-        /// dataSourceProject control.
+        /// UnitObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceProject;
+        protected global::System.Web.UI.WebControls.ObjectDataSource UnitObjectDataSource;
         
         /// <summary>
-        /// dataSourceUnit control.
+        /// UnitPriceObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceUnit;
+        protected global::System.Web.UI.WebControls.ObjectDataSource UnitPriceObjectDataSource;
         
         /// <summary>
-        /// dataSourceUnitPrice control.
+        /// LocationObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceUnitPrice;
+        protected global::System.Web.UI.WebControls.ObjectDataSource LocationObjectDataSource;
         
         /// <summary>
-        /// dataSourceLocation control.
+        /// NewsSaleValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceLocation;
+        protected global::System.Web.UI.WebControls.ValidationSummary NewsSaleValidationSummary;
         
         /// <summary>
-        /// error control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label error;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
         
         /// <summary>
-        /// test control.
+        /// BasicInfoPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button test;
+        protected global::System.Web.UI.WebControls.Panel BasicInfoPanel;
         
         /// <summary>
-        /// pnlBasicInfo control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBasicInfo;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lbl1 control.
+        /// InfoTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl1;
+        protected global::System.Web.UI.WebControls.Table InfoTable;
         
         /// <summary>
-        /// validationSum control.
+        /// NewsSaleTypeRadioButtonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary validationSum;
+        protected global::System.Web.UI.WebControls.RadioButtonList NewsSaleTypeRadioButtonList;
         
         /// <summary>
-        /// tblInfo control.
+        /// RealEstateTypeDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblInfo;
+        protected global::System.Web.UI.WebControls.DropDownList RealEstateTypeDropDownList;
         
         /// <summary>
-        /// rblNewsSaleType control.
+        /// LocationDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblNewsSaleType;
+        protected global::System.Web.UI.WebControls.DropDownList LocationDropDownList;
         
         /// <summary>
-        /// ddlRealEstateType control.
+        /// AddressCustomControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRealEstateType;
+        protected global::RealEstateMarket.CustomControl.AddressControl AddressCustomControl;
         
         /// <summary>
-        /// ddlLocation control.
+        /// ProjectUpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::System.Web.UI.UpdatePanel ProjectUpdatePanel;
         
         /// <summary>
-        /// address control.
+        /// ProjectDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RealEstateMarket.CustomControl.AddressControl address;
+        protected global::System.Web.UI.WebControls.DropDownList ProjectDropDownList;
         
         /// <summary>
-        /// ddlProject control.
+        /// ProjectCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProject;
+        protected global::System.Web.UI.WebControls.CheckBox ProjectCheckBox;
         
         /// <summary>
-        /// cbProject control.
+        /// PriceTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbProject;
+        protected global::System.Web.UI.WebControls.TextBox PriceTextBox;
         
         /// <summary>
-        /// tbxPrice control.
+        /// PriceRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxPrice;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PriceRegularExpressionValidator;
         
         /// <summary>
-        /// ddlUnit control.
+        /// PriceRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnit;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PriceRequiredFieldValidator;
         
         /// <summary>
-        /// ddlUnitPrice control.
+        /// UnitDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnitPrice;
+        protected global::System.Web.UI.WebControls.DropDownList UnitDropDownList;
         
         /// <summary>
-        /// cblBroker control.
+        /// UnitPriceDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList cblBroker;
+        protected global::System.Web.UI.WebControls.DropDownList UnitPriceDropDownList;
         
         /// <summary>
-        /// tbxTotalUseArea control.
+        /// RadioButtonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxTotalUseArea;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList;
         
         /// <summary>
-        /// rfvTotalUseArea control.
+        /// TotalUseAreaTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTotalUseArea;
+        protected global::System.Web.UI.WebControls.TextBox TotalUseAreaTextBox;
         
         /// <summary>
-        /// tbxCampusFront control.
+        /// TotalUseAreaRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxCampusFront;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator TotalUseAreaRegularExpressionValidator;
         
         /// <summary>
-        /// tbxCampusLength control.
+        /// TotalUseAreaRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxCampusLength;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator TotalUseAreaRequiredFieldValidator;
         
         /// <summary>
-        /// cbCampusOpenBehind control.
+        /// CampusFrontTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCampusOpenBehind;
+        protected global::System.Web.UI.WebControls.TextBox CampusFrontTextBox;
         
         /// <summary>
-        /// tbxCampusBehind control.
+        /// CampusFrontRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxCampusBehind;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusFrontRegularExpressionValidator;
         
         /// <summary>
-        /// lblCampusM control.
+        /// CampusLengthTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCampusM;
+        protected global::System.Web.UI.WebControls.TextBox CampusLengthTextBox;
         
         /// <summary>
-        /// tbxBuildFront control.
+        /// CampusLengthRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxBuildFront;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusLengthRegularExpressionValidator;
         
         /// <summary>
-        /// tbxBuildLength control.
+        /// CampusOpenBehindUpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxBuildLength;
+        protected global::System.Web.UI.UpdatePanel CampusOpenBehindUpdatePanel;
         
         /// <summary>
-        /// cbBuildOpenBehind control.
+        /// CampusOpenBehindCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbBuildOpenBehind;
+        protected global::System.Web.UI.WebControls.CheckBox CampusOpenBehindCheckBox;
         
         /// <summary>
-        /// tbxBuildBehind control.
+        /// CampusBehindTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxBuildBehind;
+        protected global::System.Web.UI.WebControls.TextBox CampusBehindTextBox;
         
         /// <summary>
-        /// lblBuilM control.
+        /// CampusMLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBuilM;
+        protected global::System.Web.UI.WebControls.Label CampusMLabel;
         
         /// <summary>
-        /// dataSourceUtility control.
+        /// CampusOpenBehindRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceUtility;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusOpenBehindRegularExpressionValidator;
         
         /// <summary>
-        /// dataSourceLegal control.
+        /// BuildFrontTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dataSourceLegal;
+        protected global::System.Web.UI.WebControls.TextBox BuildFrontTextBox;
         
         /// <summary>
-        /// pnlUtility control.
+        /// BuildFrontRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUtility;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildFrontRegularExpressionValidator;
         
         /// <summary>
-        /// tblUtility control.
+        /// BuildLengthTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblUtility;
+        protected global::System.Web.UI.WebControls.TextBox BuildLengthTextBox;
         
         /// <summary>
-        /// ddlLegal control.
+        /// BuildLengthRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLegal;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildLengthRegularExpressionValidator;
         
         /// <summary>
-        /// ddlLivingRoom control.
+        /// BuildOpenBehindUpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLivingRoom;
+        protected global::System.Web.UI.UpdatePanel BuildOpenBehindUpdatePanel;
         
         /// <summary>
-        /// cblUtility control.
+        /// BuildOpenBehindCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblUtility;
+        protected global::System.Web.UI.WebControls.CheckBox BuildOpenBehindCheckBox;
         
         /// <summary>
-        /// ddlDirection control.
+        /// BuildBehindTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDirection;
+        protected global::System.Web.UI.WebControls.TextBox BuildBehindTextBox;
         
         /// <summary>
-        /// ddlBedRoom control.
+        /// BuildMLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBedRoom;
+        protected global::System.Web.UI.WebControls.Label BuildMLabel;
         
         /// <summary>
-        /// ddlFrontStreet control.
+        /// BuildOpenBehindRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFrontStreet;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildOpenBehindRegularExpressionValidator;
         
         /// <summary>
-        /// ddlBathRoom control.
+        /// UtilityObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBathRoom;
+        protected global::System.Web.UI.WebControls.ObjectDataSource UtilityObjectDataSource;
         
         /// <summary>
-        /// ddlStorey control.
+        /// LegalObjectDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStorey;
+        protected global::System.Web.UI.WebControls.ObjectDataSource LegalObjectDataSource;
         
         /// <summary>
-        /// ddlOtherRoom control.
+        /// UtilityPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlOtherRoom;
+        protected global::System.Web.UI.WebControls.Panel UtilityPanel;
         
         /// <summary>
-        /// pnlDescription control.
+        /// UtilityTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDescription;
+        protected global::System.Web.UI.WebControls.Table UtilityTable;
         
         /// <summary>
-        /// lbl control.
+        /// LegalDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl;
+        protected global::System.Web.UI.WebControls.DropDownList LegalDropDownList;
         
         /// <summary>
-        /// tblDescription control.
+        /// LivingRoomDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblDescription;
+        protected global::System.Web.UI.WebControls.DropDownList LivingRoomDropDownList;
         
         /// <summary>
-        /// tbxTitle control.
+        /// UtilityCheckBoxList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxTitle;
+        protected global::System.Web.UI.WebControls.CheckBoxList UtilityCheckBoxList;
         
         /// <summary>
-        /// editor control.
+        /// DirectionDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CKEditor.NET.CKEditorControl editor;
+        protected global::System.Web.UI.WebControls.DropDownList DirectionDropDownList;
         
         /// <summary>
-        /// rblKey control.
+        /// BedRoomDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblKey;
+        protected global::System.Web.UI.WebControls.DropDownList BedRoomDropDownList;
         
         /// <summary>
-        /// pnlImage control.
+        /// FrontStreetDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlImage;
+        protected global::System.Web.UI.WebControls.DropDownList FrontStreetDropDownList;
         
         /// <summary>
-        /// lbl2 control.
+        /// BathRoomDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl2;
+        protected global::System.Web.UI.WebControls.DropDownList BathRoomDropDownList;
         
         /// <summary>
-        /// fuImage control.
+        /// StoreyDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuImage;
+        protected global::System.Web.UI.WebControls.DropDownList StoreyDropDownList;
         
         /// <summary>
-        /// pnlMap control.
+        /// OtherRoomDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMap;
+        protected global::System.Web.UI.WebControls.DropDownList OtherRoomDropDownList;
+        
+        /// <summary>
+        /// DescriptionPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel DescriptionPanel;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// DescriptionTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table DescriptionTable;
+        
+        /// <summary>
+        /// TitleTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TitleTextBox;
+        
+        /// <summary>
+        /// TitleRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator TitleRequiredFieldValidator;
+        
+        /// <summary>
+        /// ContentCKEditor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CKEditor.NET.CKEditorControl ContentCKEditor;
+        
+        /// <summary>
+        /// InputMethodRadioButtonList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList InputMethodRadioButtonList;
+        
+        /// <summary>
+        /// ImagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ImagePanel;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// ImageFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload;
+        
+        /// <summary>
+        /// MapPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MapPanel;
         
         /// <summary>
         /// imgButtonMap control.
@@ -544,147 +643,147 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.ImageButton imgButtonMap;
         
         /// <summary>
-        /// pnlContact control.
+        /// ContactPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlContact;
+        protected global::System.Web.UI.WebControls.Panel ContactPanel;
         
         /// <summary>
-        /// tblContact control.
+        /// ContactTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblContact;
+        protected global::System.Web.UI.WebControls.Table ContactTable;
         
         /// <summary>
-        /// lblContactName control.
+        /// ContactNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactName;
+        protected global::System.Web.UI.WebControls.Label ContactNameLabel;
         
         /// <summary>
-        /// tbxContactName control.
+        /// ContactNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxContactName;
+        protected global::System.Web.UI.WebControls.TextBox ContactNameTextBox;
         
         /// <summary>
-        /// lblContactHomePhone control.
+        /// ContactHomePhoneLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactHomePhone;
+        protected global::System.Web.UI.WebControls.Label ContactHomePhoneLabel;
         
         /// <summary>
-        /// tbxContactHomePhone control.
+        /// ContactHomePhoneTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxContactHomePhone;
+        protected global::System.Web.UI.WebControls.TextBox ContactHomePhoneTextBox;
         
         /// <summary>
-        /// lblContactPhone control.
+        /// ContactPhoneLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactPhone;
+        protected global::System.Web.UI.WebControls.Label ContactPhoneLabel;
         
         /// <summary>
-        /// tbxContactPhone control.
+        /// ContactPhoneTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxContactPhone;
+        protected global::System.Web.UI.WebControls.TextBox ContactPhoneTextBox;
         
         /// <summary>
-        /// lblContactAddress control.
+        /// ContactAddressLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactAddress;
+        protected global::System.Web.UI.WebControls.Label ContactAddressLabel;
         
         /// <summary>
-        /// addressContact control.
+        /// AddressContactCustomControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RealEstateMarket.CustomControl.AddressControl addressContact;
+        protected global::RealEstateMarket.CustomControl.AddressControl AddressContactCustomControl;
         
         /// <summary>
-        /// lblContactNote control.
+        /// ContactNoteLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContactNote;
+        protected global::System.Web.UI.WebControls.Label ContactNoteLabel;
         
         /// <summary>
-        /// tbxContactNote control.
+        /// ContactNoteTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxContactNote;
+        protected global::System.Web.UI.WebControls.TextBox ContactNoteTextBox;
         
         /// <summary>
-        /// pnlNote control.
+        /// NotePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNote;
+        protected global::System.Web.UI.WebControls.Panel NotePanel;
         
         /// <summary>
-        /// btnPreview control.
+        /// PreviewButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPreview;
+        protected global::System.Web.UI.WebControls.Button PreviewButton;
         
         /// <summary>
-        /// btnSave control.
+        /// SaveButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.Button SaveButton;
         
         /// <summary>
-        /// btnPost control.
+        /// PostButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPost;
+        protected global::System.Web.UI.WebControls.Button PostButton;
     }
 }

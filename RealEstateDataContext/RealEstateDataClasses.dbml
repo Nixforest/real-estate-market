@@ -11,7 +11,6 @@
       <Column Name="Detail" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="ADDRESS_COMPANY" Member="COMPANies" ThisKey="ID" OtherKey="AddressID" Type="COMPANY" />
       <Association Name="ADDRESS_CONTACT" Member="CONTACTs" ThisKey="ID" OtherKey="AddressID" Type="CONTACT" />
-      <Association Name="ADDRESS_CUSTOMER" Member="CUSTOMERs" ThisKey="ID" OtherKey="AddressID" Type="CUSTOMER" />
       <Association Name="ADDRESS_REAL_ESTATE" Member="REAL_ESTATEs" ThisKey="ID" OtherKey="AddressID" Type="REAL_ESTATE" />
       <Association Name="WARD_ADDRESS" Member="WARD" ThisKey="WardID" OtherKey="ID" Type="WARD" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="CITY_ADDRESS" Member="CITY" ThisKey="CityID" OtherKey="ID" Type="CITY" IsForeignKey="true" />
@@ -68,21 +67,6 @@
       <Column Name="Note" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="CONTACT_REAL_ESTATE" Member="REAL_ESTATEs" ThisKey="ID" OtherKey="ContactID" Type="REAL_ESTATE" />
       <Association Name="ADDRESS_CONTACT" Member="ADDRESS" ThisKey="AddressID" OtherKey="ID" Type="ADDRESS" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
-    <Type Name="CUSTOMER">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdentityCard" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="HomePhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CUSTOMER_PROPERTY_CUSTOMER" Member="PROPERTY_CUSTOMERs" ThisKey="ID" OtherKey="CustomerID" Type="PROPERTY_CUSTOMER" />
-      <Association Name="ADDRESS_CUSTOMER" Member="ADDRESS" ThisKey="AddressID" OtherKey="ID" Type="ADDRESS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-      <Association Name="USER_CUSTOMER" Member="USER" ThisKey="UserID" OtherKey="ID" Type="USER" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.DISTRICT" Member="DISTRICTs">
@@ -206,8 +190,8 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="RealEstateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="CUSTOMER_PROPERTY_CUSTOMER" Member="CUSTOMER" ThisKey="CustomerID" OtherKey="ID" Type="CUSTOMER" IsForeignKey="true" />
       <Association Name="REAL_ESTATE_PROPERTY_CUSTOMER" Member="REAL_ESTATE" ThisKey="RealEstateID" OtherKey="ID" Type="REAL_ESTATE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="CUSTOMER_PROPERTY_CUSTOMER" Member="CUSTOMER" ThisKey="CustomerID" OtherKey="ID" Type="CUSTOMER" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.REAL_ESTATE_IMAGE" Member="REAL_ESTATE_IMAGEs">
@@ -266,7 +250,6 @@
       <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="GroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="USER_CUSTOMER" Member="CUSTOMERs" ThisKey="ID" OtherKey="UserID" Type="CUSTOMER" />
       <Association Name="GROUP_USER" Member="GROUP" ThisKey="GroupID" OtherKey="ID" Type="GROUP" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
@@ -354,6 +337,20 @@
       <Association Name="REAL_ESTATE_TYPE_REAL_ESTATE" Member="REAL_ESTATE_TYPE" ThisKey="TypeID" OtherKey="ID" Type="REAL_ESTATE_TYPE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="UNIT_REAL_ESTATE" Member="UNIT" ThisKey="UnitID" OtherKey="ID" Type="UNIT" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="UNIT_PRICE_REAL_ESTATE" Member="UNIT_PRICE" ThisKey="UnitPriceID" OtherKey="ID" Type="UNIT_PRICE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CUSTOMER" Member="CUSTOMERs">
+    <Type Name="CUSTOMER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdentityCard" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="CUSTOMER_PROPERTY_CUSTOMER" Member="PROPERTY_CUSTOMERs" ThisKey="ID" OtherKey="CustomerID" Type="PROPERTY_CUSTOMER" />
+      <Association Name="ADDRESS_CUSTOMER" Member="ADDRESS" ThisKey="AddressID" OtherKey="ID" Type="ADDRESS" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
