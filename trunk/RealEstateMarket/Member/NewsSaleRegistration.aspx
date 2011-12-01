@@ -106,7 +106,7 @@
                     
                 </asp:TableCell>
                 <asp:TableCell HorizontalAlign="Right">
-                    <asp:CheckBox ID="ProjectCheckBox" runat="server" Text="Khác" OnCheckedChanged="ProjectCheckBox_CheckedChanged" />
+                    <asp:CheckBox ID="ProjectCheckBox" runat="server" Text="Khác"/>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -250,8 +250,7 @@
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="BuildOpenBehindCheckBox" EventName="checkedchanged" />
                         </Triggers>
-                    </asp:UpdatePanel>
-                    
+                    </asp:UpdatePanel>                    
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
