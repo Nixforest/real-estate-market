@@ -435,10 +435,6 @@ namespace RealEstateDataContext
 		
 		private string _Detail;
 		
-		private EntitySet<COMPANY> _COMPANies;
-		
-		private EntitySet<CONTACT> _CONTACTs;
-		
 		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
 		
 		private EntityRef<WARD> _WARD;
@@ -473,8 +469,6 @@ namespace RealEstateDataContext
 		
 		public ADDRESS()
 		{
-			this._COMPANies = new EntitySet<COMPANY>(new Action<COMPANY>(this.attach_COMPANies), new Action<COMPANY>(this.detach_COMPANies));
-			this._CONTACTs = new EntitySet<CONTACT>(new Action<CONTACT>(this.attach_CONTACTs), new Action<CONTACT>(this.detach_CONTACTs));
 			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			this._WARD = default(EntityRef<WARD>);
 			this._CITY = default(EntityRef<CITY>);
@@ -644,32 +638,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_COMPANY", Storage="_COMPANies", ThisKey="ID", OtherKey="AddressID")]
-		public EntitySet<COMPANY> COMPANies
-		{
-			get
-			{
-				return this._COMPANies;
-			}
-			set
-			{
-				this._COMPANies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CONTACT", Storage="_CONTACTs", ThisKey="ID", OtherKey="AddressID")]
-		public EntitySet<CONTACT> CONTACTs
-		{
-			get
-			{
-				return this._CONTACTs;
-			}
-			set
-			{
-				this._CONTACTs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="AddressID")]
 		public EntitySet<REAL_ESTATE> REAL_ESTATEs
 		{
@@ -791,30 +759,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_COMPANies(COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = this;
-		}
-		
-		private void detach_COMPANies(COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = null;
-		}
-		
-		private void attach_CONTACTs(CONTACT entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = this;
-		}
-		
-		private void detach_CONTACTs(CONTACT entity)
-		{
-			this.SendPropertyChanging();
-			entity.ADDRESS = null;
 		}
 		
 		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
@@ -1194,8 +1138,6 @@ namespace RealEstateDataContext
 		
 		private int _Logo;
 		
-		private EntitySet<PROPERTY_COMPANY> _PROPERTY_COMPANies;
-		
 		private EntityRef<ADDRESS> _ADDRESS;
 		
 		private EntityRef<IMAGE> _IMAGE;
@@ -1236,7 +1178,6 @@ namespace RealEstateDataContext
 		
 		public COMPANY()
 		{
-			this._PROPERTY_COMPANies = new EntitySet<PROPERTY_COMPANY>(new Action<PROPERTY_COMPANY>(this.attach_PROPERTY_COMPANies), new Action<PROPERTY_COMPANY>(this.detach_PROPERTY_COMPANies));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			this._IMAGE = default(EntityRef<IMAGE>);
 			OnCreated();
@@ -1530,19 +1471,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="COMPANY_PROPERTY_COMPANY", Storage="_PROPERTY_COMPANies", ThisKey="ID", OtherKey="CompanyID")]
-		public EntitySet<PROPERTY_COMPANY> PROPERTY_COMPANies
-		{
-			get
-			{
-				return this._PROPERTY_COMPANies;
-			}
-			set
-			{
-				this._PROPERTY_COMPANies.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_COMPANY", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public ADDRESS ADDRESS
 		{
@@ -1552,26 +1480,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				ADDRESS previousValue = this._ADDRESS.Entity;
-				if (((previousValue != value) 
-							|| (this._ADDRESS.HasLoadedOrAssignedValue == false)))
+				if ((this._ADDRESS.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ADDRESS.Entity = null;
-						previousValue.COMPANies.Remove(this);
-					}
 					this._ADDRESS.Entity = value;
-					if ((value != null))
-					{
-						value.COMPANies.Add(this);
-						this._AddressID = value.ID;
-					}
-					else
-					{
-						this._AddressID = default(int);
-					}
 					this.SendPropertyChanged("ADDRESS");
 				}
 			}
@@ -1586,26 +1498,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				IMAGE previousValue = this._IMAGE.Entity;
-				if (((previousValue != value) 
-							|| (this._IMAGE.HasLoadedOrAssignedValue == false)))
+				if ((this._IMAGE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._IMAGE.Entity = null;
-						previousValue.COMPANies.Remove(this);
-					}
 					this._IMAGE.Entity = value;
-					if ((value != null))
-					{
-						value.COMPANies.Add(this);
-						this._Logo = value.ID;
-					}
-					else
-					{
-						this._Logo = default(int);
-					}
 					this.SendPropertyChanged("IMAGE");
 				}
 			}
@@ -1630,18 +1526,6 @@ namespace RealEstateDataContext
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = this;
-		}
-		
-		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.COMPANY = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CONTACT")]
@@ -1661,8 +1545,6 @@ namespace RealEstateDataContext
 		private string _HomePhone;
 		
 		private string _Note;
-		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
 		
 		private EntityRef<ADDRESS> _ADDRESS;
 		
@@ -1686,7 +1568,6 @@ namespace RealEstateDataContext
 		
 		public CONTACT()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			OnCreated();
 		}
@@ -1815,19 +1696,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTACT_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="ContactID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CONTACT", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true)]
 		public ADDRESS ADDRESS
 		{
@@ -1837,26 +1705,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				ADDRESS previousValue = this._ADDRESS.Entity;
-				if (((previousValue != value) 
-							|| (this._ADDRESS.HasLoadedOrAssignedValue == false)))
+				if ((this._ADDRESS.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ADDRESS.Entity = null;
-						previousValue.CONTACTs.Remove(this);
-					}
 					this._ADDRESS.Entity = value;
-					if ((value != null))
-					{
-						value.CONTACTs.Add(this);
-						this._AddressID = value.ID;
-					}
-					else
-					{
-						this._AddressID = default(Nullable<int>);
-					}
 					this.SendPropertyChanged("ADDRESS");
 				}
 			}
@@ -1880,18 +1732,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.CONTACT = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.CONTACT = null;
 		}
 	}
 	
@@ -2666,12 +2506,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<COMPANY> _COMPANies;
-		
-		private EntitySet<NEW> _NEWs;
-		
-		private EntitySet<REAL_ESTATE_IMAGE> _REAL_ESTATE_IMAGEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2688,9 +2522,6 @@ namespace RealEstateDataContext
 		
 		public IMAGE()
 		{
-			this._COMPANies = new EntitySet<COMPANY>(new Action<COMPANY>(this.attach_COMPANies), new Action<COMPANY>(this.detach_COMPANies));
-			this._NEWs = new EntitySet<NEW>(new Action<NEW>(this.attach_NEWs), new Action<NEW>(this.detach_NEWs));
-			this._REAL_ESTATE_IMAGEs = new EntitySet<REAL_ESTATE_IMAGE>(new Action<REAL_ESTATE_IMAGE>(this.attach_REAL_ESTATE_IMAGEs), new Action<REAL_ESTATE_IMAGE>(this.detach_REAL_ESTATE_IMAGEs));
 			OnCreated();
 		}
 		
@@ -2774,45 +2605,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_COMPANY", Storage="_COMPANies", ThisKey="ID", OtherKey="Logo")]
-		public EntitySet<COMPANY> COMPANies
-		{
-			get
-			{
-				return this._COMPANies;
-			}
-			set
-			{
-				this._COMPANies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_NEW", Storage="_NEWs", ThisKey="ID", OtherKey="ImageID")]
-		public EntitySet<NEW> NEWs
-		{
-			get
-			{
-				return this._NEWs;
-			}
-			set
-			{
-				this._NEWs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE_IMAGEs", ThisKey="ID", OtherKey="ImageID")]
-		public EntitySet<REAL_ESTATE_IMAGE> REAL_ESTATE_IMAGEs
-		{
-			get
-			{
-				return this._REAL_ESTATE_IMAGEs;
-			}
-			set
-			{
-				this._REAL_ESTATE_IMAGEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2831,42 +2623,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_COMPANies(COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = this;
-		}
-		
-		private void detach_COMPANies(COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = null;
-		}
-		
-		private void attach_NEWs(NEW entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = this;
-		}
-		
-		private void detach_NEWs(NEW entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = null;
-		}
-		
-		private void attach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = this;
-		}
-		
-		private void detach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.IMAGE = null;
 		}
 	}
 	
@@ -3240,33 +2996,17 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				IMAGE previousValue = this._IMAGE.Entity;
-				if (((previousValue != value) 
-							|| (this._IMAGE.HasLoadedOrAssignedValue == false)))
+				if ((this._IMAGE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._IMAGE.Entity = null;
-						previousValue.NEWs.Remove(this);
-					}
 					this._IMAGE.Entity = value;
-					if ((value != null))
-					{
-						value.NEWs.Add(this);
-						this._ImageID = value.ID;
-					}
-					else
-					{
-						this._ImageID = default(int);
-					}
 					this.SendPropertyChanged("IMAGE");
 				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NEWS_TYPE_NEW", Storage="_NEWS_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public NEWS_TYPE NEWS_TYPE
+		internal NEWS_TYPE NEWS_TYPE
 		{
 			get
 			{
@@ -3528,26 +3268,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				NEWS_SALE_TYPE previousValue = this._NEWS_SALE_TYPE.Entity;
-				if (((previousValue != value) 
-							|| (this._NEWS_SALE_TYPE.HasLoadedOrAssignedValue == false)))
+				if ((this._NEWS_SALE_TYPE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NEWS_SALE_TYPE.Entity = null;
-						previousValue.NEWS_SALEs.Remove(this);
-					}
 					this._NEWS_SALE_TYPE.Entity = value;
-					if ((value != null))
-					{
-						value.NEWS_SALEs.Add(this);
-						this._TypeID = value.ID;
-					}
-					else
-					{
-						this._TypeID = default(int);
-					}
 					this.SendPropertyChanged("NEWS_SALE_TYPE");
 				}
 			}
@@ -3562,26 +3286,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
+				if ((this._REAL_ESTATE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE.Entity = null;
-						previousValue.NEWS_SALEs.Remove(this);
-					}
 					this._REAL_ESTATE.Entity = value;
-					if ((value != null))
-					{
-						value.NEWS_SALEs.Add(this);
-						this._RealEstateID = value.ID;
-					}
-					else
-					{
-						this._RealEstateID = default(int);
-					}
 					this.SendPropertyChanged("REAL_ESTATE");
 				}
 			}
@@ -3620,8 +3328,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<NEWS_SALE> _NEWS_SALEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3636,7 +3342,6 @@ namespace RealEstateDataContext
 		
 		public NEWS_SALE_TYPE()
 		{
-			this._NEWS_SALEs = new EntitySet<NEWS_SALE>(new Action<NEWS_SALE>(this.attach_NEWS_SALEs), new Action<NEWS_SALE>(this.detach_NEWS_SALEs));
 			OnCreated();
 		}
 		
@@ -3700,19 +3405,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NEWS_SALE_TYPE_NEWS_SALE", Storage="_NEWS_SALEs", ThisKey="ID", OtherKey="TypeID")]
-		public EntitySet<NEWS_SALE> NEWS_SALEs
-		{
-			get
-			{
-				return this._NEWS_SALEs;
-			}
-			set
-			{
-				this._NEWS_SALEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3731,18 +3423,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.NEWS_SALE_TYPE = this;
-		}
-		
-		private void detach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.NEWS_SALE_TYPE = null;
 		}
 	}
 	
@@ -3896,8 +3576,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<PROJECT> _PROJECTs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3912,7 +3590,6 @@ namespace RealEstateDataContext
 		
 		public PROJECT_TYPE()
 		{
-			this._PROJECTs = new EntitySet<PROJECT>(new Action<PROJECT>(this.attach_PROJECTs), new Action<PROJECT>(this.detach_PROJECTs));
 			OnCreated();
 		}
 		
@@ -3976,19 +3653,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_TYPE_PROJECT", Storage="_PROJECTs", ThisKey="ID", OtherKey="TypeID")]
-		public EntitySet<PROJECT> PROJECTs
-		{
-			get
-			{
-				return this._PROJECTs;
-			}
-			set
-			{
-				this._PROJECTs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -4007,18 +3671,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PROJECTs(PROJECT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT_TYPE = this;
-		}
-		
-		private void detach_PROJECTs(PROJECT entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT_TYPE = null;
 		}
 	}
 	
@@ -4134,26 +3786,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				COMPANY previousValue = this._COMPANY.Entity;
-				if (((previousValue != value) 
-							|| (this._COMPANY.HasLoadedOrAssignedValue == false)))
+				if ((this._COMPANY.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._COMPANY.Entity = null;
-						previousValue.PROPERTY_COMPANies.Remove(this);
-					}
 					this._COMPANY.Entity = value;
-					if ((value != null))
-					{
-						value.PROPERTY_COMPANies.Add(this);
-						this._CompanyID = value.ID;
-					}
-					else
-					{
-						this._CompanyID = default(int);
-					}
 					this.SendPropertyChanged("COMPANY");
 				}
 			}
@@ -4168,26 +3804,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
+				if ((this._REAL_ESTATE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE.Entity = null;
-						previousValue.PROPERTY_COMPANies.Remove(this);
-					}
 					this._REAL_ESTATE.Entity = value;
-					if ((value != null))
-					{
-						value.PROPERTY_COMPANies.Add(this);
-						this._RealEstateID = value.ID;
-					}
-					else
-					{
-						this._RealEstateID = default(int);
-					}
 					this.SendPropertyChanged("REAL_ESTATE");
 				}
 			}
@@ -4326,26 +3946,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
+				if ((this._REAL_ESTATE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE.Entity = null;
-						previousValue.PROPERTY_CUSTOMERs.Remove(this);
-					}
 					this._REAL_ESTATE.Entity = value;
-					if ((value != null))
-					{
-						value.PROPERTY_CUSTOMERs.Add(this);
-						this._RealEstateID = value.ID;
-					}
-					else
-					{
-						this._RealEstateID = default(int);
-					}
 					this.SendPropertyChanged("REAL_ESTATE");
 				}
 			}
@@ -4360,26 +3964,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				CUSTOMER previousValue = this._CUSTOMER.Entity;
-				if (((previousValue != value) 
-							|| (this._CUSTOMER.HasLoadedOrAssignedValue == false)))
+				if ((this._CUSTOMER.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CUSTOMER.Entity = null;
-						previousValue.PROPERTY_CUSTOMERs.Remove(this);
-					}
 					this._CUSTOMER.Entity = value;
-					if ((value != null))
-					{
-						value.PROPERTY_CUSTOMERs.Add(this);
-						this._CustomerID = value.ID;
-					}
-					else
-					{
-						this._CustomerID = default(int);
-					}
 					this.SendPropertyChanged("CUSTOMER");
 				}
 			}
@@ -4518,26 +4106,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				IMAGE previousValue = this._IMAGE.Entity;
-				if (((previousValue != value) 
-							|| (this._IMAGE.HasLoadedOrAssignedValue == false)))
+				if ((this._IMAGE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._IMAGE.Entity = null;
-						previousValue.REAL_ESTATE_IMAGEs.Remove(this);
-					}
 					this._IMAGE.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATE_IMAGEs.Add(this);
-						this._ImageID = value.ID;
-					}
-					else
-					{
-						this._ImageID = default(int);
-					}
 					this.SendPropertyChanged("IMAGE");
 				}
 			}
@@ -4610,8 +4182,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4626,7 +4196,6 @@ namespace RealEstateDataContext
 		
 		public REAL_ESTATE_TYPE()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -4690,19 +4259,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_TYPE_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="TypeID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -4721,18 +4277,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE_TYPE = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE_TYPE = null;
 		}
 	}
 	
@@ -5000,8 +4544,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5016,7 +4558,6 @@ namespace RealEstateDataContext
 		
 		public UNIT()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -5080,19 +4621,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="UnitID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5112,18 +4640,6 @@ namespace RealEstateDataContext
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.UNIT = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.UNIT = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UNIT_PRICE")]
@@ -5137,8 +4653,6 @@ namespace RealEstateDataContext
 		private string _Name;
 		
 		private string _Description;
-		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5154,7 +4668,6 @@ namespace RealEstateDataContext
 		
 		public UNIT_PRICE()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -5218,19 +4731,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UNIT_PRICE_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="UnitPriceID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5249,18 +4749,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.UNIT_PRICE = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.UNIT_PRICE = null;
 		}
 	}
 	
@@ -5499,8 +4987,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<UTILITY_DETAIL> _UTILITY_DETAILs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5515,7 +5001,6 @@ namespace RealEstateDataContext
 		
 		public UTILITY()
 		{
-			this._UTILITY_DETAILs = new EntitySet<UTILITY_DETAIL>(new Action<UTILITY_DETAIL>(this.attach_UTILITY_DETAILs), new Action<UTILITY_DETAIL>(this.detach_UTILITY_DETAILs));
 			OnCreated();
 		}
 		
@@ -5579,19 +5064,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UTILITY_UTILITY_DETAIL", Storage="_UTILITY_DETAILs", ThisKey="ID", OtherKey="UtilityID")]
-		public EntitySet<UTILITY_DETAIL> UTILITY_DETAILs
-		{
-			get
-			{
-				return this._UTILITY_DETAILs;
-			}
-			set
-			{
-				this._UTILITY_DETAILs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -5610,18 +5082,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_UTILITY_DETAILs(UTILITY_DETAIL entity)
-		{
-			this.SendPropertyChanging();
-			entity.UTILITY = this;
-		}
-		
-		private void detach_UTILITY_DETAILs(UTILITY_DETAIL entity)
-		{
-			this.SendPropertyChanging();
-			entity.UTILITY = null;
 		}
 	}
 	
@@ -5737,26 +5197,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				UTILITY previousValue = this._UTILITY.Entity;
-				if (((previousValue != value) 
-							|| (this._UTILITY.HasLoadedOrAssignedValue == false)))
+				if ((this._UTILITY.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UTILITY.Entity = null;
-						previousValue.UTILITY_DETAILs.Remove(this);
-					}
 					this._UTILITY.Entity = value;
-					if ((value != null))
-					{
-						value.UTILITY_DETAILs.Add(this);
-						this._UtilityID = value.ID;
-					}
-					else
-					{
-						this._UtilityID = default(int);
-					}
 					this.SendPropertyChanged("UTILITY");
 				}
 			}
@@ -5771,26 +5215,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				REAL_ESTATE previousValue = this._REAL_ESTATE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE.HasLoadedOrAssignedValue == false)))
+				if ((this._REAL_ESTATE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE.Entity = null;
-						previousValue.UTILITY_DETAILs.Remove(this);
-					}
 					this._REAL_ESTATE.Entity = value;
-					if ((value != null))
-					{
-						value.UTILITY_DETAILs.Add(this);
-						this._RealEstateID = value.ID;
-					}
-					else
-					{
-						this._RealEstateID = default(int);
-					}
 					this.SendPropertyChanged("REAL_ESTATE");
 				}
 			}
@@ -5835,8 +5263,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
-		
 		private EntityRef<ADDRESS> _ADDRESS;
 		
 		private EntityRef<PROJECT_TYPE> _PROJECT_TYPE;
@@ -5861,7 +5287,6 @@ namespace RealEstateDataContext
 		
 		public PROJECT()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			this._PROJECT_TYPE = default(EntityRef<PROJECT_TYPE>);
 			OnCreated();
@@ -5995,19 +5420,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="ProjectID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_PROJECT", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public ADDRESS ADDRESS
 		{
@@ -6035,26 +5447,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				PROJECT_TYPE previousValue = this._PROJECT_TYPE.Entity;
-				if (((previousValue != value) 
-							|| (this._PROJECT_TYPE.HasLoadedOrAssignedValue == false)))
+				if ((this._PROJECT_TYPE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PROJECT_TYPE.Entity = null;
-						previousValue.PROJECTs.Remove(this);
-					}
 					this._PROJECT_TYPE.Entity = value;
-					if ((value != null))
-					{
-						value.PROJECTs.Add(this);
-						this._TypeID = value.ID;
-					}
-					else
-					{
-						this._TypeID = default(int);
-					}
 					this.SendPropertyChanged("PROJECT_TYPE");
 				}
 			}
@@ -6079,18 +5475,6 @@ namespace RealEstateDataContext
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LEGAL")]
@@ -6104,8 +5488,6 @@ namespace RealEstateDataContext
 		private string _Name;
 		
 		private string _Description;
-		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -6121,7 +5503,6 @@ namespace RealEstateDataContext
 		
 		public LEGAL()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -6185,19 +5566,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LEGAL_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="LegalID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -6216,18 +5584,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.LEGAL = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.LEGAL = null;
 		}
 	}
 	
@@ -6243,8 +5599,6 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -6259,7 +5613,6 @@ namespace RealEstateDataContext
 		
 		public LOCATION()
 		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
 			OnCreated();
 		}
 		
@@ -6323,19 +5676,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOCATION_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="LocationID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -6354,18 +5694,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOCATION = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.LOCATION = null;
 		}
 	}
 	
@@ -6421,15 +5749,7 @@ namespace RealEstateDataContext
 		
 		private System.Nullable<int> _ContactID;
 		
-		private EntitySet<NEWS_SALE> _NEWS_SALEs;
-		
-		private EntitySet<PROPERTY_COMPANY> _PROPERTY_COMPANies;
-		
-		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
-		
 		private EntitySet<REAL_ESTATE_IMAGE> _REAL_ESTATE_IMAGEs;
-		
-		private EntitySet<UTILITY_DETAIL> _UTILITY_DETAILs;
 		
 		private EntityRef<ADDRESS> _ADDRESS;
 		
@@ -6501,11 +5821,7 @@ namespace RealEstateDataContext
 		
 		public REAL_ESTATE()
 		{
-			this._NEWS_SALEs = new EntitySet<NEWS_SALE>(new Action<NEWS_SALE>(this.attach_NEWS_SALEs), new Action<NEWS_SALE>(this.detach_NEWS_SALEs));
-			this._PROPERTY_COMPANies = new EntitySet<PROPERTY_COMPANY>(new Action<PROPERTY_COMPANY>(this.attach_PROPERTY_COMPANies), new Action<PROPERTY_COMPANY>(this.detach_PROPERTY_COMPANies));
-			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
 			this._REAL_ESTATE_IMAGEs = new EntitySet<REAL_ESTATE_IMAGE>(new Action<REAL_ESTATE_IMAGE>(this.attach_REAL_ESTATE_IMAGEs), new Action<REAL_ESTATE_IMAGE>(this.detach_REAL_ESTATE_IMAGEs));
-			this._UTILITY_DETAILs = new EntitySet<UTILITY_DETAIL>(new Action<UTILITY_DETAIL>(this.attach_UTILITY_DETAILs), new Action<UTILITY_DETAIL>(this.detach_UTILITY_DETAILs));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			this._CONTACT = default(EntityRef<CONTACT>);
 			this._LEGAL = default(EntityRef<LEGAL>);
@@ -7009,45 +6325,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_NEWS_SALE", Storage="_NEWS_SALEs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<NEWS_SALE> NEWS_SALEs
-		{
-			get
-			{
-				return this._NEWS_SALEs;
-			}
-			set
-			{
-				this._NEWS_SALEs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_COMPANY", Storage="_PROPERTY_COMPANies", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<PROPERTY_COMPANY> PROPERTY_COMPANies
-		{
-			get
-			{
-				return this._PROPERTY_COMPANies;
-			}
-			set
-			{
-				this._PROPERTY_COMPANies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
-		{
-			get
-			{
-				return this._PROPERTY_CUSTOMERs;
-			}
-			set
-			{
-				this._PROPERTY_CUSTOMERs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_REAL_ESTATE_IMAGE", Storage="_REAL_ESTATE_IMAGEs", ThisKey="ID", OtherKey="RealEstateID")]
 		public EntitySet<REAL_ESTATE_IMAGE> REAL_ESTATE_IMAGEs
 		{
@@ -7058,19 +6335,6 @@ namespace RealEstateDataContext
 			set
 			{
 				this._REAL_ESTATE_IMAGEs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_UTILITY_DETAIL", Storage="_UTILITY_DETAILs", ThisKey="ID", OtherKey="RealEstateID")]
-		public EntitySet<UTILITY_DETAIL> UTILITY_DETAILs
-		{
-			get
-			{
-				return this._UTILITY_DETAILs;
-			}
-			set
-			{
-				this._UTILITY_DETAILs.Assign(value);
 			}
 		}
 		
@@ -7117,26 +6381,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				CONTACT previousValue = this._CONTACT.Entity;
-				if (((previousValue != value) 
-							|| (this._CONTACT.HasLoadedOrAssignedValue == false)))
+				if ((this._CONTACT.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CONTACT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._CONTACT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._ContactID = value.ID;
-					}
-					else
-					{
-						this._ContactID = default(Nullable<int>);
-					}
 					this.SendPropertyChanged("CONTACT");
 				}
 			}
@@ -7151,26 +6399,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				LEGAL previousValue = this._LEGAL.Entity;
-				if (((previousValue != value) 
-							|| (this._LEGAL.HasLoadedOrAssignedValue == false)))
+				if ((this._LEGAL.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LEGAL.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._LEGAL.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._LegalID = value.ID;
-					}
-					else
-					{
-						this._LegalID = default(Nullable<int>);
-					}
 					this.SendPropertyChanged("LEGAL");
 				}
 			}
@@ -7185,26 +6417,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				LOCATION previousValue = this._LOCATION.Entity;
-				if (((previousValue != value) 
-							|| (this._LOCATION.HasLoadedOrAssignedValue == false)))
+				if ((this._LOCATION.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LOCATION.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._LOCATION.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._LocationID = value.ID;
-					}
-					else
-					{
-						this._LocationID = default(Nullable<int>);
-					}
 					this.SendPropertyChanged("LOCATION");
 				}
 			}
@@ -7219,26 +6435,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				PROJECT previousValue = this._PROJECT.Entity;
-				if (((previousValue != value) 
-							|| (this._PROJECT.HasLoadedOrAssignedValue == false)))
+				if ((this._PROJECT.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PROJECT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._PROJECT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._ProjectID = value.ID;
-					}
-					else
-					{
-						this._ProjectID = default(Nullable<int>);
-					}
 					this.SendPropertyChanged("PROJECT");
 				}
 			}
@@ -7253,26 +6453,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				REAL_ESTATE_TYPE previousValue = this._REAL_ESTATE_TYPE.Entity;
-				if (((previousValue != value) 
-							|| (this._REAL_ESTATE_TYPE.HasLoadedOrAssignedValue == false)))
+				if ((this._REAL_ESTATE_TYPE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._REAL_ESTATE_TYPE.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._REAL_ESTATE_TYPE.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._TypeID = value.ID;
-					}
-					else
-					{
-						this._TypeID = default(int);
-					}
 					this.SendPropertyChanged("REAL_ESTATE_TYPE");
 				}
 			}
@@ -7287,26 +6471,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				UNIT previousValue = this._UNIT.Entity;
-				if (((previousValue != value) 
-							|| (this._UNIT.HasLoadedOrAssignedValue == false)))
+				if ((this._UNIT.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UNIT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._UNIT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._UnitID = value.ID;
-					}
-					else
-					{
-						this._UnitID = default(int);
-					}
 					this.SendPropertyChanged("UNIT");
 				}
 			}
@@ -7321,26 +6489,10 @@ namespace RealEstateDataContext
 			}
 			set
 			{
-				UNIT_PRICE previousValue = this._UNIT_PRICE.Entity;
-				if (((previousValue != value) 
-							|| (this._UNIT_PRICE.HasLoadedOrAssignedValue == false)))
+				if ((this._UNIT_PRICE.Entity != value))
 				{
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UNIT_PRICE.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
 					this._UNIT_PRICE.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._UnitPriceID = value.ID;
-					}
-					else
-					{
-						this._UnitPriceID = default(int);
-					}
 					this.SendPropertyChanged("UNIT_PRICE");
 				}
 			}
@@ -7366,42 +6518,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		private void attach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_NEWS_SALEs(NEWS_SALE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_PROPERTY_COMPANies(PROPERTY_COMPANY entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
 		private void attach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
 		{
 			this.SendPropertyChanging();
@@ -7409,18 +6525,6 @@ namespace RealEstateDataContext
 		}
 		
 		private void detach_REAL_ESTATE_IMAGEs(REAL_ESTATE_IMAGE entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = null;
-		}
-		
-		private void attach_UTILITY_DETAILs(UTILITY_DETAIL entity)
-		{
-			this.SendPropertyChanging();
-			entity.REAL_ESTATE = this;
-		}
-		
-		private void detach_UTILITY_DETAILs(UTILITY_DETAIL entity)
 		{
 			this.SendPropertyChanging();
 			entity.REAL_ESTATE = null;
@@ -7449,8 +6553,6 @@ namespace RealEstateDataContext
 		
 		private string _UserName;
 		
-		private EntitySet<PROPERTY_CUSTOMER> _PROPERTY_CUSTOMERs;
-		
 		private EntityRef<ADDRESS> _ADDRESS;
 		
     #region Extensibility Method Definitions
@@ -7477,7 +6579,6 @@ namespace RealEstateDataContext
 		
 		public CUSTOMER()
 		{
-			this._PROPERTY_CUSTOMERs = new EntitySet<PROPERTY_CUSTOMER>(new Action<PROPERTY_CUSTOMER>(this.attach_PROPERTY_CUSTOMERs), new Action<PROPERTY_CUSTOMER>(this.detach_PROPERTY_CUSTOMERs));
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			OnCreated();
 		}
@@ -7646,19 +6747,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CUSTOMER_PROPERTY_CUSTOMER", Storage="_PROPERTY_CUSTOMERs", ThisKey="ID", OtherKey="CustomerID")]
-		public EntitySet<PROPERTY_CUSTOMER> PROPERTY_CUSTOMERs
-		{
-			get
-			{
-				return this._PROPERTY_CUSTOMERs;
-			}
-			set
-			{
-				this._PROPERTY_CUSTOMERs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_CUSTOMER", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true)]
 		public ADDRESS ADDRESS
 		{
@@ -7695,18 +6783,6 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.CUSTOMER = this;
-		}
-		
-		private void detach_PROPERTY_CUSTOMERs(PROPERTY_CUSTOMER entity)
-		{
-			this.SendPropertyChanging();
-			entity.CUSTOMER = null;
 		}
 	}
 }
