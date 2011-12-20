@@ -45,19 +45,19 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.COMPANY entity)
         {
             RealEstateDataContext.COMPANY oldEntity = _db.COMPANies.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
-            oldEntity.AddressID = entity.AddressID;
-            oldEntity.Phone = entity.Phone;
-            oldEntity.HomePhone = entity.HomePhone;
-            oldEntity.Fax = entity.Fax;
-            oldEntity.Email = entity.Email;
-            oldEntity.Website = entity.Website;
-            oldEntity.EstablishDay = entity.EstablishDay;
-            oldEntity.ShareCapital = entity.ShareCapital;
-            oldEntity.FieldOfAction = entity.FieldOfAction;
+            oldEntity.Name                 = entity.Name;
+            oldEntity.AddressID            = entity.AddressID;
+            oldEntity.Phone                = entity.Phone;
+            oldEntity.HomePhone            = entity.HomePhone;
+            oldEntity.Fax                  = entity.Fax;
+            oldEntity.Email                = entity.Email;
+            oldEntity.Website              = entity.Website;
+            oldEntity.EstablishDay         = entity.EstablishDay;
+            oldEntity.ShareCapital         = entity.ShareCapital;
+            oldEntity.FieldOfAction        = entity.FieldOfAction;
             oldEntity.BusinessRegistration = entity.BusinessRegistration;
-            oldEntity.Description = entity.Description;
-            oldEntity.Logo = entity.Logo;
+            oldEntity.Description          = entity.Description;
+            oldEntity.Logo                 = entity.Logo;
 
             _db.SubmitChanges();
         }

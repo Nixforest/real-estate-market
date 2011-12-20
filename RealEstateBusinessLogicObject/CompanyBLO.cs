@@ -55,6 +55,7 @@ namespace RealEstateBusinessLogicObject
             }
             else throw new RealEstateDataContext.Utility.AddressIDException();
         }
+
         /// <summary>
         /// Insert a row into COMPANY table
         /// </summary>
@@ -88,20 +89,20 @@ namespace RealEstateBusinessLogicObject
                     {
                         RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
 
-                        entity.ID = this.CreateNewID();
-                        entity.Name = name;
-                        entity.AddressID = addressID;
-                        entity.Phone = phone;
-                        entity.HomePhone = homePhone;
-                        entity.Fax = fax;
-                        entity.Email = email;
-                        entity.Website = website;
-                        entity.EstablishDay = establishDay;
-                        entity.ShareCapital = shareCapital;
-                        entity.FieldOfAction = fieldOfAction;
+                        entity.ID                   = this.CreateNewID();
+                        entity.Name                 = name;
+                        entity.AddressID            = addressID;
+                        entity.Phone                = phone;
+                        entity.HomePhone            = homePhone;
+                        entity.Fax                  = fax;
+                        entity.Email                = email;
+                        entity.Website              = website;
+                        entity.EstablishDay         = establishDay;
+                        entity.ShareCapital         = shareCapital;
+                        entity.FieldOfAction        = fieldOfAction;
                         entity.BusinessRegistration = businessRegistration;
-                        entity.Description = description;
-                        entity.Logo = logo;
+                        entity.Description          = description;
+                        entity.Logo                 = logo;
 
                         _db.Insert(entity);
                         return entity.ID;
@@ -181,19 +182,20 @@ namespace RealEstateBusinessLogicObject
                         if (new RealEstateDataAccessObject.ImageDAO().ValidationID(logo))
                         {
                             RealEstateDataContext.COMPANY entity = new RealEstateDataContext.COMPANY();
-                            entity.ID = id;
-                            entity.Name = name;
-                            entity.AddressID = addressID;
-                            entity.Phone = phone;
-                            entity.HomePhone = homePhone;
-                            entity.Fax = fax;
-                            entity.Email = email;
-                            entity.Website = website;
-                            entity.EstablishDay = establishDay;
-                            entity.ShareCapital = shareCapital;
-                            entity.FieldOfAction = fieldOfAction;
+                            entity.ID                   = id;
+                            entity.Name                 = name;
+                            entity.AddressID            = addressID;
+                            entity.Phone                = phone;
+                            entity.HomePhone            = homePhone;
+                            entity.Fax                  = fax;
+                            entity.Email                = email;
+                            entity.Website              = website;
+                            entity.EstablishDay         = establishDay;
+                            entity.ShareCapital         = shareCapital;
+                            entity.FieldOfAction        = fieldOfAction;
                             entity.BusinessRegistration = businessRegistration;
-                            entity.Description = description;
+                            entity.Description          = description;
+                            entity.Logo                 = logo;
 
                             _db.Update(entity);
                             return entity.ID;

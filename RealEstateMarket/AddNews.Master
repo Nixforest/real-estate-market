@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AddNews.master.cs" Inherits="RealEstateMarket.AddNews" %>
+<%@ Register TagPrefix="News" TagName="Type" Src="~/CustomControl/NewsTypeControl.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Tin Tức và Khám Phá - Nhà Đất, Bất Động Sản, Địa Ốc</title>
+    <link href="Styles/style.css" rel="Stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+        <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/TestPage.aspx" Text="Test Page"/>
+                        <asp:MenuItem NavigateUrl="~/Admin/AdminPage.aspx" Text="Dashboard"/>
+                        <asp:MenuItem NavigateUrl="~/Member/MemberInformation.aspx" Text="Trang cá nhân"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        <div class="main">
+             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

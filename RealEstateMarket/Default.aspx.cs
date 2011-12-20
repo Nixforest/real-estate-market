@@ -13,6 +13,18 @@ namespace RealEstateMarket
         protected void Page_Load(object sender, EventArgs e)
         {
             db.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
+            if (!IsPostBack)
+            {
+                //TestLabel.Text = SJCLabel.Text.Replace("<script language=\"Javascript\">document.write(vGoldSjcBuy);</script>", "");
+                //try
+                //{
+                //    RealEstateMarket.Utility.RateSJCToVND = Convert.ToDouble(TestLabel.Text);
+                //}
+                //catch (Exception ex)
+                //{
+                //    SJCLabel.Text = ex.ToString();
+                //}
+            }
         }
     }
 }

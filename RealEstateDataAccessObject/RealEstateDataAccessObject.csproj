@@ -49,8 +49,6 @@
     <Compile Include="DataParent.cs" />
     <Compile Include="DistrictDAO.cs" />
     <Compile Include="District_DetailDAO.cs" />
-    <Compile Include="GroupDAO.cs" />
-    <Compile Include="Group_DetailDAO.cs" />
     <Compile Include="ImageDAO.cs" />
     <Compile Include="LegalDAO.cs" />
     <Compile Include="LocationDAO.cs" />
@@ -59,6 +57,7 @@
     <Compile Include="News_SaleDAO.cs" />
     <Compile Include="News_Sale_TypeDAO.cs" />
     <Compile Include="News_TypeDAO.cs" />
+    <Compile Include="ParameterDAO.cs" />
     <Compile Include="ProjectDAO.cs" />
     <Compile Include="Project_TypeDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,11 +66,9 @@
     <Compile Include="Real_EstateDAO.cs" />
     <Compile Include="Real_Estate_ImageDAO.cs" />
     <Compile Include="Real_Estate_TypeDAO.cs" />
-    <Compile Include="RuleDAO.cs" />
     <Compile Include="StreetDAO.cs" />
     <Compile Include="UnitDAO.cs" />
     <Compile Include="Unit_PriceDAO.cs" />
-    <Compile Include="UserDAO.cs" />
     <Compile Include="UtilityDAO.cs" />
     <Compile Include="Utility_DetailDAO.cs" />
     <Compile Include="WardDAO.cs" />

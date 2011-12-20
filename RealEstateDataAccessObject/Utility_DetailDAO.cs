@@ -54,7 +54,7 @@ namespace RealEstateDataAccessObject
         {
             RealEstateDataContext.UTILITY_DETAIL oldEntity = _db.UTILITY_DETAILs.Single(record => record.ID == entity.ID);
             oldEntity.RealEstateID = entity.RealEstateID;
-            oldEntity.UtilityID = entity.UtilityID;
+            oldEntity.UtilityID    = entity.UtilityID;
 
             _db.SubmitChanges();
         }

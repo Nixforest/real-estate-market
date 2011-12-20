@@ -42,7 +42,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.DISTRICT entity)
         {
             RealEstateDataContext.DISTRICT oldEntity = _db.DISTRICTs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name   = entity.Name;
             oldEntity.CityID = entity.CityID;
             _db.SubmitChanges();
         }

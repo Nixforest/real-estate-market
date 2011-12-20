@@ -11,6 +11,10 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Title = "Cập nhật thông tin các con đường chính";
+            }
             if (!User.IsInRole("Moderator"))
             {
                 Response.Redirect("~/AccessDeny.aspx");

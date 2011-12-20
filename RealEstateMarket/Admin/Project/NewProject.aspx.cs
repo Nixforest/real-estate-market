@@ -11,11 +11,23 @@ namespace RealEstateMarket.Admin.Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Title = "Đăng tin Dự án";
+            }
             // Only Author or Moderator or Administrator can access
             if (!User.IsInRole("Author"))
             {
                 Response.Redirect("~/AccessDeny.aspx");
             }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
+            _FileBrowser.BasePath = "../../ckfinder/";
+            _FileBrowser.SetupCKEditor(DescriptionCKEditor);
         }
 
         protected void PreviewButton_Click(object sender, EventArgs e)
@@ -37,11 +49,19 @@ namespace RealEstateMarket.Admin.Project
             {
                 int nationID = Convert.ToInt32(AddressCustomControl.Attributes["NationID"]);
                 int cityID = Convert.ToInt32(AddressCustomControl.Attributes["CityID"]);
-                int districtID = Convert.ToInt32(AddressCustomControl.Attributes["DistrictID"]);
-                int wardID = Convert.ToInt32(AddressCustomControl.Attributes["WardID"]);
-                int streetID = Convert.ToInt32(AddressCustomControl.Attributes["StreetID"]);
+                bool different = Convert.ToBoolean(AddressCustomControl.Attributes["Different"]);
                 string detail = AddressCustomControl.Attributes["Detail"];
-                int addressID = RealEstateMarket._Default.db.InsertAddress(nationID, cityID, 
+                int? districtID = null;
+                int? wardID = null;
+                int? streetID = null;
+                if (!different)
+                {
+                    districtID = Convert.ToInt32(AddressCustomControl.Attributes["DistrictID"]);
+                    wardID = Convert.ToInt32(AddressCustomControl.Attributes["WardID"]);
+                    streetID = Convert.ToInt32(AddressCustomControl.Attributes["StreetID"]);
+                }
+
+                int addressID = RealEstateMarket._Default.db.InsertAddress(nationID, cityID,
                    districtID, wardID, streetID, detail);
 
                 DateTime? beginDay = null;
@@ -51,27 +71,13 @@ namespace RealEstateMarket.Admin.Project
                 }
                 int projectID = RealEstateMarket._Default.db.InsertProject(Convert.ToInt32(ProjectTypeDropDownList.SelectedValue),
                     ProjectNameTextBox.Text.Trim(), beginDay, addressID, DescriptionCKEditor.Text);
-                //error.Text = ddlProjectType.SelectedValue;
-                //error.Text = tbxName.Text.Trim();
-                //error.Text = cldBeginDay.SelectedDate.ToLongDateString();
-                //error.Text = addressID.ToString();
-                //error.Text = address.Attributes["NationID"] + " " +
-                //    address.Attributes["CityID"] + " " +
-                //    address.Attributes["DistrictID"] + " " +
-                //    address.Attributes["WardID"] + " " +
-                //    address.Attributes["StreetID"] + " " + 
-                //    address.Attributes["Detail"];
+                
                 ErrorLabel.Text = "Bạn đã đăng tin về Dự án có ID = " + projectID.ToString() + "thành công.";
             }
             catch (Exception ex)
             {
                 ErrorLabel.Text = ex.ToString();
             }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            ErrorLabel.Text = "Nixforest";
         }
     }
 }

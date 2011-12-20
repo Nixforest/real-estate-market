@@ -45,8 +45,8 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.IMAGE entity)
         {
             RealEstateDataContext.IMAGE oldEntity = _db.IMAGEs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
-            oldEntity.Path = entity.Path;
+            oldEntity.Name        = entity.Name;
+            oldEntity.Path        = entity.Path;
             oldEntity.Description = entity.Description;
             _db.SubmitChanges();
         }

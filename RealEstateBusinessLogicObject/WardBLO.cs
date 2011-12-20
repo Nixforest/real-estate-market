@@ -56,8 +56,8 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(districtID))
             {
                 RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
-                entity.ID = this.CreateNewID();
-                entity.Name = name;
+                entity.ID         = this.CreateNewID();
+                entity.Name       = name;
                 entity.DistrictID = districtID;
 
                 _db.Insert(entity);
@@ -103,8 +103,8 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(districtID))
                 {
                     RealEstateDataContext.WARD entity = new RealEstateDataContext.WARD();
-                    entity.ID = id;
-                    entity.Name = name;
+                    entity.ID         = id;
+                    entity.Name       = name;
                     entity.DistrictID = districtID;
 
                     _db.Update(entity);

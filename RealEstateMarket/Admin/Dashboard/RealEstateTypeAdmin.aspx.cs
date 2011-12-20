@@ -11,6 +11,10 @@ namespace RealEstateMarket.Admin.Dashboard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Title = "Quản lý các Loại Địa ốc";
+            }
             // Only Moderator or Administrator can access
             if (!User.IsInRole("Moderator"))
             {

@@ -11,13 +11,17 @@ namespace RealEstateMarket.Admin.Dashboard
     {        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Title = "Quản lý các Quốc gia";
+            }
+
             // Only Moderator or Administrator can access
             if (!User.IsInRole("Moderator"))
             {
                 Response.Redirect("~/AccessDeny.aspx");
             }
         }
-
 
         // Insert a Nation
         protected void InsertNationButton_Click(object sender, EventArgs e)

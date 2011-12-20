@@ -45,13 +45,13 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.CUSTOMER entity)
         {
             RealEstateDataContext.CUSTOMER oldEntity = _db.CUSTOMERs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
-            oldEntity.AddressID = entity.AddressID;
+            oldEntity.Name         = entity.Name;
+            oldEntity.AddressID    = entity.AddressID;
             oldEntity.IdentityCard = entity.IdentityCard;
-            oldEntity.Phone = entity.Phone;
-            oldEntity.HomePhone = entity.HomePhone;
-            oldEntity.Email = entity.Email;
-            oldEntity.UserName = entity.UserName;
+            oldEntity.Phone        = entity.Phone;
+            oldEntity.HomePhone    = entity.HomePhone;
+            oldEntity.Email        = entity.Email;
+            oldEntity.UserName     = entity.UserName;
 
             _db.SubmitChanges();
         }

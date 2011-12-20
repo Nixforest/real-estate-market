@@ -67,11 +67,11 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
                 {
                     RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
-                    entity.ID = this.CreateNewID();
-                    entity.TypeID = typeID;
-                    entity.Name = name;
-                    entity.BeginDay = beginDay;
-                    entity.AddressID = addressID;
+                    entity.ID          = this.CreateNewID();
+                    entity.TypeID      = typeID;
+                    entity.Name        = name;
+                    entity.BeginDay    = beginDay;
+                    entity.AddressID   = addressID;
                     entity.Description = description;
 
                     _db.Insert(entity);
@@ -130,11 +130,11 @@ namespace RealEstateBusinessLogicObject
                     if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
                     {
                         RealEstateDataContext.PROJECT entity = new RealEstateDataContext.PROJECT();
-                        entity.ID = id;
-                        entity.TypeID = typeID;
-                        entity.Name = name;
-                        entity.BeginDay = beginDay;
-                        entity.AddressID = addressID;
+                        entity.ID          = id;
+                        entity.TypeID      = typeID;
+                        entity.Name        = name;
+                        entity.BeginDay    = beginDay;
+                        entity.AddressID   = addressID;
                         entity.Description = description;
 
                         _db.Update(entity);
@@ -175,6 +175,28 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.ProjectIDException();
+        }
+
+        /// <summary>
+        /// Get Projects in a District
+        /// </summary>
+        /// <param name="districtID">District ID</param>
+        /// <returns>List of entities</returns>
+        public ICollection<RealEstateDataContext.PROJECT> GetProjectsByDistrictID(int districtID)
+        {
+            if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(districtID))
+            {
+                ObservableCollection<RealEstateDataContext.PROJECT> result = new ObservableCollection<RealEstateDataContext.PROJECT>();
+                foreach (RealEstateDataContext.PROJECT item in _db.GetAllRows())
+                {
+                    if (item.ADDRESS.DistrictID == districtID && item.ID != 0)
+                    {
+                        result.Add(item);
+                    }
+                }
+                return result;
+            }
+            else return new ObservableCollection<RealEstateDataContext.PROJECT>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewProject.aspx.cs" Inherits="RealEstateMarket.Admin.Project.NewProject" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/User.Master" AutoEventWireup="true" CodeBehind="NewProject.aspx.cs" Inherits="RealEstateMarket.Admin.Project.NewProject" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register TagPrefix="nixforest" TagName="address" Src="~/CustomControl/AddressControl.ascx" %>
@@ -6,19 +6,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h4>Đăng tin Dự án</h4>
     <p>
         &nbsp;<asp:ValidationSummary ID="ProjectValidationSummary" runat="server" CssClass="failureNotification"
             HeaderText="Bạn phải điền vào các phần còn thiếu" ValidationGroup="ProjectValidationGroup"
-            ShowMessageBox="false" />
+            ShowMessageBox="false" /></p>
     <p>
         <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="failureNotification"></asp:Label>
     </p>
     <asp:ObjectDataSource ID="ProjectTypeObjectDataSource" runat="server" 
         SelectMethod="GetAllProjectTypes" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
-    
-    <asp:Table runat="server" GridLines="Both">
+    <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label ID="ProjectTypeLabel" runat="server" AssociatedControlID="ProjectTypeDropDownList" Text="Loại dự án:"></asp:Label>

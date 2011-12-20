@@ -45,7 +45,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.PROJECT_TYPE entity)
         {
             RealEstateDataContext.PROJECT_TYPE oldEntity = _db.PROJECT_TYPEs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name        = entity.Name;
             oldEntity.Description = entity.Description;
 
             _db.SubmitChanges();

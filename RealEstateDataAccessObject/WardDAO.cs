@@ -45,7 +45,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.WARD entity)
         {
             RealEstateDataContext.WARD oldEntity = _db.WARDs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name       = entity.Name;
             oldEntity.DistrictID = entity.DistrictID;
             _db.SubmitChanges();
         }

@@ -1,0 +1,114 @@
+﻿body 
+{
+    background: #b6b7bc;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+.main
+{
+    margin: 12px 8px 0px 0px;
+    min-height: 420px;
+}
+
+.main .left
+{
+    float:left;
+    width:20%;
+}
+
+.main .left a
+{
+    text-decoration:none;
+}
+
+.main .content
+{
+    float:left;
+    width:60%;
+}
+
+.main .right
+{
+    float:left;
+    width:20%;
+}
+.clear
+{
+    clear: both;
+}
+
+.listimage
+{
+    width:130px;
+    height:100px;
+    border:1px solid gray;
+}
+.imageupload
+{
+    width:130px;
+    height:100px;
+}
+.page
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 1px solid #496077;
+}
+
+div.hideSkiplink
+{
+    background-color:#3a4f63;
+    width:100%;
+}
+
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color: #465c71;
+    border: 1px #4e667d solid;
+    color: #dde4ec;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+.title
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+}

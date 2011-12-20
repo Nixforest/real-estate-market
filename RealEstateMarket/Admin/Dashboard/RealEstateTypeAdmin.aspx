@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RealEstateTypeAdmin.aspx.cs" Inherits="RealEstateMarket.Admin.Dashboard.RealEstateTypeAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="RealEstateTypeAdmin.aspx.cs" Inherits="RealEstateMarket.Admin.Dashboard.RealEstateTypeAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -25,7 +25,7 @@
         <asp:TableRow>
             <asp:TableCell>
                 <asp:GridView ID="RealEstateTypeGridView" runat="server" AllowPaging="True" 
-                    DataKeyNames="ID"
+                    DataKeyNames="ID" ToolTip="Danh sách các Loại Địa ốc"
                     AutoGenerateColumns="False" DataSourceID="RealEstateTypeObjectDataSource">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -60,7 +60,7 @@
                                 AssociatedControlID="RETypeNameTextBox" Text="Tên Loại Địa Ốc"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="RETypeNameTextBox" runat="server" TabIndex="1" ToolTip="Tên Loại Địa ốc" CssClass="textEntry"></asp:TextBox>
+                            <asp:TextBox ID="RETypeNameTextBox" runat="server" TabIndex="1" ToolTip="Tên Loại Địa ốc"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RETypeNameRequiredFieldValidator" runat="server"
                                 ControlToValidate="RETypeNameTextBox" InitialValue="" CssClass="failureNotification"
                                 ErrorMessage="Bạn chưa nhập Tên Loại Địa ốc" ValidationGroup="InsertRETypeValidationGroup">*</asp:RequiredFieldValidator>
@@ -71,7 +71,7 @@
                             <asp:Label ID="DescriptionLabel" runat="server" AssociatedControlID="DescriptionTextBox" Text="Mô tả"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="DescriptionTextBox" runat="server" CssClass="textEntry" ToolTip="Mô tả"></asp:TextBox>
+                            <asp:TextBox ID="DescriptionTextBox" runat="server" ToolTip="Mô tả"></asp:TextBox>
                         </td>
                     </tr>
                 </table>

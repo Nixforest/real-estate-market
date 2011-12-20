@@ -51,16 +51,16 @@ namespace RealEstateBusinessLogicObject
         /// <param name="note">Note</param>
         /// <returns>ID of row have just inserted</returns>
         [DataObjectMethod(DataObjectMethodType.Insert)]
-        public int Insert(string name, int addressID, string phone, string homePhone,
+        public int Insert(string name, string address, string phone, string homePhone,
             string note)
         {
             RealEstateDataContext.CONTACT entity = new RealEstateDataContext.CONTACT();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
-            entity.AddressID = addressID;
-            entity.Phone = phone;
+            entity.ID        = this.CreateNewID();
+            entity.Name      = name;
+            entity.Address   = address;
+            entity.Phone     = phone;
             entity.HomePhone = homePhone;
-            entity.Note = note;
+            entity.Note      = note;
 
             _db.Insert(entity);
             return entity.ID;
@@ -94,18 +94,18 @@ namespace RealEstateBusinessLogicObject
         /// <param name="note">Note</param>
         /// <exception cref="ContactIDException"></exception>
         [DataObjectMethod(DataObjectMethodType.Update)]
-        public int Update(int id, string name, int addressID, string phone, string homePhone,
+        public int Update(int id, string name, string address, string phone, string homePhone,
             string note)
         {
             if (ValidationID(id))
             {
                 RealEstateDataContext.CONTACT entity = new RealEstateDataContext.CONTACT();
-                entity.ID = id;
-                entity.Name = name;
-                entity.AddressID = addressID;
-                entity.Phone = phone;
+                entity.ID        = id;
+                entity.Name      = name;
+                entity.Address   = address;
+                entity.Phone     = phone;
                 entity.HomePhone = homePhone;
-                entity.Note = note;
+                entity.Note      = note;
 
                 _db.Update(entity);
                 return entity.ID;

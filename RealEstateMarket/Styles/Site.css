@@ -99,7 +99,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background:url("../Image/anhbanner.jpg") top center no-repeat;
     width: 100%;
 }
 
@@ -110,7 +110,7 @@ first child of the left and right table columns */
     padding: 0px 0px 0px 20px;
     color: #f9f9f9;
     border: none;
-    line-height: 2em;
+    line-height: 2.15em;
     font-size: 2em;
 }
 
@@ -121,6 +121,25 @@ first child of the left and right table columns */
     min-height: 420px;
 }
 
+.main .left
+{
+    float:left;
+    width:20%;
+}
+.main .left a
+{
+    text-decoration:none;
+}
+.main .content
+{
+    float:left;
+    width:60%;
+}
+.main .right
+{
+    float:left;
+    width:20%;
+}
 .leftCol
 {
     padding: 6px 0px;
@@ -263,17 +282,17 @@ div.accountInfo
 
 .loginDisplay a:link
 {
-    color: white;
+    color: blue;
 }
 
 .loginDisplay a:visited
 {
-    color: white;
+    color: blue;
 }
 
 .loginDisplay a:hover
 {
-    color: white;
+    color: blue;
 }
 
 .failureNotification
@@ -291,4 +310,25 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+
+.listimage
+{
+    width:130px;
+    height:100px;
+    border:1px solid gray;
+}
+.imageupload
+{
+    width:130px;
+    height:100px;
+}
+
+.title
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+    color:White;
 }

@@ -45,7 +45,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.NEWS_SALE_TYPE entity)
         {
             RealEstateDataContext.NEWS_SALE_TYPE oldEntity = _db.NEWS_SALE_TYPEs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name        = entity.Name;
             oldEntity.Description = entity.Description;
 
             _db.SubmitChanges();

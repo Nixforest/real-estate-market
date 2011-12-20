@@ -220,13 +220,13 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.DropDownList UnitPriceDropDownList;
         
         /// <summary>
-        /// RadioButtonList control.
+        /// BrokerRadioButtonList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList;
+        protected global::System.Web.UI.WebControls.RadioButtonList BrokerRadioButtonList;
         
         /// <summary>
         /// TotalUseAreaTextBox control.
@@ -526,13 +526,13 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.DropDownList StoreyDropDownList;
         
         /// <summary>
-        /// OtherRoomDropDownList control.
+        /// DifferentRoomDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OtherRoomDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList DifferentRoomDropDownList;
         
         /// <summary>
         /// DescriptionPanel control.
@@ -571,15 +571,6 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.TextBox TitleTextBox;
         
         /// <summary>
-        /// TitleRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TitleRequiredFieldValidator;
-        
-        /// <summary>
         /// ContentCKEditor control.
         /// </summary>
         /// <remarks>
@@ -587,15 +578,6 @@ namespace RealEstateMarket.Member {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CKEditor.NET.CKEditorControl ContentCKEditor;
-        
-        /// <summary>
-        /// InputMethodRadioButtonList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList InputMethodRadioButtonList;
         
         /// <summary>
         /// ImagePanel control.
@@ -616,13 +598,103 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// ImageFileUpload control.
+        /// ImageTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload;
+        protected global::System.Web.UI.WebControls.Table ImageTable;
+        
+        /// <summary>
+        /// ImageFileUpload0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload0;
+        
+        /// <summary>
+        /// ImageFileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload1;
+        
+        /// <summary>
+        /// ImageFileUpload2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload2;
+        
+        /// <summary>
+        /// ImageFileUpload3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload3;
+        
+        /// <summary>
+        /// ImageFileUpload4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload4;
+        
+        /// <summary>
+        /// ImageFileUpload5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload5;
+        
+        /// <summary>
+        /// ImageFileUpload6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload6;
+        
+        /// <summary>
+        /// ImageFileUpload7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload7;
+        
+        /// <summary>
+        /// ImageFileUpload8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload8;
+        
+        /// <summary>
+        /// ImageFileUpload9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageFileUpload9;
         
         /// <summary>
         /// MapPanel control.
@@ -724,13 +796,13 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.Label ContactAddressLabel;
         
         /// <summary>
-        /// AddressContactCustomControl control.
+        /// ContactAddressTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RealEstateMarket.CustomControl.AddressControl AddressContactCustomControl;
+        protected global::System.Web.UI.WebControls.TextBox ContactAddressTextBox;
         
         /// <summary>
         /// ContactNoteLabel control.

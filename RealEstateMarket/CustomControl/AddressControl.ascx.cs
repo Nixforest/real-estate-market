@@ -24,6 +24,7 @@ namespace RealEstateMarket.CustomControl
             this.Attributes.Add("WardID", WardDropDownList.SelectedValue);
             this.Attributes.Add("StreetID", StreetDropDownList.SelectedValue);
             this.Attributes.Add("Detail", DetailTextBox.Text.Trim());
+            this.Attributes.Add("Different", DifferentCheckBox.Checked.ToString());
         }
 
         protected void NationDropDownList_SelectedIndexChanged(object sender, EventArgs e)

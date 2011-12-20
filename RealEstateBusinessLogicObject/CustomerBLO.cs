@@ -67,14 +67,14 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
             {
                 RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-                entity.ID = this.CreateNewID();
-                entity.Name = name;
-                entity.AddressID = addressID;
+                entity.ID           = this.CreateNewID();
+                entity.Name         = name;
+                entity.AddressID    = addressID;
                 entity.IdentityCard = identityCard;
-                entity.Phone = phone;
-                entity.HomePhone = homePhone;
-                entity.Email = email;
-                entity.UserName = userName;
+                entity.Phone        = phone;
+                entity.HomePhone    = homePhone;
+                entity.Email        = email;
+                entity.UserName     = userName;
 
                 _db.Insert(entity);
                 return entity.ID;
@@ -129,14 +129,14 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.AddressDAO().ValidationID(addressID))
                 {
                     RealEstateDataContext.CUSTOMER entity = new RealEstateDataContext.CUSTOMER();
-                    entity.ID = id;
-                    entity.Name = name;
-                    entity.AddressID = addressID;
+                    entity.ID           = id;
+                    entity.Name         = name;
+                    entity.AddressID    = addressID;
                     entity.IdentityCard = identityCard;
-                    entity.Phone = phone;
-                    entity.HomePhone = homePhone;
-                    entity.Email = email;
-                    entity.UserName = userName;
+                    entity.Phone        = phone;
+                    entity.HomePhone    = homePhone;
+                    entity.Email        = email;
+                    entity.UserName     = userName;
 
                     _db.Update(entity);
                     return entity.ID;
@@ -192,7 +192,7 @@ namespace RealEstateBusinessLogicObject
                     return entity;
                 }
             }
-            return null;
+            return new RealEstateDataContext.CUSTOMER();
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace RealEstateBusinessLogicObject
         public void InsertRealEstateToCustomer(RealEstateDataContext.REAL_ESTATE realEstate, RealEstateDataContext.CUSTOMER customer)
         {
             RealEstateDataContext.PROPERTY_CUSTOMER entity = new RealEstateDataContext.PROPERTY_CUSTOMER();
-            entity.CustomerID = customer.ID;
+            entity.CustomerID   = customer.ID;
             entity.RealEstateID = realEstate.ID;
             new RealEstateDataAccessObject.Property_CustomerDAO().Insert(entity);
         }
@@ -216,9 +216,19 @@ namespace RealEstateBusinessLogicObject
         public void InsertRealEstateToCustomer(int realEstateID, int customerID)
         {
             RealEstateDataContext.PROPERTY_CUSTOMER entity = new RealEstateDataContext.PROPERTY_CUSTOMER();
-            entity.CustomerID = customerID;
+            entity.CustomerID   = customerID;
             entity.RealEstateID = realEstateID;
             new RealEstateDataAccessObject.Property_CustomerDAO().Insert(entity);
         }
+
+        //public ICollection<RealEstateDataContext.REAL_ESTATE_TYPE> GetRealEstateTypeByCustomer(int customerID)
+        //{
+        //    ObservableCollection<RealEstateDataContext.REAL_ESTATE_TYPE> listRealEstateType = new ObservableCollection<RealEstateDataContext.REAL_ESTATE_TYPE>();
+        //    foreach (RealEstateDataContext.PROPERTY_CUSTOMER item in _db.GetARecord(customerID).PROPERTY_CUSTOMERs)
+        //    {
+        //        listRealEstateType.Add(new RealEstateDataAccessObject.Real_EstateDAO().GetARecord(item.RealEstateID).REAL_ESTATE_TYPE);
+        //    }
+        //    return listRealEstateType;
+        //}
     }
 }

@@ -42,12 +42,14 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.NEWS_SALE entity)
         {
             RealEstateDataContext.NEWS_SALE oldEntity = _db.NEWS_SALEs.Single(record => record.ID == entity.ID);
-            oldEntity.TypeID = entity.TypeID;
-            oldEntity.Title = entity.Title;
-            oldEntity.Content = entity.Content;
+            oldEntity.TypeID       = entity.TypeID;
+            oldEntity.Title        = entity.Title;
+            oldEntity.Content      = entity.Content;
             oldEntity.RealEstateID = entity.RealEstateID;
-            oldEntity.Rate = entity.Rate;
-            oldEntity.UpdateTime = entity.UpdateTime;
+            oldEntity.Rate         = entity.Rate;
+            oldEntity.UpdateTime   = entity.UpdateTime;
+            oldEntity.Status       = entity.Status;
+            oldEntity.Broker       = entity.Broker;
 
             _db.SubmitChanges();
         }

@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NewsSale.master.cs" Inherits="RealEstateMarket.Master.NewsSale" %>
+<%@ Register TagPrefix="NewsSale" TagName="Filter" Src="~/CustomControl/FilterNewsSale.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Tin Tức và Khám Phá - Nhà Đất, Bất Động Sản, Địa Ốc</title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Gold_Content.js"></script>
+    <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Forex_Content.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <div class="header">        
+            <div class="title">
+            <h1>
+            R
+            </h1>
+            <h1>
+                R
+            </h1>
+            <h1>
+                R
+            </h1>
+                </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        
+                    </asp:Menu>
+                </div>  
+            </div>
+        <div class="main">
+            <div class="left">
+                <asp:ContentPlaceHolder ID="LeftContent" runat="server">
+                    <NewsSale:Filter ID="FilterControl" runat="server"></NewsSale:Filter>
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            </div>
+            <div class="right">
+                <asp:ContentPlaceHolder ID="RightContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

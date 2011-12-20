@@ -59,8 +59,8 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
             {
                 RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
-                entity.ID = this.CreateNewID();
-                entity.Name = name;
+                entity.ID       = this.CreateNewID();
+                entity.Name     = name;
                 entity.NationID = nationID;
 
                 _db.Insert(entity);
@@ -108,8 +108,8 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.NationDAO().ValidationID(nationID))
                 {
                     RealEstateDataContext.CITY entity = new RealEstateDataContext.CITY();
-                    entity.ID = id;
-                    entity.Name = name;
+                    entity.ID       = id;
+                    entity.Name     = name;
                     entity.NationID = nationID;
 
                     _db.Update(entity);
@@ -164,7 +164,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.DISTRICT>(_db.GetARecord(ID).DISTRICTs);
             }
-            else return null;
+            else return new ObservableCollection<RealEstateDataContext.DISTRICT>();
         }
     }
 }

@@ -1,10 +1,65 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewsSaleRegistration.aspx.cs" Inherits="RealEstateMarket.Member.NewsSaleRegistration" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/User.Master" AutoEventWireup="true" CodeBehind="NewsSaleRegistration.aspx.cs" Inherits="RealEstateMarket.Member.NewsSaleRegistration" %>
 <%@ Register TagPrefix="nixforest" TagName="address" Src="~/CustomControl/AddressControl.ascx" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
+<script type="text/javascript" language="javascript">
+    function FormatNumber(str) {
+        var strTemp = GetNumber(str);
+        if (strTemp.length <= 3) {
+            return strTemp;
+        }
+        strResult = "";
+        for (var i = 0; i < strTemp.length; i++) {
+            strTemp = strTemp.replace(",", "");
+            var m = strTemp.lastIndexOf(".");
+            if (m == -1) {
+                for (var i = strTemp.length; i >= 0; i--) {
+                    if (strResult.length > 0 && (strTemp.length - i - 1) % 3 == 0)
+                        strResult = "," + strResult;
+                    strResult = strTemp.substring(i, i + 1) + strResult;
+                }
+            } else {
+                // phần nguyên
+                var strphannguyen = strTemp.substring(0, strTemp.lastIndexOf("."));
+                var strphanthapphan = strTemp.substring(strTemp.lastIndexOf("."), strTemp.length);
+                // phần thập phân
+                var tam = 0;
+                for (var i = strphannguyen.length; i >= 0; i--) {
+                    if (strResult.length > 0 && tam == 4) {
+                        strResult = "," + strResult;
+                        tam = 1;
+                    }
+                    strResult = strphannguyen.substring(i, i + 1) + strResult;
+                    tam = tam + 1;
+                }
+                strResult = strResult + strphanthapphan;
+            }
+            return strResult;
+        }
+    }
+    function GetNumber(str) {
+        var count = 0;
+        for (var i = 0; i < str.length; i++) {
+            var temp = str.substring(i, i + 1);
+            if (!(temp == "," || temp == "." || (temp >= 0 && temp <= 9))) {
+                alert("Vui lòng nhập số (0-9)!");
+                return str.substring(0, i);
+            }
+            if (temp == " ") {
+                return str.substring(0, i);
+            }
+            if (temp == ".") {
+                if (count > 0)
+                    return str.substring(0, i);
+                count++;
+            }
+        }
+        return str;
+    }
+</script>   
     <asp:ObjectDataSource ID="RETypeObjectDataSource" runat="server" 
         SelectMethod="GetAllRealEstateTypes" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
@@ -29,13 +84,11 @@
     <asp:ObjectDataSource ID="LocationObjectDataSource" runat="server" 
         SelectMethod="GetAllLocations" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
-    <h3>
-        Đăng tài sản mới
-    </h3>
     <p>
         &nbsp;<asp:ValidationSummary ID="NewsSaleValidationSummary" runat="server"
             DisplayMode="BulletList" HeaderText="Vui lòng cập nhật các thông tin tài sản còn thiếu:"
             CssClass="failureNotification" ValidationGroup="NewsSaleValidationGroup" />
+            </p>
     <p>
         <asp:Label ID="ErrorLabel" runat="server" CssClass="failureNotification"></asp:Label><br />
     </p>
@@ -75,7 +128,7 @@
                 <asp:TableCell ColumnSpan="2">
                     <asp:DropDownList ID="LocationDropDownList" runat="server"
                         DataSourceID="LocationObjectDataSource"
-                        DataTextField="Name"
+                        DataTextField="Name" ToolTip="Vị trí mặt tiền?"
                         DataValueField="ID"></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
@@ -114,7 +167,9 @@
                     <b>Giá:</b>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="PriceTextBox" runat="server" Text="0" ></asp:TextBox><br />
+                    <asp:TextBox ID="PriceTextBox" runat="server"
+                        Text=""
+                        ToolTip="Giá trị tài sản"></asp:TextBox><br />
                     <asp:RegularExpressionValidator ID="PriceRegularExpressionValidator" runat="server"
                         ControlToValidate="PriceTextBox" CssClass="failureNotification"
                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
@@ -122,7 +177,7 @@
                     <asp:RequiredFieldValidator ID="PriceRequiredFieldValidator" runat="server"
                         ControlToValidate="PriceTextBox" CssClass="failureNotification"
                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                        ErrorMessage="Giá" InitialValue="0"></asp:RequiredFieldValidator>
+                        ErrorMessage="Giá" InitialValue=""></asp:RequiredFieldValidator>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:DropDownList ID="UnitDropDownList" runat="server"
@@ -142,7 +197,7 @@
                     <b>Môi giới:</b>
                 </asp:TableCell>
                 <asp:TableCell ColumnSpan="3">
-                    <asp:RadioButtonList ID="RadioButtonList" runat="server" RepeatDirection="Horizontal">
+                    <asp:RadioButtonList ID="BrokerRadioButtonList" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>Miễn trung gian</asp:ListItem>
                         <asp:ListItem>Ký gởi môi giới</asp:ListItem>
                     </asp:RadioButtonList>
@@ -153,8 +208,8 @@
                     <b>Diện tích sử dụng:</b>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="TotalUseAreaTextBox" runat="server" CssClass="failureNotification"
-                        Text="0"></asp:TextBox><br />
+                    <asp:TextBox ID="TotalUseAreaTextBox" runat="server" ToolTip="Tổng diện tích sử dụng"
+                        Text=""></asp:TextBox><br />
                     <asp:RegularExpressionValidator ID="TotalUseAreaRegularExpressionValidator" runat="server"
                         ControlToValidate="TotalUseAreaTextBox" CssClass="failureNotification"
                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
@@ -162,10 +217,10 @@
                     <asp:RequiredFieldValidator ID="TotalUseAreaRequiredFieldValidator" runat="server"
                         ControlToValidate="TotalUseAreaTextBox" CssClass="failureNotification"
                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                        ErrorMessage="Tổng diện tích sử dụng" InitialValue="0"></asp:RequiredFieldValidator>
+                        ErrorMessage="Tổng diện tích sử dụng" InitialValue=""></asp:RequiredFieldValidator>m<sup>2</sup>
                 </asp:TableCell>
                 <asp:TableCell>
-                    m2
+                    
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -173,7 +228,7 @@
                     <b>Diện tích khuôn viên:</b>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="CampusFrontTextBox" runat="server" Text="Chiều ngang"></asp:TextBox>
+                    <asp:TextBox ID="CampusFrontTextBox" runat="server" Text="0" ToolTip="Chiều ngang"></asp:TextBox>
                     m <b>X</b><br />
                     <asp:RegularExpressionValidator ID="CampusFrontRegularExpressionValidator" runat="server"
                         ControlToValidate="CampusFrontTextBox" CssClass="failureNotification"
@@ -182,7 +237,7 @@
                         ErrorMessage="Chiều ngang Diện tích khuôn viên không hợp lệ"></asp:RegularExpressionValidator>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="CampusLengthTextBox" runat="server" Text="Chiều dài"></asp:TextBox>
+                    <asp:TextBox ID="CampusLengthTextBox" runat="server" Text="0" ToolTip="Chiều dài"></asp:TextBox>
                     m<br />
                     <asp:RegularExpressionValidator ID="CampusLengthRegularExpressionValidator" runat="server"
                         ControlToValidate="CampusLengthTextBox" CssClass="failureNotification"
@@ -197,7 +252,7 @@
                                 Text="Nở hậu" Font-Bold="true" AutoPostBack="true"
                                 oncheckedchanged="CampusOpenBehindCheckBox_CheckedChanged" />
                             <asp:TextBox ID="CampusBehindTextBox" runat="server"
-                                Text="Chiều ngang sau" Visible="false"></asp:TextBox>
+                                Text="0" ToolTip="Chiều ngang sau" Visible="false"></asp:TextBox>
                             <asp:Label ID="CampusMLabel" runat="server" Visible="false">m</asp:Label><br />
                             <asp:RegularExpressionValidator ID="CampusOpenBehindRegularExpressionValidator" runat="server"
                                 ControlToValidate="CampusBehindTextBox" Enabled="false" CssClass="failureNotification"
@@ -216,7 +271,7 @@
                     <b>Diện tích xây dựng:</b>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="BuildFrontTextBox" runat="server" Text="Chiều ngang"></asp:TextBox>
+                    <asp:TextBox ID="BuildFrontTextBox" runat="server" Text="0" ToolTip="Chiều ngang"></asp:TextBox>
                     m <b>X</b><br />
                     <asp:RegularExpressionValidator ID="BuildFrontRegularExpressionValidator" runat="server"
                         ControlToValidate="BuildFrontTextBox" CssClass="failureNotification"
@@ -225,7 +280,7 @@
                         ErrorMessage="Chiều ngang Diện tích xây dựng không hợp lệ"></asp:RegularExpressionValidator>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="BuildLengthTextBox" runat="server" Text="Chiều dài"></asp:TextBox>
+                    <asp:TextBox ID="BuildLengthTextBox" runat="server" Text="0" ToolTip="Chiều dài"></asp:TextBox>
                     m<br />
                     <asp:RegularExpressionValidator ID="BuildLengthRegularExpressionValidator" runat="server"
                         ControlToValidate="BuildLengthTextBox" CssClass="failureNotification"
@@ -239,7 +294,7 @@
                             <asp:CheckBox ID="BuildOpenBehindCheckBox" runat="server" Text="Nở hậu" Font-Bold="true" 
                                 AutoPostBack="true"
                                 OnCheckedChanged="BuildOpenBehindCheckBox_CheckedChanged"/>
-                            <asp:TextBox ID="BuildBehindTextBox" runat="server" Text="Chiều ngang sau" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="BuildBehindTextBox" runat="server" Text="0" ToolTip="Chiều ngang sau" Visible="false"></asp:TextBox>
                             <asp:Label ID="BuildMLabel" runat="server" Visible="false">m</asp:Label><br />
                             <asp:RegularExpressionValidator ID="BuildOpenBehindRegularExpressionValidator" runat="server"
                                 ControlToValidate="BuildBehindTextBox" Enabled="false" CssClass="failureNotification"
@@ -315,6 +370,7 @@
                 <asp:TableCell>
                     <b>Hướng tài sản:</b><br />
                     <asp:DropDownList ID="DirectionDropDownList" runat="server">
+                        <asp:ListItem>Vui lòng chọn...</asp:ListItem>
                         <asp:ListItem>Đông</asp:ListItem>
                         <asp:ListItem>Tây</asp:ListItem>
                         <asp:ListItem>Nam</asp:ListItem>
@@ -583,7 +639,7 @@
                 </asp:TableCell>
                 <asp:TableCell>
                     <b>Số phòng khác:</b><br />
-                    <asp:DropDownList ID="OtherRoomDropDownList" runat="server">
+                    <asp:DropDownList ID="DifferentRoomDropDownList" runat="server">
                         <asp:ListItem>Vui lòng chọn...</asp:ListItem>
                         <asp:ListItem>1</asp:ListItem>
                         <asp:ListItem>2</asp:ListItem>
@@ -608,10 +664,6 @@
                 <asp:TableCell HorizontalAlign="Right"><b>Tiêu đề:</b></asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="TitleTextBox" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="TitleRequiredFieldValidator" runat="server"
-                        ControlToValidate="TitleTextBox" CssClass="failureNotification"
-                        ErrorMessage="Banj"
-                        Display="Dynamic" ValidationGroup="NewsSaleValidationGroup">*</asp:RequiredFieldValidator>
                 </asp:TableCell>
                 <asp:TableCell></asp:TableCell>
             </asp:TableRow>
@@ -622,26 +674,56 @@
                 </asp:TableCell>
                 <asp:TableCell></asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell HorizontalAlign="Right"><b>Bộ gõ Tiếng Việt:</b></asp:TableCell>
-                <asp:TableCell>
-                    <asp:RadioButtonList ID="InputMethodRadioButtonList" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem>VNI</asp:ListItem>
-                        <asp:ListItem>TELEX</asp:ListItem>
-                        <asp:ListItem>Tắt bộ gõ</asp:ListItem>
-                    </asp:RadioButtonList>
-                </asp:TableCell>
-                <asp:TableCell></asp:TableCell>
-            </asp:TableRow>
         </asp:Table>
     </asp:Panel>
 
     <asp:Panel ID="ImagePanel" runat="server" BorderStyle="Groove">
         <h4>Cập nhật hình ảnh</h4>
         <asp:Label ID="Label3" runat="server" ForeColor="Blue" Text="Cập nhật hình ảnh tài sản: (Tối đa 10 hình)"></asp:Label><br />
-        <asp:FileUpload ID="ImageFileUpload" runat="server" />
+        <asp:Table ID="ImageTable" runat="server" GridLines="Both">
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload0" runat="server" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload1" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload2" runat="server" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload3" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload4" runat="server" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload5" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload6" runat="server" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload7" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload8" runat="server" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:FileUpload ID="ImageFileUpload9" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
         <br />
-        - Không đăng các hình ảnh mờ hoặc hình có kích thước nhỏ hơn 360x300 pixel.<br />
+        - Không đăng các hình ảnh mờ hoặc hình có kích thước nhỏ hơn 360x360 pixel.<br />
         - Không đăng các hình ảnh có gắn kèm logo hoặc thông điệp quảng cáo.<br />
         - Nếu bạn không tải hình ảnh, hệ thống sẽ lấy hình minh hoạ tự động tương ứng với loại địa ốc mà bạn chọn.
     </asp:Panel>
@@ -679,10 +761,10 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Label ID="ContactAddressLabel" runat="server" AssociatedControlID="AddressContactCustomControl" Text="Địa chỉ:"></asp:Label>
+                    <asp:Label ID="ContactAddressLabel" runat="server" AssociatedControlID="ContactAddressTextBox" Text="Địa chỉ:"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell>
-                    <nixforest:address ID="AddressContactCustomControl" runat="server" />
+                    <asp:TextBox ID="ContactAddressTextBox" runat="server"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -702,7 +784,7 @@
         Khi nhấn nút đăng tài sản, bạn đã xác nhận hoàn toàn đồng ý với những Điều khoản đăng tin.
         <br />
     </asp:Panel>
-    <asp:Button ID="PreviewButton" runat="server" Text="Xem trước" OnClick="PreviewButton_Click" />
+    <asp:Button ID="PreviewButton" runat="server" Text="Xem trước" OnClick="PreviewButton_Click" ValidationGroup="NewsSaleValidationGroup" />
     <asp:Button ID="SaveButton" runat="server" Text="Lưu lại" />
-    <asp:Button ID="PostButton" runat="server" Text="Đăng tài sản" OnClick="PostButton_Click"/>
+    <asp:Button ID="PostButton" runat="server" Text="Đăng tài sản" OnClick="PostButton_Click" ValidationGroup="NewsSaleValidationGroup"/>
 </asp:Content>

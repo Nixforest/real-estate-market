@@ -39,6 +39,9 @@
     <Reference Include="CKEditor.NET">
       <HintPath>CustomControl\CKEditor.NET.dll</HintPath>
     </Reference>
+    <Reference Include="CKFinder">
+      <HintPath>CustomControl\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -67,6 +70,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AddNews.Master" />
+    <Content Include="AdminNews.Master" />
     <None Include="ckeditor\.htaccess" />
     <None Include="ckeditor\ckeditor.pack" />
     <None Include="ckeditor\ckeditor.php" />
@@ -82,6 +87,26 @@
     <None Include="ckeditor\_samples\php\replaceall.php" />
     <None Include="ckeditor\_samples\php\standalone.php" />
     <None Include="ckeditor\_samples\sample_posteddata.php" />
+    <Content Include="CustomControl\FilterNewsSale.ascx" />
+    <Content Include="CustomControl\MenuAdminControl.ascx" />
+    <Content Include="CustomControl\MenuUserControl.ascx" />
+    <Content Include="CustomControl\RightMenuAdminControl.ascx" />
+    <Content Include="CustomControl\SearchRealEstateControl.ascx" />
+    <Content Include="Image\anhbanner.jpg" />
+    <Content Include="Image\btn_taisanchinhchu.gif" />
+    <Content Include="Image\icon-upena.jpg" />
+    <Content Include="Image\icon_down.gif" />
+    <Content Include="Image\icon_up.png" />
+    <Content Include="Image\ico_canban.gif" />
+    <Content Include="Image\ico_canmua.gif" />
+    <Content Include="Image\ico_canthue.gif" />
+    <Content Include="Image\ico_canthue1.gif" />
+    <Content Include="News.Master" />
+    <Content Include="Master\Home.Master" />
+    <Content Include="Master\News.Master" />
+    <Content Include="Master\NewsSale.Master" />
+    <Content Include="Master\Admin.Master" />
+    <Content Include="Master\User.Master" />
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.ADDRESS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -98,9 +123,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.DISTRICT.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.GROUP.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.IMAGE.datasource">
@@ -139,9 +161,6 @@
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE_TYPE.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.RULE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.STREET.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -149,9 +168,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT_PRICE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.USER.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UTILITY.datasource">
@@ -175,6 +191,12 @@
     <Content Include="Admin\Dashboard\RealEstateTypeAdmin.aspx" />
     <Content Include="Admin\Dashboard\StreetAdmin.aspx" />
     <Content Include="Admin\Dashboard\WardAdmin.aspx" />
+    <Content Include="Admin\News\AddNews.aspx" />
+    <Content Include="Admin\News\DelNews.aspx" />
+    <Content Include="Admin\News\EditNews.aspx" />
+    <Content Include="Admin\News\ListNews.aspx" />
+    <Content Include="Admin\News\News.aspx" />
+    <Content Include="Admin\News\NewsType.aspx" />
     <Content Include="Admin\Project\NewProject.aspx" />
     <Content Include="Admin\Users\UsersManager.aspx" />
     <Content Include="CustomControl\AddressControl.ascx" />
@@ -801,18 +823,78 @@
     <Content Include="ckeditor\_source\skins\v2\templates.css" />
     <Content Include="ckeditor\_source\skins\v2\toolbar.css" />
     <Content Include="ckeditor\_source\themes\default\theme.js" />
+    <Content Include="CustomControl\ManagerNew.ascx" />
+    <Content Include="CustomControl\MoreNewsPageAll.ascx" />
+    <Content Include="CustomControl\MoreNewsPageRead.ascx" />
+    <Content Include="CustomControl\MoreNewsPageType.ascx" />
+    <Content Include="CustomControl\NewsSaleControl.ascx" />
+    <Content Include="CustomControl\NewsTypeControl.ascx" />
+    <Content Include="CustomControl\PopularNews.ascx" />
+    <Content Include="CustomControl\SearchNews.ascx" />
+    <Content Include="CustomControl\TopViewNews.ascx" />
+    <Content Include="Image\8_nhapho_356.jpg" />
+    <Content Include="Image\Admin\add.gif" />
+    <Content Include="Image\Admin\category.gif" />
+    <Content Include="Image\Admin\date.gif" />
+    <Content Include="Image\Admin\delete.gif" />
+    <Content Include="Image\Admin\edit.gif" />
+    <Content Include="Image\Admin\icon_news.gif" />
+    <Content Include="Image\Admin\list.gif" />
+    <Content Include="Image\Admin\news.gif" />
+    <Content Include="Image\Default\bietthu.jpg" />
+    <Content Include="Image\Default\canhocaocap.jpg" />
+    <Content Include="Image\Default\canhochungcu.jpg" />
+    <Content Include="Image\Default\cuahang.jpg" />
+    <Content Include="Image\Default\datduan.jpg" />
+    <Content Include="Image\Default\datlamnghiep.jpg" />
+    <Content Include="Image\Default\datnongnghiep.jpg" />
+    <Content Include="Image\Default\dato.jpg" />
+    <Content Include="Image\Default\datsx.jpg" />
+    <Content Include="Image\Default\diaockhac.jpg" />
+    <Content Include="Image\Default\nhahang.jpg" />
+    <Content Include="Image\Default\nhapho.jpg" />
+    <Content Include="Image\Default\nhatam.jpg" />
+    <Content Include="Image\Default\nhatro.jpg" />
+    <Content Include="Image\Default\vanphong.jpg" />
+    <Content Include="Image\dt_phongkhach.gif" />
+    <Content Include="Image\dt_phongngu.gif" />
+    <Content Include="Image\dt_phongtam.gif" />
+    <Content Include="Image\dt_tivi.gif" />
+    <Content Include="Image\ico_59.gif" />
+    <Content Include="Image\ico_60.gif" />
+    <Content Include="Image\ico_add.gif" />
+    <Content Include="Image\ico_back.gif" />
+    <Content Include="Image\ico_canban1.gif" />
+    <Content Include="Image\ico_canmua1.gif" />
+    <Content Include="Image\ico_chothue.gif" />
+    <Content Include="Image\ico_chothue1.gif" />
+    <Content Include="Image\ico_note.gif" />
+    <Content Include="Image\ico_phone.gif" />
+    <Content Include="Image\ico_print.gif" />
+    <Content Include="Image\ico_save.gif" />
+    <Content Include="Image\ico_send.gif" />
+    <Content Include="Image\ico_user.gif" />
     <Content Include="Member\MemberInformation.aspx" />
     <Content Include="Member\NewsSaleRegistration.aspx" />
-    <Content Include="Pages\Project.aspx" />
+    <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Pages\NewsSale\NewsSale.aspx" />
+    <Content Include="Pages\NewsSale\NewsSales.aspx" />
+    <Content Include="Pages\Project\Project.aspx" />
+    <Content Include="Pages\News\AllNews.aspx" />
+    <Content Include="Pages\News\ListNews.aspx" />
+    <Content Include="Pages\News\ReadNews.aspx" />
     <Content Include="Scripts\jcalendar-source.js" />
     <Content Include="Scripts\jcalendar.css" />
     <Content Include="Scripts\jquery-1.7.1.js" />
-    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\adminnews.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Styles\style.css" />
     <Content Include="TestPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -867,6 +949,20 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddNews.Master.cs">
+      <DependentUpon>AddNews.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNews.Master.designer.cs">
+      <DependentUpon>AddNews.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminNews.Master.cs">
+      <DependentUpon>AdminNews.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminNews.Master.designer.cs">
+      <DependentUpon>AdminNews.Master</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -916,6 +1012,48 @@
     <Compile Include="Admin\Dashboard\WardAdmin.aspx.designer.cs">
       <DependentUpon>WardAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\News\AddNews.aspx.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\AddNews.aspx.designer.cs">
+      <DependentUpon>AddNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\News\DelNews.aspx.cs">
+      <DependentUpon>DelNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\DelNews.aspx.designer.cs">
+      <DependentUpon>DelNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\News\EditNews.aspx.cs">
+      <DependentUpon>EditNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\EditNews.aspx.designer.cs">
+      <DependentUpon>EditNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\News\ListNews.aspx.cs">
+      <DependentUpon>ListNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\ListNews.aspx.designer.cs">
+      <DependentUpon>ListNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\News\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\News\NewsType.aspx.cs">
+      <DependentUpon>NewsType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\News\NewsType.aspx.designer.cs">
+      <DependentUpon>NewsType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Project\NewProject.aspx.cs">
       <DependentUpon>NewProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -937,6 +1075,104 @@
     <Compile Include="CustomControl\AddressControl.ascx.designer.cs">
       <DependentUpon>AddressControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControl\FilterNewsSale.ascx.cs">
+      <DependentUpon>FilterNewsSale.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\FilterNewsSale.ascx.designer.cs">
+      <DependentUpon>FilterNewsSale.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\ManagerNew.ascx.cs">
+      <DependentUpon>ManagerNew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ManagerNew.ascx.designer.cs">
+      <DependentUpon>ManagerNew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MenuAdminControl.ascx.cs">
+      <DependentUpon>MenuAdminControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\MenuAdminControl.ascx.designer.cs">
+      <DependentUpon>MenuAdminControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MenuUserControl.ascx.cs">
+      <DependentUpon>MenuUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\MenuUserControl.ascx.designer.cs">
+      <DependentUpon>MenuUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageAll.ascx.cs">
+      <DependentUpon>MoreNewsPageAll.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageAll.ascx.designer.cs">
+      <DependentUpon>MoreNewsPageAll.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageRead.ascx.cs">
+      <DependentUpon>MoreNewsPageRead.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageRead.ascx.designer.cs">
+      <DependentUpon>MoreNewsPageRead.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageType.ascx.cs">
+      <DependentUpon>MoreNewsPageType.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\MoreNewsPageType.ascx.designer.cs">
+      <DependentUpon>MoreNewsPageType.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\NewsSaleControl.ascx.cs">
+      <DependentUpon>NewsSaleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\NewsSaleControl.ascx.designer.cs">
+      <DependentUpon>NewsSaleControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\NewsTypeControl.ascx.cs">
+      <DependentUpon>NewsTypeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\NewsTypeControl.ascx.designer.cs">
+      <DependentUpon>NewsTypeControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\PopularNews.ascx.cs">
+      <DependentUpon>PopularNews.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\PopularNews.ascx.designer.cs">
+      <DependentUpon>PopularNews.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\RightMenuAdminControl.ascx.cs">
+      <DependentUpon>RightMenuAdminControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\RightMenuAdminControl.ascx.designer.cs">
+      <DependentUpon>RightMenuAdminControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\SearchNews.ascx.cs">
+      <DependentUpon>SearchNews.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\SearchNews.ascx.designer.cs">
+      <DependentUpon>SearchNews.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\SearchRealEstateControl.ascx.cs">
+      <DependentUpon>SearchRealEstateControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\SearchRealEstateControl.ascx.designer.cs">
+      <DependentUpon>SearchRealEstateControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\TopViewNews.ascx.cs">
+      <DependentUpon>TopViewNews.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\TopViewNews.ascx.designer.cs">
+      <DependentUpon>TopViewNews.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -946,6 +1182,41 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Home.Master.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Home.Master.designer.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\News.Master.cs">
+      <DependentUpon>News.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\News.Master.designer.cs">
+      <DependentUpon>News.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\NewsSale.Master.cs">
+      <DependentUpon>NewsSale.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\NewsSale.Master.designer.cs">
+      <DependentUpon>NewsSale.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\User.Master.cs">
+      <DependentUpon>User.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\User.Master.designer.cs">
+      <DependentUpon>User.Master</DependentUpon>
     </Compile>
     <Compile Include="Member\MemberInformation.aspx.cs">
       <DependentUpon>MemberInformation.aspx</DependentUpon>
@@ -961,25 +1232,67 @@
     <Compile Include="Member\NewsSaleRegistration.aspx.designer.cs">
       <DependentUpon>NewsSaleRegistration.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Project.aspx.cs">
+    <Compile Include="News.Master.cs">
+      <DependentUpon>News.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="News.Master.designer.cs">
+      <DependentUpon>News.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsSale\NewsSale.aspx.cs">
+      <DependentUpon>NewsSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NewsSale\NewsSale.aspx.designer.cs">
+      <DependentUpon>NewsSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsSale\NewsSales.aspx.cs">
+      <DependentUpon>NewsSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NewsSale\NewsSales.aspx.designer.cs">
+      <DependentUpon>NewsSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Project\Project.aspx.cs">
       <DependentUpon>Project.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Project.aspx.designer.cs">
+    <Compile Include="Pages\Project\Project.aspx.designer.cs">
       <DependentUpon>Project.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\News\AllNews.aspx.cs">
+      <DependentUpon>AllNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\News\AllNews.aspx.designer.cs">
+      <DependentUpon>AllNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\News\ListNews.aspx.cs">
+      <DependentUpon>ListNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\News\ListNews.aspx.designer.cs">
+      <DependentUpon>ListNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\News\ReadNews.aspx.cs">
+      <DependentUpon>ReadNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\News\ReadNews.aspx.designer.cs">
+      <DependentUpon>ReadNews.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\RealEstateServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="TestPage.aspx.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
@@ -988,15 +1301,15 @@
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
+    <Folder Include="Public\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
-    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RealEstateBusinessLogicObject\RealEstateBusinessLogicObject.csproj">

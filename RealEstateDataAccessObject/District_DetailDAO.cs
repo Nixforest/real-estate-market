@@ -46,7 +46,7 @@ namespace RealEstateDataAccessObject
         {
             RealEstateDataContext.DISTRICT_DETAIL oldEntity = _db.DISTRICT_DETAILs.Single(record => record.ID == entity.ID);
             oldEntity.DistrictID = entity.DistrictID;
-            oldEntity.StreetID = entity.StreetID;
+            oldEntity.StreetID   = entity.StreetID;
             _db.SubmitChanges();
         }
 
