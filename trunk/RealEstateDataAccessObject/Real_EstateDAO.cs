@@ -45,28 +45,29 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.REAL_ESTATE entity)
         {
             RealEstateDataContext.REAL_ESTATE oldEntity = _db.REAL_ESTATEs.Single(record => record.ID == entity.ID);
-            oldEntity.TypeID = entity.TypeID;
-            oldEntity.AddressID = entity.AddressID;
-            oldEntity.LivingRoom = entity.LivingRoom;
-            oldEntity.BedRoom = entity.BedRoom;
-            oldEntity.BathRoom = entity.BathRoom;
-            oldEntity.Storey = entity.Storey;
-            oldEntity.TotalUseArea = entity.TotalUseArea;
-            oldEntity.CampusFront = entity.CampusFront;
-            oldEntity.CampusBehind = entity.CampusBehind;
-            oldEntity.CampusLength = entity.CampusLength;
-            oldEntity.BuildFront = entity.BuildFront;
-            oldEntity.BuildBehind = entity.BuildBehind;
-            oldEntity.BuildLength = entity.BuildLength;
-            oldEntity.LegalID = entity.LegalID;
-            oldEntity.Direction = entity.Direction;
-            oldEntity.FrontStreet = entity.FrontStreet;
-            oldEntity.LocationID = entity.LocationID;
-            oldEntity.Price = entity.Price;
-            oldEntity.UnitID = entity.UnitID;
-            oldEntity.UnitPriceID = entity.UnitPriceID;
-            oldEntity.ProjectID = entity.ProjectID;
-            oldEntity.ContactID = entity.ContactID;
+            oldEntity.TypeID        = entity.TypeID;
+            oldEntity.AddressID     = entity.AddressID;
+            oldEntity.LivingRoom    = entity.LivingRoom;
+            oldEntity.BedRoom       = entity.BedRoom;
+            oldEntity.BathRoom      = entity.BathRoom;
+            oldEntity.DifferentRoom = entity.DifferentRoom;
+            oldEntity.Storey        = entity.Storey;
+            oldEntity.TotalUseArea  = entity.TotalUseArea;
+            oldEntity.CampusFront   = entity.CampusFront;
+            oldEntity.CampusBehind  = entity.CampusBehind;
+            oldEntity.CampusLength  = entity.CampusLength;
+            oldEntity.BuildFront    = entity.BuildFront;
+            oldEntity.BuildBehind   = entity.BuildBehind;
+            oldEntity.BuildLength   = entity.BuildLength;
+            oldEntity.LegalID       = entity.LegalID;
+            oldEntity.Direction     = entity.Direction;
+            oldEntity.FrontStreet   = entity.FrontStreet;
+            oldEntity.LocationID    = entity.LocationID;
+            oldEntity.Price         = entity.Price;
+            oldEntity.UnitID        = entity.UnitID;
+            oldEntity.UnitPriceID   = entity.UnitPriceID;
+            oldEntity.ProjectID     = entity.ProjectID;
+            oldEntity.ContactID     = entity.ContactID;
 
             _db.SubmitChanges();
         }

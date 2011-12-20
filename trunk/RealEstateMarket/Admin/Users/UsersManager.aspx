@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UsersManager.aspx.cs" Inherits="RealEstateMarket.Admin.Users.UsersManager" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="UsersManager.aspx.cs" Inherits="RealEstateMarket.Admin.Users.UsersManager" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -44,8 +44,13 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <asp:BoundField DataField="IsApproved" HeaderText="Phê duyệt" />
                 <asp:BoundField DataField="IsLockedOut" HeaderText="Khóa" />
-                <asp:BoundField DataField="CreationDate" HeaderText="Ngày tham gia" 
-                    ReadOnly="True" />
+                <%--<asp:BoundField DataField="CreationDate" HeaderText="Ngày tham gia" 
+                    ReadOnly="True" />--%>
+                <asp:TemplateField HeaderText="Ngày tham gia">
+                    <ItemTemplate>
+                        <%# Convert.ToDateTime(Eval("CreationDate")).ToShortDateString() %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="IsOnline" HeaderText="Online" ReadOnly="True" />
             </Columns>
         </asp:GridView>

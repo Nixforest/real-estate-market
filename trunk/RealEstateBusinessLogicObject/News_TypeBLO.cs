@@ -24,7 +24,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>List of entities</returns>
         public override ICollection<RealEstateDataContext.NEWS_TYPE> GetAllRows()
         {
-            return base.GetAllRows();
+            return new ObservableCollection<RealEstateDataContext.NEWS_TYPE>(_db.GetAllRows());
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string description)
         {
             RealEstateDataContext.NEWS_TYPE entity = new RealEstateDataContext.NEWS_TYPE();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            entity.ID          = this.CreateNewID();
+            entity.Name        = name;
             entity.Description = description;
 
             _db.Insert(entity);
@@ -85,8 +85,8 @@ namespace RealEstateBusinessLogicObject
             if (ValidationID(id))
             {
                 RealEstateDataContext.NEWS_TYPE entity = new RealEstateDataContext.NEWS_TYPE();
-                entity.ID = id;
-                entity.Name = name;
+                entity.ID          = id;
+                entity.Name        = name;
                 entity.Description = description;
 
                 _db.Update(entity);

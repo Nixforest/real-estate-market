@@ -31,13 +31,36 @@ namespace RealEstateDataAccessObject
             return news.ToList();
         }
 
-        public override ICollection<RealEstateDataContext.NEW> GetAllRows(int numrow)
+        /// <summary>
+        /// Get some rows in table NEWS
+        /// </summary>
+        /// <param name="from">From row</param>
+        /// <param name="numrow">Number of rows</param>
+        /// <returns>List of News</returns>
+        public override ICollection<RealEstateDataContext.NEW> GetRows(int from, int numrow)
         {
             var news = from entity in _db.NEWs
                        orderby entity.ID descending
                        select entity;
-            return news.Skip(0).Take(numrow).ToList();
+            return news.Skip(from).Take(numrow).ToList();
         }
+
+        /// <summary>
+        /// Get all rows in table T where check's = true/ false
+        /// </summary>
+        /// <param name="from">From row</param>
+        /// <param name="numrow">Number of rows</param>
+        /// <param name="check">Condition</param>
+        /// <returns>List of NEWS</returns>
+        public override ICollection<RealEstateDataContext.NEW> GetRows(int from, int numrow, bool check)
+        {
+            var news = from entity in _db.NEWs
+                       where entity.Check == check
+                       orderby entity.ID descending
+                       select entity;
+            return news.Skip(from).Take(numrow).ToList();
+        }
+
         /// <summary>
         /// Insert a row into table NEWS
         /// </summary>
@@ -55,13 +78,17 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.NEW entity)
         {
             RealEstateDataContext.NEW oldEntity = _db.NEWs.Single(record => record.ID == entity.ID);
-            oldEntity.TypeID = entity.TypeID;
-            oldEntity.Title = entity.Title;
-            oldEntity.Content = entity.Content;
-            oldEntity.Author = entity.Author;
-            oldEntity.Rate = entity.Rate;
+            oldEntity.TypeID      = entity.TypeID;
+            oldEntity.Title       = entity.Title;
+            oldEntity.Descript    = entity.Descript;
+            oldEntity.Content     = entity.Content;
+            oldEntity.Author      = entity.Author;
+            oldEntity.Rate        = entity.Rate;
             oldEntity.PublishTime = entity.PublishTime;
-            oldEntity.ImageID = entity.ImageID;
+            oldEntity.EditTime    = entity.EditTime;
+            oldEntity.ImageID     = entity.ImageID;
+            oldEntity.Check       = entity.Check;
+            oldEntity.View        = entity.View;
 
             _db.SubmitChanges();
         }

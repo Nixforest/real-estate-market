@@ -31,15 +31,6 @@ namespace RealEstateMarket.Admin.Dashboard {
         protected global::System.Web.UI.WebControls.ObjectDataSource CityObjectDataSource;
         
         /// <summary>
-        /// StreetObjectDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource StreetObjectDataSource;
-        
-        /// <summary>
         /// DistrictGridView control.
         /// </summary>
         /// <remarks>
@@ -119,32 +110,5 @@ namespace RealEstateMarket.Admin.Dashboard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button InsertDistrictButton;
-        
-        /// <summary>
-        /// DistrictDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DistrictDropDownList;
-        
-        /// <summary>
-        /// StreetUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel StreetUpdatePanel;
-        
-        /// <summary>
-        /// StreetGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView StreetGridView;
     }
 }

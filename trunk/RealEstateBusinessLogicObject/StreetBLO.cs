@@ -53,7 +53,7 @@ namespace RealEstateBusinessLogicObject
             if (!ValidationName(name))
             {
                 RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
-                entity.ID = this.CreateNewID();
+                entity.ID   = this.CreateNewID();
                 entity.Name = name;
 
                 _db.Insert(entity);
@@ -97,7 +97,7 @@ namespace RealEstateBusinessLogicObject
                     || (ValidationName(name) && GetIDFromName(name) == id))
                 {
                     RealEstateDataContext.STREET entity = new RealEstateDataContext.STREET();
-                    entity.ID = id;
+                    entity.ID   = id;
                     entity.Name = name;
 
                     _db.Update(entity);

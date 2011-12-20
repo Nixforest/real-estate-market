@@ -15,21 +15,29 @@ namespace RealEstateMarket
         private RealEstateBusinessLogicObject.NationBLO nationX;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //error.Text = RealEstateMarket._Default.db.HelloWorld();
 
             //RealEstateDataContext.Utility.WebConfig.MSSQL = @"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True";
             nation = new RealEstateServiceReference.RealEstateWebServiceSoapClient();
-            nation.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
+            //nation.SetConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=RealEstate;Integrated Security=True");
             //nationX = new RealEstateBusinessLogicObject.NationBLO();
-            nationGridView.DataSource = nation.GetAllNations();
+            //nationGridView.DataSource = nation.GetAllNations();
             //nationGridView.DataSource = nationX.GetAllRows();
-            nationGridView.DataBind();
+            //nationGridView.DataBind();
          
+        }
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
+            _FileBrowser.BasePath = "/ckfinder/";
+            _FileBrowser.SetupCKEditor(DescriptionCKEditor);
         }
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             //RealEstateServiceReference.RealEstateWebServiceSoapClient.C
-
+            //Label3.Text = Utility.ConvertPriceText(Convert.ToDouble(UsernameTextBox.Text));
         }
         protected void btnInsert_Click(object sender, EventArgs e)
         {
@@ -100,30 +108,30 @@ namespace RealEstateMarket
             //RealEstateServiceReference.NATION entity = new RealEstateServiceReference.NATION();
             //entity.Name = textboxName.Text;
             //entity.NationCode = textboxNationCode.Text;
-            if (textboxName.Text != "" && textboxNationCode.Text != "")
-            {
-                try
-                {
-                    RealEstateDataContext.NATION entity = new NATION();
-                    entity.Name = textboxName.Text;
-                    entity.NationCode = textboxNationCode.Text;
-                    RealEstateServiceReference.NATION entityx = new RealEstateServiceReference.NATION();
-                    entityx.Name = textboxName.Text;
-                    entityx.NationCode = textboxNationCode.Text;
-                    //nation.InsertNation(entityx);
-                    nation.InsertNation(textboxName.Text, textboxNationCode.Text);
-                    nationGridView.DataSource = nation.GetAllNations();
-                    nationGridView.DataBind();
-                }
-                catch (Exception ex)
-                {
-                    //error.Text = ex.ToString();
-                    if (ex.ToString().Contains("NationIDException"))
-                    {
-                        error.Text = "NationID Exception";
-                    }
-                }
-            }
+            //if (textboxName.Text != "" && textboxNationCode.Text != "")
+            //{
+            //    try
+            //    {
+            //        RealEstateDataContext.NATION entity = new NATION();
+            //        entity.Name = textboxName.Text;
+            //        entity.NationCode = textboxNationCode.Text;
+            //        RealEstateServiceReference.NATION entityx = new RealEstateServiceReference.NATION();
+            //        entityx.Name = textboxName.Text;
+            //        entityx.NationCode = textboxNationCode.Text;
+            //        //nation.InsertNation(entityx);
+            //        nation.InsertNation(textboxName.Text, textboxNationCode.Text);
+            //        nationGridView.DataSource = nation.GetAllNations();
+            //        nationGridView.DataBind();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        //error.Text = ex.ToString();
+            //        if (ex.ToString().Contains("NationIDException"))
+            //        {
+            //            error.Text = "NationID Exception";
+            //        }
+            //    }
+            //}
 
             //nation.Delete(5);
         }

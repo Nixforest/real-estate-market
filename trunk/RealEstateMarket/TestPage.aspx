@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TestPage.aspx.cs" Inherits="RealEstateMarket.TestPage" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
-
-
+<%@ Register TagPrefix="nixforest" TagName="newsSale" Src="~/CustomControl/NewsSaleControl.ascx" %>
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
+<%@ Register Assembly="CKFinder" Namespace="CKFinder" TagPrefix="CKFinder"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script>
+    <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js">
     function IsNumeric(sText) {
         var ValidChars = "0123456789.,";
         var IsNumber = true;
@@ -20,25 +20,26 @@
             }
         }
         return IsNumber;
-    }
-</script>
-    <asp:TextBox ID="UsernameTextBox" runat="server">User Name</asp:TextBox><br />
-    <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password">***</asp:TextBox>
-    <asp:Button ID="LoginButotn" runat="server" OnClick="LoginButton_Click" Text="Login" />
-    <asp:TextBox ID="tbxTest" runat="server" Text="0" 
-        ontextchanged="tbxTest_TextChanged"
-        onblur="IsNumeric(this.value)"></asp:TextBox>
-    <asp:GridView ID="nationGridView" runat="server" AutoGenerateColumns="true">
-    </asp:GridView>
-    <asp:Label ID="lblName" runat="server" Text="Nation's name:"></asp:Label>
-    <asp:TextBox ID="textboxName" runat="server"></asp:TextBox>
-    <br/>
-    <asp:Label ID="lblNationCode" runat="server" Text="Nation Code:"></asp:Label>
-    <asp:TextBox ID="textboxNationCode" runat="server"></asp:TextBox>
-    <br />
-    <asp:Button ID="Insert" runat="server" Text="Update" onclick="Insert_Click" />
-    <asp:Label ID="error" runat="server" Text="Label"></asp:Label>
-    <asp:FileUpload ID="FileUpload1" runat="server" />
+    }    
+    </script>
+    <span id="text">This paragraph will be copyed ten times</span>
+    <input id="btnClone" type="button" value="Clone" />
+    <div id="container"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnClone').click(function () {
+                $('#container').html('');
+                for (var i = 0; i < 10; i++) {
+                    $('#container').append(i + '. ');
+                    $('#container').append($('#text').html());
+                    $('#container').append('</br>');
+                }
+            });
+        });
+    </script>
+    <asp:TextBox ID="editor" runat="server" TextMode="MultiLine"></asp:TextBox>
+    
+    <CKEditor:CKEditorControl ID="DescriptionCKEditor" runat="server"></CKEditor:CKEditorControl>
 </asp:Content>
 
 

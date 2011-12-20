@@ -9,7 +9,6 @@ namespace RealEstateDataAccessObject
 {
     public class NationDAO: DataParent<NATION>
     {
-
         /// <summary>
         /// Get Max ID
         /// </summary>
@@ -45,7 +44,7 @@ namespace RealEstateDataAccessObject
         public override void Update(NATION entity)
         {
             NATION oldEntity = _db.NATIONs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name       = entity.Name;
             oldEntity.NationCode = entity.NationCode;
             _db.SubmitChanges();
         }

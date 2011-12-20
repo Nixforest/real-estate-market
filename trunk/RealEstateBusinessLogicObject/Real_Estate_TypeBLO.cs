@@ -48,8 +48,8 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string description)
         {
             RealEstateDataContext.REAL_ESTATE_TYPE entity = new RealEstateDataContext.REAL_ESTATE_TYPE();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            entity.ID          = this.CreateNewID();
+            entity.Name        = name;
             entity.Description = description;
 
             _db.Insert(entity);
@@ -85,8 +85,8 @@ namespace RealEstateBusinessLogicObject
             if (ValidationID(id))
             {
                 RealEstateDataContext.REAL_ESTATE_TYPE entity = new RealEstateDataContext.REAL_ESTATE_TYPE();
-                entity.ID = id;
-                entity.Name = name;
+                entity.ID          = id;
+                entity.Name        = name;
                 entity.Description = description;
 
                 _db.Update(entity);
@@ -123,6 +123,33 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.Real_Estate_TypeIDException();
+        }
+
+        /// <summary>
+        /// Get News Sales by RealEstateType
+        /// </summary>
+        /// <param name="realEstateTypeID">RealEstateType ID</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> GetNewsSalesByRealEstateTypeID(int realEstateTypeID)
+        {
+            if (realEstateTypeID == 0)
+            {
+                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(new RealEstateDataAccessObject.News_SaleDAO().GetAllRows());
+            }
+            else
+            {
+                if (ValidationID(realEstateTypeID))
+                {
+                    ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+                    foreach (RealEstateDataContext.REAL_ESTATE item in _db.GetARecord(realEstateTypeID).REAL_ESTATEs)
+                    {
+                        result.Add(new RealEstateBusinessLogicObject.Real_EstateBLO().GetNewsSaleByRealEstateID(item.ID));
+                    }
+                    //return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetARecord(realEstateTypeID).REAL_ESTATEs)
+                    return result;
+                }
+            }
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
         }
     }
 }

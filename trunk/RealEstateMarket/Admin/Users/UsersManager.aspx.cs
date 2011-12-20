@@ -18,6 +18,7 @@ namespace RealEstateMarket.Admin.Users
 
             if (!IsPostBack)
             {
+                Title = "Quản lý người dùng";
                 //UserGridView.DataSource = System.Web.Security.Membership.GetAllUsers();
                 //UserGridView.DataBind();
                 //RolesGridView.DataSource = System.Web.Security.Roles.GetAllRoles();
@@ -26,7 +27,6 @@ namespace RealEstateMarket.Admin.Users
                 InRoleAddUserDropDownList.DataBind();
                 InRoleDropDownList.DataSource = System.Web.Security.Roles.GetAllRoles();
                 InRoleDropDownList.DataBind();
-                
             }
         }
 
@@ -47,16 +47,39 @@ namespace RealEstateMarket.Admin.Users
         {
             try
             {
+                if (InRoleAddUserDropDownList.SelectedValue == "Administrator")
+                {
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Administrator");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Moderator");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Customer");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Author");
+                }
+                if (InRoleAddUserDropDownList.SelectedValue == "Moderator")
+                {
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Moderator");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Customer");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Author");
+                }
+                if (InRoleAddUserDropDownList.SelectedValue == "Customer")
+                {
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Customer");
+                }
+                if (InRoleAddUserDropDownList.SelectedValue == "Author")
+                {
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Customer");
+                    System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, "Author");
+                }
                 System.Web.Security.Roles.AddUserToRole(UserDropDownList.SelectedValue, InRoleAddUserDropDownList.SelectedValue);
             }
             catch (Exception ex)
             {
-                ErrorLabel.Text = e.ToString();
+                ErrorLabel.Text = ex.ToString();
             }
         }
 
         protected void AddRoleButton_Click(object sender, EventArgs e)
         {
+
             if (RoleNameTextBox.Text != "")
             {
                 try

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace RealEstateDataContext.Utility
 {
@@ -37,18 +38,92 @@ namespace RealEstateDataContext.Utility
     public class LegalIDException : Exception { }
     public class LocationIDException : Exception { }
 
-    public class ExceptionMessage
+    public class Utils
     {
-        public static string AddressID = "AddressID Not Exist";
-        public static string NationID = "NationID Not Exist";
-        public static string CityID = "CityID Not Exist";
-        public static string DistrictID = "DistrictID Not Exist";
-        public static string WardID = "WardID Not Exist";
-        public static string StreetID = "StreetID Not Exist";
-        public static string ShareCapital = "Share Capital Must Greater Than Zero";
-        public static string CompanyID = "CompanyID Not Exist";
-        public static string UserID = "UserID Not Exist";
-        public static string CustomerID = "CustomerID Not Exist";
-        public static string GroupID = "GroupID Not Exist";
+        public static string ConvertToUnSign(string text)
+        {
+            for (int i = 33; i < 48; i++)
+            {
+                text = text.Replace(((char)i).ToString(), "");
+            }
+            for (int i = 58; i < 65; i++)
+            {
+                text = text.Replace(((char)i).ToString(), "");
+            }
+            for (int i = 91; i < 97; i++)
+            {
+                text = text.Replace(((char)i).ToString(), "");
+            }
+
+            for (int i = 123; i < 127; i++)
+            {
+                text = text.Replace(((char)i).ToString(), "");
+            }
+
+            Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+            string strFormD = text.Normalize(System.Text.NormalizationForm.FormD);
+            return regex.Replace(strFormD, String.Empty).Replace("\u0111", "d").Replace("\u0110", "D");
+            //for (int i = 33; i < 48; i++)
+            //{
+            //    text = text.Replace(((char)i).ToString(), "");
+            //}
+
+            //for (int i = 58; i < 65; i++)
+            //{
+
+            //    text = text.Replace(((char)i).ToString(), "");
+
+            //}
+
+            //for (int i = 91; i < 97; i++)
+            //{
+
+            //    text = text.Replace(((char)i).ToString(), "");
+
+            //}
+
+            //for (int i = 123; i < 127; i++)
+            //{
+
+            //    text = text.Replace(((char)i).ToString(), "");
+
+            //}
+
+            ////text = text.Replace(" ", "-"); //Comment lại để không đưa khoảng trắng thành ký tự -
+
+            //Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+
+            //string strFormD = text.Normalize(System.Text.NormalizationForm.FormD);
+            //return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+        private static String[] VietnameseSigns = new String[] { 
+            "aAeEoOuUiIdDyY",
+            "áàạảãâấầậẩẫăắằặẳẵ",
+            "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+            "éèẹẻẽêếềệểễ",
+            "ÉÈẸẺẼÊẾỀỆỂỄ",
+            "óòọỏõôốồộổỗơớờợởỡ",
+            "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+            "úùụủũưứừựửữ",
+            "ÚÙỤỦŨƯỨỪỰỬỮ",
+            "íìịỉĩ",
+            "ÍÌỊỈĨ",
+            "đ",
+            "Đ",
+            "ýỳỵỷỹ",
+            "ÝỲỴỶỸ"
+        };
+        public static string RemoveSign4VietNameseString(string text)
+        {
+            for (int i = 1; i < VietnameseSigns.Length; i++)
+            {
+                for (int j = 0; j < VietnameseSigns[i].Length; j++)
+                {
+                    text = text.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
+                }
+            }
+            return text;
+        }
+        
     }
 }

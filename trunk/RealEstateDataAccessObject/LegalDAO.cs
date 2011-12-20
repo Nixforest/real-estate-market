@@ -45,7 +45,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.LEGAL entity)
         {
             RealEstateDataContext.LEGAL oldEntity = _db.LEGALs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name        = entity.Name;
             oldEntity.Description = entity.Description;
 
             _db.SubmitChanges();

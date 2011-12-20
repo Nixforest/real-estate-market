@@ -93,7 +93,8 @@
                                 DataTextField="Name"
                                 DataValueField="ID"
                                 onselectedindexchanged="DistrictDropDownList_SelectedIndexChanged"
-                                AutoPostBack="true"></asp:DropDownList>
+                                AutoPostBack="true">
+                                </asp:DropDownList>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="CityDropDownList" EventName="selectedindexchanged" />
@@ -115,7 +116,8 @@
                     </asp:UpdatePanel>                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="WardCheckBox" runat="server" Text="Khác" />
+                    <asp:CheckBox ID="DifferentCheckBox" runat="server" Enabled="false"
+                        ToolTip="Không cập nhật vị trí Quận, Huyện, Đường phố, bạn có thể nhập Chi tiết Địa chỉ" Text="Khác"/>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableHeaderRow>
@@ -145,7 +147,7 @@
                     </asp:UpdatePanel>                    
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:CheckBox ID="StreetCheckBox" runat="server" Text="Khác" />
+                    <%--<asp:CheckBox ID="StreetCheckBox" runat="server" Text="Khác" />--%>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

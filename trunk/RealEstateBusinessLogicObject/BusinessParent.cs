@@ -21,6 +21,9 @@ namespace RealEstateBusinessLogicObject
             }
         }
         public virtual ICollection<T> GetAllRows() { return null; }
+        public virtual ICollection<T> GetRows(int from, int numrow) { return null; }
+        public virtual ICollection<T> GetRows(int from, int numrow, bool check) { return null; }
+
         public virtual int Insert(T entity) { return 0; }
         public virtual int Update(T entity) { return 0; }
         public virtual void Delete(int ID) { }

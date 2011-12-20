@@ -51,8 +51,8 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string description)
         {
             RealEstateDataContext.NEWS_SALE_TYPE entity = new RealEstateDataContext.NEWS_SALE_TYPE();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            entity.ID          = this.CreateNewID();
+            entity.Name        = name;
             entity.Description = description;
 
             _db.Insert(entity);
@@ -90,8 +90,8 @@ namespace RealEstateBusinessLogicObject
             if (ValidationID(id))
             {
                 RealEstateDataContext.NEWS_SALE_TYPE entity = new RealEstateDataContext.NEWS_SALE_TYPE();
-                entity.ID = id;
-                entity.Name = name;
+                entity.ID          = id;
+                entity.Name        = name;
                 entity.Description = description;
 
                 _db.Update(entity);
@@ -130,6 +130,21 @@ namespace RealEstateBusinessLogicObject
                 return _db.GetARecord(ID);
             }
             else throw new RealEstateDataContext.Utility.News_Sale_TypeIDException();
+        }
+
+        /// <summary>
+        /// Get News Sales in a Type
+        /// </summary>
+        /// <param name="ID">Type's ID</param>
+        /// <returns>List of NewsSale</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.NEWS_SALE> GetNewsSalesByTypeID(int typeID)
+        {
+            if (_db.ValidationID(typeID))
+            {
+                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetARecord(typeID).NEWS_SALEs);
+            }
+            else return new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
         }
     }
 }

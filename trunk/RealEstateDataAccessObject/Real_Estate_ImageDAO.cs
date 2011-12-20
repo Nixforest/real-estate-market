@@ -54,7 +54,7 @@ namespace RealEstateDataAccessObject
         {
             RealEstateDataContext.REAL_ESTATE_IMAGE oldEntity = _db.REAL_ESTATE_IMAGEs.Single(record => record.ID == entity.ID);
             oldEntity.RealEstateID = entity.RealEstateID;
-            oldEntity.ImageID = entity.ImageID;
+            oldEntity.ImageID      = entity.ImageID;
 
             _db.SubmitChanges();
         }

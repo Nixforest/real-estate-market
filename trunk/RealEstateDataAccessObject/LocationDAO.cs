@@ -45,7 +45,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.LOCATION entity)
         {
             RealEstateDataContext.LOCATION oldEntity = _db.LOCATIONs.Single(record => record.ID == entity.ID);
-            oldEntity.Name = entity.Name;
+            oldEntity.Name        = entity.Name;
             oldEntity.Description = entity.Description;
 
             _db.SubmitChanges();
@@ -84,9 +84,9 @@ namespace RealEstateDataAccessObject
         /// <returns>True if ID has exist, false otherwise</returns>
         public override bool ValidationID(int ID)
         {
-            if (_db.CITies.Count() > 0)
+            if (_db.LOCATIONs.Count() > 0)
             {
-                foreach (RealEstateDataContext.CITY entity in _db.CITies)
+                foreach (RealEstateDataContext.LOCATION entity in _db.LOCATIONs)
                 {
                     if (entity.ID.Equals(ID))
                     {

@@ -46,11 +46,11 @@ namespace RealEstateDataAccessObject
         {
             RealEstateDataContext.CONTACT oldEntity = _db.CONTACTs.Single(record => record.ID == entity.ID);
 
-            oldEntity.Name = entity.Name;
-            oldEntity.AddressID = entity.AddressID;
-            oldEntity.Phone = entity.Phone;
+            oldEntity.Name      = entity.Name;
+            oldEntity.Address   = entity.Address;
+            oldEntity.Phone     = entity.Phone;
             oldEntity.HomePhone = entity.HomePhone;
-            oldEntity.Note = entity.Note;
+            oldEntity.Note      = entity.Note;
 
             _db.SubmitChanges();
         }

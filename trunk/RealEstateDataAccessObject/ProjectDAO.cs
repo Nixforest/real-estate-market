@@ -45,10 +45,10 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.PROJECT entity)
         {
             RealEstateDataContext.PROJECT oldEntity = _db.PROJECTs.Single(record => record.ID == entity.ID);
-            oldEntity.TypeID = entity.TypeID;
-            oldEntity.Name = entity.Name;
-            oldEntity.BeginDay = entity.BeginDay;
-            oldEntity.AddressID = entity.AddressID;
+            oldEntity.TypeID      = entity.TypeID;
+            oldEntity.Name        = entity.Name;
+            oldEntity.BeginDay    = entity.BeginDay;
+            oldEntity.AddressID   = entity.AddressID;
             oldEntity.Description = entity.Description;
 
             _db.SubmitChanges();

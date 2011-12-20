@@ -54,8 +54,8 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string nationCode)
         {
             NATION entity = new NATION();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            entity.ID         = this.CreateNewID();
+            entity.Name       = name;
             entity.NationCode = nationCode;
             _db.Insert(entity);
             return entity.ID;
@@ -91,9 +91,9 @@ namespace RealEstateBusinessLogicObject
         {
             if (_db.ValidationID(id))
             {
-                NATION entity = new NATION();
-                entity.ID = id;
-                entity.Name = name;
+                NATION entity     = new NATION();
+                entity.ID         = id;
+                entity.Name       = name;
                 entity.NationCode = nationCode;
 
                 _db.Update(entity);
@@ -160,7 +160,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.CITY>(_db.GetARecord(ID).CITies);
             }
-            else return null;
+            else return new ObservableCollection<RealEstateDataContext.CITY>();
         }
     }
 }

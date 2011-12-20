@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Master/Home.Master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="RealEstateMarket.Account.Register" %>
     <%@ Register TagPrefix="nixforest" TagName="address" Src="~/CustomControl/AddressControl.ascx" %>
 

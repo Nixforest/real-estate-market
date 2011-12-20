@@ -53,7 +53,7 @@ namespace RealEstateDataAccessObject
         public override void Update(RealEstateDataContext.PROPERTY_CUSTOMER entity)
         {
             RealEstateDataContext.PROPERTY_CUSTOMER oldEntity = _db.PROPERTY_CUSTOMERs.Single(record => record.ID == entity.ID);
-            oldEntity.CustomerID = entity.CustomerID;
+            oldEntity.CustomerID   = entity.CustomerID;
             oldEntity.RealEstateID = entity.RealEstateID;
 
             _db.SubmitChanges();

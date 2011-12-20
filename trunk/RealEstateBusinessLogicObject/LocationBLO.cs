@@ -51,8 +51,8 @@ namespace RealEstateBusinessLogicObject
         public int Insert(string name, string description)
         {
             RealEstateDataContext.LOCATION entity = new RealEstateDataContext.LOCATION();
-            entity.ID = this.CreateNewID();
-            entity.Name = name;
+            entity.ID          = this.CreateNewID();
+            entity.Name        = name;
             entity.Description = description;
 
             _db.Insert(entity);
@@ -90,8 +90,8 @@ namespace RealEstateBusinessLogicObject
             if (ValidationID(id))
             {
                 RealEstateDataContext.LOCATION entity = new RealEstateDataContext.LOCATION();
-                entity.ID = id;
-                entity.Name = name;
+                entity.ID          = id;
+                entity.Name        = name;
                 entity.Description = description;
 
                 _db.Update(entity);

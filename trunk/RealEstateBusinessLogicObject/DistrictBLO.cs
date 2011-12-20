@@ -59,8 +59,8 @@ namespace RealEstateBusinessLogicObject
             if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
             {
                 RealEstateDataContext.DISTRICT entity = new RealEstateDataContext.DISTRICT();
-                entity.ID = this.CreateNewID();
-                entity.Name = name;
+                entity.ID     = this.CreateNewID();
+                entity.Name   = name;
                 entity.CityID = cityID;
 
                 _db.Insert(entity);
@@ -95,7 +95,7 @@ namespace RealEstateBusinessLogicObject
                         entity.ID = 1;
                     }
                     entity.DistrictID = districtID;
-                    entity.StreetID = streetID;
+                    entity.StreetID   = streetID;
                     detail.Insert(entity);
                     return entity.ID;
                 }
@@ -143,8 +143,8 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
                 {
                     RealEstateDataContext.DISTRICT entity = new RealEstateDataContext.DISTRICT();
-                    entity.ID = id;
-                    entity.Name = name;
+                    entity.ID     = id;
+                    entity.Name   = name;
                     entity.CityID = cityID;
 
                     _db.Update(entity);
@@ -204,7 +204,7 @@ namespace RealEstateBusinessLogicObject
                 }
                 return result;
             }
-            else return null;
+            else return new ObservableCollection<RealEstateDataContext.STREET>();
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace RealEstateBusinessLogicObject
             {
                 return new ObservableCollection<RealEstateDataContext.WARD>(_db.GetARecord(ID).WARDs);
             }
-            else return null;
+            else return new ObservableCollection<RealEstateDataContext.WARD>();
         }
     }
 }

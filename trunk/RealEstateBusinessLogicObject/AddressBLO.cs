@@ -18,6 +18,10 @@ namespace RealEstateBusinessLogicObject
             _db = new RealEstateDataAccessObject.AddressDAO();
         }
 
+        /// <summary>
+        /// Create new ID
+        /// </summary>
+        /// <returns></returns>
         public override int CreateNewID()
         {
             return base.CreateNewID();
@@ -101,13 +105,13 @@ namespace RealEstateBusinessLogicObject
                             if (new RealEstateDataAccessObject.StreetDAO().ValidationID((int)streetID) || streetID == null)
                             {
                                 RealEstateDataContext.ADDRESS entity = new RealEstateDataContext.ADDRESS();
-                                entity.ID = this.CreateNewID();
-                                entity.NationID = nationID;
-                                entity.CityID = cityID;
+                                entity.ID         = this.CreateNewID();
+                                entity.NationID   = nationID;
+                                entity.CityID     = cityID;
                                 entity.DistrictID = districtID;
-                                entity.WardID = wardID;
-                                entity.StreetID = streetID;
-                                entity.Detail = detail;
+                                entity.WardID     = wardID;
+                                entity.StreetID   = streetID;
+                                entity.Detail     = detail;
 
                                 _db.Insert(entity);
                                 return entity.ID;
@@ -140,10 +144,10 @@ namespace RealEstateBusinessLogicObject
                 if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
                 {
                     RealEstateDataContext.ADDRESS entity = new RealEstateDataContext.ADDRESS();
-                    entity.ID = this.CreateNewID();
+                    entity.ID       = this.CreateNewID();
                     entity.NationID = nationID;
-                    entity.CityID = cityID;
-                    entity.Detail = detail;
+                    entity.CityID   = cityID;
+                    entity.Detail   = detail;
 
                     _db.Insert(entity);
                     return entity.ID;
@@ -228,13 +232,13 @@ namespace RealEstateBusinessLogicObject
                                 if (new RealEstateDataAccessObject.StreetDAO().ValidationID((int)streetID) || streetID == null)
                                 {
                                     RealEstateDataContext.ADDRESS entity = new RealEstateDataContext.ADDRESS();
-                                    entity.ID = id;
-                                    entity.NationID = nationID;
-                                    entity.CityID = cityID;
+                                    entity.ID         = id;
+                                    entity.NationID   = nationID;
+                                    entity.CityID     = cityID;
                                     entity.DistrictID = districtID;
-                                    entity.WardID = wardID;
-                                    entity.StreetID = streetID;
-                                    entity.Detail = detail;
+                                    entity.WardID     = wardID;
+                                    entity.StreetID   = streetID;
+                                    entity.Detail     = detail;
 
                                     _db.Update(entity);
                                     return entity.ID;

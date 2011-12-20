@@ -175,13 +175,13 @@ namespace RealEstateMarket.CustomControl {
         protected global::System.Web.UI.WebControls.DropDownList WardDropDownList;
         
         /// <summary>
-        /// WardCheckBox control.
+        /// DifferentCheckBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox WardCheckBox;
+        protected global::System.Web.UI.WebControls.CheckBox DifferentCheckBox;
         
         /// <summary>
         /// DetailLabel control.
@@ -218,14 +218,5 @@ namespace RealEstateMarket.CustomControl {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList StreetDropDownList;
-        
-        /// <summary>
-        /// StreetCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox StreetCheckBox;
     }
 }
