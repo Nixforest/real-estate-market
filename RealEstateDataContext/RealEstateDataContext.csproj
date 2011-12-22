@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="COUNT_REALESTATE.cs" />
+    <Compile Include="CUSTOMER_REALESTATE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -52,8 +54,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RealEstateDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="RECEIPT.cs" />
     <Compile Include="Utility\ExceptionMessage.cs" />
     <Compile Include="Utility\WebConfig.cs" />
+    <Compile Include="VIEW_NEWS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -303,7 +303,8 @@
             CollapsedSize="0"></asp:CollapsiblePanelExtender>
         <asp:ImageButton ID="NonBrokerImageButton" runat="server"
             ImageUrl="~/Image/btn_taisanchinhchu.gif" 
-            OnClick="NonBrokerImageButton_Click" />
+            OnClick="NonBrokerImageButton_Click"
+            ImageAlign="Middle" />
     </ContentTemplate>
     <Triggers>
         <asp:AsyncPostBackTrigger ControlID="CityDropDownList" EventName="selectedindexchanged" />

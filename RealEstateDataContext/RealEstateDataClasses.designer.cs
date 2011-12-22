@@ -81,9 +81,6 @@ namespace RealEstateDataContext
     partial void InsertUTILITY_DETAIL(UTILITY_DETAIL instance);
     partial void UpdateUTILITY_DETAIL(UTILITY_DETAIL instance);
     partial void DeleteUTILITY_DETAIL(UTILITY_DETAIL instance);
-    partial void InsertPROJECT(PROJECT instance);
-    partial void UpdatePROJECT(PROJECT instance);
-    partial void DeletePROJECT(PROJECT instance);
     partial void InsertLEGAL(LEGAL instance);
     partial void UpdateLEGAL(LEGAL instance);
     partial void DeleteLEGAL(LEGAL instance);
@@ -117,6 +114,9 @@ namespace RealEstateDataContext
     partial void InsertNEWS_SALE(NEWS_SALE instance);
     partial void UpdateNEWS_SALE(NEWS_SALE instance);
     partial void DeleteNEWS_SALE(NEWS_SALE instance);
+    partial void InsertPROJECT(PROJECT instance);
+    partial void UpdatePROJECT(PROJECT instance);
+    partial void DeletePROJECT(PROJECT instance);
     #endregion
 		
 		public RealEstateDataClassesDataContext() : 
@@ -285,14 +285,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		public System.Data.Linq.Table<PROJECT> PROJECTs
-		{
-			get
-			{
-				return this.GetTable<PROJECT>();
-			}
-		}
-		
 		public System.Data.Linq.Table<LEGAL> LEGALs
 		{
 			get
@@ -378,6 +370,14 @@ namespace RealEstateDataContext
 			get
 			{
 				return this.GetTable<NEWS_SALE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PROJECT> PROJECTs
+		{
+			get
+			{
+				return this.GetTable<PROJECT>();
 			}
 		}
 	}
@@ -1977,6 +1977,8 @@ namespace RealEstateDataContext
 		
 		private string _Description;
 		
+		private EntitySet<PROJECT> _PROJECTs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1991,6 +1993,7 @@ namespace RealEstateDataContext
 		
 		public PROJECT_TYPE()
 		{
+			this._PROJECTs = new EntitySet<PROJECT>(new Action<PROJECT>(this.attach_PROJECTs), new Action<PROJECT>(this.detach_PROJECTs));
 			OnCreated();
 		}
 		
@@ -2054,6 +2057,19 @@ namespace RealEstateDataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_TYPE_PROJECT", Storage="_PROJECTs", ThisKey="ID", OtherKey="TypeID")]
+		public EntitySet<PROJECT> PROJECTs
+		{
+			get
+			{
+				return this._PROJECTs;
+			}
+			set
+			{
+				this._PROJECTs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2072,6 +2088,18 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_PROJECTs(PROJECT entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROJECT_TYPE = this;
+		}
+		
+		private void detach_PROJECTs(PROJECT entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROJECT_TYPE = null;
 		}
 	}
 	
@@ -3247,266 +3275,6 @@ namespace RealEstateDataContext
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROJECT")]
-	public partial class PROJECT : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _TypeID;
-		
-		private string _Name;
-		
-		private System.Nullable<System.DateTime> _BeginDay;
-		
-		private int _AddressID;
-		
-		private string _Description;
-		
-		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
-		
-		private EntityRef<ADDRESS> _ADDRESS;
-		
-		private EntityRef<PROJECT_TYPE> _PROJECT_TYPE;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnTypeIDChanging(int value);
-    partial void OnTypeIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnBeginDayChanging(System.Nullable<System.DateTime> value);
-    partial void OnBeginDayChanged();
-    partial void OnAddressIDChanging(int value);
-    partial void OnAddressIDChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public PROJECT()
-		{
-			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
-			this._ADDRESS = default(EntityRef<ADDRESS>);
-			this._PROJECT_TYPE = default(EntityRef<PROJECT_TYPE>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int NOT NULL")]
-		public int TypeID
-		{
-			get
-			{
-				return this._TypeID;
-			}
-			set
-			{
-				if ((this._TypeID != value))
-				{
-					if (this._PROJECT_TYPE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._TypeID = value;
-					this.SendPropertyChanged("TypeID");
-					this.OnTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDay", DbType="Date")]
-		public System.Nullable<System.DateTime> BeginDay
-		{
-			get
-			{
-				return this._BeginDay;
-			}
-			set
-			{
-				if ((this._BeginDay != value))
-				{
-					this.OnBeginDayChanging(value);
-					this.SendPropertyChanging();
-					this._BeginDay = value;
-					this.SendPropertyChanged("BeginDay");
-					this.OnBeginDayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
-		public int AddressID
-		{
-			get
-			{
-				return this._AddressID;
-			}
-			set
-			{
-				if ((this._AddressID != value))
-				{
-					if (this._ADDRESS.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAddressIDChanging(value);
-					this.SendPropertyChanging();
-					this._AddressID = value;
-					this.SendPropertyChanged("AddressID");
-					this.OnAddressIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="ProjectID")]
-		public EntitySet<REAL_ESTATE> REAL_ESTATEs
-		{
-			get
-			{
-				return this._REAL_ESTATEs;
-			}
-			set
-			{
-				this._REAL_ESTATEs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_PROJECT", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public ADDRESS ADDRESS
-		{
-			get
-			{
-				return this._ADDRESS.Entity;
-			}
-			set
-			{
-				if ((this._ADDRESS.Entity != value))
-				{
-					this.SendPropertyChanging();
-					this._ADDRESS.Entity = value;
-					this.SendPropertyChanged("ADDRESS");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_TYPE_PROJECT", Storage="_PROJECT_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		internal PROJECT_TYPE PROJECT_TYPE
-		{
-			get
-			{
-				return this._PROJECT_TYPE.Entity;
-			}
-			set
-			{
-				if ((this._PROJECT_TYPE.Entity != value))
-				{
-					this.SendPropertyChanging();
-					this._PROJECT_TYPE.Entity = value;
-					this.SendPropertyChanged("PROJECT_TYPE");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT = this;
-		}
-		
-		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
-		{
-			this.SendPropertyChanging();
-			entity.PROJECT = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LEGAL")]
 	public partial class LEGAL : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4494,8 +4262,6 @@ namespace RealEstateDataContext
 		
 		private EntityRef<LOCATION> _LOCATION;
 		
-		private EntityRef<PROJECT> _PROJECT;
-		
 		private EntityRef<REAL_ESTATE_TYPE> _REAL_ESTATE_TYPE;
 		
 		private EntityRef<UNIT> _UNIT;
@@ -4503,6 +4269,8 @@ namespace RealEstateDataContext
 		private EntityRef<UNIT_PRICE> _UNIT_PRICE;
 		
 		private EntityRef<CONTACT> _CONTACT;
+		
+		private EntityRef<PROJECT> _PROJECT;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4567,11 +4335,11 @@ namespace RealEstateDataContext
 			this._ADDRESS = default(EntityRef<ADDRESS>);
 			this._LEGAL = default(EntityRef<LEGAL>);
 			this._LOCATION = default(EntityRef<LOCATION>);
-			this._PROJECT = default(EntityRef<PROJECT>);
 			this._REAL_ESTATE_TYPE = default(EntityRef<REAL_ESTATE_TYPE>);
 			this._UNIT = default(EntityRef<UNIT>);
 			this._UNIT_PRICE = default(EntityRef<UNIT_PRICE>);
 			this._CONTACT = default(EntityRef<CONTACT>);
+			this._PROJECT = default(EntityRef<PROJECT>);
 			OnCreated();
 		}
 		
@@ -5193,40 +4961,6 @@ namespace RealEstateDataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_PROJECT", ThisKey="ProjectID", OtherKey="ID", IsForeignKey=true)]
-		internal PROJECT PROJECT
-		{
-			get
-			{
-				return this._PROJECT.Entity;
-			}
-			set
-			{
-				PROJECT previousValue = this._PROJECT.Entity;
-				if (((previousValue != value) 
-							|| (this._PROJECT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._PROJECT.Entity = null;
-						previousValue.REAL_ESTATEs.Remove(this);
-					}
-					this._PROJECT.Entity = value;
-					if ((value != null))
-					{
-						value.REAL_ESTATEs.Add(this);
-						this._ProjectID = value.ID;
-					}
-					else
-					{
-						this._ProjectID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("PROJECT");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="REAL_ESTATE_TYPE_REAL_ESTATE", Storage="_REAL_ESTATE_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		internal REAL_ESTATE_TYPE REAL_ESTATE_TYPE
 		{
@@ -5311,6 +5045,40 @@ namespace RealEstateDataContext
 					this.SendPropertyChanging();
 					this._CONTACT.Entity = value;
 					this.SendPropertyChanged("CONTACT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_PROJECT", ThisKey="ProjectID", OtherKey="ID", IsForeignKey=true)]
+		internal PROJECT PROJECT
+		{
+			get
+			{
+				return this._PROJECT.Entity;
+			}
+			set
+			{
+				PROJECT previousValue = this._PROJECT.Entity;
+				if (((previousValue != value) 
+							|| (this._PROJECT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PROJECT.Entity = null;
+						previousValue.REAL_ESTATEs.Remove(this);
+					}
+					this._PROJECT.Entity = value;
+					if ((value != null))
+					{
+						value.REAL_ESTATEs.Add(this);
+						this._ProjectID = value.ID;
+					}
+					else
+					{
+						this._ProjectID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PROJECT");
 				}
 			}
 		}
@@ -6361,6 +6129,355 @@ namespace RealEstateDataContext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROJECT")]
+	public partial class PROJECT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _TypeID;
+		
+		private string _Name;
+		
+		private System.Nullable<System.DateTime> _BeginDay;
+		
+		private int _AddressID;
+		
+		private string _Summary;
+		
+		private string _Description;
+		
+		private int _ImageID;
+		
+		private EntitySet<REAL_ESTATE> _REAL_ESTATEs;
+		
+		private EntityRef<ADDRESS> _ADDRESS;
+		
+		private EntityRef<IMAGE> _IMAGE;
+		
+		private EntityRef<PROJECT_TYPE> _PROJECT_TYPE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTypeIDChanging(int value);
+    partial void OnTypeIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnBeginDayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBeginDayChanged();
+    partial void OnAddressIDChanging(int value);
+    partial void OnAddressIDChanged();
+    partial void OnSummaryChanging(string value);
+    partial void OnSummaryChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnImageIDChanging(int value);
+    partial void OnImageIDChanged();
+    #endregion
+		
+		public PROJECT()
+		{
+			this._REAL_ESTATEs = new EntitySet<REAL_ESTATE>(new Action<REAL_ESTATE>(this.attach_REAL_ESTATEs), new Action<REAL_ESTATE>(this.detach_REAL_ESTATEs));
+			this._ADDRESS = default(EntityRef<ADDRESS>);
+			this._IMAGE = default(EntityRef<IMAGE>);
+			this._PROJECT_TYPE = default(EntityRef<PROJECT_TYPE>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int NOT NULL")]
+		public int TypeID
+		{
+			get
+			{
+				return this._TypeID;
+			}
+			set
+			{
+				if ((this._TypeID != value))
+				{
+					if (this._PROJECT_TYPE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._TypeID = value;
+					this.SendPropertyChanged("TypeID");
+					this.OnTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDay", DbType="Date")]
+		public System.Nullable<System.DateTime> BeginDay
+		{
+			get
+			{
+				return this._BeginDay;
+			}
+			set
+			{
+				if ((this._BeginDay != value))
+				{
+					this.OnBeginDayChanging(value);
+					this.SendPropertyChanging();
+					this._BeginDay = value;
+					this.SendPropertyChanged("BeginDay");
+					this.OnBeginDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressID", DbType="Int NOT NULL")]
+		public int AddressID
+		{
+			get
+			{
+				return this._AddressID;
+			}
+			set
+			{
+				if ((this._AddressID != value))
+				{
+					if (this._ADDRESS.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAddressIDChanging(value);
+					this.SendPropertyChanging();
+					this._AddressID = value;
+					this.SendPropertyChanged("AddressID");
+					this.OnAddressIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Summary", DbType="NVarChar(500)")]
+		public string Summary
+		{
+			get
+			{
+				return this._Summary;
+			}
+			set
+			{
+				if ((this._Summary != value))
+				{
+					this.OnSummaryChanging(value);
+					this.SendPropertyChanging();
+					this._Summary = value;
+					this.SendPropertyChanged("Summary");
+					this.OnSummaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageID", DbType="Int NOT NULL")]
+		public int ImageID
+		{
+			get
+			{
+				return this._ImageID;
+			}
+			set
+			{
+				if ((this._ImageID != value))
+				{
+					if (this._IMAGE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnImageIDChanging(value);
+					this.SendPropertyChanging();
+					this._ImageID = value;
+					this.SendPropertyChanged("ImageID");
+					this.OnImageIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_REAL_ESTATE", Storage="_REAL_ESTATEs", ThisKey="ID", OtherKey="ProjectID")]
+		public EntitySet<REAL_ESTATE> REAL_ESTATEs
+		{
+			get
+			{
+				return this._REAL_ESTATEs;
+			}
+			set
+			{
+				this._REAL_ESTATEs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADDRESS_PROJECT", Storage="_ADDRESS", ThisKey="AddressID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public ADDRESS ADDRESS
+		{
+			get
+			{
+				return this._ADDRESS.Entity;
+			}
+			set
+			{
+				if ((this._ADDRESS.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._ADDRESS.Entity = value;
+					this.SendPropertyChanged("ADDRESS");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IMAGE_PROJECT", Storage="_IMAGE", ThisKey="ImageID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public IMAGE IMAGE
+		{
+			get
+			{
+				return this._IMAGE.Entity;
+			}
+			set
+			{
+				if ((this._IMAGE.Entity != value))
+				{
+					this.SendPropertyChanging();
+					this._IMAGE.Entity = value;
+					this.SendPropertyChanged("IMAGE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROJECT_TYPE_PROJECT", Storage="_PROJECT_TYPE", ThisKey="TypeID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		internal PROJECT_TYPE PROJECT_TYPE
+		{
+			get
+			{
+				return this._PROJECT_TYPE.Entity;
+			}
+			set
+			{
+				PROJECT_TYPE previousValue = this._PROJECT_TYPE.Entity;
+				if (((previousValue != value) 
+							|| (this._PROJECT_TYPE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PROJECT_TYPE.Entity = null;
+						previousValue.PROJECTs.Remove(this);
+					}
+					this._PROJECT_TYPE.Entity = value;
+					if ((value != null))
+					{
+						value.PROJECTs.Add(this);
+						this._TypeID = value.ID;
+					}
+					else
+					{
+						this._TypeID = default(int);
+					}
+					this.SendPropertyChanged("PROJECT_TYPE");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROJECT = this;
+		}
+		
+		private void detach_REAL_ESTATEs(REAL_ESTATE entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROJECT = null;
 		}
 	}
 }

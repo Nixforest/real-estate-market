@@ -14,6 +14,15 @@ namespace RealEstateMarket.Admin.News
             
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            CKFinder.FileBrowser _FileBrowser = new CKFinder.FileBrowser();
+            _FileBrowser.BasePath = "../../ckfinder/";
+            _FileBrowser.SetupCKEditor(Descript);
+            _FileBrowser.SetupCKEditor(Content);
+        }
+
         protected void Submit_Click(object sender, EventArgs e)
         {
             bool flag = true;
@@ -107,9 +116,9 @@ namespace RealEstateMarket.Admin.News
                 {
                     // upload the file on the server
                     // you can save the file with any name, However as this is the sample so I have saved the file same name for all users. So it will overwrite your file with next user's who will test this tutorials.
-                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/Image/") + strFileName);
-                    IdImageHidden.Value  = RealEstateMarket._Default.db.InsertImage("", "~/Image/" + strFileName, "").ToString();
-                    Image.ImageUrl = "~/Image/" + strFileName;
+                    ImageUpload.PostedFile.SaveAs(Server.MapPath("~/Image/images/") + strFileName);
+                    IdImageHidden.Value = RealEstateMarket._Default.db.InsertImage("", "~/Image/images/" + strFileName, "").ToString();
+                    Image.ImageUrl = "~/Image/images/" + strFileName;
                     ErrorImageUploadLabel.Text = "";
                 }
                 else

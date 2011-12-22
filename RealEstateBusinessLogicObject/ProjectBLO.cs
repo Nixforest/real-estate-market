@@ -60,7 +60,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>ID of row has just inserted</returns>
         /// <exception cref="Project_TypeIDException"></exception>
         /// <exception cref="AddressIDException"></exception>
-        public int Insert(int typeID, string name, DateTime? beginDay, int addressID, string description)
+        public int Insert(int typeID, string name, DateTime? beginDay, int addressID, string summary, string description, int imageID)
         {
             if (new RealEstateDataAccessObject.Project_TypeDAO().ValidationID(typeID))
             {
@@ -72,7 +72,9 @@ namespace RealEstateBusinessLogicObject
                     entity.Name        = name;
                     entity.BeginDay    = beginDay;
                     entity.AddressID   = addressID;
+                    entity.Summary     = summary;
                     entity.Description = description;
+                    entity.ImageID     = imageID;
 
                     _db.Insert(entity);
                     return entity.ID;
@@ -121,7 +123,7 @@ namespace RealEstateBusinessLogicObject
         /// <exception cref="ProjectIDException"></exception>
         /// <exception cref="Project_TypeIDException"></exception>
         /// <exception cref="AddressIDException"></exception>
-        public int Update(int id, int typeID, string name, DateTime? beginDay, int addressID, string description)
+        public int Update(int id, int typeID, string name, DateTime? beginDay, int addressID, string summary, string description, int imageID)
         {
             if (ValidationID(id))
             {
@@ -135,7 +137,9 @@ namespace RealEstateBusinessLogicObject
                         entity.Name        = name;
                         entity.BeginDay    = beginDay;
                         entity.AddressID   = addressID;
+                        entity.Summary     = summary;
                         entity.Description = description;
+                        entity.ImageID     = imageID;
 
                         _db.Update(entity);
                         return entity.ID;
@@ -197,6 +201,16 @@ namespace RealEstateBusinessLogicObject
                 return result;
             }
             else return new ObservableCollection<RealEstateDataContext.PROJECT>();
+        }
+
+        /// <summary>
+        /// Get Summary of Project Description
+        /// </summary>
+        /// <param name="id">Project ID</param>
+        /// <returns>Summary string</returns>
+        public string GetSummary(int id)
+        {
+            return _db.GetARecord(id).Summary;
         }
     }
 }

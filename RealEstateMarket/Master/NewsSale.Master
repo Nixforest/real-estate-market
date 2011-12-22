@@ -1,11 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NewsSale.master.cs" Inherits="RealEstateMarket.Master.NewsSale" %>
 <%@ Register TagPrefix="NewsSale" TagName="Filter" Src="~/CustomControl/FilterNewsSale.ascx" %>
+<%@ Register TagPrefix="SearchControl" TagName="RealEstate" Src="~/CustomControl/SearchRealEstateControl.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Tin Tức và Khám Phá - Nhà Đất, Bất Động Sản, Địa Ốc</title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/NewsSale.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Gold_Content.js"></script>
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Forex_Content.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -35,7 +36,7 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Pages/Home"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
@@ -49,6 +50,7 @@
             <div class="left">
                 <asp:ContentPlaceHolder ID="LeftContent" runat="server">
                     <NewsSale:Filter ID="FilterControl" runat="server"></NewsSale:Filter>
+                    <SearchControl:RealEstate id="search" runat="server"></SearchControl:RealEstate>
                 </asp:ContentPlaceHolder>
             </div>
             <div class="content">

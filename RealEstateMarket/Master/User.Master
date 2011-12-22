@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Thông tin thành viên</title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/User.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Gold_Content.js"></script>
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Forex_Content.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -36,7 +36,7 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Pages/Home"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>

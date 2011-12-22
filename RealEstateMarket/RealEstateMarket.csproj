@@ -90,23 +90,163 @@
     <Content Include="CustomControl\FilterNewsSale.ascx" />
     <Content Include="CustomControl\MenuAdminControl.ascx" />
     <Content Include="CustomControl\MenuUserControl.ascx" />
+    <Content Include="CustomControl\RealEstateBoxControl.ascx" />
     <Content Include="CustomControl\RightMenuAdminControl.ascx" />
     <Content Include="CustomControl\SearchRealEstateControl.ascx" />
+    <Content Include="CustomControl\TopNewsControl.ascx" />
+    <Content Include="Image\ac_fill.gif" />
+    <Content Include="Image\ac_l.gif" />
     <Content Include="Image\anhbanner.jpg" />
+    <Content Include="Image\bgd188.gif" />
+    <Content Include="Image\bgd456.gif" />
+    <Content Include="Image\bgd8.gif" />
+    <Content Include="Image\bgd9.gif" />
+    <Content Include="Image\bgd_bdC.gif" />
+    <Content Include="Image\bgd_bdL.gif" />
+    <Content Include="Image\bgd_bdR.gif" />
+    <Content Include="Image\bgd_bottomLetter.gif" />
+    <Content Include="Image\bgd_bottom_dnNew.gif" />
+    <Content Include="Image\bgd_bottom_footer.gif" />
+    <Content Include="Image\bgd_bottom_searchHome.gif" />
+    <Content Include="Image\bgd_boxdanhmuc.gif" />
+    <Content Include="Image\bgd_dt.gif" />
+    <Content Include="Image\bgd_hotructuyen.gif" />
+    <Content Include="Image\bgd_khople.gif" />
+    <Content Include="Image\bgd_listLogoPar.gif" />
+    <Content Include="Image\bgd_loginT.gif" />
+    <Content Include="Image\bgd_logoHome.gif" />
+    <Content Include="Image\bgd_order.gif" />
+    <Content Include="Image\bgd_proHomeC.gif" />
+    <Content Include="Image\bgd_proHomeF.gif" />
+    <Content Include="Image\bgd_proHomeT.gif" />
+    <Content Include="Image\bgd_quan.gif" />
+    <Content Include="Image\bgd_top_dnNew.gif" />
+    <Content Include="Image\bgd_top_footer.gif" />
+    <Content Include="Image\bgd_top_searchHome.gif" />
+    <Content Include="Image\bgd_tyle.gif" />
+    <Content Include="Image\bgd_xtn.gif" />
+    <Content Include="Image\bg_btn_b_l.gif" />
+    <Content Include="Image\bg_btn_b_r.gif" />
+    <Content Include="Image\bg_b_box.gif" />
+    <Content Include="Image\bg_fill_menu.gif" />
+    <Content Include="Image\bg_f_r_n.gif" />
+    <Content Include="Image\bg_f_top_n.gif" />
+    <Content Include="Image\bg_list_city.gif" />
+    <Content Include="Image\bg_newscate.gif" />
+    <Content Include="Image\bg_title_mn_st.gif" />
+    <Content Include="Image\bg_title_mn_st1.gif" />
+    <Content Include="Image\bg_tit_c6.gif" />
+    <Content Include="Image\bg_txt.gif" />
+    <Content Include="Image\blank.gif" />
+    <Content Include="Image\body.gif" />
+    <Content Include="Image\bottom_box_r.gif" />
+    <Content Include="Image\box_f_b.gif" />
+    <Content Include="Image\box_f_t.gif" />
+    <Content Include="Image\btn_boloc107.gif" />
+    <Content Include="Image\btn_boloc80.gif" />
+    <Content Include="Image\btn_dangtaisanmoi.gif" />
+    <Content Include="Image\btn_danhchocongty.gif" />
+    <Content Include="Image\btn_dichvutrongoi.gif" />
+    <Content Include="Image\btn_dichvuyard.gif" />
+    <Content Include="Image\btn_home.gif" />
     <Content Include="Image\btn_taisanchinhchu.gif" />
+    <Content Include="Image\btn_ts_l.gif" />
+    <Content Include="Image\btn_ts_r.gif" />
+    <Content Include="Image\btn_xem.gif" />
+    <Content Include="Image\btn_xem_l.gif" />
+    <Content Include="Image\button80x22.gif" />
+    <Content Include="Image\button80x24.gif" />
+    <Content Include="Image\button_9.gif" />
+    <Content Include="Image\button_bantindiaoc.gif" />
+    <Content Include="Image\button_vietstock.gif" />
+    <Content Include="Image\cor_footer.gif" />
+    <Content Include="Image\dics.gif" />
+    <Content Include="Image\disc_n_r.gif" />
+    <Content Include="Image\down.gif" />
+    <Content Include="Image\fill_bg_body.gif" />
+    <Content Include="Image\fill_bg_body_l.gif" />
+    <Content Include="Image\fill_bg_body_l_a.gif" />
+    <Content Include="Image\fill_bg_body_l_a1.gif" />
+    <Content Include="Image\fill_bg_body_l_a2.gif" />
+    <Content Include="Image\fill_bg_body_l_x.gif" />
+    <Content Include="Image\fill_bg_body_r.gif" />
+    <Content Include="Image\fill_bg_body_r_a.gif" />
+    <Content Include="Image\fill_bg_body_r_a1.gif" />
+    <Content Include="Image\fill_bg_body_r_a2.gif" />
+    <Content Include="Image\fill_bg_body_r_x.gif" />
+    <Content Include="Image\fill_link.gif" />
+    <Content Include="Image\g_tab_search.gif" />
+    <Content Include="Image\header_logo.gif" />
+    <Content Include="Image\hot.gif" />
     <Content Include="Image\icon-upena.jpg" />
+    <Content Include="Image\icon20110726.gif" />
+    <Content Include="Image\icon_adv.gif" />
+    <Content Include="Image\icon_date.gif" />
+    <Content Include="Image\icon_del.gif" />
     <Content Include="Image\icon_down.gif" />
+    <Content Include="Image\icon_link.gif" />
+    <Content Include="Image\icon_news.gif" />
+    <Content Include="Image\icon_news_c.gif" />
+    <Content Include="Image\icon_news_t.gif" />
+    <Content Include="Image\icon_n_r.gif" />
+    <Content Include="Image\icon_rss.gif" />
+    <Content Include="Image\icon_thoisu.gif" />
     <Content Include="Image\icon_up.png" />
+    <Content Include="Image\ico_33.gif" />
+    <Content Include="Image\ico_36.gif" />
     <Content Include="Image\ico_canban.gif" />
     <Content Include="Image\ico_canmua.gif" />
     <Content Include="Image\ico_canthue.gif" />
     <Content Include="Image\ico_canthue1.gif" />
+    <Content Include="Image\ico_dm1.gif" />
+    <Content Include="Image\ico_dm2.gif" />
+    <Content Include="Image\ico_dm3.gif" />
+    <Content Include="Image\ico_dm4.gif" />
+    <Content Include="Image\ico_dm5.gif" />
+    <Content Include="Image\ico_dm6.gif" />
+    <Content Include="Image\ico_dm7.gif" />
+    <Content Include="Image\ico_dm8.gif" />
+    <Content Include="Image\ico_dm9.gif" />
+    <Content Include="Image\ico_tkn.gif" />
+    <Content Include="Image\kinh.gif" />
+    <Content Include="Image\line_mn_st.gif" />
+    <Content Include="Image\line_n.gif" />
+    <Content Include="Image\line_n_x.gif" />
+    <Content Include="Image\mn_c.gif" />
+    <Content Include="Image\mn_c_l.gif" />
+    <Content Include="Image\mn_c_r.gif" />
+    <Content Include="Image\networkngang_DOOL.jpg" />
+    <Content Include="Image\next.gif" />
+    <Content Include="Image\partner_network.gif" />
+    <Content Include="Image\pause.gif" />
+    <Content Include="Image\prev.gif" />
+    <Content Include="Image\project_fill_1.gif" />
+    <Content Include="Image\radio.gif" />
+    <Content Include="Image\realtor_bg.gif" />
+    <Content Include="Image\reg.gif" />
+    <Content Include="Image\sangiaodich.gif" />
+    <Content Include="Image\sigin.gif" />
+    <Content Include="Image\sub_area_bg.gif" />
+    <Content Include="Image\thitruong.gif" />
+    <Content Include="Image\thuvien.gif" />
+    <Content Include="Image\tinmoi.gif" />
+    <Content Include="Image\top_box_r.gif" />
+    <Content Include="Image\trang_s.gif" />
+    <Content Include="Image\trang_tr.gif" />
+    <Content Include="Image\tt_bottom.gif" />
+    <Content Include="Image\tt_fill.gif" />
+    <Content Include="Image\tt_left.gif" />
+    <Content Include="Image\tt_top.gif" />
+    <Content Include="Image\tuvan.gif" />
+    <Content Include="Image\tygia.gif" />
+    <Content Include="Image\video.gif" />
     <Content Include="News.Master" />
     <Content Include="Master\Home.Master" />
     <Content Include="Master\News.Master" />
     <Content Include="Master\NewsSale.Master" />
     <Content Include="Master\Admin.Master" />
     <Content Include="Master\User.Master" />
+    <Content Include="Master\Project.Master" />
     <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.ADDRESS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -879,6 +1019,7 @@
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Pages\NewsSale\NewsSale.aspx" />
     <Content Include="Pages\NewsSale\NewsSales.aspx" />
+    <Content Include="Pages\Project\ListProjects.aspx" />
     <Content Include="Pages\Project\Project.aspx" />
     <Content Include="Pages\News\AllNews.aspx" />
     <Content Include="Pages\News\ListNews.aspx" />
@@ -887,12 +1028,15 @@
     <Content Include="Scripts\jcalendar.css" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
-    <Content Include="Default.aspx" />
+    <Content Include="Pages\Home\Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Styles\adminnews.css" />
+    <Content Include="Styles\NewsSale.css" />
+    <Content Include="Styles\User.css" />
+    <Content Include="Styles\Project.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\style.css" />
     <Content Include="TestPage.aspx" />
@@ -1145,6 +1289,13 @@
     <Compile Include="CustomControl\PopularNews.ascx.designer.cs">
       <DependentUpon>PopularNews.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControl\RealEstateBoxControl.ascx.cs">
+      <DependentUpon>RealEstateBoxControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\RealEstateBoxControl.ascx.designer.cs">
+      <DependentUpon>RealEstateBoxControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\RightMenuAdminControl.ascx.cs">
       <DependentUpon>RightMenuAdminControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1166,6 +1317,13 @@
     <Compile Include="CustomControl\SearchRealEstateControl.ascx.designer.cs">
       <DependentUpon>SearchRealEstateControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControl\TopNewsControl.ascx.cs">
+      <DependentUpon>TopNewsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\TopNewsControl.ascx.designer.cs">
+      <DependentUpon>TopNewsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\TopViewNews.ascx.cs">
       <DependentUpon>TopViewNews.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1173,11 +1331,18 @@
     <Compile Include="CustomControl\TopViewNews.ascx.designer.cs">
       <DependentUpon>TopViewNews.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Master\Project.Master.cs">
+      <DependentUpon>Project.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Project.Master.designer.cs">
+      <DependentUpon>Project.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Home\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Pages\Home\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -1259,6 +1424,13 @@
     </Compile>
     <Compile Include="Pages\NewsSale\NewsSales.aspx.designer.cs">
       <DependentUpon>NewsSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Project\ListProjects.aspx.cs">
+      <DependentUpon>ListProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Project\ListProjects.aspx.designer.cs">
+      <DependentUpon>ListProjects.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Project\Project.aspx.cs">
       <DependentUpon>Project.aspx</DependentUpon>

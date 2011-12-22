@@ -198,7 +198,7 @@ namespace RealEstateMarket.Member
                     address = RealEstateMarket._Default.db.GetAddress(addressID);
                     title = RealEstateMarket._Default.db.GetNewsSaleType(newsSaleTypeID).Name + " " +
                     RealEstateMarket._Default.db.GetRealEstateType(Convert.ToInt32(RealEstateTypeDropDownList.SelectedValue)).Name +
-                        ", " + RealEstateMarket.Pages.Project.GetAddressString(address.ID);
+                        ", " + RealEstateMarket.Pages.Project.Project.GetAddressString(address.ID);
                 }
                 else
                 {
@@ -207,7 +207,7 @@ namespace RealEstateMarket.Member
 
                 string content = ContentCKEditor.Text;
                 int realEstateID = 0;
-                int rate = RealEstateMarket._Default.db.GetParameter_MinRate();
+                int rate = RealEstateMarket._Default.db.GetParameter("MinRate");
                 DateTime updateTime = System.DateTime.Now;
                 int status = RealEstateMarket._Default.db.GetParameter("Unactived");
                 bool broker = false;
@@ -234,7 +234,7 @@ namespace RealEstateMarket.Member
                     unitID, unitPriceID, projectID, contactID);
 
                 //------------------------ News Sale -----------------------------
-                RealEstateMarket._Default.db.InsertNewsSale(newsSaleTypeID, title, content,
+                int newsSaleID = RealEstateMarket._Default.db.InsertNewsSale(newsSaleTypeID, title, content,
                     realEstateID, rate, updateTime, status, broker);
                 if (RealEstateMarket._Default.db.GetCustomerByUserName(User.Identity.Name) != null)
                 {
@@ -246,7 +246,7 @@ namespace RealEstateMarket.Member
                 {
                     foreach (string item in listImage)
                     {
-                        int imageID = RealEstateMarket._Default.db.InsertImage("", "~/Image/" + item, "");
+                        int imageID = RealEstateMarket._Default.db.InsertImage("", "~/Image/images/" + item, "");
                         RealEstateMarket._Default.db.InsertImageToRealEstate(imageID, realEstateID);
                     }
                 }
@@ -260,7 +260,8 @@ namespace RealEstateMarket.Member
                         RealEstateMarket._Default.db.InsertUtilityToRealEstate(Convert.ToInt32(item.Value), realEstateID);
                     }
                 }
-                ErrorLabel.Text = "Bạn đăng tin rao bán thành công!";
+                //ErrorLabel.Text = "Bạn đăng tin rao bán thành công!";
+                Response.Redirect(String.Format("~/Pages/NewsSale/NewsSale.aspx?id={0}", newsSaleID));
             }
             catch (Exception ex)
             {

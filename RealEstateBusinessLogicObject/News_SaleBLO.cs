@@ -224,43 +224,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>List of NewsSales</returns>
         public ICollection<RealEstateDataContext.NEWS_SALE> GetNewsSalesByPrice(decimal from, decimal to)
         {
-            if (from == 0 && to == 0)
-            {
-                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows());
-            }
-            if (from >= 0 && (from <= to))
-            {
-                ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
-                foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
-                {
-                    if (item.REAL_ESTATE.UNIT.Name == "VND")
-                    {
-                        if (item.REAL_ESTATE.Price >= from && item.REAL_ESTATE.Price <= to)
-                        {
-                            result.Add(item);
-                        }
-                    }
-                    else if (item.REAL_ESTATE.UNIT.Name == "SJC")
-                    {
-                        if ((item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateSJCToVND) >= from &&
-                            (item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateSJCToVND) <= to)
-                        {
-                            result.Add(item);
-                        }
-                    }
-                    else
-                    {
-                        if ((item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateUSDToVND) >= from &&
-                            (item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateUSDToVND) <= to)
-                        {
-                            result.Add(item);
-                        }
-                    }
-
-                }
-                return result;
-            }
-            else return new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByPrice(from, to, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows())));
         }
 
         /// <summary>
@@ -402,6 +366,218 @@ namespace RealEstateBusinessLogicObject
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Get NewsSales by keyword
+        /// </summary>
+        /// <param name="keyword">Keyword</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByKeyword(string keyword)
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByKeyword(keyword, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows())));
+        }
+
+        /// <summary>
+        /// Get NewsSales by keyword
+        /// </summary>
+        /// <param name="keyword">Keyword</param>
+        /// <param name="listNewsSale">Find in List</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByKeyword(string keyword, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+        {
+            ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+            
+            string key = RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(keyword).ToLower();
+            foreach (RealEstateDataContext.NEWS_SALE item in listNewsSale)
+            {
+                // Search in NewsSale Type
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(new RealEstateDataAccessObject.News_Sale_TypeDAO().GetARecord(item.TypeID).Name).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(new RealEstateDataAccessObject.News_Sale_TypeDAO().GetARecord(item.TypeID).Description).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                // Search in NewsSale
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(item.Title).ToLower().Contains(key))    // Title
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(item.Content).ToLower().Contains(key))  // Content
+                {
+                    result.Add(item);
+                    continue;
+                }
+
+                //----------------- Search in RealEstate------------------------------
+                RealEstateDataContext.REAL_ESTATE realEstate = item.REAL_ESTATE;
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(new RealEstateDataAccessObject.Real_Estate_TypeDAO().GetARecord(realEstate.TypeID).Name).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(new RealEstateDataAccessObject.Real_Estate_TypeDAO().GetARecord(realEstate.TypeID).Description).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (realEstate.LivingRoom != null && realEstate.LivingRoom.ToString().Equals(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (realEstate.BedRoom != null && realEstate.BedRoom.ToString().Equals(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (realEstate.BathRoom != null && realEstate.BathRoom.ToString().Equals(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (realEstate.Storey != null && realEstate.Storey.ToString().Equals(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (realEstate.TotalUseArea != null && realEstate.TotalUseArea.ToString().Equals(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(realEstate.LEGAL.Name).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(realEstate.Direction).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+                if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(realEstate.LOCATION.Name).ToLower().Contains(key))
+                {
+                    result.Add(item);
+                    continue;
+                }
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// Get NewsSale by City
+        /// </summary>
+        /// <param name="cityID">City ID</param>
+        /// <param name="listNewsSale">Find in List</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByCityID(int cityID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+        {
+            ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+            foreach (RealEstateDataContext.NEWS_SALE item in listNewsSale)
+            {
+                if (item.REAL_ESTATE.ADDRESS.CityID == cityID)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get NewsSale by Type
+        /// </summary>
+        /// <param name="typeID">Type ID</param>
+        /// <param name="listNewsSale">Find in List</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByTypeID(int typeID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+        {
+            ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+            foreach (RealEstateDataContext.NEWS_SALE item in listNewsSale)
+            {
+                if (item.TypeID == typeID)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get NewsSale by RealEstate Type
+        /// </summary>
+        /// <param name="realEstateTypeID">RealEstate Type ID</param>
+        /// <param name="listNewsSale">Find in List</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByRealEstateTypeID(int realEstateTypeID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+        {
+            ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+            foreach (RealEstateDataContext.NEWS_SALE item in listNewsSale)
+            {
+                if (item.REAL_ESTATE.TypeID == realEstateTypeID)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get News Sale sale for a RealEstate has price between from and to
+        /// </summary>
+        /// <param name="from">From</param>
+        /// <param name="to">To</param>
+        /// <param name="listNewsSale">Find in List</param>
+        /// <returns>List of NewsSales</returns>
+        public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByPrice(decimal from, decimal to, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+        {
+            if (from == 0 && to == 0)
+            {
+                return listNewsSale;
+            }
+            if (from >= 0 && (from <= to))
+            {
+                ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
+                foreach (RealEstateDataContext.NEWS_SALE item in listNewsSale)
+                {
+                    if (item.REAL_ESTATE.Price == 0)
+                    {
+                        continue;
+                    }
+                    if (item.REAL_ESTATE.UNIT.Name == "VND")
+                    {
+                        if (item.REAL_ESTATE.Price >= from && item.REAL_ESTATE.Price <= to)
+                        {
+                            result.Add(item);
+                        }
+                    }
+                    else if (item.REAL_ESTATE.UNIT.Name == "SJC")
+                    {
+                        if ((item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateSJCToVND) >= from &&
+                            (item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateSJCToVND) <= to)
+                        {
+                            result.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        if ((item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateUSDToVND) >= from &&
+                            (item.REAL_ESTATE.Price * RealEstateBusinessLogicObject.Parameter.RateUSDToVND) <= to)
+                        {
+                            result.Add(item);
+                        }
+                    }
+
+                }
+                return result;
+            }
+            else return new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
         }
     }
 }

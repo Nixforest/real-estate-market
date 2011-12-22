@@ -40,6 +40,15 @@ namespace RealEstateMarket.Admin.Project {
         protected global::System.Web.UI.WebControls.ObjectDataSource ProjectTypeObjectDataSource;
         
         /// <summary>
+        /// IdImageHidden control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField IdImageHidden;
+        
+        /// <summary>
         /// ProjectTypeLabel control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,24 @@ namespace RealEstateMarket.Admin.Project {
         protected global::AjaxControlToolkit.CalendarExtender BeginDayCalendarExtender;
         
         /// <summary>
+        /// SummaryLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SummaryLabel;
+        
+        /// <summary>
+        /// SummaryTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SummaryTextBox;
+        
+        /// <summary>
         /// DescriptionLabel control.
         /// </summary>
         /// <remarks>
@@ -146,6 +173,60 @@ namespace RealEstateMarket.Admin.Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CKEditor.NET.CKEditorControl DescriptionCKEditor;
+        
+        /// <summary>
+        /// ImageUploadLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ImageUploadLabel;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// ImageUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
+        
+        /// <summary>
+        /// Upload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Upload;
+        
+        /// <summary>
+        /// Image control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image;
+        
+        /// <summary>
+        /// ErrorImageUploadLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorImageUploadLabel;
         
         /// <summary>
         /// PostButton control.

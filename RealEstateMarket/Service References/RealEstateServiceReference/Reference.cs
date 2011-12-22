@@ -15,9 +15,9 @@ namespace RealEstateMarket.RealEstateServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NEW", Namespace="http://realestatemarket.com/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NEWS_SALE", Namespace="http://realestatemarket.com/")]
     [System.SerializableAttribute()]
-    public partial class NEW : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class NEWS_SALE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -30,28 +30,20 @@ namespace RealEstateMarket.RealEstateServiceReference {
         private string TitleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AuthorField;
+        private int RealEstateIDField;
         
         private System.Nullable<int> RateField;
         
-        private System.DateTime PublishTimeField;
+        private System.DateTime UpdateTimeField;
         
-        private System.Nullable<System.DateTime> EditTimeField;
+        private int StatusField;
         
-        private int ImageIDField;
-        
-        private bool CheckField;
-        
-        private System.Nullable<int> ViewField;
+        private bool BrokerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.IMAGE IMAGEField;
+        private RealEstateMarket.RealEstateServiceReference.REAL_ESTATE REAL_ESTATEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -103,19 +95,6 @@ namespace RealEstateMarket.RealEstateServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Descript {
-            get {
-                return this.DescriptField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptField, value) != true)) {
-                    this.DescriptField = value;
-                    this.RaisePropertyChanged("Descript");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public string Content {
             get {
                 return this.ContentField;
@@ -128,20 +107,20 @@ namespace RealEstateMarket.RealEstateServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Author {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int RealEstateID {
             get {
-                return this.AuthorField;
+                return this.RealEstateIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.AuthorField, value) != true)) {
-                    this.AuthorField = value;
-                    this.RaisePropertyChanged("Author");
+                if ((this.RealEstateIDField.Equals(value) != true)) {
+                    this.RealEstateIDField = value;
+                    this.RaisePropertyChanged("RealEstateID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
         public System.Nullable<int> Rate {
             get {
                 return this.RateField;
@@ -154,568 +133,54 @@ namespace RealEstateMarket.RealEstateServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public System.DateTime PublishTime {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime UpdateTime {
             get {
-                return this.PublishTimeField;
+                return this.UpdateTimeField;
             }
             set {
-                if ((this.PublishTimeField.Equals(value) != true)) {
-                    this.PublishTimeField = value;
-                    this.RaisePropertyChanged("PublishTime");
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public int Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
-        public System.Nullable<System.DateTime> EditTime {
+        public bool Broker {
             get {
-                return this.EditTimeField;
+                return this.BrokerField;
             }
             set {
-                if ((this.EditTimeField.Equals(value) != true)) {
-                    this.EditTimeField = value;
-                    this.RaisePropertyChanged("EditTime");
+                if ((this.BrokerField.Equals(value) != true)) {
+                    this.BrokerField = value;
+                    this.RaisePropertyChanged("Broker");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
-        public int ImageID {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public RealEstateMarket.RealEstateServiceReference.REAL_ESTATE REAL_ESTATE {
             get {
-                return this.ImageIDField;
+                return this.REAL_ESTATEField;
             }
             set {
-                if ((this.ImageIDField.Equals(value) != true)) {
-                    this.ImageIDField = value;
-                    this.RaisePropertyChanged("ImageID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
-        public bool Check {
-            get {
-                return this.CheckField;
-            }
-            set {
-                if ((this.CheckField.Equals(value) != true)) {
-                    this.CheckField = value;
-                    this.RaisePropertyChanged("Check");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
-        public System.Nullable<int> View {
-            get {
-                return this.ViewField;
-            }
-            set {
-                if ((this.ViewField.Equals(value) != true)) {
-                    this.ViewField = value;
-                    this.RaisePropertyChanged("View");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=12)]
-        public RealEstateMarket.RealEstateServiceReference.IMAGE IMAGE {
-            get {
-                return this.IMAGEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IMAGEField, value) != true)) {
-                    this.IMAGEField = value;
-                    this.RaisePropertyChanged("IMAGE");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IMAGE", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class IMAGE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PathField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Path {
-            get {
-                return this.PathField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PathField, value) != true)) {
-                    this.PathField = value;
-                    this.RaisePropertyChanged("Path");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PROJECT_TYPE", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class PROJECT_TYPE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PROJECT", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class PROJECT : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        private int TypeIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        private System.Nullable<System.DateTime> BeginDayField;
-        
-        private int AddressIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.REAL_ESTATE[] REAL_ESTATEsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.ADDRESS ADDRESSField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int TypeID {
-            get {
-                return this.TypeIDField;
-            }
-            set {
-                if ((this.TypeIDField.Equals(value) != true)) {
-                    this.TypeIDField = value;
-                    this.RaisePropertyChanged("TypeID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<System.DateTime> BeginDay {
-            get {
-                return this.BeginDayField;
-            }
-            set {
-                if ((this.BeginDayField.Equals(value) != true)) {
-                    this.BeginDayField = value;
-                    this.RaisePropertyChanged("BeginDay");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public int AddressID {
-            get {
-                return this.AddressIDField;
-            }
-            set {
-                if ((this.AddressIDField.Equals(value) != true)) {
-                    this.AddressIDField = value;
-                    this.RaisePropertyChanged("AddressID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public RealEstateMarket.RealEstateServiceReference.REAL_ESTATE[] REAL_ESTATEs {
-            get {
-                return this.REAL_ESTATEsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.REAL_ESTATEsField, value) != true)) {
-                    this.REAL_ESTATEsField = value;
-                    this.RaisePropertyChanged("REAL_ESTATEs");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public RealEstateMarket.RealEstateServiceReference.ADDRESS ADDRESS {
-            get {
-                return this.ADDRESSField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ADDRESSField, value) != true)) {
-                    this.ADDRESSField = value;
-                    this.RaisePropertyChanged("ADDRESS");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ADDRESS", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class ADDRESS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        private int NationIDField;
-        
-        private int CityIDField;
-        
-        private System.Nullable<int> DistrictIDField;
-        
-        private System.Nullable<int> WardIDField;
-        
-        private System.Nullable<int> StreetIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DetailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.CITY CITYField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.NATION NATIONField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int NationID {
-            get {
-                return this.NationIDField;
-            }
-            set {
-                if ((this.NationIDField.Equals(value) != true)) {
-                    this.NationIDField = value;
-                    this.RaisePropertyChanged("NationID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public int CityID {
-            get {
-                return this.CityIDField;
-            }
-            set {
-                if ((this.CityIDField.Equals(value) != true)) {
-                    this.CityIDField = value;
-                    this.RaisePropertyChanged("CityID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<int> DistrictID {
-            get {
-                return this.DistrictIDField;
-            }
-            set {
-                if ((this.DistrictIDField.Equals(value) != true)) {
-                    this.DistrictIDField = value;
-                    this.RaisePropertyChanged("DistrictID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<int> WardID {
-            get {
-                return this.WardIDField;
-            }
-            set {
-                if ((this.WardIDField.Equals(value) != true)) {
-                    this.WardIDField = value;
-                    this.RaisePropertyChanged("WardID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<int> StreetID {
-            get {
-                return this.StreetIDField;
-            }
-            set {
-                if ((this.StreetIDField.Equals(value) != true)) {
-                    this.StreetIDField = value;
-                    this.RaisePropertyChanged("StreetID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public string Detail {
-            get {
-                return this.DetailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DetailField, value) != true)) {
-                    this.DetailField = value;
-                    this.RaisePropertyChanged("Detail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public RealEstateMarket.RealEstateServiceReference.CITY CITY {
-            get {
-                return this.CITYField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CITYField, value) != true)) {
-                    this.CITYField = value;
-                    this.RaisePropertyChanged("CITY");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
-        public RealEstateMarket.RealEstateServiceReference.NATION NATION {
-            get {
-                return this.NATIONField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NATIONField, value) != true)) {
-                    this.NATIONField = value;
-                    this.RaisePropertyChanged("NATION");
+                if ((object.ReferenceEquals(this.REAL_ESTATEField, value) != true)) {
+                    this.REAL_ESTATEField = value;
+                    this.RaisePropertyChanged("REAL_ESTATE");
                 }
             }
         }
@@ -1267,6 +732,173 @@ namespace RealEstateMarket.RealEstateServiceReference {
                 if ((object.ReferenceEquals(this.CONTACTField, value) != true)) {
                     this.CONTACTField = value;
                     this.RaisePropertyChanged("CONTACT");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ADDRESS", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class ADDRESS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private int NationIDField;
+        
+        private int CityIDField;
+        
+        private System.Nullable<int> DistrictIDField;
+        
+        private System.Nullable<int> WardIDField;
+        
+        private System.Nullable<int> StreetIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DetailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.CITY CITYField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.NATION NATIONField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int NationID {
+            get {
+                return this.NationIDField;
+            }
+            set {
+                if ((this.NationIDField.Equals(value) != true)) {
+                    this.NationIDField = value;
+                    this.RaisePropertyChanged("NationID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int CityID {
+            get {
+                return this.CityIDField;
+            }
+            set {
+                if ((this.CityIDField.Equals(value) != true)) {
+                    this.CityIDField = value;
+                    this.RaisePropertyChanged("CityID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> DistrictID {
+            get {
+                return this.DistrictIDField;
+            }
+            set {
+                if ((this.DistrictIDField.Equals(value) != true)) {
+                    this.DistrictIDField = value;
+                    this.RaisePropertyChanged("DistrictID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> WardID {
+            get {
+                return this.WardIDField;
+            }
+            set {
+                if ((this.WardIDField.Equals(value) != true)) {
+                    this.WardIDField = value;
+                    this.RaisePropertyChanged("WardID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> StreetID {
+            get {
+                return this.StreetIDField;
+            }
+            set {
+                if ((this.StreetIDField.Equals(value) != true)) {
+                    this.StreetIDField = value;
+                    this.RaisePropertyChanged("StreetID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Detail {
+            get {
+                return this.DetailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailField, value) != true)) {
+                    this.DetailField = value;
+                    this.RaisePropertyChanged("Detail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public RealEstateMarket.RealEstateServiceReference.CITY CITY {
+            get {
+                return this.CITYField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CITYField, value) != true)) {
+                    this.CITYField = value;
+                    this.RaisePropertyChanged("CITY");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public RealEstateMarket.RealEstateServiceReference.NATION NATION {
+            get {
+                return this.NATIONField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NATIONField, value) != true)) {
+                    this.NATIONField = value;
+                    this.RaisePropertyChanged("NATION");
                 }
             }
         }
@@ -2350,6 +1982,98 @@ namespace RealEstateMarket.RealEstateServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IMAGE", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class IMAGE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Path {
+            get {
+                return this.PathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PathField, value) != true)) {
+                    this.PathField = value;
+                    this.RaisePropertyChanged("Path");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CITY", Namespace="http://realestatemarket.com/")]
     [System.SerializableAttribute()]
     public partial class CITY : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3112,6 +2836,619 @@ namespace RealEstateMarket.RealEstateServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NEWS_TYPE", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class NEWS_TYPE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.NEW[] NEWsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public RealEstateMarket.RealEstateServiceReference.NEW[] NEWs {
+            get {
+                return this.NEWsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NEWsField, value) != true)) {
+                    this.NEWsField = value;
+                    this.RaisePropertyChanged("NEWs");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NEW", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class NEW : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private int TypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AuthorField;
+        
+        private System.Nullable<int> RateField;
+        
+        private System.DateTime PublishTimeField;
+        
+        private System.Nullable<System.DateTime> EditTimeField;
+        
+        private int ImageIDField;
+        
+        private bool CheckField;
+        
+        private System.Nullable<int> ViewField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.IMAGE IMAGEField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int TypeID {
+            get {
+                return this.TypeIDField;
+            }
+            set {
+                if ((this.TypeIDField.Equals(value) != true)) {
+                    this.TypeIDField = value;
+                    this.RaisePropertyChanged("TypeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Descript {
+            get {
+                return this.DescriptField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptField, value) != true)) {
+                    this.DescriptField = value;
+                    this.RaisePropertyChanged("Descript");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Author {
+            get {
+                return this.AuthorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorField, value) != true)) {
+                    this.AuthorField = value;
+                    this.RaisePropertyChanged("Author");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<int> Rate {
+            get {
+                return this.RateField;
+            }
+            set {
+                if ((this.RateField.Equals(value) != true)) {
+                    this.RateField = value;
+                    this.RaisePropertyChanged("Rate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.DateTime PublishTime {
+            get {
+                return this.PublishTimeField;
+            }
+            set {
+                if ((this.PublishTimeField.Equals(value) != true)) {
+                    this.PublishTimeField = value;
+                    this.RaisePropertyChanged("PublishTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public System.Nullable<System.DateTime> EditTime {
+            get {
+                return this.EditTimeField;
+            }
+            set {
+                if ((this.EditTimeField.Equals(value) != true)) {
+                    this.EditTimeField = value;
+                    this.RaisePropertyChanged("EditTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public int ImageID {
+            get {
+                return this.ImageIDField;
+            }
+            set {
+                if ((this.ImageIDField.Equals(value) != true)) {
+                    this.ImageIDField = value;
+                    this.RaisePropertyChanged("ImageID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        public bool Check {
+            get {
+                return this.CheckField;
+            }
+            set {
+                if ((this.CheckField.Equals(value) != true)) {
+                    this.CheckField = value;
+                    this.RaisePropertyChanged("Check");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        public System.Nullable<int> View {
+            get {
+                return this.ViewField;
+            }
+            set {
+                if ((this.ViewField.Equals(value) != true)) {
+                    this.ViewField = value;
+                    this.RaisePropertyChanged("View");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=12)]
+        public RealEstateMarket.RealEstateServiceReference.IMAGE IMAGE {
+            get {
+                return this.IMAGEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IMAGEField, value) != true)) {
+                    this.IMAGEField = value;
+                    this.RaisePropertyChanged("IMAGE");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PROJECT_TYPE", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class PROJECT_TYPE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.PROJECT[] PROJECTsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public RealEstateMarket.RealEstateServiceReference.PROJECT[] PROJECTs {
+            get {
+                return this.PROJECTsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PROJECTsField, value) != true)) {
+                    this.PROJECTsField = value;
+                    this.RaisePropertyChanged("PROJECTs");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PROJECT", Namespace="http://realestatemarket.com/")]
+    [System.SerializableAttribute()]
+    public partial class PROJECT : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private int TypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        private System.Nullable<System.DateTime> BeginDayField;
+        
+        private int AddressIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SummaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private int ImageIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.REAL_ESTATE[] REAL_ESTATEsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.ADDRESS ADDRESSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RealEstateMarket.RealEstateServiceReference.IMAGE IMAGEField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int TypeID {
+            get {
+                return this.TypeIDField;
+            }
+            set {
+                if ((this.TypeIDField.Equals(value) != true)) {
+                    this.TypeIDField = value;
+                    this.RaisePropertyChanged("TypeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<System.DateTime> BeginDay {
+            get {
+                return this.BeginDayField;
+            }
+            set {
+                if ((this.BeginDayField.Equals(value) != true)) {
+                    this.BeginDayField = value;
+                    this.RaisePropertyChanged("BeginDay");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int AddressID {
+            get {
+                return this.AddressIDField;
+            }
+            set {
+                if ((this.AddressIDField.Equals(value) != true)) {
+                    this.AddressIDField = value;
+                    this.RaisePropertyChanged("AddressID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Summary {
+            get {
+                return this.SummaryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SummaryField, value) != true)) {
+                    this.SummaryField = value;
+                    this.RaisePropertyChanged("Summary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public int ImageID {
+            get {
+                return this.ImageIDField;
+            }
+            set {
+                if ((this.ImageIDField.Equals(value) != true)) {
+                    this.ImageIDField = value;
+                    this.RaisePropertyChanged("ImageID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public RealEstateMarket.RealEstateServiceReference.REAL_ESTATE[] REAL_ESTATEs {
+            get {
+                return this.REAL_ESTATEsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.REAL_ESTATEsField, value) != true)) {
+                    this.REAL_ESTATEsField = value;
+                    this.RaisePropertyChanged("REAL_ESTATEs");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public RealEstateMarket.RealEstateServiceReference.ADDRESS ADDRESS {
+            get {
+                return this.ADDRESSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ADDRESSField, value) != true)) {
+                    this.ADDRESSField = value;
+                    this.RaisePropertyChanged("ADDRESS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=10)]
+        public RealEstateMarket.RealEstateServiceReference.IMAGE IMAGE {
+            get {
+                return this.IMAGEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IMAGEField, value) != true)) {
+                    this.IMAGEField = value;
+                    this.RaisePropertyChanged("IMAGE");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="REAL_ESTATE_TYPE", Namespace="http://realestatemarket.com/")]
     [System.SerializableAttribute()]
     public partial class REAL_ESTATE_TYPE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3294,283 +3631,30 @@ namespace RealEstateMarket.RealEstateServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NEWS_SALE", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class NEWS_SALE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        private int TypeIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TitleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContentField;
-        
-        private int RealEstateIDField;
-        
-        private System.Nullable<int> RateField;
-        
-        private System.DateTime UpdateTimeField;
-        
-        private int StatusField;
-        
-        private bool BrokerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.REAL_ESTATE REAL_ESTATEField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int TypeID {
-            get {
-                return this.TypeIDField;
-            }
-            set {
-                if ((this.TypeIDField.Equals(value) != true)) {
-                    this.TypeIDField = value;
-                    this.RaisePropertyChanged("TypeID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Title {
-            get {
-                return this.TitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Content {
-            get {
-                return this.ContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
-                    this.ContentField = value;
-                    this.RaisePropertyChanged("Content");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public int RealEstateID {
-            get {
-                return this.RealEstateIDField;
-            }
-            set {
-                if ((this.RealEstateIDField.Equals(value) != true)) {
-                    this.RealEstateIDField = value;
-                    this.RaisePropertyChanged("RealEstateID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<int> Rate {
-            get {
-                return this.RateField;
-            }
-            set {
-                if ((this.RateField.Equals(value) != true)) {
-                    this.RateField = value;
-                    this.RaisePropertyChanged("Rate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public System.DateTime UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public int Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
-        public bool Broker {
-            get {
-                return this.BrokerField;
-            }
-            set {
-                if ((this.BrokerField.Equals(value) != true)) {
-                    this.BrokerField = value;
-                    this.RaisePropertyChanged("Broker");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
-        public RealEstateMarket.RealEstateServiceReference.REAL_ESTATE REAL_ESTATE {
-            get {
-                return this.REAL_ESTATEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.REAL_ESTATEField, value) != true)) {
-                    this.REAL_ESTATEField = value;
-                    this.RaisePropertyChanged("REAL_ESTATE");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NEWS_TYPE", Namespace="http://realestatemarket.com/")]
-    [System.SerializableAttribute()]
-    public partial class NEWS_TYPE : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RealEstateMarket.RealEstateServiceReference.NEW[] NEWsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public RealEstateMarket.RealEstateServiceReference.NEW[] NEWs {
-            get {
-                return this.NEWsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NEWsField, value) != true)) {
-                    this.NEWsField = value;
-                    this.RaisePropertyChanged("NEWs");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://realestatemarket.com/", ConfigurationName="RealEstateServiceReference.RealEstateWebServiceSoap")]
     public interface RealEstateWebServiceSoap {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_LuxuryApartment", ReplyAction="*")]
+        int GetParameter_LuxuryApartment();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Apartment", ReplyAction="*")]
+        int GetParameter_Apartment();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Office", ReplyAction="*")]
+        int GetParameter_Office();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ProductionLand", ReplyAction="*")]
+        int GetParameter_ProductionLand();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ProjectLand", ReplyAction="*")]
+        int GetParameter_ProjectLand();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ForestLand", ReplyAction="*")]
+        int GetParameter_ForestLand();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_AgriculturalLand", ReplyAction="*")]
+        int GetParameter_AgriculturalLand();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_StayLand", ReplyAction="*")]
         int GetParameter_StayLand();
@@ -3586,6 +3670,29 @@ namespace RealEstateMarket.RealEstateServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Renting", ReplyAction="*")]
         int GetParameter_Renting();
+        
+        // CODEGEN: Generating message contract since element name listNewsSale from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByPrice", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceResponse SearchNewsSaleByPrice(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetAllNewsTypesResult from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetAllNewsTypes", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse GetAllNewsTypes(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest request);
+        
+        // CODEGEN: Generating message contract since element name name from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/InsertNewsType", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse InsertNewsType(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest request);
+        
+        // CODEGEN: Generating message contract since element name name from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/UpdateNewsType", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse UpdateNewsType(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/DeleteNewsType", ReplyAction="*")]
+        void DeleteNewsType(int id);
+        
+        // CODEGEN: Generating message contract since element name GetNewsTypeResult from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetNewsType", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse GetNewsType(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest request);
         
         // CODEGEN: Generating message contract since element name GetAllNewsResult from namespace http://realestatemarket.com/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetAllNews", ReplyAction="*")]
@@ -3700,6 +3807,10 @@ namespace RealEstateMarket.RealEstateServiceReference {
         // CODEGEN: Generating message contract since element name GetProjectsByDistrictIDResult from namespace http://realestatemarket.com/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetProjectsByDistrictID", ReplyAction="*")]
         RealEstateMarket.RealEstateServiceReference.GetProjectsByDistrictIDResponse GetProjectsByDistrictID(RealEstateMarket.RealEstateServiceReference.GetProjectsByDistrictIDRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetSummaryProjectResult from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetSummaryProject", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.GetSummaryProjectResponse GetSummaryProject(RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequest request);
         
         // CODEGEN: Generating message contract since element name GetAllRealEstateTypesResult from namespace http://realestatemarket.com/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetAllRealEstateTypes", ReplyAction="*")]
@@ -3877,27 +3988,6 @@ namespace RealEstateMarket.RealEstateServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Villa", ReplyAction="*")]
         int GetParameter_Villa();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_LuxuryApartment", ReplyAction="*")]
-        int GetParameter_LuxuryApartment();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Apartment", ReplyAction="*")]
-        int GetParameter_Apartment();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_Office", ReplyAction="*")]
-        int GetParameter_Office();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ProductionLand", ReplyAction="*")]
-        int GetParameter_ProductionLand();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ProjectLand", ReplyAction="*")]
-        int GetParameter_ProjectLand();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_ForestLand", ReplyAction="*")]
-        int GetParameter_ForestLand();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetParameter_AgriculturalLand", ReplyAction="*")]
-        int GetParameter_AgriculturalLand();
         
         // CODEGEN: Generating message contract since element name connection from namespace http://realestatemarket.com/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SetConnection", ReplyAction="*")]
@@ -4201,24 +4291,378 @@ namespace RealEstateMarket.RealEstateServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetNewsSaleByMainOwner", ReplyAction="*")]
         RealEstateMarket.RealEstateServiceReference.GetNewsSaleByMainOwnerResponse GetNewsSaleByMainOwner(RealEstateMarket.RealEstateServiceReference.GetNewsSaleByMainOwnerRequest request);
         
-        // CODEGEN: Generating message contract since element name GetAllNewsTypesResult from namespace http://realestatemarket.com/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetAllNewsTypes", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse GetAllNewsTypes(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest request);
+        // CODEGEN: Generating message contract since element name keyword from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByKeyword", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordResponse SearchNewsSaleByKeyword(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequest request);
         
-        // CODEGEN: Generating message contract since element name name from namespace http://realestatemarket.com/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/InsertNewsType", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse InsertNewsType(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest request);
+        // CODEGEN: Generating message contract since element name keyword from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByKeywordInList", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListResponse SearchNewsSaleByKeywordInList(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequest request);
         
-        // CODEGEN: Generating message contract since element name name from namespace http://realestatemarket.com/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/UpdateNewsType", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse UpdateNewsType(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest request);
+        // CODEGEN: Generating message contract since element name listNewsSale from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByCityID", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDResponse SearchNewsSaleByCityID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/DeleteNewsType", ReplyAction="*")]
-        void DeleteNewsType(int id);
+        // CODEGEN: Generating message contract since element name listNewsSale from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByTypeID", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDResponse SearchNewsSaleByTypeID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequest request);
         
-        // CODEGEN: Generating message contract since element name GetNewsTypeResult from namespace http://realestatemarket.com/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/GetNewsType", ReplyAction="*")]
-        RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse GetNewsType(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest request);
+        // CODEGEN: Generating message contract since element name listNewsSale from namespace http://realestatemarket.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID", ReplyAction="*")]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDResponse SearchNewsSaleByRealEstateTypeID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByPriceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByPrice", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequestBody Body;
+        
+        public SearchNewsSaleByPriceRequest() {
+        }
+        
+        public SearchNewsSaleByPriceRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByPriceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public decimal from;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public decimal to;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale;
+        
+        public SearchNewsSaleByPriceRequestBody() {
+        }
+        
+        public SearchNewsSaleByPriceRequestBody(decimal from, decimal to, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            this.from = from;
+            this.to = to;
+            this.listNewsSale = listNewsSale;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByPriceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByPriceResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceResponseBody Body;
+        
+        public SearchNewsSaleByPriceResponse() {
+        }
+        
+        public SearchNewsSaleByPriceResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByPriceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByPriceResult;
+        
+        public SearchNewsSaleByPriceResponseBody() {
+        }
+        
+        public SearchNewsSaleByPriceResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByPriceResult) {
+            this.SearchNewsSaleByPriceResult = SearchNewsSaleByPriceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllNewsTypesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllNewsTypes", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody Body;
+        
+        public GetAllNewsTypesRequest() {
+        }
+        
+        public GetAllNewsTypesRequest(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllNewsTypesRequestBody {
+        
+        public GetAllNewsTypesRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllNewsTypesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllNewsTypesResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponseBody Body;
+        
+        public GetAllNewsTypesResponse() {
+        }
+        
+        public GetAllNewsTypesResponse(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class GetAllNewsTypesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypesResult;
+        
+        public GetAllNewsTypesResponseBody() {
+        }
+        
+        public GetAllNewsTypesResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypesResult) {
+            this.GetAllNewsTypesResult = GetAllNewsTypesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertNewsTypeRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertNewsType", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody Body;
+        
+        public InsertNewsTypeRequest() {
+        }
+        
+        public InsertNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class InsertNewsTypeRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string name;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string description;
+        
+        public InsertNewsTypeRequestBody() {
+        }
+        
+        public InsertNewsTypeRequestBody(string name, string description) {
+            this.name = name;
+            this.description = description;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertNewsTypeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponseBody Body;
+        
+        public InsertNewsTypeResponse() {
+        }
+        
+        public InsertNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class InsertNewsTypeResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int InsertNewsTypeResult;
+        
+        public InsertNewsTypeResponseBody() {
+        }
+        
+        public InsertNewsTypeResponseBody(int InsertNewsTypeResult) {
+            this.InsertNewsTypeResult = InsertNewsTypeResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateNewsTypeRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateNewsType", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody Body;
+        
+        public UpdateNewsTypeRequest() {
+        }
+        
+        public UpdateNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class UpdateNewsTypeRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string name;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string description;
+        
+        public UpdateNewsTypeRequestBody() {
+        }
+        
+        public UpdateNewsTypeRequestBody(int id, string name, string description) {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UpdateNewsTypeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponseBody Body;
+        
+        public UpdateNewsTypeResponse() {
+        }
+        
+        public UpdateNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class UpdateNewsTypeResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int UpdateNewsTypeResult;
+        
+        public UpdateNewsTypeResponseBody() {
+        }
+        
+        public UpdateNewsTypeResponseBody(int UpdateNewsTypeResult) {
+            this.UpdateNewsTypeResult = UpdateNewsTypeResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetNewsTypeRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNewsType", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody Body;
+        
+        public GetNewsTypeRequest() {
+        }
+        
+        public GetNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class GetNewsTypeRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public GetNewsTypeRequestBody() {
+        }
+        
+        public GetNewsTypeRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetNewsTypeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponseBody Body;
+        
+        public GetNewsTypeResponse() {
+        }
+        
+        public GetNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class GetNewsTypeResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsTypeResult;
+        
+        public GetNewsTypeResponseBody() {
+        }
+        
+        public GetNewsTypeResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsTypeResult) {
+            this.GetNewsTypeResult = GetNewsTypeResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5721,17 +6165,25 @@ namespace RealEstateMarket.RealEstateServiceReference {
         public int addressID;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string summary;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
         public string description;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public int imageID;
         
         public InsertProjectRequestBody() {
         }
         
-        public InsertProjectRequestBody(int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string description) {
+        public InsertProjectRequestBody(int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string summary, string description, int imageID) {
             this.typeID = typeID;
             this.name = name;
             this.beginDay = beginDay;
             this.addressID = addressID;
+            this.summary = summary;
             this.description = description;
+            this.imageID = imageID;
         }
     }
     
@@ -5808,18 +6260,26 @@ namespace RealEstateMarket.RealEstateServiceReference {
         public int addressID;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string summary;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
         public string description;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public int imageID;
         
         public UpdateProjectRequestBody() {
         }
         
-        public UpdateProjectRequestBody(int id, int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string description) {
+        public UpdateProjectRequestBody(int id, int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string summary, string description, int imageID) {
             this.id = id;
             this.typeID = typeID;
             this.name = name;
             this.beginDay = beginDay;
             this.addressID = addressID;
+            this.summary = summary;
             this.description = description;
+            this.imageID = imageID;
         }
     }
     
@@ -5990,6 +6450,74 @@ namespace RealEstateMarket.RealEstateServiceReference {
         
         public GetProjectsByDistrictIDResponseBody(RealEstateMarket.RealEstateServiceReference.PROJECT[] GetProjectsByDistrictIDResult) {
             this.GetProjectsByDistrictIDResult = GetProjectsByDistrictIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSummaryProjectRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSummaryProject", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequestBody Body;
+        
+        public GetSummaryProjectRequest() {
+        }
+        
+        public GetSummaryProjectRequest(RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class GetSummaryProjectRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public GetSummaryProjectRequestBody() {
+        }
+        
+        public GetSummaryProjectRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSummaryProjectResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSummaryProjectResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.GetSummaryProjectResponseBody Body;
+        
+        public GetSummaryProjectResponse() {
+        }
+        
+        public GetSummaryProjectResponse(RealEstateMarket.RealEstateServiceReference.GetSummaryProjectResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class GetSummaryProjectResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetSummaryProjectResult;
+        
+        public GetSummaryProjectResponseBody() {
+        }
+        
+        public GetSummaryProjectResponseBody(string GetSummaryProjectResult) {
+            this.GetSummaryProjectResult = GetSummaryProjectResult;
         }
     }
     
@@ -13194,42 +13722,15 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetAllNewsTypesRequest {
+    public partial class SearchNewsSaleByKeywordRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllNewsTypes", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByKeyword", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequestBody Body;
         
-        public GetAllNewsTypesRequest() {
+        public SearchNewsSaleByKeywordRequest() {
         }
         
-        public GetAllNewsTypesRequest(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class GetAllNewsTypesRequestBody {
-        
-        public GetAllNewsTypesRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetAllNewsTypesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllNewsTypesResponse", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponseBody Body;
-        
-        public GetAllNewsTypesResponse() {
-        }
-        
-        public GetAllNewsTypesResponse(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponseBody Body) {
+        public SearchNewsSaleByKeywordRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -13238,16 +13739,16 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class GetAllNewsTypesResponseBody {
+    public partial class SearchNewsSaleByKeywordRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypesResult;
+        public string keyword;
         
-        public GetAllNewsTypesResponseBody() {
+        public SearchNewsSaleByKeywordRequestBody() {
         }
         
-        public GetAllNewsTypesResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypesResult) {
-            this.GetAllNewsTypesResult = GetAllNewsTypesResult;
+        public SearchNewsSaleByKeywordRequestBody(string keyword) {
+            this.keyword = keyword;
         }
     }
     
@@ -13255,15 +13756,15 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class InsertNewsTypeRequest {
+    public partial class SearchNewsSaleByKeywordResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertNewsType", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByKeywordResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordResponseBody Body;
         
-        public InsertNewsTypeRequest() {
+        public SearchNewsSaleByKeywordResponse() {
         }
         
-        public InsertNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody Body) {
+        public SearchNewsSaleByKeywordResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -13272,20 +13773,54 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class InsertNewsTypeRequestBody {
+    public partial class SearchNewsSaleByKeywordResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string name;
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeywordResult;
+        
+        public SearchNewsSaleByKeywordResponseBody() {
+        }
+        
+        public SearchNewsSaleByKeywordResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeywordResult) {
+            this.SearchNewsSaleByKeywordResult = SearchNewsSaleByKeywordResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByKeywordInListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByKeywordInList", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequestBody Body;
+        
+        public SearchNewsSaleByKeywordInListRequest() {
+        }
+        
+        public SearchNewsSaleByKeywordInListRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByKeywordInListRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string keyword;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string description;
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale;
         
-        public InsertNewsTypeRequestBody() {
+        public SearchNewsSaleByKeywordInListRequestBody() {
         }
         
-        public InsertNewsTypeRequestBody(string name, string description) {
-            this.name = name;
-            this.description = description;
+        public SearchNewsSaleByKeywordInListRequestBody(string keyword, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            this.keyword = keyword;
+            this.listNewsSale = listNewsSale;
         }
     }
     
@@ -13293,15 +13828,15 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class InsertNewsTypeResponse {
+    public partial class SearchNewsSaleByKeywordInListResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByKeywordInListResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListResponseBody Body;
         
-        public InsertNewsTypeResponse() {
+        public SearchNewsSaleByKeywordInListResponse() {
         }
         
-        public InsertNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponseBody Body) {
+        public SearchNewsSaleByKeywordInListResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -13310,160 +13845,232 @@ namespace RealEstateMarket.RealEstateServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class InsertNewsTypeResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int InsertNewsTypeResult;
-        
-        public InsertNewsTypeResponseBody() {
-        }
-        
-        public InsertNewsTypeResponseBody(int InsertNewsTypeResult) {
-            this.InsertNewsTypeResult = InsertNewsTypeResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UpdateNewsTypeRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateNewsType", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody Body;
-        
-        public UpdateNewsTypeRequest() {
-        }
-        
-        public UpdateNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class UpdateNewsTypeRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int id;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string name;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string description;
-        
-        public UpdateNewsTypeRequestBody() {
-        }
-        
-        public UpdateNewsTypeRequestBody(int id, string name, string description) {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UpdateNewsTypeResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="UpdateNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponseBody Body;
-        
-        public UpdateNewsTypeResponse() {
-        }
-        
-        public UpdateNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class UpdateNewsTypeResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int UpdateNewsTypeResult;
-        
-        public UpdateNewsTypeResponseBody() {
-        }
-        
-        public UpdateNewsTypeResponseBody(int UpdateNewsTypeResult) {
-            this.UpdateNewsTypeResult = UpdateNewsTypeResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetNewsTypeRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNewsType", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody Body;
-        
-        public GetNewsTypeRequest() {
-        }
-        
-        public GetNewsTypeRequest(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class GetNewsTypeRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int id;
-        
-        public GetNewsTypeRequestBody() {
-        }
-        
-        public GetNewsTypeRequestBody(int id) {
-            this.id = id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetNewsTypeResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNewsTypeResponse", Namespace="http://realestatemarket.com/", Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponseBody Body;
-        
-        public GetNewsTypeResponse() {
-        }
-        
-        public GetNewsTypeResponse(RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
-    public partial class GetNewsTypeResponseBody {
+    public partial class SearchNewsSaleByKeywordInListResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsTypeResult;
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeywordInListResult;
         
-        public GetNewsTypeResponseBody() {
+        public SearchNewsSaleByKeywordInListResponseBody() {
         }
         
-        public GetNewsTypeResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsTypeResult) {
-            this.GetNewsTypeResult = GetNewsTypeResult;
+        public SearchNewsSaleByKeywordInListResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeywordInListResult) {
+            this.SearchNewsSaleByKeywordInListResult = SearchNewsSaleByKeywordInListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByCityIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByCityID", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequestBody Body;
+        
+        public SearchNewsSaleByCityIDRequest() {
+        }
+        
+        public SearchNewsSaleByCityIDRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByCityIDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int cityID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale;
+        
+        public SearchNewsSaleByCityIDRequestBody() {
+        }
+        
+        public SearchNewsSaleByCityIDRequestBody(int cityID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            this.cityID = cityID;
+            this.listNewsSale = listNewsSale;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByCityIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByCityIDResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDResponseBody Body;
+        
+        public SearchNewsSaleByCityIDResponse() {
+        }
+        
+        public SearchNewsSaleByCityIDResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByCityIDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByCityIDResult;
+        
+        public SearchNewsSaleByCityIDResponseBody() {
+        }
+        
+        public SearchNewsSaleByCityIDResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByCityIDResult) {
+            this.SearchNewsSaleByCityIDResult = SearchNewsSaleByCityIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByTypeIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByTypeID", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequestBody Body;
+        
+        public SearchNewsSaleByTypeIDRequest() {
+        }
+        
+        public SearchNewsSaleByTypeIDRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByTypeIDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int typeID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale;
+        
+        public SearchNewsSaleByTypeIDRequestBody() {
+        }
+        
+        public SearchNewsSaleByTypeIDRequestBody(int typeID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            this.typeID = typeID;
+            this.listNewsSale = listNewsSale;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByTypeIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByTypeIDResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDResponseBody Body;
+        
+        public SearchNewsSaleByTypeIDResponse() {
+        }
+        
+        public SearchNewsSaleByTypeIDResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByTypeIDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByTypeIDResult;
+        
+        public SearchNewsSaleByTypeIDResponseBody() {
+        }
+        
+        public SearchNewsSaleByTypeIDResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByTypeIDResult) {
+            this.SearchNewsSaleByTypeIDResult = SearchNewsSaleByTypeIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByRealEstateTypeIDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByRealEstateTypeID", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequestBody Body;
+        
+        public SearchNewsSaleByRealEstateTypeIDRequest() {
+        }
+        
+        public SearchNewsSaleByRealEstateTypeIDRequest(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByRealEstateTypeIDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int realEstateTypeID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale;
+        
+        public SearchNewsSaleByRealEstateTypeIDRequestBody() {
+        }
+        
+        public SearchNewsSaleByRealEstateTypeIDRequestBody(int realEstateTypeID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            this.realEstateTypeID = realEstateTypeID;
+            this.listNewsSale = listNewsSale;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchNewsSaleByRealEstateTypeIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchNewsSaleByRealEstateTypeIDResponse", Namespace="http://realestatemarket.com/", Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDResponseBody Body;
+        
+        public SearchNewsSaleByRealEstateTypeIDResponse() {
+        }
+        
+        public SearchNewsSaleByRealEstateTypeIDResponse(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://realestatemarket.com/")]
+    public partial class SearchNewsSaleByRealEstateTypeIDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByRealEstateTypeIDResult;
+        
+        public SearchNewsSaleByRealEstateTypeIDResponseBody() {
+        }
+        
+        public SearchNewsSaleByRealEstateTypeIDResponseBody(RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByRealEstateTypeIDResult) {
+            this.SearchNewsSaleByRealEstateTypeIDResult = SearchNewsSaleByRealEstateTypeIDResult;
         }
     }
     
@@ -13494,6 +14101,34 @@ namespace RealEstateMarket.RealEstateServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public int GetParameter_LuxuryApartment() {
+            return base.Channel.GetParameter_LuxuryApartment();
+        }
+        
+        public int GetParameter_Apartment() {
+            return base.Channel.GetParameter_Apartment();
+        }
+        
+        public int GetParameter_Office() {
+            return base.Channel.GetParameter_Office();
+        }
+        
+        public int GetParameter_ProductionLand() {
+            return base.Channel.GetParameter_ProductionLand();
+        }
+        
+        public int GetParameter_ProjectLand() {
+            return base.Channel.GetParameter_ProjectLand();
+        }
+        
+        public int GetParameter_ForestLand() {
+            return base.Channel.GetParameter_ForestLand();
+        }
+        
+        public int GetParameter_AgriculturalLand() {
+            return base.Channel.GetParameter_AgriculturalLand();
+        }
+        
         public int GetParameter_StayLand() {
             return base.Channel.GetParameter_StayLand();
         }
@@ -13512,6 +14147,79 @@ namespace RealEstateMarket.RealEstateServiceReference {
         
         public int GetParameter_Renting() {
             return base.Channel.GetParameter_Renting();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByPrice(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequest request) {
+            return base.Channel.SearchNewsSaleByPrice(request);
+        }
+        
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByPrice(decimal from, decimal to, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceRequestBody();
+            inValue.Body.from = from;
+            inValue.Body.to = to;
+            inValue.Body.listNewsSale = listNewsSale;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByPriceResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByPrice(inValue);
+            return retVal.Body.SearchNewsSaleByPriceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.GetAllNewsTypes(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest request) {
+            return base.Channel.GetAllNewsTypes(request);
+        }
+        
+        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypes() {
+            RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest inValue = new RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody();
+            RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetAllNewsTypes(inValue);
+            return retVal.Body.GetAllNewsTypesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.InsertNewsType(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest request) {
+            return base.Channel.InsertNewsType(request);
+        }
+        
+        public int InsertNewsType(string name, string description) {
+            RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody();
+            inValue.Body.name = name;
+            inValue.Body.description = description;
+            RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).InsertNewsType(inValue);
+            return retVal.Body.InsertNewsTypeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.UpdateNewsType(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest request) {
+            return base.Channel.UpdateNewsType(request);
+        }
+        
+        public int UpdateNewsType(int id, string name, string description) {
+            RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody();
+            inValue.Body.id = id;
+            inValue.Body.name = name;
+            inValue.Body.description = description;
+            RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).UpdateNewsType(inValue);
+            return retVal.Body.UpdateNewsTypeResult;
+        }
+        
+        public void DeleteNewsType(int id) {
+            base.Channel.DeleteNewsType(id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.GetNewsType(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest request) {
+            return base.Channel.GetNewsType(request);
+        }
+        
+        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsType(int id) {
+            RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody();
+            inValue.Body.id = id;
+            RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetNewsType(inValue);
+            return retVal.Body.GetNewsTypeResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -13828,14 +14536,16 @@ namespace RealEstateMarket.RealEstateServiceReference {
             return base.Channel.InsertProject(request);
         }
         
-        public int InsertProject(int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string description) {
+        public int InsertProject(int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string summary, string description, int imageID) {
             RealEstateMarket.RealEstateServiceReference.InsertProjectRequest inValue = new RealEstateMarket.RealEstateServiceReference.InsertProjectRequest();
             inValue.Body = new RealEstateMarket.RealEstateServiceReference.InsertProjectRequestBody();
             inValue.Body.typeID = typeID;
             inValue.Body.name = name;
             inValue.Body.beginDay = beginDay;
             inValue.Body.addressID = addressID;
+            inValue.Body.summary = summary;
             inValue.Body.description = description;
+            inValue.Body.imageID = imageID;
             RealEstateMarket.RealEstateServiceReference.InsertProjectResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).InsertProject(inValue);
             return retVal.Body.InsertProjectResult;
         }
@@ -13845,7 +14555,7 @@ namespace RealEstateMarket.RealEstateServiceReference {
             return base.Channel.UpdateProject(request);
         }
         
-        public int UpdateProject(int id, int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string description) {
+        public int UpdateProject(int id, int typeID, string name, System.Nullable<System.DateTime> beginDay, int addressID, string summary, string description, int imageID) {
             RealEstateMarket.RealEstateServiceReference.UpdateProjectRequest inValue = new RealEstateMarket.RealEstateServiceReference.UpdateProjectRequest();
             inValue.Body = new RealEstateMarket.RealEstateServiceReference.UpdateProjectRequestBody();
             inValue.Body.id = id;
@@ -13853,7 +14563,9 @@ namespace RealEstateMarket.RealEstateServiceReference {
             inValue.Body.name = name;
             inValue.Body.beginDay = beginDay;
             inValue.Body.addressID = addressID;
+            inValue.Body.summary = summary;
             inValue.Body.description = description;
+            inValue.Body.imageID = imageID;
             RealEstateMarket.RealEstateServiceReference.UpdateProjectResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).UpdateProject(inValue);
             return retVal.Body.UpdateProjectResult;
         }
@@ -13886,6 +14598,19 @@ namespace RealEstateMarket.RealEstateServiceReference {
             inValue.Body.districtID = districtID;
             RealEstateMarket.RealEstateServiceReference.GetProjectsByDistrictIDResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetProjectsByDistrictID(inValue);
             return retVal.Body.GetProjectsByDistrictIDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.GetSummaryProjectResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.GetSummaryProject(RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequest request) {
+            return base.Channel.GetSummaryProject(request);
+        }
+        
+        public string GetSummaryProject(int id) {
+            RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequest inValue = new RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.GetSummaryProjectRequestBody();
+            inValue.Body.id = id;
+            RealEstateMarket.RealEstateServiceReference.GetSummaryProjectResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetSummaryProject(inValue);
+            return retVal.Body.GetSummaryProjectResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -14476,34 +15201,6 @@ namespace RealEstateMarket.RealEstateServiceReference {
         
         public int GetParameter_Villa() {
             return base.Channel.GetParameter_Villa();
-        }
-        
-        public int GetParameter_LuxuryApartment() {
-            return base.Channel.GetParameter_LuxuryApartment();
-        }
-        
-        public int GetParameter_Apartment() {
-            return base.Channel.GetParameter_Apartment();
-        }
-        
-        public int GetParameter_Office() {
-            return base.Channel.GetParameter_Office();
-        }
-        
-        public int GetParameter_ProductionLand() {
-            return base.Channel.GetParameter_ProductionLand();
-        }
-        
-        public int GetParameter_ProjectLand() {
-            return base.Channel.GetParameter_ProjectLand();
-        }
-        
-        public int GetParameter_ForestLand() {
-            return base.Channel.GetParameter_ForestLand();
-        }
-        
-        public int GetParameter_AgriculturalLand() {
-            return base.Channel.GetParameter_AgriculturalLand();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -15492,61 +16189,72 @@ namespace RealEstateMarket.RealEstateServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.GetAllNewsTypes(RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest request) {
-            return base.Channel.GetAllNewsTypes(request);
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByKeyword(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequest request) {
+            return base.Channel.SearchNewsSaleByKeyword(request);
         }
         
-        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE[] GetAllNewsTypes() {
-            RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest inValue = new RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequest();
-            inValue.Body = new RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesRequestBody();
-            RealEstateMarket.RealEstateServiceReference.GetAllNewsTypesResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetAllNewsTypes(inValue);
-            return retVal.Body.GetAllNewsTypesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.InsertNewsType(RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest request) {
-            return base.Channel.InsertNewsType(request);
-        }
-        
-        public int InsertNewsType(string name, string description) {
-            RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequest();
-            inValue.Body = new RealEstateMarket.RealEstateServiceReference.InsertNewsTypeRequestBody();
-            inValue.Body.name = name;
-            inValue.Body.description = description;
-            RealEstateMarket.RealEstateServiceReference.InsertNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).InsertNewsType(inValue);
-            return retVal.Body.InsertNewsTypeResult;
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeyword(string keyword) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordRequestBody();
+            inValue.Body.keyword = keyword;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByKeyword(inValue);
+            return retVal.Body.SearchNewsSaleByKeywordResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.UpdateNewsType(RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest request) {
-            return base.Channel.UpdateNewsType(request);
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByKeywordInList(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequest request) {
+            return base.Channel.SearchNewsSaleByKeywordInList(request);
         }
         
-        public int UpdateNewsType(int id, string name, string description) {
-            RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequest();
-            inValue.Body = new RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeRequestBody();
-            inValue.Body.id = id;
-            inValue.Body.name = name;
-            inValue.Body.description = description;
-            RealEstateMarket.RealEstateServiceReference.UpdateNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).UpdateNewsType(inValue);
-            return retVal.Body.UpdateNewsTypeResult;
-        }
-        
-        public void DeleteNewsType(int id) {
-            base.Channel.DeleteNewsType(id);
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByKeywordInList(string keyword, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListRequestBody();
+            inValue.Body.keyword = keyword;
+            inValue.Body.listNewsSale = listNewsSale;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByKeywordInListResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByKeywordInList(inValue);
+            return retVal.Body.SearchNewsSaleByKeywordInListResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.GetNewsType(RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest request) {
-            return base.Channel.GetNewsType(request);
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByCityID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequest request) {
+            return base.Channel.SearchNewsSaleByCityID(request);
         }
         
-        public RealEstateMarket.RealEstateServiceReference.NEWS_TYPE GetNewsType(int id) {
-            RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest inValue = new RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequest();
-            inValue.Body = new RealEstateMarket.RealEstateServiceReference.GetNewsTypeRequestBody();
-            inValue.Body.id = id;
-            RealEstateMarket.RealEstateServiceReference.GetNewsTypeResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).GetNewsType(inValue);
-            return retVal.Body.GetNewsTypeResult;
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByCityID(int cityID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDRequestBody();
+            inValue.Body.cityID = cityID;
+            inValue.Body.listNewsSale = listNewsSale;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByCityIDResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByCityID(inValue);
+            return retVal.Body.SearchNewsSaleByCityIDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByTypeID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequest request) {
+            return base.Channel.SearchNewsSaleByTypeID(request);
+        }
+        
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByTypeID(int typeID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDRequestBody();
+            inValue.Body.typeID = typeID;
+            inValue.Body.listNewsSale = listNewsSale;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByTypeIDResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByTypeID(inValue);
+            return retVal.Body.SearchNewsSaleByTypeIDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDResponse RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap.SearchNewsSaleByRealEstateTypeID(RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequest request) {
+            return base.Channel.SearchNewsSaleByRealEstateTypeID(request);
+        }
+        
+        public RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] SearchNewsSaleByRealEstateTypeID(int realEstateTypeID, RealEstateMarket.RealEstateServiceReference.NEWS_SALE[] listNewsSale) {
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequest inValue = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequest();
+            inValue.Body = new RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDRequestBody();
+            inValue.Body.realEstateTypeID = realEstateTypeID;
+            inValue.Body.listNewsSale = listNewsSale;
+            RealEstateMarket.RealEstateServiceReference.SearchNewsSaleByRealEstateTypeIDResponse retVal = ((RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoap)(this)).SearchNewsSaleByRealEstateTypeID(inValue);
+            return retVal.Body.SearchNewsSaleByRealEstateTypeIDResult;
         }
     }
 }

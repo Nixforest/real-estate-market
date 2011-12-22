@@ -47,7 +47,9 @@
     <Compile Include="CityBLO.cs" />
     <Compile Include="CompanyBLO.cs" />
     <Compile Include="ContactBLO.cs" />
+    <Compile Include="Count_RealEstateBLO.cs" />
     <Compile Include="CustomerBLO.cs" />
+    <Compile Include="Customer_RealEstateBLO.cs" />
     <Compile Include="DistrictBLO.cs" />
     <Compile Include="ImageBLO.cs" />
     <Compile Include="LegalBLO.cs" />
@@ -63,10 +65,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Real_EstateBLO.cs" />
     <Compile Include="Real_Estate_TypeBLO.cs" />
+    <Compile Include="ReceiptBLO.cs" />
     <Compile Include="StreetBLO.cs" />
     <Compile Include="UnitBLO.cs" />
     <Compile Include="Unit_PriceBLO.cs" />
     <Compile Include="UtilityBLO.cs" />
+    <Compile Include="View_NewsBLO.cs" />
     <Compile Include="WardBLO.cs" />
   </ItemGroup>
   <ItemGroup>

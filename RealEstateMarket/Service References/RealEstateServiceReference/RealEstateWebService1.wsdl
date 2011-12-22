@@ -2,6 +2,76 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://realestatemarket.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://realestatemarket.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://realestatemarket.com/">
+      <s:element name="GetParameter_LuxuryApartment">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_LuxuryApartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_LuxuryApartmentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_Apartment">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_ApartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ApartmentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_Office">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_OfficeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_OfficeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_ProductionLand">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_ProductionLandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ProductionLandResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_ProjectLand">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_ProjectLandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ProjectLandResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_ForestLand">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_ForestLandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ForestLandResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_AgriculturalLand">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_AgriculturalLandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_AgriculturalLandResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetParameter_StayLand">
         <s:complexType />
       </s:element>
@@ -52,16 +122,319 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllNews">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllNewsResponse">
+      <s:element name="SearchNewsSaleByPrice">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsResult" type="tns:ArrayOfNEW" />
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfNEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE" nillable="true" type="tns:NEWS_SALE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_SALE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Broker" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LivingRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BedRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BathRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DifferentRoom" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Storey" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalUseArea" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusFront" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusBehind" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CampusLength" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildFront" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildBehind" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildLength" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegalID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrontStreet" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitPriceID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
+          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="LEGAL" type="tns:LEGAL" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOCATION" type="tns:LOCATION" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT" type="tns:UNIT" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT_PRICE" type="tns:UNIT_PRICE" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACT" type="tns:CONTACT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROPERTY_COMPANY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_COMPANY" nillable="true" type="tns:PROPERTY_COMPANY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_COMPANY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPANY" type="tns:COMPANY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COMPANY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstablishDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShareCapital" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldOfAction" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessRegistration" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Logo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADDRESS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WardID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StreetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="tns:CITY" />
+          <s:element minOccurs="0" maxOccurs="1" name="NATION" type="tns:NATION" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICTs" type="tns:ArrayOfDISTRICT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDISTRICT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DISTRICT" nillable="true" type="tns:DISTRICT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DISTRICT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT_DETAILs" type="tns:ArrayOfDISTRICT_DETAIL" />
+          <s:element minOccurs="0" maxOccurs="1" name="WARDs" type="tns:ArrayOfWARD" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDISTRICT_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DISTRICT_DETAIL" nillable="true" type="tns:DISTRICT_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DISTRICT_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StreetID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="STREET">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWARD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WARD" nillable="true" type="tns:WARD" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WARD">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NATION">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITies" type="tns:ArrayOfCITY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCITY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CITY" nillable="true" type="tns:CITY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IMAGE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROPERTY_CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_CUSTOMER" nillable="true" type="tns:PROPERTY_CUSTOMER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROPERTY_CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER" type="tns:CUSTOMER" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUSTOMER">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfREAL_ESTATE_IMAGE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE_IMAGE" nillable="true" type="tns:REAL_ESTATE_IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="REAL_ESTATE_IMAGE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUTILITY_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UTILITY_DETAIL" nillable="true" type="tns:UTILITY_DETAIL" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UTILITY_DETAIL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UtilityID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UTILITY" type="tns:UTILITY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UTILITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LEGAL">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LOCATION">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UNIT_PRICE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CONTACT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchNewsSaleByPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByPriceResult" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllNewsTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsTypesResult" type="tns:ArrayOfNEWS_TYPE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNEWS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_TYPE" nillable="true" type="tns:NEWS_TYPE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NEWS_TYPE">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
+        </s:sequence>
+      </s:complexType>
       <s:complexType name="ArrayOfNEW">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="NEW" nillable="true" type="tns:NEW" />
@@ -84,14 +457,71 @@
           <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="IMAGE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
+      <s:element name="InsertNewsType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertNewsTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertNewsTypeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewsType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewsTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateNewsTypeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNewsType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNewsTypeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewsType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsTypeResult" type="tns:NEWS_TYPE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsResult" type="tns:ArrayOfNEW" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAllNewsNum">
         <s:complexType>
           <s:sequence>
@@ -369,6 +799,32 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROJECTs" type="tns:ArrayOfPROJECT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPROJECT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT" nillable="true" type="tns:PROJECT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PROJECT">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginDay" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfREAL_ESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE" nillable="true" type="tns:REAL_ESTATE" />
         </s:sequence>
       </s:complexType>
       <s:element name="InsertProjectType">
@@ -436,275 +892,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfPROJECT">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROJECT" nillable="true" type="tns:PROJECT" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROJECT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="BeginDay" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATEs" type="tns:ArrayOfREAL_ESTATE" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfREAL_ESTATE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE" nillable="true" type="tns:REAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="REAL_ESTATE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LivingRoom" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="BedRoom" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="BathRoom" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DifferentRoom" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Storey" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TotalUseArea" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="CampusFront" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="CampusBehind" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="CampusLength" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="BuildFront" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="BuildBehind" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="BuildLength" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegalID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Direction" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FrontStreet" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LocationID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UnitPriceID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProjectID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContactID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_COMPANies" type="tns:ArrayOfPROPERTY_COMPANY" />
-          <s:element minOccurs="0" maxOccurs="1" name="PROPERTY_CUSTOMERs" type="tns:ArrayOfPROPERTY_CUSTOMER" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE_IMAGEs" type="tns:ArrayOfREAL_ESTATE_IMAGE" />
-          <s:element minOccurs="0" maxOccurs="1" name="UTILITY_DETAILs" type="tns:ArrayOfUTILITY_DETAIL" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-          <s:element minOccurs="0" maxOccurs="1" name="LEGAL" type="tns:LEGAL" />
-          <s:element minOccurs="0" maxOccurs="1" name="LOCATION" type="tns:LOCATION" />
-          <s:element minOccurs="0" maxOccurs="1" name="UNIT" type="tns:UNIT" />
-          <s:element minOccurs="0" maxOccurs="1" name="UNIT_PRICE" type="tns:UNIT_PRICE" />
-          <s:element minOccurs="0" maxOccurs="1" name="CONTACT" type="tns:CONTACT" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfPROPERTY_COMPANY">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_COMPANY" nillable="true" type="tns:PROPERTY_COMPANY" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROPERTY_COMPANY">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="COMPANY" type="tns:COMPANY" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="COMPANY">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="EstablishDay" nillable="true" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ShareCapital" nillable="true" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="FieldOfAction" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="BusinessRegistration" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Logo" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ADDRESS">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WardID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StreetID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Detail" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="tns:CITY" />
-          <s:element minOccurs="0" maxOccurs="1" name="NATION" type="tns:NATION" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CITY">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="NationID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DISTRICTs" type="tns:ArrayOfDISTRICT" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfDISTRICT">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DISTRICT" nillable="true" type="tns:DISTRICT" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="DISTRICT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DISTRICT_DETAILs" type="tns:ArrayOfDISTRICT_DETAIL" />
-          <s:element minOccurs="0" maxOccurs="1" name="WARDs" type="tns:ArrayOfWARD" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfDISTRICT_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DISTRICT_DETAIL" nillable="true" type="tns:DISTRICT_DETAIL" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="DISTRICT_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StreetID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="STREET" type="tns:STREET" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="STREET">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfWARD">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="WARD" nillable="true" type="tns:WARD" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="WARD">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="DistrictID" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="NATION">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NationCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CITies" type="tns:ArrayOfCITY" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCITY">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="CITY" nillable="true" type="tns:CITY" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfPROPERTY_CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PROPERTY_CUSTOMER" nillable="true" type="tns:PROPERTY_CUSTOMER" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PROPERTY_CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER" type="tns:CUSTOMER" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CUSTOMER">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="AddressID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdentityCard" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS" type="tns:ADDRESS" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfREAL_ESTATE_IMAGE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="REAL_ESTATE_IMAGE" nillable="true" type="tns:REAL_ESTATE_IMAGE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="REAL_ESTATE_IMAGE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ImageID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IMAGE" type="tns:IMAGE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfUTILITY_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="UTILITY_DETAIL" nillable="true" type="tns:UTILITY_DETAIL" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UTILITY_DETAIL">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UtilityID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="UTILITY" type="tns:UTILITY" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UTILITY">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LEGAL">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LOCATION">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UNIT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="UNIT_PRICE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="CONTACT">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetFullProjects">
         <s:complexType />
       </s:element>
@@ -722,7 +909,9 @@
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="beginDay" nillable="true" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="addressID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="imageID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -741,7 +930,9 @@
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="beginDay" nillable="true" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="addressID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="imageID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -787,6 +978,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetProjectsByDistrictIDResult" type="tns:ArrayOfPROJECT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummaryProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSummaryProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSummaryProjectResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1472,76 +1677,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="GetParameter_VillaResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_LuxuryApartment">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_LuxuryApartmentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_LuxuryApartmentResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_Apartment">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_ApartmentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ApartmentResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_Office">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_OfficeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_OfficeResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_ProductionLand">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_ProductionLandResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ProductionLandResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_ProjectLand">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_ProjectLandResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ProjectLandResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_ForestLand">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_ForestLandResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_ForestLandResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_AgriculturalLand">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_AgriculturalLandResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_AgriculturalLandResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2431,25 +2566,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="NEWS_SALEs" type="tns:ArrayOfNEWS_SALE" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfNEWS_SALE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_SALE" nillable="true" type="tns:NEWS_SALE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="NEWS_SALE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="RealEstateID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Broker" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="REAL_ESTATE" type="tns:REAL_ESTATE" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="InsertNewsSaleType">
         <s:complexType>
           <s:sequence>
@@ -2707,86 +2823,124 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllNewsTypes">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllNewsTypesResponse">
+      <s:element name="SearchNewsSaleByKeyword">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsTypesResult" type="tns:ArrayOfNEWS_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfNEWS_TYPE">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="NEWS_TYPE" nillable="true" type="tns:NEWS_TYPE" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="NEWS_TYPE">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NEWs" type="tns:ArrayOfNEW" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="InsertNewsType">
+      <s:element name="SearchNewsSaleByKeywordResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByKeywordResult" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="InsertNewsTypeResponse">
+      <s:element name="SearchNewsSaleByKeywordInList">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="InsertNewsTypeResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UpdateNewsType">
+      <s:element name="SearchNewsSaleByKeywordInListResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByKeywordInListResult" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UpdateNewsTypeResponse">
+      <s:element name="SearchNewsSaleByCityID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UpdateNewsTypeResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cityID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeleteNewsType">
+      <s:element name="SearchNewsSaleByCityIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByCityIDResult" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeleteNewsTypeResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetNewsType">
+      <s:element name="SearchNewsSaleByTypeID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="typeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetNewsTypeResponse">
+      <s:element name="SearchNewsSaleByTypeIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetNewsTypeResult" type="tns:NEWS_TYPE" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsSaleByRealEstateTypeID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="realEstateTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsSaleByRealEstateTypeIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByRealEstateTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetParameter_LuxuryApartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_LuxuryApartment" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_LuxuryApartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_LuxuryApartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ApartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_Apartment" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ApartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_ApartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_OfficeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_Office" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_OfficeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_OfficeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ProductionLandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_ProductionLand" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ProductionLandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_ProductionLandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ProjectLandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_ProjectLand" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ProjectLandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_ProjectLandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ForestLandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_ForestLand" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_ForestLandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_ForestLandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_AgriculturalLandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_AgriculturalLand" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_AgriculturalLandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_AgriculturalLandResponse" />
+  </wsdl:message>
   <wsdl:message name="GetParameter_StayLandSoapIn">
     <wsdl:part name="parameters" element="tns:GetParameter_StayLand" />
   </wsdl:message>
@@ -2816,6 +2970,42 @@
   </wsdl:message>
   <wsdl:message name="GetParameter_RentingSoapOut">
     <wsdl:part name="parameters" element="tns:GetParameter_RentingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByPrice" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNewsTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNewsTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewsTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertNewsType" />
+  </wsdl:message>
+  <wsdl:message name="InsertNewsTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertNewsTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNewsType" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNewsTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNewsTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNewsType" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNewsTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNewsTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewsType" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsTypeResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllNewsSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllNews" />
@@ -2996,6 +3186,12 @@
   </wsdl:message>
   <wsdl:message name="GetProjectsByDistrictIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetProjectsByDistrictIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSummaryProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSummaryProject" />
+  </wsdl:message>
+  <wsdl:message name="GetSummaryProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSummaryProjectResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllRealEstateTypesSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllRealEstateTypes" />
@@ -3284,48 +3480,6 @@
   </wsdl:message>
   <wsdl:message name="GetParameter_VillaSoapOut">
     <wsdl:part name="parameters" element="tns:GetParameter_VillaResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_LuxuryApartmentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_LuxuryApartment" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_LuxuryApartmentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_LuxuryApartmentResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ApartmentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_Apartment" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ApartmentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_ApartmentResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_OfficeSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_Office" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_OfficeSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_OfficeResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ProductionLandSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_ProductionLand" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ProductionLandSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_ProductionLandResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ProjectLandSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_ProjectLand" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ProjectLandSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_ProjectLandResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ForestLandSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_ForestLand" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_ForestLandSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_ForestLandResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_AgriculturalLandSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_AgriculturalLand" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_AgriculturalLandSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_AgriculturalLandResponse" />
   </wsdl:message>
   <wsdl:message name="SetConnectionSoapIn">
     <wsdl:part name="parameters" element="tns:SetConnection" />
@@ -3801,37 +3955,65 @@
   <wsdl:message name="GetNewsSaleByMainOwnerSoapOut">
     <wsdl:part name="parameters" element="tns:GetNewsSaleByMainOwnerResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAllNewsTypesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllNewsTypes" />
+  <wsdl:message name="SearchNewsSaleByKeywordSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByKeyword" />
   </wsdl:message>
-  <wsdl:message name="GetAllNewsTypesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllNewsTypesResponse" />
+  <wsdl:message name="SearchNewsSaleByKeywordSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByKeywordResponse" />
   </wsdl:message>
-  <wsdl:message name="InsertNewsTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:InsertNewsType" />
+  <wsdl:message name="SearchNewsSaleByKeywordInListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByKeywordInList" />
   </wsdl:message>
-  <wsdl:message name="InsertNewsTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:InsertNewsTypeResponse" />
+  <wsdl:message name="SearchNewsSaleByKeywordInListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByKeywordInListResponse" />
   </wsdl:message>
-  <wsdl:message name="UpdateNewsTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:UpdateNewsType" />
+  <wsdl:message name="SearchNewsSaleByCityIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByCityID" />
   </wsdl:message>
-  <wsdl:message name="UpdateNewsTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:UpdateNewsTypeResponse" />
+  <wsdl:message name="SearchNewsSaleByCityIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByCityIDResponse" />
   </wsdl:message>
-  <wsdl:message name="DeleteNewsTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteNewsType" />
+  <wsdl:message name="SearchNewsSaleByTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeID" />
   </wsdl:message>
-  <wsdl:message name="DeleteNewsTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteNewsTypeResponse" />
+  <wsdl:message name="SearchNewsSaleByTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetNewsTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:GetNewsType" />
+  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeID" />
   </wsdl:message>
-  <wsdl:message name="GetNewsTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:GetNewsTypeResponse" />
+  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeIDResponse" />
   </wsdl:message>
   <wsdl:portType name="RealEstateWebServiceSoap">
+    <wsdl:operation name="GetParameter_LuxuryApartment">
+      <wsdl:input message="tns:GetParameter_LuxuryApartmentSoapIn" />
+      <wsdl:output message="tns:GetParameter_LuxuryApartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Apartment">
+      <wsdl:input message="tns:GetParameter_ApartmentSoapIn" />
+      <wsdl:output message="tns:GetParameter_ApartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Office">
+      <wsdl:input message="tns:GetParameter_OfficeSoapIn" />
+      <wsdl:output message="tns:GetParameter_OfficeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProductionLand">
+      <wsdl:input message="tns:GetParameter_ProductionLandSoapIn" />
+      <wsdl:output message="tns:GetParameter_ProductionLandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProjectLand">
+      <wsdl:input message="tns:GetParameter_ProjectLandSoapIn" />
+      <wsdl:output message="tns:GetParameter_ProjectLandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ForestLand">
+      <wsdl:input message="tns:GetParameter_ForestLandSoapIn" />
+      <wsdl:output message="tns:GetParameter_ForestLandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_AgriculturalLand">
+      <wsdl:input message="tns:GetParameter_AgriculturalLandSoapIn" />
+      <wsdl:output message="tns:GetParameter_AgriculturalLandSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_StayLand">
       <wsdl:input message="tns:GetParameter_StayLandSoapIn" />
       <wsdl:output message="tns:GetParameter_StayLandSoapOut" />
@@ -3851,6 +4033,30 @@
     <wsdl:operation name="GetParameter_Renting">
       <wsdl:input message="tns:GetParameter_RentingSoapIn" />
       <wsdl:output message="tns:GetParameter_RentingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByPrice">
+      <wsdl:input message="tns:SearchNewsSaleByPriceSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNewsTypes">
+      <wsdl:input message="tns:GetAllNewsTypesSoapIn" />
+      <wsdl:output message="tns:GetAllNewsTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewsType">
+      <wsdl:input message="tns:InsertNewsTypeSoapIn" />
+      <wsdl:output message="tns:InsertNewsTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsType">
+      <wsdl:input message="tns:UpdateNewsTypeSoapIn" />
+      <wsdl:output message="tns:UpdateNewsTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsType">
+      <wsdl:input message="tns:DeleteNewsTypeSoapIn" />
+      <wsdl:output message="tns:DeleteNewsTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsType">
+      <wsdl:input message="tns:GetNewsTypeSoapIn" />
+      <wsdl:output message="tns:GetNewsTypeSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllNews">
       <wsdl:input message="tns:GetAllNewsSoapIn" />
@@ -3971,6 +4177,10 @@
     <wsdl:operation name="GetProjectsByDistrictID">
       <wsdl:input message="tns:GetProjectsByDistrictIDSoapIn" />
       <wsdl:output message="tns:GetProjectsByDistrictIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryProject">
+      <wsdl:input message="tns:GetSummaryProjectSoapIn" />
+      <wsdl:output message="tns:GetSummaryProjectSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllRealEstateTypes">
       <wsdl:input message="tns:GetAllRealEstateTypesSoapIn" />
@@ -4163,34 +4373,6 @@
     <wsdl:operation name="GetParameter_Villa">
       <wsdl:input message="tns:GetParameter_VillaSoapIn" />
       <wsdl:output message="tns:GetParameter_VillaSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_LuxuryApartment">
-      <wsdl:input message="tns:GetParameter_LuxuryApartmentSoapIn" />
-      <wsdl:output message="tns:GetParameter_LuxuryApartmentSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Apartment">
-      <wsdl:input message="tns:GetParameter_ApartmentSoapIn" />
-      <wsdl:output message="tns:GetParameter_ApartmentSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Office">
-      <wsdl:input message="tns:GetParameter_OfficeSoapIn" />
-      <wsdl:output message="tns:GetParameter_OfficeSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProductionLand">
-      <wsdl:input message="tns:GetParameter_ProductionLandSoapIn" />
-      <wsdl:output message="tns:GetParameter_ProductionLandSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProjectLand">
-      <wsdl:input message="tns:GetParameter_ProjectLandSoapIn" />
-      <wsdl:output message="tns:GetParameter_ProjectLandSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ForestLand">
-      <wsdl:input message="tns:GetParameter_ForestLandSoapIn" />
-      <wsdl:output message="tns:GetParameter_ForestLandSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_AgriculturalLand">
-      <wsdl:input message="tns:GetParameter_AgriculturalLandSoapIn" />
-      <wsdl:output message="tns:GetParameter_AgriculturalLandSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SetConnection">
       <wsdl:input message="tns:SetConnectionSoapIn" />
@@ -4508,29 +4690,92 @@
       <wsdl:input message="tns:GetNewsSaleByMainOwnerSoapIn" />
       <wsdl:output message="tns:GetNewsSaleByMainOwnerSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllNewsTypes">
-      <wsdl:input message="tns:GetAllNewsTypesSoapIn" />
-      <wsdl:output message="tns:GetAllNewsTypesSoapOut" />
+    <wsdl:operation name="SearchNewsSaleByKeyword">
+      <wsdl:input message="tns:SearchNewsSaleByKeywordSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByKeywordSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InsertNewsType">
-      <wsdl:input message="tns:InsertNewsTypeSoapIn" />
-      <wsdl:output message="tns:InsertNewsTypeSoapOut" />
+    <wsdl:operation name="SearchNewsSaleByKeywordInList">
+      <wsdl:input message="tns:SearchNewsSaleByKeywordInListSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByKeywordInListSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateNewsType">
-      <wsdl:input message="tns:UpdateNewsTypeSoapIn" />
-      <wsdl:output message="tns:UpdateNewsTypeSoapOut" />
+    <wsdl:operation name="SearchNewsSaleByCityID">
+      <wsdl:input message="tns:SearchNewsSaleByCityIDSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByCityIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeleteNewsType">
-      <wsdl:input message="tns:DeleteNewsTypeSoapIn" />
-      <wsdl:output message="tns:DeleteNewsTypeSoapOut" />
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <wsdl:input message="tns:SearchNewsSaleByTypeIDSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByTypeIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetNewsType">
-      <wsdl:input message="tns:GetNewsTypeSoapIn" />
-      <wsdl:output message="tns:GetNewsTypeSoapOut" />
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <wsdl:input message="tns:SearchNewsSaleByRealEstateTypeIDSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByRealEstateTypeIDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RealEstateWebServiceSoap" type="tns:RealEstateWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParameter_LuxuryApartment">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Apartment">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Apartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Office">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Office" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProductionLand">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ProductionLand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProjectLand">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ProjectLand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ForestLand">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ForestLand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_AgriculturalLand">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_AgriculturalLand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_StayLand">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_StayLand" style="document" />
       <wsdl:input>
@@ -4569,6 +4814,60 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Renting">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_Renting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByPrice">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNewsTypes">
+      <soap:operation soapAction="http://realestatemarket.com/GetAllNewsTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewsType">
+      <soap:operation soapAction="http://realestatemarket.com/InsertNewsType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsType">
+      <soap:operation soapAction="http://realestatemarket.com/UpdateNewsType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsType">
+      <soap:operation soapAction="http://realestatemarket.com/DeleteNewsType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsType">
+      <soap:operation soapAction="http://realestatemarket.com/GetNewsType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4839,6 +5138,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProjectsByDistrictID">
       <soap:operation soapAction="http://realestatemarket.com/GetProjectsByDistrictID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryProject">
+      <soap:operation soapAction="http://realestatemarket.com/GetSummaryProject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5271,69 +5579,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Villa">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_LuxuryApartment">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Apartment">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Apartment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Office">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Office" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProductionLand">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ProductionLand" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProjectLand">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ProjectLand" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ForestLand">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_ForestLand" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_AgriculturalLand">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_AgriculturalLand" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6052,8 +6297,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllNewsTypes">
-      <soap:operation soapAction="http://realestatemarket.com/GetAllNewsTypes" style="document" />
+    <wsdl:operation name="SearchNewsSaleByKeyword">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByKeyword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6061,8 +6306,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertNewsType">
-      <soap:operation soapAction="http://realestatemarket.com/InsertNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByKeywordInList">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByKeywordInList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6070,8 +6315,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateNewsType">
-      <soap:operation soapAction="http://realestatemarket.com/UpdateNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByCityID">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByCityID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6079,8 +6324,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteNewsType">
-      <soap:operation soapAction="http://realestatemarket.com/DeleteNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6088,8 +6333,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetNewsType">
-      <soap:operation soapAction="http://realestatemarket.com/GetNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6100,6 +6345,69 @@
   </wsdl:binding>
   <wsdl:binding name="RealEstateWebServiceSoap12" type="tns:RealEstateWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParameter_LuxuryApartment">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Apartment">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Apartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Office">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Office" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProductionLand">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ProductionLand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ProjectLand">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ProjectLand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_ForestLand">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ForestLand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_AgriculturalLand">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_AgriculturalLand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_StayLand">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_StayLand" style="document" />
       <wsdl:input>
@@ -6138,6 +6446,60 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Renting">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Renting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByPrice">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNewsTypes">
+      <soap12:operation soapAction="http://realestatemarket.com/GetAllNewsTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNewsType">
+      <soap12:operation soapAction="http://realestatemarket.com/InsertNewsType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsType">
+      <soap12:operation soapAction="http://realestatemarket.com/UpdateNewsType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsType">
+      <soap12:operation soapAction="http://realestatemarket.com/DeleteNewsType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewsType">
+      <soap12:operation soapAction="http://realestatemarket.com/GetNewsType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6408,6 +6770,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProjectsByDistrictID">
       <soap12:operation soapAction="http://realestatemarket.com/GetProjectsByDistrictID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSummaryProject">
+      <soap12:operation soapAction="http://realestatemarket.com/GetSummaryProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6840,69 +7211,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Villa">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_LuxuryApartment">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Apartment">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Apartment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Office">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Office" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProductionLand">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ProductionLand" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ProjectLand">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ProjectLand" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_ForestLand">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_ForestLand" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_AgriculturalLand">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_AgriculturalLand" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7621,8 +7929,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllNewsTypes">
-      <soap12:operation soapAction="http://realestatemarket.com/GetAllNewsTypes" style="document" />
+    <wsdl:operation name="SearchNewsSaleByKeyword">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByKeyword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7630,8 +7938,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertNewsType">
-      <soap12:operation soapAction="http://realestatemarket.com/InsertNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByKeywordInList">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByKeywordInList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7639,8 +7947,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateNewsType">
-      <soap12:operation soapAction="http://realestatemarket.com/UpdateNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByCityID">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByCityID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7648,8 +7956,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteNewsType">
-      <soap12:operation soapAction="http://realestatemarket.com/DeleteNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7657,8 +7965,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetNewsType">
-      <soap12:operation soapAction="http://realestatemarket.com/GetNewsType" style="document" />
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

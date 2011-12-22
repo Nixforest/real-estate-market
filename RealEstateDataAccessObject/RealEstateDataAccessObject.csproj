@@ -45,7 +45,9 @@
     <Compile Include="CityDAO.cs" />
     <Compile Include="CompanyDAO.cs" />
     <Compile Include="ContactDAO.cs" />
+    <Compile Include="Count_RealEstateDAO.cs" />
     <Compile Include="CustomerDAO.cs" />
+    <Compile Include="Customer_RealEstateDAO.cs" />
     <Compile Include="DataParent.cs" />
     <Compile Include="DistrictDAO.cs" />
     <Compile Include="District_DetailDAO.cs" />
@@ -66,11 +68,13 @@
     <Compile Include="Real_EstateDAO.cs" />
     <Compile Include="Real_Estate_ImageDAO.cs" />
     <Compile Include="Real_Estate_TypeDAO.cs" />
+    <Compile Include="ReceiptDAO.cs" />
     <Compile Include="StreetDAO.cs" />
     <Compile Include="UnitDAO.cs" />
     <Compile Include="Unit_PriceDAO.cs" />
     <Compile Include="UtilityDAO.cs" />
     <Compile Include="Utility_DetailDAO.cs" />
+    <Compile Include="View_NewsDAO.cs" />
     <Compile Include="WardDAO.cs" />
   </ItemGroup>
   <ItemGroup>
