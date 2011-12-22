@@ -22,7 +22,10 @@ namespace RealEstateDataAccessObject
         /// <returns>List of entity</returns>
         public override ICollection<RealEstateDataContext.NEWS_SALE> GetAllRows()
         {
-            return _db.NEWS_SALEs.ToList();
+            var entities = from record in _db.NEWS_SALEs
+                           orderby record.ID descending
+                           select record;
+            return entities.ToList();
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AddNews.Master" AutoEventWireup="true" CodeBehind="EditNews.aspx.cs" Inherits="RealEstateMarket.Admin.News.EditNews" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Admin.Master" AutoEventWireup="true" CodeBehind="EditNews.aspx.cs" Inherits="RealEstateMarket.Admin.News.EditNews" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

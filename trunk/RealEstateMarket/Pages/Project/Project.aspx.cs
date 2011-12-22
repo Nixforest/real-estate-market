@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace RealEstateMarket.Pages
+namespace RealEstateMarket.Pages.Project
 {
     public partial class Project : System.Web.UI.Page
     {
@@ -22,7 +22,15 @@ namespace RealEstateMarket.Pages
                 ProjectNameLabel.Text = project.Name;
                 address = project.ADDRESS;
                 AddressLabel.Text = "Vị trí: " + GetAddressString(address.ID);
-                BeginDayLabel.Text = Convert.ToDateTime(project.BeginDay).ToShortDateString();// ((DateTime)(project.BeginDay)).ToShortDateString();
+                if (project.BeginDay == null)
+                {
+                    BeginDayLabel.Text = "Đang cập nhật";
+                }
+                else
+                {
+                    BeginDayLabel.Text = Convert.ToDateTime(project.BeginDay).ToShortDateString();// ((DateTime)(project.BeginDay)).ToShortDateString();
+                }
+                
                 ContentLabel.Text = project.Description;
             }
         }

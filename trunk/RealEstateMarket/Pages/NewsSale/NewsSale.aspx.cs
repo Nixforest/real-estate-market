@@ -28,7 +28,7 @@ namespace RealEstateMarket.Pages
                                             (newsSale.TypeID == 3) ? (String.Format("~/Image/ico_canthue.gif")) : (String.Format("~/Image/ico_chothue.gif"))));
                 NewsSaleTypeImage.ToolTip = RealEstateMarket._Default.db.GetNewsSaleType(newsSale.TypeID).Name;
                 RealEstateIDLabel.Text   = (newsSale.RealEstateID + 300000).ToString();
-                AddressTitle.Text        = RealEstateMarket.Pages.Project.GetAddressString(newsSale.REAL_ESTATE.AddressID);
+                AddressTitle.Text = RealEstateMarket.Pages.Project.Project.GetAddressString(newsSale.REAL_ESTATE.AddressID);
                 // Price
                 UnitDropDownList.SelectedValue = newsSale.REAL_ESTATE.UnitID.ToString();
                 //GetPrice();
@@ -39,7 +39,7 @@ namespace RealEstateMarket.Pages
                 LivingRoomLabel.Text     = newsSale.REAL_ESTATE.LivingRoom.ToString();
                 BedRoomLabel.Text        = newsSale.REAL_ESTATE.BedRoom.ToString();
                 BathRoomLabel.Text       = newsSale.REAL_ESTATE.BathRoom.ToString();
-                DifferentRoomLabel1.Text = newsSale.REAL_ESTATE.DifferentRoom.ToString();
+                DifferentRoomLabel.Text = newsSale.REAL_ESTATE.DifferentRoom.ToString();
                 CampusFrontLabel.Text    = (newsSale.REAL_ESTATE.CampusFront == 0) ? ("_") : (newsSale.REAL_ESTATE.CampusFront.ToString());
                 CampustLengthLabel.Text  = (newsSale.REAL_ESTATE.CampusLength == 0) ? ("_") : (newsSale.REAL_ESTATE.CampusLength.ToString());
                 TotalUseAreaLabel.Text   = newsSale.REAL_ESTATE.TotalUseArea.ToString();
@@ -117,7 +117,7 @@ namespace RealEstateMarket.Pages
                 {
                     RealEstateServiceReference.CUSTOMER customer = RealEstateMarket._Default.db.GetCustomerByRealEstateID(newsSale.RealEstateID);
                     MemberNameLabel.Text      = customer.Name;
-                    AddressMemberLabel.Text   = RealEstateMarket.Pages.Project.GetAddressString(customer.AddressID);
+                    AddressMemberLabel.Text = RealEstateMarket.Pages.Project.Project.GetAddressString(customer.AddressID);
                     MemberHomePhoneLabel.Text = customer.HomePhone;
                     MemberPhoneLabel.Text     = customer.Phone;
                 }

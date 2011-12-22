@@ -85,6 +85,15 @@ namespace RealEstateMarket.Master {
         protected global::RealEstateMarket.CustomControl.FilterNewsSale FilterControl;
         
         /// <summary>
+        /// search control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.SearchRealEstateControl search;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

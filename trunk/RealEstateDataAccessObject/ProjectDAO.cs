@@ -25,7 +25,10 @@ namespace RealEstateDataAccessObject
         /// <returns>List of entity</returns>
         public override ICollection<RealEstateDataContext.PROJECT> GetAllRows()
         {
-            return _db.PROJECTs.ToList();
+            var entities = from record in _db.PROJECTs
+                           orderby record.ID descending
+                           select record;
+            return entities.ToList();
         }
 
         /// <summary>
@@ -49,7 +52,9 @@ namespace RealEstateDataAccessObject
             oldEntity.Name        = entity.Name;
             oldEntity.BeginDay    = entity.BeginDay;
             oldEntity.AddressID   = entity.AddressID;
+            oldEntity.Summary     = entity.Summary;
             oldEntity.Description = entity.Description;
+            oldEntity.ImageID     = entity.ImageID;
 
             _db.SubmitChanges();
         }

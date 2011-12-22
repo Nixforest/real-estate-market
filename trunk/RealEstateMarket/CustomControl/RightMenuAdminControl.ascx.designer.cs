@@ -13,15 +13,6 @@ namespace RealEstateMarket.CustomControl {
     public partial class RightMenuAdminControl {
         
         /// <summary>
-        /// NewsTypeLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink NewsTypeLink;
-        
-        /// <summary>
         /// AddNewsLink control.
         /// </summary>
         /// <remarks>
@@ -31,48 +22,21 @@ namespace RealEstateMarket.CustomControl {
         protected global::System.Web.UI.WebControls.HyperLink AddNewsLink;
         
         /// <summary>
-        /// DistrictLink control.
+        /// ListNewsLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink DistrictLink;
+        protected global::System.Web.UI.WebControls.HyperLink ListNewsLink;
         
         /// <summary>
-        /// WardLink control.
+        /// NewsTypeLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink WardLink;
-        
-        /// <summary>
-        /// StreetLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink StreetLink;
-        
-        /// <summary>
-        /// RealEstateTypeLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RealEstateTypeLink;
-        
-        /// <summary>
-        /// UserLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink UserLink;
+        protected global::System.Web.UI.WebControls.HyperLink NewsTypeLink;
     }
 }

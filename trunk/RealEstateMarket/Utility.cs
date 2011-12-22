@@ -9,7 +9,90 @@ namespace RealEstateMarket
     {
         public static double RateSJCToVND = 40000000.0;
         public static double RateUSDToVND = 20000.0;
-        
+
+        public static string GetSummary(string str, int numberChar)
+        {
+            if (str.Length >= numberChar)
+            {
+                for (int i = numberChar; i > 0; i--)
+                {
+                    if (Char.IsWhiteSpace(str[i]))
+                    {
+                        return (str.Substring(0, i) + "...");
+                    }
+                }
+                return (str.Substring(0, numberChar) + "...");
+            }
+            else
+            {
+                return str;
+            }
+        }
+        public static string NormalizationPrice(string price)
+        {
+            int pos = price.IndexOf(".");
+            string nguyen = "";
+            string thapphan = "0";
+            if (pos != -1)
+            {
+                nguyen = price.Substring(0, pos);
+                thapphan = price.Substring(pos + 1, 2);
+            }
+            else
+            {
+                nguyen = price;
+            }
+            string donvi = "";
+            string ngan = "";
+            string trieu = "";
+            string ty = "";
+            string result = "";
+            //if (nguyen.Length > 9)
+            //{
+            //    ty = nguyen.Substring(0, nguyen.Length - 9);
+            //    result += ty + ",";
+            //}else if(nguyen.Length > 6){
+            //    trieu = nguyen.Substring(0, nguyen.Length - 6);
+            //    result += trieu + ",";
+            //}else if(nguyen.Length > 3){
+            //    ngan = nguyen.Substring(0, nguyen.Length - 3);
+            //    result += ngan + ",";
+            //}else{
+            //    result += nguyen;
+            //}
+
+            if (nguyen.Length > 3)
+            {
+                if (nguyen.Length > 6)
+                {
+                    if (nguyen.Length > 9)
+                    {
+                        ty = nguyen.Substring(0, nguyen.Length - 9);
+                        trieu = nguyen.Substring(nguyen.Length - 9, 3);
+                        result += ty + ",";
+                    }
+                    else
+                    {
+                        trieu = nguyen.Substring(0, nguyen.Length - 6);
+                    }
+                    result += trieu + ",";
+                    ngan = nguyen.Substring(nguyen.Length - 6, 3);
+                }
+                else
+                {
+                    ngan = nguyen.Substring(0, nguyen.Length - 3);
+                }
+                result += ngan + ",";
+                donvi = nguyen.Substring(nguyen.Length - 3, 3);
+            }
+            else
+            {
+                donvi = nguyen;
+            }
+            result += donvi;
+
+            return result + "." + thapphan;
+        }
         public static string ConvertPriceText(int newsSaleID)
         {
             double price = Convert.ToDouble(RealEstateMarket._Default.db.GetNewsSale(newsSaleID).REAL_ESTATE.Price);
@@ -39,15 +122,15 @@ namespace RealEstateMarket
                     strTextPrice = strTextPrice + "<b>" + priceThousand + "</b> ngàn ";
                 }
 
-                return strTextPrice + "<b>VNĐ</b>";
+                return strTextPrice +" đồng";
             }
             else if (unit == "SJC")
             {
-                return "<b>" + price + "</b> lượng";
+                return "<b>" + RealEstateMarket.Utility.NormalizationPrice(price.ToString()) + "</b> lượng";
             }
             else
             {
-                return "<b>" + price + "</b> USD";
+                return "<b>" + RealEstateMarket.Utility.NormalizationPrice(price.ToString()) + "</b> USD";
             }            
         }
 

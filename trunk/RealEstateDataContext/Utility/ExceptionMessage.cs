@@ -124,6 +124,27 @@ namespace RealEstateDataContext.Utility
             }
             return text;
         }
+
+        public static List<string> NormalizationString(string str)
+        {
+            while (str.IndexOf("  ") != -1)
+            {
+                str = str.Replace("  ", " ");
+            }
+            List<string> resutl = new List<string>();
+
+            int index = 0;
+            foreach (char item in str)
+            {
+                if (item.Equals(" "))
+                {
+                    resutl.Add(str.Substring(index, str.IndexOf(item) - index));
+                    index = str.IndexOf(item);
+                }
+            }
+            resutl.Add(str.Substring(index, str.Length - index));
+            return resutl;
+        }
         
     }
 }

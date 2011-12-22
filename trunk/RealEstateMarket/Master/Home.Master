@@ -8,6 +8,7 @@
     <link href="../Styles/Site.css" rel="Stylesheet" type="text/css" />
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Gold_Content.js"></script>
     <script type="text/javascript" language="Javascript" src="http://vnexpress.net/Service/Forex_Content.js"></script>
+    <script type="text/javascript" language="Javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -35,7 +36,7 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Pages/Home"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>

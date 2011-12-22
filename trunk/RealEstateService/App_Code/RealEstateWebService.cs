@@ -43,6 +43,11 @@ public class RealEstateWebService : System.Web.Services.WebService
     private RealEstateBusinessLogicObject.LocationBLO location;
     private RealEstateBusinessLogicObject.ContactBLO contact;
 
+    private RealEstateBusinessLogicObject.Customer_RealEstateBLO cusRealEstate;
+    private RealEstateBusinessLogicObject.Count_RealEstateBLO countRealEstate;
+    private RealEstateBusinessLogicObject.View_NewsBLO viewNews;
+    private RealEstateBusinessLogicObject.ReceiptBLO receipt;
+
     public RealEstateWebService()
     {
 
@@ -75,6 +80,10 @@ public class RealEstateWebService : System.Web.Services.WebService
         location = new RealEstateBusinessLogicObject.LocationBLO();
         contact = new RealEstateBusinessLogicObject.ContactBLO();
 
+        cusRealEstate = new RealEstateBusinessLogicObject.Customer_RealEstateBLO();
+        countRealEstate = new RealEstateBusinessLogicObject.Count_RealEstateBLO();
+        viewNews = new RealEstateBusinessLogicObject.View_NewsBLO();
+        receipt = new RealEstateBusinessLogicObject.ReceiptBLO();
     }
 
     /// <summary>
@@ -1067,6 +1076,85 @@ public class RealEstateWebService : System.Web.Services.WebService
             throw e;
         }
     }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByKeyword(string keyword)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByKeyword(keyword));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByKeywordInList(string keyword, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByKeyword(keyword, listNewsSale));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByCityID(int cityID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByCityID(cityID, listNewsSale));
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByTypeID(int typeID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByTypeID(typeID, listNewsSale));
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByRealEstateTypeID(int realEstateTypeID, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByRealEstateTypeID(realEstateTypeID, listNewsSale));
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByPrice(decimal from, decimal to, ObservableCollection<RealEstateDataContext.NEWS_SALE> listNewsSale)
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.SearchNewsSaleByPrice(from, to, listNewsSale));
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
+    
     #endregion
 
     #region News Type Service
@@ -1425,11 +1513,11 @@ public class RealEstateWebService : System.Web.Services.WebService
 
     [WebMethod()]
     public int InsertProject(int typeID, string name, DateTime? beginDay,
-        int addressID, string description)
+        int addressID, string summary, string description, int imageID)
     {
         try
         {
-            return project.Insert(typeID, name, beginDay, addressID, description);
+            return project.Insert(typeID, name, beginDay, addressID, summary, description, imageID);
         }
         catch (Exception e)
         {
@@ -1439,11 +1527,11 @@ public class RealEstateWebService : System.Web.Services.WebService
 
     [WebMethod()]
     public int UpdateProject(int id, int typeID, string name, DateTime? beginDay,
-        int addressID, string description)
+        int addressID, string summary, string description, int imageID)
     {
         try
         {
-            return project.Update(id, typeID, name, beginDay, addressID, description);
+            return project.Update(id, typeID, name, beginDay, addressID, summary, description, imageID);
         }
         catch (Exception e)
         {
@@ -1483,6 +1571,19 @@ public class RealEstateWebService : System.Web.Services.WebService
         try
         {
             return new ObservableCollection<RealEstateDataContext.PROJECT>(project.GetProjectsByDistrictID(districtID));
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public string GetSummaryProject(int id)
+    {
+        try
+        {
+            return project.GetSummary(id);
         }
         catch (Exception e)
         {            
@@ -2008,7 +2109,7 @@ public class RealEstateWebService : System.Web.Services.WebService
     [WebMethod]
     public int GetParameter(string key)
     {
-        return Convert.ToInt32(new RealEstateBusinessLogicObject.Parameter().GetARecord(key));
+        return Convert.ToInt32(new RealEstateBusinessLogicObject.Parameter().GetARecord(key).Value);
     }
     
     [WebMethod]
@@ -2118,5 +2219,45 @@ public class RealEstateWebService : System.Web.Services.WebService
     {
         return RealEstateBusinessLogicObject.Parameter.Renting;
     }
+    #endregion
+
+    #region Customer Estate Service
+
+    [WebMethod()]
+    public ObservableCollection<RealEstateDataContext.CUSTOMER_REALESTATE> GetAllCusReal()
+    {
+        return new ObservableCollection<RealEstateDataContext.CUSTOMER_REALESTATE>(cusRealEstate.GetAll());
+    }
+
+    #endregion
+
+    #region Count Real_Estate Service
+
+    [WebMethod()]
+    public ObservableCollection<RealEstateDataContext.COUNT_REALESTATE> GetAllCountReal(int month, int year)
+    {
+        return new ObservableCollection<RealEstateDataContext.COUNT_REALESTATE>(countRealEstate.GetAllByDate(month, year));
+    }
+
+    #endregion
+
+    #region View News Service
+
+    [WebMethod()]
+    public ObservableCollection<RealEstateDataContext.VIEW_NEWS> GetAllMostNews()
+    {
+        return new ObservableCollection<RealEstateDataContext.VIEW_NEWS>(viewNews.GetAll());
+    }
+
+    #endregion
+
+    #region Receipt Service
+
+    [WebMethod()]
+    public ObservableCollection<RealEstateDataContext.RECEIPT> GetReceiptByDate(int month, int year)
+    {
+        return new ObservableCollection<RealEstateDataContext.RECEIPT>(receipt.GetAllByDate(month, year));
+    }
+
     #endregion
 }

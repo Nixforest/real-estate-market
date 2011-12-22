@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RealEstateMarket.Pages {
+namespace RealEstateMarket.Pages.Project {
     
     
     public partial class Project {

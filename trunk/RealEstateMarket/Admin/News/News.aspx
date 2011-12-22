@@ -59,10 +59,10 @@
             <asp:Label ID="NewsTypeLabel" runat="server" Text='<%# getNewsType(Eval("TypeID")) %>'></asp:Label>
             <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("PublishTime", "{0:G}") %>'></asp:Label>
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "EditNews.aspx?id="+Eval("ID") %>'>
-                <asp:Image ID="EditImage" ImageUrl="~/Image/edit.gif" runat="server" />
+                <asp:Image ID="EditImage" ImageUrl="../../Image/Admin/edit.gif" runat="server" />
             </asp:HyperLink>
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "DelNews.aspx?id="+Eval("ID") %>'>
-                <asp:Image ID="DelImage" ImageUrl="~/Image/Delete.gif" runat="server" OnClick="if(!window.confirm('Bạn có chắc chắn muốn xóa tin này không ?')) return false;" />
+                <asp:Image ID="DelImage" ImageUrl="../../Image/Admin/delete.gif" runat="server" OnClick="if(!window.confirm('Bạn có chắc chắn muốn xóa tin này không ?')) return false;" />
             </asp:HyperLink>
         </ItemTemplate>
     </asp:DataList>

@@ -9,13 +9,14 @@
     <p>
         &nbsp;<asp:ValidationSummary ID="ProjectValidationSummary" runat="server" CssClass="failureNotification"
             HeaderText="Bạn phải điền vào các phần còn thiếu" ValidationGroup="ProjectValidationGroup"
-            ShowMessageBox="false" /></p>
+            ShowMessageBox="false" />
     <p>
         <asp:Label ID="ErrorLabel" runat="server" Text="" CssClass="failureNotification"></asp:Label>
     </p>
     <asp:ObjectDataSource ID="ProjectTypeObjectDataSource" runat="server" 
         SelectMethod="GetAllProjectTypes" 
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient"></asp:ObjectDataSource>
+    <asp:HiddenField ID="IdImageHidden" runat="server" />
     <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
@@ -60,7 +61,15 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label ID="DescriptionLabel" runat="server" AssociatedControlID="DescriptionCKEditor" Text="Mô tả"></asp:Label>
+                <asp:Label ID="SummaryLabel" runat="server" AssociatedControlID="SummaryTextBox" Text="Mô tả"></asp:Label>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox ID="SummaryTextBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label ID="DescriptionLabel" runat="server" AssociatedControlID="DescriptionCKEditor" Text="Nội dung"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
             </asp:TableCell>
@@ -74,8 +83,21 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
+                <asp:Label ID="ImageUploadLabel" runat="server" Text="Hình Ảnh"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                    <ContentTemplate>
+                        <asp:FileUpload ID="ImageUpload" runat="server" />
+                        <asp:Button ID="Upload" runat="server" Text="Upload" onclick="Upload_Click" />
+                        <asp:Image ID="Image" runat="server" Height="100px" Width="130px" 
+                            BorderStyle="None" />
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="Upload" />
+                    </Triggers>
+                </asp:UpdatePanel>
+                <asp:Label ID="ErrorImageUploadLabel" runat="server" Text=""></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

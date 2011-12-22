@@ -21,11 +21,10 @@ namespace RealEstateMarket.Master
         {
             base.OnInit(e);
             List<MenuItem> listMenu = new List<MenuItem>();
-
-            listMenu.Add(new MenuItem("Home", "", "", "~/Default.aspx"));
+            listMenu.Add(new MenuItem("Home", "", "", "~/Pages/Home/Default.aspx"));
             listMenu.Add(new MenuItem("Tin tức và trải nghiệm", "", "", "~/Pages/News/AllNews.aspx"));
             listMenu.Add(new MenuItem("Siêu thị Địa ốc", "", "", "~/Pages/NewsSale/NewsSales.aspx"));
-            listMenu.Add(new MenuItem("Dự án", "", "", "~/Pages/Project/Project.aspx"));
+            listMenu.Add(new MenuItem("Dự án", "", "", "~/Pages/Project/ListProjects.aspx"));
             if (Page.User.IsInRole("Moderator"))
             {
                 listMenu.Add(new MenuItem("Trang quản lý", "", "", "~/Admin/AdminPage.aspx"));
