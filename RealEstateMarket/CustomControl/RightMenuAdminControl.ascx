@@ -21,22 +21,30 @@
     }
 </style>
 <div id="left">
+    <%--Tin rao bán--%>
     <ul>
         <li>
-            <asp:HyperLink ID="AddNewsLink" runat="server" NavigateUrl="~/Admin/News/AddNews.aspx"
-                Text="Thêm tin tức mới" CssClass="linktype"></asp:HyperLink>
+            <asp:HyperLink ID="RegistrationLink" runat="server" NavigateUrl="~/Member/NewsSaleRegistration.aspx"
+                Text="Đăng tài sản mới" CssClass="linktype"></asp:HyperLink>
         </li>
     </ul>
     <ul>
         <li>
-            <asp:HyperLink ID="ListNewsLink" runat="server" NavigateUrl="~/Admin/News/ListNews.aspx"
-                Text="Danh sách tin tức" CssClass="linktype"></asp:HyperLink>
+            <asp:HyperLink ID="ListNewsSaleLink" runat="server" NavigateUrl="~/Admin/NewsSale/ListNewsSales.aspx"
+                Text="Quản lý tin rao bán" CssClass="linktype"></asp:HyperLink>
+        </li>
+    </ul>
+    <%--Dự án--%>
+    <ul>
+        <li>
+            <asp:HyperLink ID="NewProjectLink" runat="server" NavigateUrl="~/Admin/Project/NewProject.aspx"
+                Text="Đăng dự án mới" CssClass="linktype"></asp:HyperLink>
         </li>
     </ul>
     <ul>
         <li>
-            <asp:HyperLink ID="NewsTypeLink" runat="server" NavigateUrl="~/Admin/News/NewsType.aspx"
-                Text="Quản lý Loại tin tức" CssClass="linktype"></asp:HyperLink>
+            <asp:HyperLink ID="ListProjectLink" runat="server" NavigateUrl=""
+                Text="Quản lý dự án" CssClass="linktype"></asp:HyperLink>
         </li>
     </ul>
 </div>

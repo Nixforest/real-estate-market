@@ -13,30 +13,39 @@ namespace RealEstateMarket.CustomControl {
     public partial class RightMenuAdminControl {
         
         /// <summary>
-        /// AddNewsLink control.
+        /// RegistrationLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink AddNewsLink;
+        protected global::System.Web.UI.WebControls.HyperLink RegistrationLink;
         
         /// <summary>
-        /// ListNewsLink control.
+        /// ListNewsSaleLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink ListNewsLink;
+        protected global::System.Web.UI.WebControls.HyperLink ListNewsSaleLink;
         
         /// <summary>
-        /// NewsTypeLink control.
+        /// NewProjectLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink NewsTypeLink;
+        protected global::System.Web.UI.WebControls.HyperLink NewProjectLink;
+        
+        /// <summary>
+        /// ListProjectLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ListProjectLink;
     }
 }

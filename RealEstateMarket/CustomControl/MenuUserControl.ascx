@@ -21,12 +21,21 @@
     }
 </style>
 <div id="left">
+    <%--Tin rao bán--%>
     <ul>
         <li>
             <asp:HyperLink ID="RegistrationLink" runat="server" NavigateUrl="~/Member/NewsSaleRegistration.aspx"
                 Text="Đăng tài sản mới" CssClass="linktype"></asp:HyperLink>
         </li>
     </ul>
+    <%--Tin tức--%>    
+    <ul>
+        <li>
+            <asp:HyperLink ID="AddNewsLink" runat="server" NavigateUrl="~/Admin/News/AddNews.aspx"
+                Text="Thêm tin tức mới" CssClass="linktype"></asp:HyperLink>
+        </li>
+    </ul>
+    <%--Dự án--%>  
     <ul>
         <li>
             <asp:HyperLink ID="NewProjectLink" runat="server" NavigateUrl="~/Admin/Project/NewProject.aspx"

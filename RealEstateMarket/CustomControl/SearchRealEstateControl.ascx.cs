@@ -28,8 +28,12 @@ namespace RealEstateMarket.CustomControl
                 {
                     RealEstateTypeDropDownList.Items.Add(new ListItem(item.Name, item.ID.ToString()));
                 }
-                SearchButton.Text = "Xem " + RealEstateMarket._Default.db.GetAllNewsSales().Count().ToString() + " tài sản";
+                SearchButton.Text = "Xem " + RealEstateMarket._Default.db.GetAllNewsSalesPosted().Count().ToString() + " tài sản";
             }
+        }
+        protected void KeyTextBox_Click(object sender, EventArgs e)
+        {
+            KeyTextBox.Text = "";
         }
 
         protected void SearchButton_Click(object sender, EventArgs e)

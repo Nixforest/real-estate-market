@@ -20,15 +20,12 @@ namespace RealEstateMarket.Admin.News
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!User.IsInRole("Author"))
             {
-                //int id = Convert.ToInt32(Request.QueryString["id"]);
-                //RealEstateMarket.RealEstateServiceReference.NEW news = RealEstateMarket._Default.db.GetNews(id);
-                //NewsType.DataSource = RealEstateMarket._Default.db.GetAllNewsTypes();
-                //NewsType.DataTextField = "Name";
-                //NewsType.DataValueField = "ID";
-                //NewsType.SelectedValue = news.TypeID.ToString();
-                //NewsType.DataBind();
+                Response.Redirect("~/AccessDeny.aspx");
+            }
+            if (!IsPostBack)
+            {                
                 NewsType.SelectedValue = news.TypeID.ToString();
                 NewsType.DataBind();
                 TitleNews.Text = news.Title;

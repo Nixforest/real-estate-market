@@ -7,7 +7,12 @@
     {
         width: 100%;
     }
-</style>
+    .newstitle
+    {
+        font:18px tahoma;
+        font-weight:900;
+    }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:DataList ID="DataList1" runat="server" 
@@ -15,7 +20,7 @@
         <ItemTemplate>
             <table>
                 <tr>
-                    <td>
+                    <td class="newstitle">
                         <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>'></asp:Label>
                     </td>
                 </tr>

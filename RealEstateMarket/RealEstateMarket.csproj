@@ -87,52 +87,70 @@
     <None Include="ckeditor\_samples\php\replaceall.php" />
     <None Include="ckeditor\_samples\php\standalone.php" />
     <None Include="ckeditor\_samples\sample_posteddata.php" />
+    <Content Include="Admin\Company\ListCompanies.aspx" />
+    <Content Include="Admin\Company\NewCompany.aspx" />
+    <Content Include="Admin\NewsSale\ListNewsSales.aspx" />
+    <Content Include="Admin\Project\ListProjects.aspx" />
     <Content Include="CustomControl\FilterNewsSale.ascx" />
+    <Content Include="CustomControl\ManagerCompany.ascx" />
+    <Content Include="CustomControl\ManagerNewsSale.ascx" />
+    <Content Include="CustomControl\ManagerProject.ascx" />
     <Content Include="CustomControl\MenuAdminControl.ascx" />
     <Content Include="CustomControl\MenuUserControl.ascx" />
+    <Content Include="CustomControl\NewsSaleBoxControl.ascx" />
     <Content Include="CustomControl\RealEstateBoxControl.ascx" />
     <Content Include="CustomControl\RightMenuAdminControl.ascx" />
     <Content Include="CustomControl\SearchRealEstateControl.ascx" />
     <Content Include="CustomControl\TopNewsControl.ascx" />
+    <Content Include="Default.aspx" />
     <Content Include="Image\ac_fill.gif" />
     <Content Include="Image\ac_l.gif" />
     <Content Include="Image\anhbanner.jpg" />
     <Content Include="Image\bgd188.gif" />
     <Content Include="Image\bgd456.gif" />
+    <Content Include="Image\bgd7.gif" />
     <Content Include="Image\bgd8.gif" />
     <Content Include="Image\bgd9.gif" />
     <Content Include="Image\bgd_bdC.gif" />
     <Content Include="Image\bgd_bdL.gif" />
     <Content Include="Image\bgd_bdR.gif" />
+    <Content Include="Image\bgd_bottom.gif" />
     <Content Include="Image\bgd_bottomLetter.gif" />
     <Content Include="Image\bgd_bottom_dnNew.gif" />
     <Content Include="Image\bgd_bottom_footer.gif" />
     <Content Include="Image\bgd_bottom_searchHome.gif" />
     <Content Include="Image\bgd_boxdanhmuc.gif" />
+    <Content Include="Image\bgd_button.gif" />
     <Content Include="Image\bgd_dt.gif" />
     <Content Include="Image\bgd_hotructuyen.gif" />
     <Content Include="Image\bgd_khople.gif" />
     <Content Include="Image\bgd_listLogoPar.gif" />
     <Content Include="Image\bgd_loginT.gif" />
     <Content Include="Image\bgd_logoHome.gif" />
+    <Content Include="Image\bgd_msts.gif" />
     <Content Include="Image\bgd_order.gif" />
     <Content Include="Image\bgd_proHomeC.gif" />
     <Content Include="Image\bgd_proHomeF.gif" />
     <Content Include="Image\bgd_proHomeT.gif" />
     <Content Include="Image\bgd_quan.gif" />
+    <Content Include="Image\bgd_stepR.gif" />
+    <Content Include="Image\bgd_top.gif" />
     <Content Include="Image\bgd_top_dnNew.gif" />
     <Content Include="Image\bgd_top_footer.gif" />
     <Content Include="Image\bgd_top_searchHome.gif" />
     <Content Include="Image\bgd_tyle.gif" />
+    <Content Include="Image\bgd_vnd.gif" />
     <Content Include="Image\bgd_xtn.gif" />
     <Content Include="Image\bg_btn_b_l.gif" />
     <Content Include="Image\bg_btn_b_r.gif" />
     <Content Include="Image\bg_b_box.gif" />
+    <Content Include="Image\bg_dt.gif" />
     <Content Include="Image\bg_fill_menu.gif" />
     <Content Include="Image\bg_f_r_n.gif" />
     <Content Include="Image\bg_f_top_n.gif" />
     <Content Include="Image\bg_list_city.gif" />
     <Content Include="Image\bg_newscate.gif" />
+    <Content Include="Image\bg_title_detail.gif" />
     <Content Include="Image\bg_title_mn_st.gif" />
     <Content Include="Image\bg_title_mn_st1.gif" />
     <Content Include="Image\bg_tit_c6.gif" />
@@ -159,6 +177,10 @@
     <Content Include="Image\button_9.gif" />
     <Content Include="Image\button_bantindiaoc.gif" />
     <Content Include="Image\button_vietstock.gif" />
+    <Content Include="Image\contact_bg.gif" />
+    <Content Include="Image\cornerC_addthis.gif" />
+    <Content Include="Image\cornerL_addthis.gif" />
+    <Content Include="Image\cornerR_addthis.gif" />
     <Content Include="Image\cor_footer.gif" />
     <Content Include="Image\dics.gif" />
     <Content Include="Image\disc_n_r.gif" />
@@ -193,11 +215,13 @@
     <Content Include="Image\icon_thoisu.gif" />
     <Content Include="Image\icon_up.png" />
     <Content Include="Image\ico_33.gif" />
+    <Content Include="Image\ico_35.gif" />
     <Content Include="Image\ico_36.gif" />
     <Content Include="Image\ico_canban.gif" />
     <Content Include="Image\ico_canmua.gif" />
     <Content Include="Image\ico_canthue.gif" />
     <Content Include="Image\ico_canthue1.gif" />
+    <Content Include="Image\ico_check.gif" />
     <Content Include="Image\ico_dm1.gif" />
     <Content Include="Image\ico_dm2.gif" />
     <Content Include="Image\ico_dm3.gif" />
@@ -240,6 +264,8 @@
     <Content Include="Image\tuvan.gif" />
     <Content Include="Image\tygia.gif" />
     <Content Include="Image\video.gif" />
+    <Content Include="Member\DeleteNewsSale.aspx" />
+    <Content Include="Member\EditNewsSale.aspx" />
     <Content Include="News.Master" />
     <Content Include="Master\Home.Master" />
     <Content Include="Master\News.Master" />
@@ -247,83 +273,6 @@
     <Content Include="Master\Admin.Master" />
     <Content Include="Master\User.Master" />
     <Content Include="Master\Project.Master" />
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.ADDRESS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CITY.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.COMPANY.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CONTACT.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CUSTOMER.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.DISTRICT.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.IMAGE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LEGAL.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LOCATION.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NATION.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEW.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE_TYPE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_TYPE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT_TYPE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE_TYPE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.STREET.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT_PRICE.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UTILITY.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.WARD.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\RealEstateServiceReference\configuration.svcinfo" />
-    <None Include="Service References\RealEstateServiceReference\RealEstateWebService1.wsdl" />
-    <None Include="Service References\RealEstateServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\RealEstateServiceReference\RealEstateWebService1.disco" />
     <Content Include="Admin\AdminPage.aspx" />
     <Content Include="Admin\Dashboard\CityAdmin.aspx" />
     <Content Include="Admin\Dashboard\DistrictAdmin.aspx" />
@@ -1016,6 +965,8 @@
     <Content Include="Image\ico_user.gif" />
     <Content Include="Member\MemberInformation.aspx" />
     <Content Include="Member\NewsSaleRegistration.aspx" />
+    <Content Include="Pages\Company\Company.aspx" />
+    <Content Include="Pages\Company\ListCompanies.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Pages\NewsSale\NewsSale.aspx" />
     <Content Include="Pages\NewsSale\NewsSales.aspx" />
@@ -1024,6 +975,7 @@
     <Content Include="Pages\News\AllNews.aspx" />
     <Content Include="Pages\News\ListNews.aspx" />
     <Content Include="Pages\News\ReadNews.aspx" />
+    <Content Include="Pages\TempPage.aspx" />
     <Content Include="Scripts\jcalendar-source.js" />
     <Content Include="Scripts\jcalendar.css" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -1033,6 +985,95 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.ADDRESS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CITY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.COMPANY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CONTACT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.COUNT_REALESTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CUSTOMER.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.CUSTOMER_REALESTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.DISTRICT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.IMAGE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LEGAL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.LOCATION.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NATION.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEW.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_SALE_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.NEWS_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.PROJECT_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.REAL_ESTATE_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.RECEIPT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.STREET.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UNIT_PRICE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.UTILITY.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.VIEW_NEWS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateMarket.RealEstateServiceReference.WARD.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\RealEstateServiceReference\configuration.svcinfo" />
+    <None Include="Service References\RealEstateServiceReference\RealEstateWebService1.wsdl" />
+    <None Include="Service References\RealEstateServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RealEstateServiceReference\RealEstateWebService1.disco" />
     <Content Include="Styles\adminnews.css" />
     <Content Include="Styles\NewsSale.css" />
     <Content Include="Styles\User.css" />
@@ -1114,6 +1155,20 @@
     <Compile Include="Admin\AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Company\ListCompanies.aspx.cs">
+      <DependentUpon>ListCompanies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Company\ListCompanies.aspx.designer.cs">
+      <DependentUpon>ListCompanies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Company\NewCompany.aspx.cs">
+      <DependentUpon>NewCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Company\NewCompany.aspx.designer.cs">
+      <DependentUpon>NewCompany.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard\CityAdmin.aspx.cs">
       <DependentUpon>CityAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1155,6 +1210,13 @@
     </Compile>
     <Compile Include="Admin\Dashboard\WardAdmin.aspx.designer.cs">
       <DependentUpon>WardAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NewsSale\ListNewsSales.aspx.cs">
+      <DependentUpon>ListNewsSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NewsSale\ListNewsSales.aspx.designer.cs">
+      <DependentUpon>ListNewsSales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\News\AddNews.aspx.cs">
       <DependentUpon>AddNews.aspx</DependentUpon>
@@ -1198,6 +1260,13 @@
     <Compile Include="Admin\News\NewsType.aspx.designer.cs">
       <DependentUpon>NewsType.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Project\ListProjects.aspx.cs">
+      <DependentUpon>ListProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Project\ListProjects.aspx.designer.cs">
+      <DependentUpon>ListProjects.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Project\NewProject.aspx.cs">
       <DependentUpon>NewProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1226,12 +1295,33 @@
     <Compile Include="CustomControl\FilterNewsSale.ascx.designer.cs">
       <DependentUpon>FilterNewsSale.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControl\ManagerCompany.ascx.cs">
+      <DependentUpon>ManagerCompany.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ManagerCompany.ascx.designer.cs">
+      <DependentUpon>ManagerCompany.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\ManagerNew.ascx.cs">
       <DependentUpon>ManagerNew.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CustomControl\ManagerNew.ascx.designer.cs">
       <DependentUpon>ManagerNew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\ManagerNewsSale.ascx.cs">
+      <DependentUpon>ManagerNewsSale.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ManagerNewsSale.ascx.designer.cs">
+      <DependentUpon>ManagerNewsSale.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\ManagerProject.ascx.cs">
+      <DependentUpon>ManagerProject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ManagerProject.ascx.designer.cs">
+      <DependentUpon>ManagerProject.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\MenuAdminControl.ascx.cs">
       <DependentUpon>MenuAdminControl.ascx</DependentUpon>
@@ -1267,6 +1357,12 @@
     </Compile>
     <Compile Include="CustomControl\MoreNewsPageType.ascx.designer.cs">
       <DependentUpon>MoreNewsPageType.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\NewsSaleBoxControl.ascx.cs">
+      <DependentUpon>NewsSaleBoxControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\NewsSaleBoxControl.ascx.designer.cs">
+      <DependentUpon>NewsSaleBoxControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\NewsSaleControl.ascx.cs">
       <DependentUpon>NewsSaleControl.ascx</DependentUpon>
@@ -1331,12 +1427,47 @@
     <Compile Include="CustomControl\TopViewNews.ascx.designer.cs">
       <DependentUpon>TopViewNews.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Project.Master.cs">
       <DependentUpon>Project.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\Project.Master.designer.cs">
       <DependentUpon>Project.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Member\DeleteNewsSale.aspx.cs">
+      <DependentUpon>DeleteNewsSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\DeleteNewsSale.aspx.designer.cs">
+      <DependentUpon>DeleteNewsSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Member\EditNewsSale.aspx.cs">
+      <DependentUpon>EditNewsSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\EditNewsSale.aspx.designer.cs">
+      <DependentUpon>EditNewsSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Company\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Company\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Company\ListCompanies.aspx.cs">
+      <DependentUpon>ListCompanies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Company\ListCompanies.aspx.designer.cs">
+      <DependentUpon>ListCompanies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1438,6 +1569,13 @@
     </Compile>
     <Compile Include="Pages\Project\Project.aspx.designer.cs">
       <DependentUpon>Project.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TempPage.aspx.cs">
+      <DependentUpon>TempPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TempPage.aspx.designer.cs">
+      <DependentUpon>TempPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\News\AllNews.aspx.cs">

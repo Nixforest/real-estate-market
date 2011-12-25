@@ -29,6 +29,20 @@ namespace RealEstateBusinessLogicObject
         }
 
         /// <summary>
+        /// Get All NewsSales posted
+        /// </summary>
+        /// <returns>List of entities</returns>
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public ICollection<RealEstateDataContext.NEWS_SALE> GetAllRowsPosted()
+        {
+            var entities = from record in _db.GetAllRows()
+                           where record.Status.Equals(new RealEstateDataAccessObject.ParameterDAO().GetARecord("Posted").Value)
+                           orderby record.ID descending
+                           select record;
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(entities.ToList());
+        }
+
+        /// <summary>
         /// Insert a row into NEWS_SALE table
         /// </summary>
         /// <param name="entity">Entity</param>
@@ -185,6 +199,23 @@ namespace RealEstateBusinessLogicObject
         }
 
         /// <summary>
+        /// Update status for NewsSale
+        /// </summary>
+        /// <param name="id">NewsSale ID</param>
+        /// <param name="status">Status</param>
+        public void UpdateStatus(int id, int status)
+        {
+            if (ValidationID(id))
+            {
+                RealEstateDataContext.NEWS_SALE entity = _db.GetARecord(id);
+                entity.UpdateTime = DateTime.Now;
+                entity.Status = status;
+
+                _db.Update(entity);
+            }
+        }
+
+        /// <summary>
         /// Delete a row from NEWS_SALE table
         /// </summary>
         /// <param name="ID">ID of row want to delete</param>
@@ -224,7 +255,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>List of NewsSales</returns>
         public ICollection<RealEstateDataContext.NEWS_SALE> GetNewsSalesByPrice(decimal from, decimal to)
         {
-            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByPrice(from, to, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows())));
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByPrice(from, to, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(GetAllRowsPosted())));
         }
 
         /// <summary>
@@ -237,12 +268,12 @@ namespace RealEstateBusinessLogicObject
         {
             if (from == 0 && to == 0)
             {
-                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows());
+                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(GetAllRowsPosted());
             }
             if (from >= 0 && from <= to)
             {
                 ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
-                foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+                foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
                 {
                     if (item.REAL_ESTATE.TotalUseArea != null)
                     {
@@ -285,7 +316,7 @@ namespace RealEstateBusinessLogicObject
             ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
             if (new RealEstateDataAccessObject.LocationDAO().ValidationID(locationID))
             {
-                foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+                foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
                 {
                     if (item.REAL_ESTATE.LocationID == locationID)
                     {
@@ -307,11 +338,11 @@ namespace RealEstateBusinessLogicObject
             ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
             if (from == 0 && to == 0)
             {
-                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows());
+                return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(GetAllRowsPosted());
             }
             else if (from >=0 && from <= to)
             {
-                foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+                foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
                 {
                     if (item.REAL_ESTATE.BedRoom != null && item.REAL_ESTATE.BedRoom >= from && item.REAL_ESTATE.BedRoom <= to)
                     {
@@ -332,7 +363,7 @@ namespace RealEstateBusinessLogicObject
             ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
             if (direction.Equals("Không xác định"))
             {
-                foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+                foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
                 {
                     if (item.REAL_ESTATE.Direction.Equals("") || item.REAL_ESTATE.Direction.Equals("Không xác định"))
                     {
@@ -341,7 +372,7 @@ namespace RealEstateBusinessLogicObject
                 }
                 return result;
             }
-            foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+            foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
             {
                 if (RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(item.REAL_ESTATE.Direction.ToLower()).Equals(RealEstateDataContext.Utility.Utils.RemoveSign4VietNameseString(direction.ToLower())))
                 {
@@ -358,7 +389,7 @@ namespace RealEstateBusinessLogicObject
         public ICollection<RealEstateDataContext.NEWS_SALE> GetNewsSaleByMainOwner()
         {
             ObservableCollection<RealEstateDataContext.NEWS_SALE> result = new ObservableCollection<RealEstateDataContext.NEWS_SALE>();
-            foreach (RealEstateDataContext.NEWS_SALE item in _db.GetAllRows())
+            foreach (RealEstateDataContext.NEWS_SALE item in GetAllRowsPosted())
             {
                 if (!item.Broker)
                 {
@@ -375,7 +406,7 @@ namespace RealEstateBusinessLogicObject
         /// <returns>List of NewsSales</returns>
         public ICollection<RealEstateDataContext.NEWS_SALE> SearchNewsSaleByKeyword(string keyword)
         {
-            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByKeyword(keyword, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(_db.GetAllRows())));
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(SearchNewsSaleByKeyword(keyword, new ObservableCollection<RealEstateDataContext.NEWS_SALE>(GetAllRowsPosted())));
         }
 
         /// <summary>

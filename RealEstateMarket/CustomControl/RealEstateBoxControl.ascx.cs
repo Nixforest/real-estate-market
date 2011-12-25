@@ -13,7 +13,7 @@ namespace RealEstateMarket.CustomControl
         {
             if (!IsPostBack)
             {
-                List<RealEstateServiceReference.NEWS_SALE> list = RealEstateMarket._Default.db.GetAllNewsSales().ToList();
+                List<RealEstateServiceReference.NEWS_SALE> list = RealEstateMarket._Default.db.GetAllNewsSalesPosted().ToList();
                 LeftDataList.DataSource = list.Skip(0).Take(10).ToList();
                 LeftDataList.DataKeyField = "ID";
                 LeftDataList.DataBind();

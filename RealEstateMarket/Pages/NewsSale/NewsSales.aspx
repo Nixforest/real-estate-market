@@ -166,7 +166,7 @@
 }
 </style>
     <asp:ObjectDataSource ID="NewsSaleObjectDataSource" runat="server"
-        SelectMethod="GetAllNewsSales"        
+        SelectMethod="GetAllNewsSalesPosted"        
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient">
         </asp:ObjectDataSource>
     <div class="total">
@@ -195,27 +195,27 @@
                                 </asp:Label><br />
                                 <b>Vị trí:</b>
                                 <asp:Label ID="AddressLabel" runat="server">
-                                    <%# RealEstateMarket.Pages.Project.Project.GetAddressString(RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.AddressID) %>
+                                    <%# RealEstateMarket.Pages.Project.Project.GetAddressString(RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).AddressID) %>
                                 </asp:Label><br />
                                 <b>Cấu trúc:</b>
                                 <b>DTKV:</b>
                                 <asp:Label ID="CampusAreaLabel" runat="server">
-                                    <%# String.Format("{0}m X {1}m", 
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.CampusFront != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.CampusFront:0,
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.CampusLength != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.CampusLength:0) %>
+                                    <%# String.Format("{0}m X {1}m",
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).CampusFront != null) ? RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).CampusFront : 0,
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).CampusLength != null) ? RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).CampusLength : 0)%>
                                 </asp:Label>
                                 - <b>DTSD</b>
                                 <asp:Label ID="TotalUseAreaLabel" runat="server">
                                     <%# String.Format("{0} m<sup>2</sup>",
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.TotalUseArea != null) ? RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.TotalUseArea : 0)%>
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).TotalUseArea != null) ? RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).TotalUseArea : 0)%>
                                 </asp:Label>
                                 <br />
                                 <asp:Label ID="StructureLabel" runat="server">
                                     <%# String.Format("{0} phòng khách, {1} phòng ngủ, {2} phòng tắm/WC và {3} tầng",
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.LivingRoom != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.LivingRoom:0,
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.BedRoom != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.BedRoom:0,
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.BathRoom != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.BathRoom:0,
-                                    (RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.Storey != null)?RealEstateMarket._Default.db.GetNewsSale(Convert.ToInt32(Eval("ID"))).REAL_ESTATE.Storey:0) %>
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).LivingRoom != null)?RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).LivingRoom:0,
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).BedRoom != null)?RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).BedRoom:0,
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).BathRoom != null)?RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).BathRoom:0,
+                                    (RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).Storey != null)?RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).Storey:0) %>
                                 </asp:Label>
                                 <br />
                                 <asp:Label ID="BrokerLabel" runat="server" Font-Italic="true">
@@ -225,9 +225,9 @@
                     <td class="newssaleprice">
                             <asp:UpdatePanel ID="PriceUpdatePanel" runat="server">
                                 <ContentTemplate>
-                                    <button type="button" onclick='displayPriceVND(<%# Eval("ID") %>, getPriceVND(<%# Convert.ToDouble(Eval("REAL_ESTATE.Price"))%>, <%# Eval("REAL_ESTATE.UnitID") %>))'>VND</button>                                        
-                                    <button type="button" onclick='displayPriceSJC(<%# Eval("ID") %>, getPriceSJC(<%# Convert.ToDouble(Eval("REAL_ESTATE.Price"))%>, <%# Eval("REAL_ESTATE.UnitID") %>))'>SJC</button>
-                                    <button type="button" onclick='displayPriceUSD(<%# Eval("ID") %>, getPriceUSD(<%# Convert.ToDouble(Eval("REAL_ESTATE.Price"))%>, <%# Eval("REAL_ESTATE.UnitID") %>))'>USD</button>
+                                    <button type="button" onclick='displayPriceVND(<%# Eval("ID") %>, getPriceVND(<%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).Price %>, <%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).UnitID %>))'>VND</button>                                        
+                                    <button type="button" onclick='displayPriceSJC(<%# Eval("ID") %>, getPriceSJC(<%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).Price %>, <%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).UnitID %>))'>SJC</button>
+                                    <button type="button" onclick='displayPriceUSD(<%# Eval("ID") %>, getPriceUSD(<%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).Price %>, <%# RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).UnitID %>))'>USD</button>
                                     <br />
                                     <p id='<%# String.Format("price"+Eval("ID")) %>'>
                                         <%# RealEstateMarket.Utility.ConvertPriceText(Convert.ToInt32(Eval("ID"))) %>
@@ -243,6 +243,15 @@
                                 |
                             <asp:Image ID="SaveNewsSale" runat="server" ImageUrl="~/Image/ico_59.gif" />
                             Lưu tin
+                            <br />
+                            <asp:HyperLink ID="EditLink"  NavigateUrl='<%# Eval("ID","~/Member/EditNewsSale.aspx?editId={0}") %>' runat="server"
+                                Visible='<%# Convert.ToBoolean(User.IsInRole("Moderator")) %>'>
+                                <asp:Image ID="EditImage" ImageUrl="~/Image/Admin/edit.gif" runat="server" />
+                            </asp:HyperLink>
+                            <asp:HyperLink ID="DeleteLink" NavigateUrl='<%# Eval("ID","~/Member/DeleteNewsSale.aspx?id={0}") %>' runat="server"
+                                Visible='<%# Convert.ToBoolean(User.IsInRole("Moderator")) %>'>
+                                <asp:Image ID="DeleteImage" OnClick="if(!window.confirm('Bạn có chắc chắn muốn xóa tin này không ?')) return false;" ImageUrl="~/Image/Admin/delete.gif" runat="server" />
+                            </asp:HyperLink>
                     </td>
                 </tr>
             </table>

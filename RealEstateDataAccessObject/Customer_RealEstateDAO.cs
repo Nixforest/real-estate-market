@@ -15,7 +15,7 @@ namespace RealEstateDataAccessObject
             ce = new CUSTOMER_REALESTATE();
         }
 
-        public override IEnumerable<RealEstateDataContext.CUSTOMER_REALESTATE> GetAll()
+        public IEnumerable<RealEstateDataContext.CUSTOMER_REALESTATE> GetAll()
         {
             var sql = @"select distinct CUSTOMER.Name[CustomerName],REAL_ESTATE_TYPE.Name[RealEstateTypeName]
                         from CUSTOMER

@@ -98,20 +98,20 @@ namespace RealEstateBusinessLogicObject
             {
                 if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
                 {
-                    if (new RealEstateDataAccessObject.DistrictDAO().ValidationID((int)districtID) || districtID == null)
+                    if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(Convert.ToInt32(districtID)) || districtID == null)
                     {
-                        if (new RealEstateDataAccessObject.WardDAO().ValidationID((int)wardID) || wardID == null)
+                        if (new RealEstateDataAccessObject.WardDAO().ValidationID(Convert.ToInt32(wardID)) || wardID == null)
                         {
-                            if (new RealEstateDataAccessObject.StreetDAO().ValidationID((int)streetID) || streetID == null)
+                            if (new RealEstateDataAccessObject.StreetDAO().ValidationID(Convert.ToInt32(streetID)) || streetID == null)
                             {
                                 RealEstateDataContext.ADDRESS entity = new RealEstateDataContext.ADDRESS();
-                                entity.ID         = this.CreateNewID();
-                                entity.NationID   = nationID;
-                                entity.CityID     = cityID;
+                                entity.ID = this.CreateNewID();
+                                entity.NationID = nationID;
+                                entity.CityID = cityID;
                                 entity.DistrictID = districtID;
-                                entity.WardID     = wardID;
-                                entity.StreetID   = streetID;
-                                entity.Detail     = detail;
+                                entity.WardID = wardID;
+                                entity.StreetID = streetID;
+                                entity.Detail = detail;
 
                                 _db.Insert(entity);
                                 return entity.ID;
@@ -225,11 +225,11 @@ namespace RealEstateBusinessLogicObject
                 {
                     if (new RealEstateDataAccessObject.CityDAO().ValidationID(cityID))
                     {
-                        if (new RealEstateDataAccessObject.DistrictDAO().ValidationID((int)districtID) || districtID == null)
+                        if (new RealEstateDataAccessObject.DistrictDAO().ValidationID(Convert.ToInt32(districtID)) || districtID == null)
                         {
-                            if (new RealEstateDataAccessObject.WardDAO().ValidationID((int)wardID) || wardID == null)
+                            if (new RealEstateDataAccessObject.WardDAO().ValidationID(Convert.ToInt32(wardID)) || wardID == null)
                             {
-                                if (new RealEstateDataAccessObject.StreetDAO().ValidationID((int)streetID) || streetID == null)
+                                if (new RealEstateDataAccessObject.StreetDAO().ValidationID(Convert.ToInt32(streetID)) || streetID == null)
                                 {
                                     RealEstateDataContext.ADDRESS entity = new RealEstateDataContext.ADDRESS();
                                     entity.ID         = id;

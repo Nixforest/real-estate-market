@@ -57,9 +57,9 @@ namespace RealEstateBusinessLogicObject
                             {
                                 if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(entity.UnitPriceID))
                                 {
-                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)entity.ProjectID) || entity.ProjectID == null)
+                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID(entity.ProjectID.GetValueOrDefault()) || entity.ProjectID == null)
                                     {
-                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)entity.ContactID) || entity.ContactID == null)
+                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID(entity.ContactID.GetValueOrDefault()) || entity.ContactID == null)
                                         {
                                             entity.ID = this.CreateNewID();
                                             _db.Insert(entity);
@@ -140,9 +140,9 @@ namespace RealEstateBusinessLogicObject
                             {
                                 if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(unitPriceID))
                                 {
-                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)projectID) || projectID == null)
+                                    if (new RealEstateDataAccessObject.ProjectDAO().ValidationID(projectID.GetValueOrDefault()) || projectID == null)
                                     {
-                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)contactID) || contactID == null)
+                                        if (new RealEstateDataAccessObject.ContactDAO().ValidationID(contactID.GetValueOrDefault()) || contactID == null)
                                         {
                                             RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
                                             entity.ID            = this.CreateNewID();
@@ -223,9 +223,9 @@ namespace RealEstateBusinessLogicObject
                                 {
                                     if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(entity.UnitPriceID))
                                     {
-                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)entity.ProjectID) || entity.ProjectID == null)
+                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID(entity.ProjectID.GetValueOrDefault()) || entity.ProjectID == null)
                                         {
-                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)entity.ContactID) || entity.ContactID == null)
+                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID(entity.ContactID.GetValueOrDefault()) || entity.ContactID == null)
                                             {
                                                 _db.Update(entity);
                                                 return entity.ID;
@@ -311,9 +311,9 @@ namespace RealEstateBusinessLogicObject
                                 {
                                     if (new RealEstateDataAccessObject.Unit_PriceDAO().ValidationID(unitPriceID))
                                     {
-                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID((int)projectID) || projectID == null)
+                                        if (new RealEstateDataAccessObject.ProjectDAO().ValidationID(projectID.GetValueOrDefault()) || projectID == null)
                                         {
-                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID((int)contactID) || contactID == null)
+                                            if (new RealEstateDataAccessObject.ContactDAO().ValidationID(contactID.GetValueOrDefault()) || contactID == null)
                                             {
                                                 RealEstateDataContext.REAL_ESTATE entity = new RealEstateDataContext.REAL_ESTATE();
                                                 entity.ID            = id;
@@ -438,6 +438,22 @@ namespace RealEstateBusinessLogicObject
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Remove All Utilities of a RealEstate
+        /// </summary>
+        /// <param name="realEstateID">RealEstate ID</param>
+        public void RemoveAllUtilitiesByRealEstateID(int realEstateID)
+        {
+            if (ValidationID(realEstateID))
+            {
+                RealEstateDataAccessObject.Utility_DetailDAO detail = new RealEstateDataAccessObject.Utility_DetailDAO();
+                foreach (RealEstateDataContext.UTILITY_DETAIL item in _db.GetARecord(realEstateID).UTILITY_DETAILs)
+                {
+                    detail.Delete(item.ID);
+                }
+            }
         }
 
         /// <summary>

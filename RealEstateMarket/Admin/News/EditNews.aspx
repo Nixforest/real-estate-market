@@ -75,8 +75,6 @@
                 <asp:Label ID="ImageUploadLabel" runat="server" Text="Hình Ảnh"></asp:Label>
             </td>
             <td>
-                <asp:ScriptManager ID="ScriptManager" runat="server">
-                </asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel" runat="server">
                 <ContentTemplate>
                     <asp:FileUpload ID="ImageUpload" runat="server" />

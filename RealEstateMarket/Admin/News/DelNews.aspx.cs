@@ -11,6 +11,10 @@ namespace RealEstateMarket.Admin.News
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!User.IsInRole("Author"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
             int id = Convert.ToInt32(Request.QueryString["id"]);
             RealEstateMarket._Default.db.DeleteNews(id);
             Response.Redirect("~/Admin/News/ListNews.aspx");

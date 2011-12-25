@@ -15,6 +15,10 @@ namespace RealEstateMarket.Member
             {
                 Response.Redirect("~/AccessDeny.aspx");
             }
+            
+            {
+                //AddressCustomControl.DistrictDropDownList.SelectedIndex = 5;
+            }
         }
     }
 }

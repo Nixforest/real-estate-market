@@ -58,22 +58,13 @@ namespace RealEstateMarket.CustomControl {
         protected global::System.Web.UI.WebControls.ObjectDataSource StreetObjectDataSource;
         
         /// <summary>
-        /// mainPanel control.
+        /// CityUpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel mainPanel;
-        
-        /// <summary>
-        /// AddressTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table AddressTable;
+        protected global::System.Web.UI.UpdatePanel CityUpdatePanel;
         
         /// <summary>
         /// NationLabel control.
@@ -100,16 +91,7 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NationDropDownList;
-        
-        /// <summary>
-        /// CityUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel CityUpdatePanel;
+        public global::System.Web.UI.WebControls.DropDownList NationDropDownList;
         
         /// <summary>
         /// CityDropDownList control.
@@ -118,7 +100,7 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CityDropDownList;
+        public global::System.Web.UI.WebControls.DropDownList CityDropDownList;
         
         /// <summary>
         /// DistrictLabel control.
@@ -139,31 +121,13 @@ namespace RealEstateMarket.CustomControl {
         protected global::System.Web.UI.WebControls.Label WardLabel;
         
         /// <summary>
-        /// DistrictUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel DistrictUpdatePanel;
-        
-        /// <summary>
         /// DistrictDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DistrictDropDownList;
-        
-        /// <summary>
-        /// WardUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel WardUpdatePanel;
+        public global::System.Web.UI.WebControls.DropDownList DistrictDropDownList;
         
         /// <summary>
         /// WardDropDownList control.
@@ -172,7 +136,7 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList WardDropDownList;
+        public global::System.Web.UI.WebControls.DropDownList WardDropDownList;
         
         /// <summary>
         /// DifferentCheckBox control.
@@ -181,7 +145,7 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox DifferentCheckBox;
+        public global::System.Web.UI.WebControls.CheckBox DifferentCheckBox;
         
         /// <summary>
         /// DetailLabel control.
@@ -208,7 +172,7 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DetailTextBox;
+        public global::System.Web.UI.WebControls.TextBox DetailTextBox;
         
         /// <summary>
         /// StreetDropDownList control.
@@ -217,6 +181,6 @@ namespace RealEstateMarket.CustomControl {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StreetDropDownList;
+        public global::System.Web.UI.WebControls.DropDownList StreetDropDownList;
     }
 }

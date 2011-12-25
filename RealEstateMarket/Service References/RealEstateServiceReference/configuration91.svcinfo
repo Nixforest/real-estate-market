@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="73JASJfY8QX6tyZ9y4psreDuFcY=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="qTMyppi/7dQ6Aa96vxMTrQn3Kj4=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="RealEstateWebServiceSoap">
+    <bindingConfiguration bindingType="basicHttpBinding" name="RealEstateWebServiceSoap1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>RealEstateWebServiceSoap</serializedValue>
+          <serializedValue>RealEstateWebServiceSoap1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>00:01:00</serializedValue>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="RealEstateWebServiceSoap" contract="RealEstateServiceReference.RealEstateWebServiceSoap" bindingType="basicHttpBinding" address="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" bindingConfiguration="RealEstateWebServiceSoap">
+    <endpoint name="RealEstateWebServiceSoap" contract="RealEstateServiceReference.RealEstateWebServiceSoap" bindingType="basicHttpBinding" address="http://192.168.1.105:2011/RealEstateWebService.asmx" bindingConfiguration="RealEstateWebServiceSoap1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:43955/RealEstateService/RealEstateWebService.asmx</serializedValue>
+          <serializedValue>http://192.168.1.105:2011/RealEstateWebService.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -124,7 +124,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>RealEstateWebServiceSoap</serializedValue>
+          <serializedValue>RealEstateWebServiceSoap1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>RealEstateServiceReference.RealEstateWebServiceSoap</serializedValue>

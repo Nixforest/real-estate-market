@@ -15,10 +15,6 @@ namespace RealEstateMarket.Admin
             {
                 Response.Redirect("~/AccessDeny.aspx");
             }
-            //if (System.Web.Security.Roles.)
-            {
-                
-            }
         }
     }
 }

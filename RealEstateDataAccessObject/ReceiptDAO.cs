@@ -8,7 +8,7 @@ namespace RealEstateDataAccessObject
 {
     public class ReceiptDAO : DataParent<RealEstateDataContext.RECEIPT>
     {
-        public override IEnumerable<RealEstateDataContext.RECEIPT> GetAllByDate(int month, int year)
+        public IEnumerable<RealEstateDataContext.RECEIPT> GetAllByDate(int month, int year)
         {
             var sql = @"select CUSTOMER.Name[CustumerName], Count(CUSTOMER.Name)*(PARAMETER.Value) as Total
                        from CUSTOMER, NEWS_SALE, REAL_ESTATE, PROPERTY_CUSTOMER, PARAMETER

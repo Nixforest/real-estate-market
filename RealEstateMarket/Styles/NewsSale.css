@@ -13,18 +13,14 @@ body
 
 a:link, a:visited
 {
-    color: #034af3;
+    color: black;
+    text-decoration:none;
 }
 
 a:hover
 {
-    color: #1d60ff;
+    color: #0086C5;
     text-decoration: none;
-}
-
-a:active
-{
-    color: #034af3;
 }
 
 p
@@ -97,10 +93,13 @@ first child of the left and right table columns */
 .header
 {
     position: relative;
-    margin: 0px;
+    margin-bottom: 26px;
     padding: 0px;
     background:url("../Image/anhbanner.jpg") top center no-repeat;
     width: 100%;
+    line-height:148px;
+    height:182px;
+    float:left;
 }
 
 .header h1
@@ -254,6 +253,9 @@ div.accountInfo
 {
     width: 42%;
 }
+li {
+    list-style-type: none;
+}
 
 /* MISC  
 ----------------------------------------------------------*/
@@ -278,6 +280,14 @@ div.accountInfo
     text-align: right;
     padding: 10px;
     color: blue;
+    position:relative;
+}
+
+.loginDisplayIn
+{
+    position:relative;
+    top:-65px;
+    right:7px;
 }
 
 .loginDisplay a:link
@@ -338,3 +348,27 @@ div
     display:block;
 }
 
+.textNixforest
+{
+    font-size:xx-large;
+    font-weight:bold;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 2px;
+    line-height: 1.4em;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}

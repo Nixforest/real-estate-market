@@ -11,7 +11,10 @@ namespace RealEstateMarket.Admin.News
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!User.IsInRole("Moderator"))
+            {
+                Response.Redirect("~/AccessDeny.aspx");
+            }
         }
     }
 }

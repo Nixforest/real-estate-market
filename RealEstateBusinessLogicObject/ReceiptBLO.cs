@@ -17,7 +17,7 @@ namespace RealEstateBusinessLogicObject
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public override IEnumerable<RealEstateDataContext.RECEIPT> GetAllByDate(int month, int year)
+        public IEnumerable<RealEstateDataContext.RECEIPT> GetAllByDate(int month, int year)
         {
             return new ObservableCollection<RealEstateDataContext.RECEIPT>(_db.GetAllByDate(month, year));
         }

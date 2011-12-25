@@ -85,6 +85,15 @@ namespace RealEstateMarket.Master {
         protected global::RealEstateMarket.CustomControl.MenuAdminControl AdminMenu;
         
         /// <summary>
+        /// CompanyManagerment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerCompany CompanyManagerment;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,31 @@ namespace RealEstateMarket.Master {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder RightContent;
         
         /// <summary>
-        /// Menu1 control.
+        /// ProjectManagerment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RealEstateMarket.CustomControl.RightMenuAdminControl Menu1;
+        protected global::RealEstateMarket.CustomControl.ManagerProject ProjectManagerment;
+        
+        /// <summary>
+        /// NewsSaleManagerment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerNewsSale NewsSaleManagerment;
+        
+        /// <summary>
+        /// NewsManagerment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerNew NewsManagerment;
         
         /// <summary>
         /// FooterContent control.
