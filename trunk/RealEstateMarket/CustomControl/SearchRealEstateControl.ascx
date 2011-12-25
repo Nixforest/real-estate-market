@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SearchRealEstateControl.ascx.cs" Inherits="RealEstateMarket.CustomControl.SearchRealEstateControl" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 <style type="text/css">
 
 /* ********** */
@@ -46,7 +47,11 @@
 <div class="searchHome">
     <div class="infoSearchHome">
         <h3>Tìm kiếm địa ốc</h3>
-            <asp:TextBox ID="KeyTextBox" CssClass="input150" runat="server">Từ khóa tìm kiếm</asp:TextBox>
+            <asp:TextBox ID="KeyTextBox" CssClass="input150" runat="server"></asp:TextBox>
+                <asp:TextBoxWatermarkExtender ID="KeyTextBox_TextBoxWatermarkExtender" 
+                    runat="server" Enabled="True" TargetControlID="KeyTextBox"
+                    WatermarkText="Từ khóa tìm kiếm">
+                </asp:TextBoxWatermarkExtender>
             <asp:DropDownList ID="CityDropDownList" runat="server" CssClass="input150"></asp:DropDownList>
             <asp:DropDownList ID="NewsSaleTypeDropDownList" runat="server" CssClass="input150"></asp:DropDownList>
             <asp:DropDownList ID="RealEstateTypeDropDownList" runat="server" CssClass="input150"></asp:DropDownList>
@@ -68,8 +73,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function clear(a) {
-        document.getElementById(a).value = "";
-    }
-</script>

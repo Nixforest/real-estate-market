@@ -49,7 +49,7 @@
                                         </asp:HyperLink><br />
                                         <asp:HyperLink ID="CityHyperLink" runat="server" 
                                             NavigateUrl='<%# String.Format("~/Pages/NewsSale/NewsSales.aspx?search=1&cityId={0}", Eval("REAL_ESTATE.ADDRESS.CityID")) %>'>
-                                            <%# Eval("REAL_ESTATE.ADDRESS.CITY.Name")%> 
+                                            <%# RealEstateMarket._Default.db.GetCity(RealEstateMarket._Default.db.GetAddress(RealEstateMarket._Default.db.GetRealEstate(Convert.ToInt32(Eval("RealEstateID"))).AddressID).CityID).Name%>
                                         </asp:HyperLink>
                                         <asp:Label ID="PriceLabel" runat="server">
                                             - <%# RealEstateMarket.Utility.ConvertPriceText(Convert.ToInt32(Eval("ID"))) %>

@@ -9,13 +9,6 @@ namespace RealEstateMarket.CustomControl
 {
     public partial class AddressControl : System.Web.UI.UserControl
     {
-        public int nationID;
-        public int cityID;
-        public int districtID;
-        public int wardID;
-        public int streetID;
-        public string detail;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Attributes.Add("NationID", NationDropDownList.SelectedValue);
@@ -27,6 +20,11 @@ namespace RealEstateMarket.CustomControl
             this.Attributes.Add("Different", DifferentCheckBox.Checked.ToString());
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);            
+        }
+
         protected void NationDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             CityDropDownList.DataBind();
@@ -34,21 +32,24 @@ namespace RealEstateMarket.CustomControl
         protected void CityDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             DistrictDropDownList.DataBind();
-            //SetProperties();
         }
         protected void DistrictDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             WardDropDownList.DataBind();
             StreetDropDownList.DataBind();
-            //SetProperties();
         }
         protected void WardDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //SetProperties();
         }
         protected void StreetDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //SetProperties();
+        }
+
+        protected void DifferentCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            DistrictDropDownList.Enabled = !DifferentCheckBox.Checked;
+            WardDropDownList.Enabled     = !DifferentCheckBox.Checked;
+            StreetDropDownList.Enabled   = !DifferentCheckBox.Checked;
         }
     }
 }

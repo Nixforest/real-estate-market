@@ -21,17 +21,9 @@
         </asp:ScriptManager>
         <div class="header">        
             <div class="title">
-            <h1>
-            R
-            </h1>
-            <h1>
-                R
-            </h1>
-            <h1>
-                R
-            </h1>
                 </div>
             <div class="loginDisplay">
+                <div class="loginDisplayIn">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
@@ -41,6 +33,7 @@
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Pages/Home"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
+            </div>
             </div>
             <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">

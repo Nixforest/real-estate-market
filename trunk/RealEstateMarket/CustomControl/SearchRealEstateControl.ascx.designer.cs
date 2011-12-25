@@ -22,6 +22,15 @@ namespace RealEstateMarket.CustomControl {
         protected global::System.Web.UI.WebControls.TextBox KeyTextBox;
         
         /// <summary>
+        /// KeyTextBox_TextBoxWatermarkExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender KeyTextBox_TextBoxWatermarkExtender;
+        
+        /// <summary>
         /// CityDropDownList control.
         /// </summary>
         /// <remarks>

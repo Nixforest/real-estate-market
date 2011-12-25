@@ -2,6 +2,36 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://realestatemarket.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://realestatemarket.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://realestatemarket.com/">
+      <s:element name="GetParameter_StreetHouse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_StreetHouseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_StreetHouseResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_TempHouse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_TempHouseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_TempHouseResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameter_Villa">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetParameter_VillaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_VillaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetParameter_LuxuryApartment">
         <s:complexType />
       </s:element>
@@ -122,11 +152,105 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SearchNewsSaleByPrice">
+      <s:element name="GetAllCusReal">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCusRealResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:decimal" />
-            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCusRealResult" type="tns:ArrayOfCUSTOMER_REALESTATE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCUSTOMER_REALESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CUSTOMER_REALESTATE" nillable="true" type="tns:CUSTOMER_REALESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUSTOMER_REALESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RealEstateTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllCountReal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCountRealResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCountRealResult" type="tns:ArrayOfCOUNT_REALESTATE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCOUNT_REALESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="COUNT_REALESTATE" nillable="true" type="tns:COUNT_REALESTATE" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="COUNT_REALESTATE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllMostNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllMostNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMostNewsResult" type="tns:ArrayOfVIEW_NEWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVIEW_NEWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VIEW_NEWS" nillable="true" type="tns:VIEW_NEWS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VIEW_NEWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalView" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReceiptByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReceiptByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReceiptByDateResult" type="tns:ArrayOfRECEIPT" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRECEIPT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RECEIPT" nillable="true" type="tns:RECEIPT" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RECEIPT">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustumerName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchNewsSaleByTypeID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="typeID" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
           </s:sequence>
         </s:complexType>
@@ -405,6 +529,37 @@
           <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="SearchNewsSaleByTypeIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsSaleByRealEstateTypeID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="realEstateTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsSaleByRealEstateTypeIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByRealEstateTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsSaleByPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SearchNewsSaleByPriceResponse">
         <s:complexType>
           <s:sequence>
@@ -1268,6 +1423,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="RemoveAllUtilitiesByRealEstateID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="realEstateID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveAllUtilitiesByRealEstateIDResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="GetAllStreets">
         <s:complexType />
       </s:element>
@@ -1647,36 +1812,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="GetParameter_MaxSummaryLengthResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_StreetHouse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_StreetHouseResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_StreetHouseResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_TempHouse">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_TempHouseResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_TempHouseResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetParameter_Villa">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetParameter_VillaResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetParameter_VillaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2631,6 +2766,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllNewsSalesPosted">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsSalesPostedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsSalesPostedResult" type="tns:ArrayOfNEWS_SALE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InsertNewsSale">
         <s:complexType>
           <s:sequence>
@@ -2673,6 +2818,17 @@
             <s:element minOccurs="1" maxOccurs="1" name="UpdateNewsSaleResult" type="s:int" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewsSaleStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNewsSaleStatusResponse">
+        <s:complexType />
       </s:element>
       <s:element name="DeleteNewsSale">
         <s:complexType>
@@ -2867,38 +3023,26 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SearchNewsSaleByTypeID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="typeID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchNewsSaleByTypeIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchNewsSaleByRealEstateTypeID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="realEstateTypeID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="listNewsSale" type="tns:ArrayOfNEWS_SALE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchNewsSaleByRealEstateTypeIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsSaleByRealEstateTypeIDResult" type="tns:ArrayOfNEWS_SALE" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetParameter_StreetHouseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_StreetHouse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_StreetHouseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_StreetHouseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_TempHouseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_TempHouse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_TempHouseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_TempHouseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_VillaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameter_Villa" />
+  </wsdl:message>
+  <wsdl:message name="GetParameter_VillaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameter_VillaResponse" />
+  </wsdl:message>
   <wsdl:message name="GetParameter_LuxuryApartmentSoapIn">
     <wsdl:part name="parameters" element="tns:GetParameter_LuxuryApartment" />
   </wsdl:message>
@@ -2970,6 +3114,42 @@
   </wsdl:message>
   <wsdl:message name="GetParameter_RentingSoapOut">
     <wsdl:part name="parameters" element="tns:GetParameter_RentingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCusRealSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCusReal" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCusRealSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCusRealResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountRealSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCountReal" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCountRealSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCountRealResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMostNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMostNews" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMostNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMostNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReceiptByDate" />
+  </wsdl:message>
+  <wsdl:message name="GetReceiptByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReceiptByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeID" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeID" />
+  </wsdl:message>
+  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeIDResponse" />
   </wsdl:message>
   <wsdl:message name="SearchNewsSaleByPriceSoapIn">
     <wsdl:part name="parameters" element="tns:SearchNewsSaleByPrice" />
@@ -3289,6 +3469,12 @@
   <wsdl:message name="GetRealEstateTypeByRealEstateIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetRealEstateTypeByRealEstateIDResponse" />
   </wsdl:message>
+  <wsdl:message name="RemoveAllUtilitiesByRealEstateIDSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveAllUtilitiesByRealEstateID" />
+  </wsdl:message>
+  <wsdl:message name="RemoveAllUtilitiesByRealEstateIDSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveAllUtilitiesByRealEstateIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllStreetsSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllStreets" />
   </wsdl:message>
@@ -3462,24 +3648,6 @@
   </wsdl:message>
   <wsdl:message name="GetParameter_MaxSummaryLengthSoapOut">
     <wsdl:part name="parameters" element="tns:GetParameter_MaxSummaryLengthResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_StreetHouseSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_StreetHouse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_StreetHouseSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_StreetHouseResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_TempHouseSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_TempHouse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_TempHouseSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_TempHouseResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_VillaSoapIn">
-    <wsdl:part name="parameters" element="tns:GetParameter_Villa" />
-  </wsdl:message>
-  <wsdl:message name="GetParameter_VillaSoapOut">
-    <wsdl:part name="parameters" element="tns:GetParameter_VillaResponse" />
   </wsdl:message>
   <wsdl:message name="SetConnectionSoapIn">
     <wsdl:part name="parameters" element="tns:SetConnection" />
@@ -3877,6 +4045,12 @@
   <wsdl:message name="GetAllNewsSalesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllNewsSalesResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllNewsSalesPostedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNewsSalesPosted" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNewsSalesPostedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNewsSalesPostedResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertNewsSaleSoapIn">
     <wsdl:part name="parameters" element="tns:InsertNewsSale" />
   </wsdl:message>
@@ -3888,6 +4062,12 @@
   </wsdl:message>
   <wsdl:message name="UpdateNewsSaleSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateNewsSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsSaleStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNewsSaleStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNewsSaleStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNewsSaleStatusResponse" />
   </wsdl:message>
   <wsdl:message name="DeleteNewsSaleSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteNewsSale" />
@@ -3973,19 +4153,19 @@
   <wsdl:message name="SearchNewsSaleByCityIDSoapOut">
     <wsdl:part name="parameters" element="tns:SearchNewsSaleByCityIDResponse" />
   </wsdl:message>
-  <wsdl:message name="SearchNewsSaleByTypeIDSoapIn">
-    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeID" />
-  </wsdl:message>
-  <wsdl:message name="SearchNewsSaleByTypeIDSoapOut">
-    <wsdl:part name="parameters" element="tns:SearchNewsSaleByTypeIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapIn">
-    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeID" />
-  </wsdl:message>
-  <wsdl:message name="SearchNewsSaleByRealEstateTypeIDSoapOut">
-    <wsdl:part name="parameters" element="tns:SearchNewsSaleByRealEstateTypeIDResponse" />
-  </wsdl:message>
   <wsdl:portType name="RealEstateWebServiceSoap">
+    <wsdl:operation name="GetParameter_StreetHouse">
+      <wsdl:input message="tns:GetParameter_StreetHouseSoapIn" />
+      <wsdl:output message="tns:GetParameter_StreetHouseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_TempHouse">
+      <wsdl:input message="tns:GetParameter_TempHouseSoapIn" />
+      <wsdl:output message="tns:GetParameter_TempHouseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Villa">
+      <wsdl:input message="tns:GetParameter_VillaSoapIn" />
+      <wsdl:output message="tns:GetParameter_VillaSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_LuxuryApartment">
       <wsdl:input message="tns:GetParameter_LuxuryApartmentSoapIn" />
       <wsdl:output message="tns:GetParameter_LuxuryApartmentSoapOut" />
@@ -4033,6 +4213,30 @@
     <wsdl:operation name="GetParameter_Renting">
       <wsdl:input message="tns:GetParameter_RentingSoapIn" />
       <wsdl:output message="tns:GetParameter_RentingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCusReal">
+      <wsdl:input message="tns:GetAllCusRealSoapIn" />
+      <wsdl:output message="tns:GetAllCusRealSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountReal">
+      <wsdl:input message="tns:GetAllCountRealSoapIn" />
+      <wsdl:output message="tns:GetAllCountRealSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMostNews">
+      <wsdl:input message="tns:GetAllMostNewsSoapIn" />
+      <wsdl:output message="tns:GetAllMostNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptByDate">
+      <wsdl:input message="tns:GetReceiptByDateSoapIn" />
+      <wsdl:output message="tns:GetReceiptByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <wsdl:input message="tns:SearchNewsSaleByTypeIDSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByTypeIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <wsdl:input message="tns:SearchNewsSaleByRealEstateTypeIDSoapIn" />
+      <wsdl:output message="tns:SearchNewsSaleByRealEstateTypeIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchNewsSaleByPrice">
       <wsdl:input message="tns:SearchNewsSaleByPriceSoapIn" />
@@ -4246,6 +4450,10 @@
       <wsdl:input message="tns:GetRealEstateTypeByRealEstateIDSoapIn" />
       <wsdl:output message="tns:GetRealEstateTypeByRealEstateIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="RemoveAllUtilitiesByRealEstateID">
+      <wsdl:input message="tns:RemoveAllUtilitiesByRealEstateIDSoapIn" />
+      <wsdl:output message="tns:RemoveAllUtilitiesByRealEstateIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllStreets">
       <wsdl:input message="tns:GetAllStreetsSoapIn" />
       <wsdl:output message="tns:GetAllStreetsSoapOut" />
@@ -4361,18 +4569,6 @@
     <wsdl:operation name="GetParameter_MaxSummaryLength">
       <wsdl:input message="tns:GetParameter_MaxSummaryLengthSoapIn" />
       <wsdl:output message="tns:GetParameter_MaxSummaryLengthSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_StreetHouse">
-      <wsdl:input message="tns:GetParameter_StreetHouseSoapIn" />
-      <wsdl:output message="tns:GetParameter_StreetHouseSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_TempHouse">
-      <wsdl:input message="tns:GetParameter_TempHouseSoapIn" />
-      <wsdl:output message="tns:GetParameter_TempHouseSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Villa">
-      <wsdl:input message="tns:GetParameter_VillaSoapIn" />
-      <wsdl:output message="tns:GetParameter_VillaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SetConnection">
       <wsdl:input message="tns:SetConnectionSoapIn" />
@@ -4638,6 +4834,10 @@
       <wsdl:input message="tns:GetAllNewsSalesSoapIn" />
       <wsdl:output message="tns:GetAllNewsSalesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllNewsSalesPosted">
+      <wsdl:input message="tns:GetAllNewsSalesPostedSoapIn" />
+      <wsdl:output message="tns:GetAllNewsSalesPostedSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertNewsSale">
       <wsdl:input message="tns:InsertNewsSaleSoapIn" />
       <wsdl:output message="tns:InsertNewsSaleSoapOut" />
@@ -4645,6 +4845,10 @@
     <wsdl:operation name="UpdateNewsSale">
       <wsdl:input message="tns:UpdateNewsSaleSoapIn" />
       <wsdl:output message="tns:UpdateNewsSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsSaleStatus">
+      <wsdl:input message="tns:UpdateNewsSaleStatusSoapIn" />
+      <wsdl:output message="tns:UpdateNewsSaleStatusSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeleteNewsSale">
       <wsdl:input message="tns:DeleteNewsSaleSoapIn" />
@@ -4702,17 +4906,36 @@
       <wsdl:input message="tns:SearchNewsSaleByCityIDSoapIn" />
       <wsdl:output message="tns:SearchNewsSaleByCityIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByTypeID">
-      <wsdl:input message="tns:SearchNewsSaleByTypeIDSoapIn" />
-      <wsdl:output message="tns:SearchNewsSaleByTypeIDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
-      <wsdl:input message="tns:SearchNewsSaleByRealEstateTypeIDSoapIn" />
-      <wsdl:output message="tns:SearchNewsSaleByRealEstateTypeIDSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RealEstateWebServiceSoap" type="tns:RealEstateWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParameter_StreetHouse">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_StreetHouse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_TempHouse">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_TempHouse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Villa">
+      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_LuxuryApartment">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
       <wsdl:input>
@@ -4814,6 +5037,60 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Renting">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_Renting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCusReal">
+      <soap:operation soapAction="http://realestatemarket.com/GetAllCusReal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountReal">
+      <soap:operation soapAction="http://realestatemarket.com/GetAllCountReal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMostNews">
+      <soap:operation soapAction="http://realestatemarket.com/GetAllMostNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptByDate">
+      <soap:operation soapAction="http://realestatemarket.com/GetReceiptByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5298,6 +5575,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemoveAllUtilitiesByRealEstateID">
+      <soap:operation soapAction="http://realestatemarket.com/RemoveAllUtilitiesByRealEstateID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllStreets">
       <soap:operation soapAction="http://realestatemarket.com/GetAllStreets" style="document" />
       <wsdl:input>
@@ -5552,33 +5838,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_MaxSummaryLength">
       <soap:operation soapAction="http://realestatemarket.com/GetParameter_MaxSummaryLength" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_StreetHouse">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_StreetHouse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_TempHouse">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_TempHouse" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Villa">
-      <soap:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6180,6 +6439,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllNewsSalesPosted">
+      <soap:operation soapAction="http://realestatemarket.com/GetAllNewsSalesPosted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertNewsSale">
       <soap:operation soapAction="http://realestatemarket.com/InsertNewsSale" style="document" />
       <wsdl:input>
@@ -6191,6 +6459,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateNewsSale">
       <soap:operation soapAction="http://realestatemarket.com/UpdateNewsSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsSaleStatus">
+      <soap:operation soapAction="http://realestatemarket.com/UpdateNewsSaleStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6324,27 +6601,36 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByTypeID">
-      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
-      <soap:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="RealEstateWebServiceSoap12" type="tns:RealEstateWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParameter_StreetHouse">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_StreetHouse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_TempHouse">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_TempHouse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameter_Villa">
+      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetParameter_LuxuryApartment">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_LuxuryApartment" style="document" />
       <wsdl:input>
@@ -6446,6 +6732,60 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_Renting">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Renting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCusReal">
+      <soap12:operation soapAction="http://realestatemarket.com/GetAllCusReal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCountReal">
+      <soap12:operation soapAction="http://realestatemarket.com/GetAllCountReal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMostNews">
+      <soap12:operation soapAction="http://realestatemarket.com/GetAllMostNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptByDate">
+      <soap12:operation soapAction="http://realestatemarket.com/GetReceiptByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByTypeID">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
+      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6930,6 +7270,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemoveAllUtilitiesByRealEstateID">
+      <soap12:operation soapAction="http://realestatemarket.com/RemoveAllUtilitiesByRealEstateID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllStreets">
       <soap12:operation soapAction="http://realestatemarket.com/GetAllStreets" style="document" />
       <wsdl:input>
@@ -7184,33 +7533,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetParameter_MaxSummaryLength">
       <soap12:operation soapAction="http://realestatemarket.com/GetParameter_MaxSummaryLength" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_StreetHouse">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_StreetHouse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_TempHouse">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_TempHouse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetParameter_Villa">
-      <soap12:operation soapAction="http://realestatemarket.com/GetParameter_Villa" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7812,6 +8134,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllNewsSalesPosted">
+      <soap12:operation soapAction="http://realestatemarket.com/GetAllNewsSalesPosted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertNewsSale">
       <soap12:operation soapAction="http://realestatemarket.com/InsertNewsSale" style="document" />
       <wsdl:input>
@@ -7823,6 +8154,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateNewsSale">
       <soap12:operation soapAction="http://realestatemarket.com/UpdateNewsSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewsSaleStatus">
+      <soap12:operation soapAction="http://realestatemarket.com/UpdateNewsSaleStatus" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -7956,31 +8296,13 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByTypeID">
-      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByTypeID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchNewsSaleByRealEstateTypeID">
-      <soap12:operation soapAction="http://realestatemarket.com/SearchNewsSaleByRealEstateTypeID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="RealEstateWebService">
     <wsdl:port name="RealEstateWebServiceSoap" binding="tns:RealEstateWebServiceSoap">
-      <soap:address location="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" />
+      <soap:address location="http://192.168.1.105:2011/RealEstateWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="RealEstateWebServiceSoap12" binding="tns:RealEstateWebServiceSoap12">
-      <soap12:address location="http://localhost:43955/RealEstateService/RealEstateWebService.asmx" />
+      <soap12:address location="http://192.168.1.105:2011/RealEstateWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

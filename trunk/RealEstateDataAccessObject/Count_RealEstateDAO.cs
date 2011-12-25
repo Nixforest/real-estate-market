@@ -14,7 +14,7 @@ namespace RealEstateDataAccessObject
             cr = new COUNT_REALESTATE();
         }
 
-        public override IEnumerable<RealEstateDataContext.COUNT_REALESTATE> GetAllByDate(int month, int year)
+        public IEnumerable<RealEstateDataContext.COUNT_REALESTATE> GetAllByDate(int month, int year)
         {
             var sql = @"select NEWS_SALE_TYPE.Name[Name], SUM(REAL_ESTATE.Price) as Total, UNIT.Name[UnitName]
                         from NEWS_SALE, NEWS_SALE_TYPE, REAL_ESTATE,UNIT

@@ -11,7 +11,7 @@ namespace RealEstateMarket.Pages
     public partial class NewsSales : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             // Filter query
             int typeId = 0;
             int realEstateTypeId = 0;
@@ -37,7 +37,7 @@ namespace RealEstateMarket.Pages
             
             if (!IsPostBack)
             {
-                TotalLabel.Text = "<b>" + RealEstateMarket._Default.db.GetAllNewsSales().Count().ToString() + "</b>" + " tài sản:";
+                TotalLabel.Text = "<b>" + RealEstateMarket._Default.db.GetAllNewsSalesPosted().Count().ToString() + "</b>" + " tài sản:";
                 // Set title
                 Title = "Siêu thị - Nhà đất, Bất động sản, Địa ốc";
                 NewsSaleDataList.DataSource = NewsSaleObjectDataSource;
@@ -343,7 +343,7 @@ namespace RealEstateMarket.Pages
                 #region Search
                 if (search == 1)
                 {
-                    List<RealEstateServiceReference.NEWS_SALE> searchResult = (RealEstateMarket._Default.db.GetAllNewsSales()).ToList();
+                    List<RealEstateServiceReference.NEWS_SALE> searchResult = (RealEstateMarket._Default.db.GetAllNewsSalesPosted()).ToList();
                     string searchString = "";
                     //--------------- Search by City----------------------
                     if (cityId != 0)

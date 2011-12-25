@@ -14,7 +14,7 @@ namespace RealEstateDataAccessObject
             vn = new VIEW_NEWS();
         }
 
-        public override IEnumerable<RealEstateDataContext.VIEW_NEWS> GetAll()
+        public IEnumerable<RealEstateDataContext.VIEW_NEWS> GetAll()
         {
             var sql = @"select distinct NEWS_TYPE.Name[Name], SUM(NEWS.[View]) as TotalView
                         from NEWS, NEWS_TYPE

@@ -76,13 +76,40 @@ namespace RealEstateMarket.Master {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder LeftContent;
         
         /// <summary>
-        /// AdminMenu control.
+        /// NewsSale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RealEstateMarket.CustomControl.MenuUserControl AdminMenu;
+        protected global::RealEstateMarket.CustomControl.ManagerNewsSale NewsSale;
+        
+        /// <summary>
+        /// News control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerNew News;
+        
+        /// <summary>
+        /// ProjectManagerment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerProject ProjectManagerment;
+        
+        /// <summary>
+        /// CompanyManagerment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RealEstateMarket.CustomControl.ManagerCompany CompanyManagerment;
         
         /// <summary>
         /// MainContent control.

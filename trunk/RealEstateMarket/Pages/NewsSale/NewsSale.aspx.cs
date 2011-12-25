@@ -9,13 +9,30 @@ namespace RealEstateMarket.Pages
 {
     public partial class NewsSale : System.Web.UI.Page
     {
-        RealEstateServiceReference.NEWS_SALE newsSale = new RealEstateServiceReference.NEWS_SALE();
-        
+        private RealEstateServiceReference.NEWS_SALE newsSale;
+        private int id;
+        private RealEstateServiceReference.REAL_ESTATE realEstate;
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            try
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                newsSale = RealEstateMarket._Default.db.GetNewsSale(id);
+                realEstate = RealEstateMarket._Default.db.GetRealEstate(newsSale.RealEstateID);
+            }
+            catch (Exception ex)
+            {
+                if (ex.ToString().Contains("RealEstateDataContext.Utility"))
+                {
+                    Response.Redirect("~/Pages/ErrorPage.aspx");
+                }
+            }
+            
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(Request.QueryString["id"]);
-            
-            newsSale = RealEstateMarket._Default.db.GetNewsSale(id);
             if (!IsPostBack)
             {
 
@@ -28,87 +45,87 @@ namespace RealEstateMarket.Pages
                                             (newsSale.TypeID == 3) ? (String.Format("~/Image/ico_canthue.gif")) : (String.Format("~/Image/ico_chothue.gif"))));
                 NewsSaleTypeImage.ToolTip = RealEstateMarket._Default.db.GetNewsSaleType(newsSale.TypeID).Name;
                 RealEstateIDLabel.Text   = (newsSale.RealEstateID + 300000).ToString();
-                AddressTitle.Text = RealEstateMarket.Pages.Project.Project.GetAddressString(newsSale.REAL_ESTATE.AddressID);
+                AddressTitle.Text = RealEstateMarket.Pages.Project.Project.GetAddressString(realEstate.AddressID);
                 // Price
-                UnitDropDownList.SelectedValue = newsSale.REAL_ESTATE.UnitID.ToString();
+                UnitLabel.Text = RealEstateMarket._Default.db.GetUnit(realEstate.UnitID).Name;//UnitDropDownList.SelectedValue = realEstate.UnitID.ToString();
                 //GetPrice();
                 //UnitDropDownList_SelectedIndexChanged(new object(), new EventArgs());
                 PriceLabel.Text = Utility.ConvertPriceText(Convert.ToInt32(newsSale.ID));
                 
-                UnitPriceLabel.Text = " / " + newsSale.REAL_ESTATE.UNIT_PRICE.Name;
-                LivingRoomLabel.Text     = newsSale.REAL_ESTATE.LivingRoom.ToString();
-                BedRoomLabel.Text        = newsSale.REAL_ESTATE.BedRoom.ToString();
-                BathRoomLabel.Text       = newsSale.REAL_ESTATE.BathRoom.ToString();
-                DifferentRoomLabel.Text = newsSale.REAL_ESTATE.DifferentRoom.ToString();
-                CampusFrontLabel.Text    = (newsSale.REAL_ESTATE.CampusFront == 0) ? ("_") : (newsSale.REAL_ESTATE.CampusFront.ToString());
-                CampustLengthLabel.Text  = (newsSale.REAL_ESTATE.CampusLength == 0) ? ("_") : (newsSale.REAL_ESTATE.CampusLength.ToString());
-                TotalUseAreaLabel.Text   = newsSale.REAL_ESTATE.TotalUseArea.ToString();
-                if (newsSale.REAL_ESTATE.ContactID != 0)        // Contact exist
+                UnitPriceLabel.Text = " / " + realEstate.UNIT_PRICE.Name;
+                LivingRoomLabel.Text     = realEstate.LivingRoom.ToString();
+                BedRoomLabel.Text        = realEstate.BedRoom.ToString();
+                BathRoomLabel.Text       = realEstate.BathRoom.ToString();
+                DifferentRoomLabel.Text = realEstate.DifferentRoom.ToString();
+                CampusFrontLabel.Text    = (realEstate.CampusFront == 0) ? ("_") : (realEstate.CampusFront.ToString());
+                CampustLengthLabel.Text  = (realEstate.CampusLength == 0) ? ("_") : (realEstate.CampusLength.ToString());
+                TotalUseAreaLabel.Text   = realEstate.TotalUseArea.ToString();
+                if (realEstate.ContactID != 0)        // Contact exist
                 {
-                    ContactNameLabel.Text = newsSale.REAL_ESTATE.CONTACT.Name;
-                    AddressContactLabel.Text = newsSale.REAL_ESTATE.CONTACT.Address;
-                    ContactHomePhoneLabel.Text = newsSale.REAL_ESTATE.CONTACT.HomePhone;
-                    ContactPhoneLabel.Text = newsSale.REAL_ESTATE.CONTACT.Phone;
-                    ContactNoteLabel.Text = newsSale.REAL_ESTATE.CONTACT.Note;
+                    ContactNameLabel.Text = realEstate.CONTACT.Name;
+                    AddressContactLabel.Text = realEstate.CONTACT.Address;
+                    ContactHomePhoneLabel.Text = realEstate.CONTACT.HomePhone;
+                    ContactPhoneLabel.Text = realEstate.CONTACT.Phone;
+                    ContactNoteLabel.Text = realEstate.CONTACT.Note;
                 }
                 ContentLabel.Text       = newsSale.Content;
 
                 //---------------- Detail Information ----------------------------
-                TotalUseAreaLabel1.Text  = newsSale.REAL_ESTATE.TotalUseArea.ToString();
-                RETypeLabel.Text         = RealEstateMarket._Default.db.GetRealEstateTypeByRealEstateID(newsSale.RealEstateID).Name; //newsSale.REAL_ESTATE.REAL_ESTATE_TYPE.Name;
+                TotalUseAreaLabel1.Text  = realEstate.TotalUseArea.ToString();
+                RETypeLabel.Text         = RealEstateMarket._Default.db.GetRealEstateTypeByRealEstateID(newsSale.RealEstateID).Name; //realEstate.REAL_ESTATE_TYPE.Name;
                 CampusFrontLabel1.Text   = CampusFrontLabel.Text;
-                CampusBehindLabel.Text   = (newsSale.REAL_ESTATE.CampusBehind == 0) ? ("_") : (newsSale.REAL_ESTATE.CampusBehind.ToString());
+                CampusBehindLabel.Text   = (realEstate.CampusBehind == 0) ? ("_") : (realEstate.CampusBehind.ToString());
                 CampusLengthLabel1.Text  = CampustLengthLabel.Text;
-                BuildFrontLabel.Text     = (newsSale.REAL_ESTATE.BuildFront == 0) ? ("_") : (newsSale.REAL_ESTATE.BuildFront.ToString());
-                BuildBedindLabel.Text    = (newsSale.REAL_ESTATE.BuildBehind == 0) ? ("_") : (newsSale.REAL_ESTATE.BuildBehind.ToString());
-                BuildLengthLabel.Text    = (newsSale.REAL_ESTATE.BuildLength == 0) ? ("_") : (newsSale.REAL_ESTATE.BuildLength.ToString());
-                LegalLabel.Text          = (newsSale.REAL_ESTATE.LegalID == 0) ? ("_") : (newsSale.REAL_ESTATE.LEGAL.Name);
-                DirectionLabel.Text      = newsSale.REAL_ESTATE.Direction;
-                FrontStreetLabel.Text    = newsSale.REAL_ESTATE.FrontStreet;
-                LocationLabel.Text       = (newsSale.REAL_ESTATE.LocationID == 0) ? ("_") : (newsSale.REAL_ESTATE.LOCATION.Name);
-                StoreyLabel.Text         = newsSale.REAL_ESTATE.Storey.ToString();
+                BuildFrontLabel.Text     = (realEstate.BuildFront == 0) ? ("_") : (realEstate.BuildFront.ToString());
+                BuildBedindLabel.Text    = (realEstate.BuildBehind == 0) ? ("_") : (realEstate.BuildBehind.ToString());
+                BuildLengthLabel.Text    = (realEstate.BuildLength == 0) ? ("_") : (realEstate.BuildLength.ToString());
+                LegalLabel.Text          = (realEstate.LegalID == 0) ? ("_") : (realEstate.LEGAL.Name);
+                DirectionLabel.Text      = realEstate.Direction;
+                FrontStreetLabel.Text    = realEstate.FrontStreet;
+                LocationLabel.Text       = (realEstate.LocationID == 0) ? ("_") : (realEstate.LOCATION.Name);
+                StoreyLabel.Text         = realEstate.Storey.ToString();
                 LivingRoomLabel1.Text    = LivingRoomLabel.Text;
                 BedRoomLabel1.Text       = BedRoomLabel.Text;
                 BathRoomLabel1.Text      = BathRoomLabel.Text;
                 DifferentRoomLabel1.Text = DifferentRoomLabel.Text;
 
-                foreach (RealEstateServiceReference.UTILITY_DETAIL item in newsSale.REAL_ESTATE.UTILITY_DETAILs)
+                foreach (RealEstateServiceReference.UTILITY_DETAIL item in realEstate.UTILITY_DETAILs)
                 {
                     if (item.UtilityID == 1)
                     {
-                        FullCheckBox.Checked = true;
+                        FullImage.Visible = true;
                     }
                     if (item.UtilityID == 2)
                     {
-                        GarageCheckBox.Checked = true;
+                        GarageImage.Visible = true;
                     }
                     if (item.UtilityID == 3)
                     {
-                        GardenCheckBox.Checked = true;
+                        GardenImage.Visible = true;
                     }
                     if (item.UtilityID == 4)
                     {
-                        SwimmingPoolCheckBox.Checked = true;
+                        SwimmingPoolImage.Visible = true;
                     }
                     if (item.UtilityID == 5)
                     {
-                        ForSaleCheckBox.Checked = true;
+                        ForSaleImage.Visible = true;
                     }
                     if (item.UtilityID == 6)
                     {
-                        ForStayCheckBox.Checked = true;
+                        ForStayImage.Visible = true;
                     }
                     if (item.UtilityID == 7)
                     {
-                        ForOfficeCheckBox.Checked = true;
+                        ForOfficeImage.Visible = true;
                     }
                     if (item.UtilityID == 8)
                     {
-                        ForProduceCheckBox.Checked = true;
+                        ForProduceImage.Visible = true;
                     }
                     if (item.UtilityID == 9)
                     {
-                        ForRentCheckBox.Checked = true;
+                        ForRentImage.Visible = true;
                     }
                 }
 
@@ -139,11 +156,11 @@ namespace RealEstateMarket.Pages
             //}
             //if (RealEstateMarket._Default.db.GetUnit(Convert.ToInt32(UnitDropDownList.SelectedValue)).Name == "SJC")
             //{
-            //    PriceLabel.Text = Utility.ConvertVNDToSJC(Convert.ToDouble(newsSale.REAL_ESTATE.Price)).ToString() + " lượng";
+            //    PriceLabel.Text = Utility.ConvertVNDToSJC(Convert.ToDouble(realEstate.Price)).ToString() + " lượng";
             //}
             //if (RealEstateMarket._Default.db.GetUnit(Convert.ToInt32(UnitDropDownList.SelectedValue)).Name == "USD")
             //{
-            //    PriceLabel.Text = Utility.ConvertVNDToUSD(Convert.ToDouble(newsSale.REAL_ESTATE.Price)).ToString() + "USD";
+            //    PriceLabel.Text = Utility.ConvertVNDToUSD(Convert.ToDouble(realEstate.Price)).ToString() + "USD";
             //}
         }
     }

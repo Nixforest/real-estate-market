@@ -913,6 +913,18 @@ public class RealEstateWebService : System.Web.Services.WebService
     {
         return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.GetAllRows());
     }
+    [WebMethod]
+    public ObservableCollection<RealEstateDataContext.NEWS_SALE> GetAllNewsSalesPosted()
+    {
+        try
+        {
+            return new ObservableCollection<RealEstateDataContext.NEWS_SALE>(newsSale.GetAllRowsPosted());
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
 
     [WebMethod()]
     public int InsertNewsSale(int typeID, string title, string content,
@@ -944,6 +956,18 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
     }
 
+    [WebMethod]
+    public void UpdateNewsSaleStatus(int id, int status)
+    {
+        try
+        {
+            newsSale.UpdateStatus(id, status);
+        }
+        catch (Exception e)
+        {            
+            throw e;
+        }
+    }
     [WebMethod()]
     public void DeleteNewsSale(int id)
     {
@@ -1800,6 +1824,19 @@ public class RealEstateWebService : System.Web.Services.WebService
         }
         catch (Exception e)
         {            
+            throw e;
+        }
+    }
+
+    [WebMethod]
+    public void RemoveAllUtilitiesByRealEstateID(int realEstateID)
+    {
+        try
+        {
+            realEstate.RemoveAllUtilitiesByRealEstateID(realEstateID);
+        }
+        catch (Exception e)
+        {
             throw e;
         }
     }

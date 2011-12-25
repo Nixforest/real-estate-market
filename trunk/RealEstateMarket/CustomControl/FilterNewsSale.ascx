@@ -20,7 +20,12 @@
         width:160px;
         padding: 4px;
         padding-top: 7px;
-    }      
+    }
+    .nonbrokerimage
+    {
+        margin:3px 0px;
+        padding-left:11px;
+    }    
 </style>
 <asp:ObjectDataSource ID="NewsSaleTypeObjectDataSource" runat="server" 
     SelectMethod="GetAllNewsSaleTypes" 
@@ -43,7 +48,7 @@
                 DataValueField="ID" RepeatDirection="Vertical">
             </asp:RadioButtonList>
             <asp:ImageButton ID="FilterNewsSaleTypeImageButton" runat="server" 
-                ImageUrl="~/Images/images/ico_36.gif"
+                ImageUrl="~/Image/ico_36.gif"
                 OnClick="FilterNewsSaleTypeImageButton_Click" />
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="NewsSaleTypeCollapsiblePanelExtender" runat="server"
@@ -65,7 +70,7 @@
                 DataValueField="ID">
                 </asp:RadioButtonList>
             <asp:ImageButton ID="RealEstateTypeImageButton" runat="server" 
-                ImageUrl="~/Images/images/ico_36.gif"
+                ImageUrl="~/Image/ico_36.gif"
                 OnClick="FilterRealEstateTypeImageButton_Click" />
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="RealEstateTypeCollapsiblePanelExtender" runat="server"
@@ -128,7 +133,7 @@
                 <asp:ListItem Value="10000000000">10 tỷ</asp:ListItem>
             </asp:DropDownList>
             <asp:ImageButton ID="FilterImageButton" runat="server" 
-                ImageUrl="~/Images/images/ico_36.gif" 
+                ImageUrl="~/Image/ico_36.gif" 
                 OnClick="FilterImageButton_Click"/>
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="PriceCollapsiblePanelExtender" runat="server"
@@ -155,7 +160,7 @@
                 Display="Dynamic" ValidationGroup="AreaValidationGroup"
                 ValidationExpression="^[0-9]*\.?[0-9]*$" ErrorMessage="Nhập Diện tích chưa hợp lệ"></asp:RegularExpressionValidator>
             <asp:ImageButton ID="AreaImageButton" runat="server"
-                ImageUrl="~/Images/images/ico_36.gif"
+                ImageUrl="~/Image/ico_36.gif"
                 OnClick="AreaImageButton_Click" ValidationGroup="AreaValidationGroup" />
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="AreaCollapsiblePanelExtender" runat="server"
@@ -208,7 +213,7 @@
                 DataValueField="ID"></asp:DropDownList>
             <br />                
             <asp:ImageButton ID="ProjectImageButton" runat="server" 
-                ImageUrl="~/Images/images/ico_36.gif" 
+                ImageUrl="~/Image/ico_36.gif" 
                 OnClick="ProjectImageButton_Click"/>
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="ProjectCollapsiblePanelExtender" runat="server"
@@ -264,7 +269,7 @@
                 Display="Dynamic" ValidationGroup="BedValidationGroup"
                 ValidationExpression="^[0-9]*$" ErrorMessage="Số phòng ngủ chưa hợp lệ"></asp:RegularExpressionValidator>
             <asp:ImageButton ID="BedRoomImageButton" runat="server"
-                ImageUrl="~/Images/images/ico_36.gif"
+                ImageUrl="~/Image/ico_36.gif"
                 OnClick="BedRoomImageButton_Click" ValidationGroup="BedValidationGroup" />
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="BedRoomCollapsiblePanelExtender" runat="server"
@@ -292,7 +297,7 @@
                 <asp:ListItem>Không xác định</asp:ListItem>
             </asp:RadioButtonList>
             <asp:ImageButton ID="DirectionImageButton" runat="server"
-                ImageUrl="~/Images/images/ico_36.gif"
+                ImageUrl="~/Image/ico_36.gif"
                 OnClick="DirectionImageButton_Click"/>            
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="DirectionCollapsiblePanelExtender" runat="server"
@@ -302,11 +307,14 @@
             CollapsedImage="~/Image/icon_down.gif" ExpandedImage="~/Image/icon_up.png"            
             CollapsedSize="0"></asp:CollapsiblePanelExtender>
         <asp:ImageButton ID="NonBrokerImageButton" runat="server"
-            ImageUrl="~/Image/btn_taisanchinhchu.gif" 
-            OnClick="NonBrokerImageButton_Click"
-            ImageAlign="Middle" />
+            ImageUrl="~/Image/btn_taisanchinhchu.gif" CssClass="nonbrokerimage"
+            OnClick="NonBrokerImageButton_Click"/>
     </ContentTemplate>
     <Triggers>
         <asp:AsyncPostBackTrigger ControlID="CityDropDownList" EventName="selectedindexchanged" />
     </Triggers>
 </asp:UpdatePanel>
+    <div class="tygia">
+        Tỷ giá SJC: <script language="Javascript">                        document.write(vGoldSbjSell); </script><br />
+        Tỷ giá USD: <script language="Javascript">                        document.write(vCosts[0]); //USD </script>
+    </div>

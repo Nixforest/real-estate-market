@@ -22,15 +22,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.ObjectDataSource UnitObjectDataSource;
         
         /// <summary>
-        /// NewsSalePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel NewsSalePanel;
-        
-        /// <summary>
         /// TitleLabel control.
         /// </summary>
         /// <remarks>
@@ -76,22 +67,13 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label AddressTitle;
         
         /// <summary>
-        /// PriceUpdatePanel control.
+        /// UnitLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel PriceUpdatePanel;
-        
-        /// <summary>
-        /// UnitDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UnitDropDownList;
+        protected global::System.Web.UI.WebControls.Label UnitLabel;
         
         /// <summary>
         /// PriceLabel control.
@@ -121,15 +103,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label LivingRoomLabel;
         
         /// <summary>
-        /// LivingRoomImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image LivingRoomImage;
-        
-        /// <summary>
         /// BedRoomLabel control.
         /// </summary>
         /// <remarks>
@@ -137,15 +110,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label BedRoomLabel;
-        
-        /// <summary>
-        /// BedRoomImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image BedRoomImage;
         
         /// <summary>
         /// BathRoomLabel control.
@@ -157,15 +121,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label BathRoomLabel;
         
         /// <summary>
-        /// BathRoomLImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image BathRoomLImage;
-        
-        /// <summary>
         /// DifferentRoomLabel control.
         /// </summary>
         /// <remarks>
@@ -173,15 +128,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label DifferentRoomLabel;
-        
-        /// <summary>
-        /// DifferentRoomImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image DifferentRoomImage;
         
         /// <summary>
         /// CampusFrontLabel control.
@@ -209,15 +155,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label TotalUseAreaLabel;
-        
-        /// <summary>
-        /// ContactPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ContactPanel;
         
         /// <summary>
         /// ContactNameImage control.
@@ -310,15 +247,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label ContactNoteLabel;
         
         /// <summary>
-        /// InfoPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel InfoPanel;
-        
-        /// <summary>
         /// ContentLabel control.
         /// </summary>
         /// <remarks>
@@ -355,15 +283,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label RETypeLabel;
         
         /// <summary>
-        /// FullCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox FullCheckBox;
-        
-        /// <summary>
         /// LegalLabel control.
         /// </summary>
         /// <remarks>
@@ -371,24 +290,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LegalLabel;
-        
-        /// <summary>
-        /// GarageCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox GarageCheckBox;
-        
-        /// <summary>
-        /// CampusFrontLabel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CampusFrontLabel1;
         
         /// <summary>
         /// DirectionLabel control.
@@ -400,24 +301,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label DirectionLabel;
         
         /// <summary>
-        /// GardenCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox GardenCheckBox;
-        
-        /// <summary>
-        /// CampusBehindLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CampusBehindLabel;
-        
-        /// <summary>
         /// FrontStreetLabel control.
         /// </summary>
         /// <remarks>
@@ -425,24 +308,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label FrontStreetLabel;
-        
-        /// <summary>
-        /// SwimmingPoolCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox SwimmingPoolCheckBox;
-        
-        /// <summary>
-        /// CampusLengthLabel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CampusLengthLabel1;
         
         /// <summary>
         /// LocationLabel control.
@@ -454,15 +319,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label LocationLabel;
         
         /// <summary>
-        /// ForSaleCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ForSaleCheckBox;
-        
-        /// <summary>
         /// StoreyLabel control.
         /// </summary>
         /// <remarks>
@@ -470,24 +326,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label StoreyLabel;
-        
-        /// <summary>
-        /// ForStayCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ForStayCheckBox;
-        
-        /// <summary>
-        /// BuildFrontLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BuildFrontLabel;
         
         /// <summary>
         /// LivingRoomLabel1 control.
@@ -499,24 +337,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label LivingRoomLabel1;
         
         /// <summary>
-        /// ForOfficeCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ForOfficeCheckBox;
-        
-        /// <summary>
-        /// BuildBedindLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BuildBedindLabel;
-        
-        /// <summary>
         /// BedRoomLabel1 control.
         /// </summary>
         /// <remarks>
@@ -524,24 +344,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label BedRoomLabel1;
-        
-        /// <summary>
-        /// ForProduceCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ForProduceCheckBox;
-        
-        /// <summary>
-        /// BuildLengthLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BuildLengthLabel;
         
         /// <summary>
         /// BathRoomLabel1 control.
@@ -553,15 +355,6 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label BathRoomLabel1;
         
         /// <summary>
-        /// ForRentCheckBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ForRentCheckBox;
-        
-        /// <summary>
         /// DifferentRoomLabel1 control.
         /// </summary>
         /// <remarks>
@@ -571,13 +364,139 @@ namespace RealEstateMarket.Pages {
         protected global::System.Web.UI.WebControls.Label DifferentRoomLabel1;
         
         /// <summary>
-        /// DetailPanel control.
+        /// FullImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel DetailPanel;
+        protected global::System.Web.UI.WebControls.Image FullImage;
+        
+        /// <summary>
+        /// GarageImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image GarageImage;
+        
+        /// <summary>
+        /// GardenImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image GardenImage;
+        
+        /// <summary>
+        /// SwimmingPoolImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image SwimmingPoolImage;
+        
+        /// <summary>
+        /// ForSaleImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ForSaleImage;
+        
+        /// <summary>
+        /// ForStayImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ForStayImage;
+        
+        /// <summary>
+        /// ForOfficeImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ForOfficeImage;
+        
+        /// <summary>
+        /// ForProduceImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ForProduceImage;
+        
+        /// <summary>
+        /// ForRentImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ForRentImage;
+        
+        /// <summary>
+        /// CampusFrontLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CampusFrontLabel1;
+        
+        /// <summary>
+        /// CampusBehindLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CampusBehindLabel;
+        
+        /// <summary>
+        /// CampusLengthLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CampusLengthLabel1;
+        
+        /// <summary>
+        /// BuildFrontLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BuildFrontLabel;
+        
+        /// <summary>
+        /// BuildBedindLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BuildBedindLabel;
+        
+        /// <summary>
+        /// BuildLengthLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BuildLengthLabel;
         
         /// <summary>
         /// SendImage control.
@@ -650,15 +569,6 @@ namespace RealEstateMarket.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink BackHyperLink;
-        
-        /// <summary>
-        /// MemberPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel MemberPanel;
         
         /// <summary>
         /// MemberNameImage control.

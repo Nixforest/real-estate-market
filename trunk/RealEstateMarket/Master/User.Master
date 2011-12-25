@@ -1,6 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="RealEstateMarket.Master.User" %>
-<%@ Register TagPrefix="User" TagName="Menu" Src="~/CustomControl/MenuUserControl.ascx" %>
-
+<%@ Register TagPrefix="User" TagName="NewsSale" Src="~/CustomControl/ManagerNewsSale.ascx" %>
+<%@ Register TagPrefix="User" TagName="News" Src="~/CustomControl/ManagerNew.ascx" %>
+<%@ Register TagPrefix="User" TagName="ProjectManager" Src="~/CustomControl/ManagerProject.ascx" %>
+<%@ Register TagPrefix="User" TagName="CompanyManager" Src="~/CustomControl/ManagerCompany.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,17 +21,9 @@
         </asp:ScriptManager>
         <div class="header">        
             <div class="title">
-            <h1>
-            R
-            </h1>
-            <h1>
-                R
-            </h1>
-            <h1>
-                R
-            </h1>
                 </div>
             <div class="loginDisplay">
+                <div class="loginDisplayIn">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
@@ -39,6 +33,7 @@
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Pages/Home"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
+                </div>
             </div>
             <div class="clear hideSkiplink">
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
@@ -49,7 +44,10 @@
         <div class="main">
             <div class="left">
                 <asp:ContentPlaceHolder ID="LeftContent" runat="server">
-                    <User:Menu ID="AdminMenu" runat="server" />
+                    <User:NewsSale ID="NewsSale" runat="server" />
+                    <User:News ID="News" runat="server" />
+                    <User:ProjectManager ID="ProjectManagerment" runat="server" />
+                    <User:CompanyManager ID="CompanyManagerment" runat="server" />
                 </asp:ContentPlaceHolder>
             </div>
             <div class="content">

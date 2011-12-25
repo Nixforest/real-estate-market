@@ -17,7 +17,7 @@ namespace RealEstateBusinessLogicObject
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public override IEnumerable<RealEstateDataContext.VIEW_NEWS> GetAll()
+        public IEnumerable<RealEstateDataContext.VIEW_NEWS> GetAll()
         {
             return new ObservableCollection<RealEstateDataContext.VIEW_NEWS>(_db.GetAll());
         }

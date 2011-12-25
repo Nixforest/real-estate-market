@@ -95,7 +95,7 @@ namespace RealEstateMarket
         }
         public static string ConvertPriceText(int newsSaleID)
         {
-            double price = Convert.ToDouble(RealEstateMarket._Default.db.GetNewsSale(newsSaleID).REAL_ESTATE.Price);
+            double price = Convert.ToDouble(RealEstateMarket._Default.db.GetRealEstate(RealEstateMarket._Default.db.GetNewsSale(newsSaleID).RealEstateID).Price);
             if (price == 0)
             {
                 return "Thương lượng";
