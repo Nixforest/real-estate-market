@@ -89,9 +89,9 @@ namespace RealEstateMarket.Admin.News
             }
 
             if (flag == true)
-            {
-                RealEstateMarket._Default.db.InsertNews(id, title, descript, content, author, 1, now, now, idimage, check);
-                Response.Redirect("~/Admin/News/ListNews.aspx");
+            {               
+                int newsid = RealEstateMarket._Default.db.InsertNews(id, title, descript, content, author, 1, now, now, idimage, check);
+                Response.Redirect(String.Format("~/Pages/News/ReadNews.aspx?id={0}", newsid));
             }
         }
 

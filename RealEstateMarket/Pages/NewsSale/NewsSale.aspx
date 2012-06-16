@@ -563,7 +563,7 @@ display: block;
                                                     Chỗ đậu xe hơi
                                                 </td>
                                                 <td class="bg2" width="17%">
-                                                    <asp:Image ID="GarageImage" runat="server" ImageUrl="~/Image/ico_check.gif" />
+                                                    <asp:Image ID="GarageImage" runat="server" ImageUrl="~/Image/ico_check.gif"  Visible="false"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -571,7 +571,7 @@ display: block;
                                                     Sân vườn
                                                 </td>
                                                 <td class="bg1" width="17%">
-                                                    <asp:Image ID="GardenImage" runat="server" ImageUrl="~/Image/ico_check.gif" />
+                                                    <asp:Image ID="GardenImage" runat="server" ImageUrl="~/Image/ico_check.gif" Visible="false" />
                                                 </td>
                                             </tr>
                                             <tr>

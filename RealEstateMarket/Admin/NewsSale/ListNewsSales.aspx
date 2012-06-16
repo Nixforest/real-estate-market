@@ -57,5 +57,3 @@
         TypeName="RealEstateMarket.RealEstateServiceReference.RealEstateWebServiceSoapClient">
     </asp:ObjectDataSource>
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="FooterContent" runat="server">
-</asp:Content>

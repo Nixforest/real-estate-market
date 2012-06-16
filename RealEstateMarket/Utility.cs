@@ -12,7 +12,7 @@ namespace RealEstateMarket
 
         public static string GetSummary(string str, int numberChar)
         {
-            if (str.Length >= numberChar)
+            if (str.Length > numberChar)
             {
                 for (int i = numberChar; i > 0; i--)
                 {

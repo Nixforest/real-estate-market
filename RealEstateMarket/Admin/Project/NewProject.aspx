@@ -55,7 +55,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox ID="BeginDayTextBox" runat="server" CssClass="textEntry"></asp:TextBox>
-                <asp:CalendarExtender ID="BeginDayCalendarExtender" Format="dd/MM/yyyy" runat="server" TargetControlID="BeginDayTextBox">
+                <asp:CalendarExtender ID="BeginDayCalendarExtender" runat="server" TargetControlID="BeginDayTextBox">
                 </asp:CalendarExtender>
             </asp:TableCell>
         </asp:TableRow>

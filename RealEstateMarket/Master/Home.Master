@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="RealEstateMarket.Master.Home" %>
-
+<%@ Register TagPrefix="Footer" TagName="FooterControl" Src="~/CustomControl/FooterControl.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,6 +14,20 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+<style type="text/css"">
+.footer
+{
+    float:inherit;
+    width:71.3%;
+    height:200px;
+    text-align:center;
+    font:14px Tahoma bold;
+    color:White;
+    line-height:20px;    
+    margin-top:0.9px;
+    border-radius:0.9px;
+}
+</style>
     <form id="form1" runat="server">
     <div class="page">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -47,6 +61,18 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                                         
                 </asp:Menu>
+                <%--<div id="menu1">
+                    <div class="menu_top">
+                        <ul>
+                            <li><a href="~/Pages/Home/Default.aspx">Home</a></li>
+                            <li><a href="~/Pages/News/AllNews.aspx">Tin Tức và Trải Nghiệm</a></li>
+                            <li><a href="~/Pages/NewsSale/NewsSales.aspx">Siêu Thị Địa ỐC</a></li>
+                            <li><a href="~/Pages/Company/ListCompanies.aspx">Doanh Nghiệp Địa Ốc</a></li>
+                            <li><a href="~/Pages/Project/ListProjects.aspx">Dự Án</a></li>
+                            <li><a href="#">Giới Thiệu</a></li>
+                        </ul>
+                    </div>
+                </div>--%>
 
             </div>
         </div>
@@ -57,7 +83,7 @@
         </div>
     </div>
     <div class="footer">
-        
+        <Footer:FooterControl ID="footer" runat="server"></Footer:FooterControl>
     </div>
     </form>
 </body>

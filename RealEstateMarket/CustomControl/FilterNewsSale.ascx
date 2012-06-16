@@ -238,7 +238,7 @@
                 DataValueField="ID">
                 </asp:RadioButtonList>
             <asp:ImageButton ID="LocationImageButton" runat="server" 
-                ImageUrl="~/Images/images/ico_36.gif" 
+                ImageUrl="~/Images/ico_36.gif" 
                 OnClick="LocationImageButton_Click"/>
         </asp:Panel> 
         <asp:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="server"

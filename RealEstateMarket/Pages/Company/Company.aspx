@@ -6,5 +6,3 @@ Chức năng hiện đang được xây dựng
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="FooterContent" runat="server">
-</asp:Content>

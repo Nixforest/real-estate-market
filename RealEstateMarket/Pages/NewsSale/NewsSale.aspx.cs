@@ -89,41 +89,41 @@ namespace RealEstateMarket.Pages
                 BathRoomLabel1.Text      = BathRoomLabel.Text;
                 DifferentRoomLabel1.Text = DifferentRoomLabel.Text;
 
-                foreach (RealEstateServiceReference.UTILITY_DETAIL item in realEstate.UTILITY_DETAILs)
+                foreach (RealEstateServiceReference.UTILITY item in RealEstateMarket._Default.db.GetUtilitiesByRealEstateID(realEstate.ID))
                 {
-                    if (item.UtilityID == 1)
+                    if (item.ID == 1)
                     {
                         FullImage.Visible = true;
                     }
-                    if (item.UtilityID == 2)
+                    if (item.ID == 2)
                     {
                         GarageImage.Visible = true;
                     }
-                    if (item.UtilityID == 3)
+                    if (item.ID == 3)
                     {
                         GardenImage.Visible = true;
                     }
-                    if (item.UtilityID == 4)
+                    if (item.ID == 4)
                     {
                         SwimmingPoolImage.Visible = true;
                     }
-                    if (item.UtilityID == 5)
+                    if (item.ID == 5)
                     {
                         ForSaleImage.Visible = true;
                     }
-                    if (item.UtilityID == 6)
+                    if (item.ID == 6)
                     {
                         ForStayImage.Visible = true;
                     }
-                    if (item.UtilityID == 7)
+                    if (item.ID == 7)
                     {
                         ForOfficeImage.Visible = true;
                     }
-                    if (item.UtilityID == 8)
+                    if (item.ID == 8)
                     {
                         ForProduceImage.Visible = true;
                     }
-                    if (item.UtilityID == 9)
+                    if (item.ID == 9)
                     {
                         ForRentImage.Visible = true;
                     }

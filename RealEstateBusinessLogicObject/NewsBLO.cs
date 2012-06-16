@@ -125,7 +125,7 @@ namespace RealEstateBusinessLogicObject
                         entity.View        = 0;
 
                         _db.Insert(entity);
-                        return entity.ImageID;
+                        return entity.ID;
                     }
                     else throw new RealEstateDataContext.Utility.ImageIDException();
                 }

@@ -8,38 +8,42 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript" language="javascript">
     function FormatNumber(str) {
+
         var strTemp = GetNumber(str);
-        if (strTemp.length <= 3) {
+        if (strTemp.length <= 3)
             return strTemp;
-        }
         strResult = "";
-        for (var i = 0; i < strTemp.length; i++) {
+        for (var i = 0; i < strTemp.length; i++)
             strTemp = strTemp.replace(",", "");
-            var m = strTemp.lastIndexOf(".");
-            if (m == -1) {
-                for (var i = strTemp.length; i >= 0; i--) {
-                    if (strResult.length > 0 && (strTemp.length - i - 1) % 3 == 0)
-                        strResult = "," + strResult;
-                    strResult = strTemp.substring(i, i + 1) + strResult;
-                }
-            } else {
-                // phần nguyên
-                var strphannguyen = strTemp.substring(0, strTemp.lastIndexOf("."));
-                var strphanthapphan = strTemp.substring(strTemp.lastIndexOf("."), strTemp.length);
-                // phần thập phân
-                var tam = 0;
-                for (var i = strphannguyen.length; i >= 0; i--) {
-                    if (strResult.length > 0 && tam == 4) {
-                        strResult = "," + strResult;
-                        tam = 1;
-                    }
-                    strResult = strphannguyen.substring(i, i + 1) + strResult;
-                    tam = tam + 1;
-                }
-                strResult = strResult + strphanthapphan;
+        var m = strTemp.lastIndexOf(".");
+        if (m == -1) {
+            for (var i = strTemp.length; i >= 0; i--) {
+                if (strResult.length > 0 && (strTemp.length - i - 1) % 3 == 0)
+                    strResult = "," + strResult;
+                strResult = strTemp.substring(i, i + 1) + strResult;
             }
-            return strResult;
         }
+        else {
+            //phần nguyên
+            var strphannguyen = strTemp.substring(0, strTemp.lastIndexOf("."));
+            var strphanthapphan = strTemp.substring(strTemp.lastIndexOf("."), strTemp.length);
+            //phần thập phân
+            var tam = 0;
+            for (var i = strphannguyen.length; i >= 0; i--) {
+
+                if (strResult.length > 0 && tam == 4) {
+                    strResult = "," + strResult;
+                    tam = 1;
+                }
+
+
+                strResult = strphannguyen.substring(i, i + 1) + strResult;
+                tam = tam + 1;
+            }
+            strResult = strResult + strphanthapphan;
+        }
+
+        return strResult;
     }
     function GetNumber(str) {
         var count = 0;
@@ -49,9 +53,8 @@
                 alert("Vui lòng nhập số (0-9)!");
                 return str.substring(0, i);
             }
-            if (temp == " ") {
+            if (temp == " ")
                 return str.substring(0, i);
-            }
             if (temp == ".") {
                 if (count > 0)
                     return str.substring(0, i);
@@ -59,6 +62,88 @@
             }
         }
         return str;
+    }
+
+    function IsNumberInt(str) {
+        for (var i = 0; i < str.length; i++) {
+            var temp = str.substring(i, i + 1);
+            if (!(temp == "." || (temp >= 0 && temp <= 9))) {
+                alert("Vui lòng nhập số (0-9)!");
+                return str.substring(0, i);
+            }
+            if (temp == ",") {
+                alert("Bạn sử dụng dấu . nếu muốn nhập số lẻ!");
+                return str.substring(0, i);
+            }
+            //		            if(temp == " " || temp == ",")
+            //		                return str.substring(0, i);
+        }
+        return str;
+    }
+    function ConvertPriceText(strTemp) {
+
+        strTemp = strTemp.replace(/,/g, "");
+        var priceTy = parseInt(strTemp / 1000000000, 0)
+        var priceTrieu = parseInt((strTemp % 1000000000) / 1000000, 0)
+        var priceNgan = parseInt(((strTemp % 1000000000)) % 1000000 / 1000, 0)
+        var priceDong = parseInt(((strTemp % 1000000000)) % 1000000 % 1000, 0)
+        var strTextPrice = ""
+        if (strTemp == "" || strTemp == "0")
+            strTextPrice = "Thương lượng";
+        if (priceTy > 0 && parseInt(strTemp, 0) > 900000000)
+            strTextPrice = strTextPrice + "<b>" + priceTy + "</b> tỷ "
+        if (priceTrieu > 0)
+            strTextPrice = strTextPrice + "<b>" + priceTrieu + "</b> triệu "
+        if (priceNgan > 0)
+            strTextPrice = strTextPrice + "</b>" + priceNgan + "</b> ngàn "
+            
+        if (document.getElementById("MainContent_UnitDropDownList").value == "1") {
+            if (priceTy > 0 || priceTrieu > 0 || priceNgan > 0 || priceDong > 0)
+                strTextPrice = strTextPrice + "<b>VNĐ</b>"
+        }
+        if (document.getElementById("MainContent_UnitDropDownList").value == "2") {
+            if (priceDong > 0)
+                strTextPrice = strTextPrice + priceDong
+            if (priceTy > 0 || priceTrieu > 0 || priceNgan > 0 || priceDong > 0)
+                strTextPrice = FormatNumber(strTemp) + "<b> lượng SJC</b>"
+
+        }
+        if (document.getElementById("MainContent_UnitDropDownList").value == "3") {
+            if (priceDong > 0)
+                strTextPrice = strTextPrice + priceDong
+            if (priceTy > 0 || priceTrieu > 0 || priceNgan > 0 || priceDong > 0)
+                strTextPrice = FormatNumber(strTemp) + "<b> USD</b>"
+        }
+        if (document.getElementById("MainContent_UnitPriceDropDownList").value == "1") {
+            strTextPrice = strTextPrice + "<b> / Tổng diện tích</b>";
+        }
+        if (document.getElementById("MainContent_UnitPriceDropDownList").value == "2") {
+            strTextPrice = strTextPrice + "<b> / Mét vuông</b>";
+        }
+        if (document.getElementById("MainContent_UnitPriceDropDownList").value == "3") {
+            strTextPrice = strTextPrice + "<b> / Tháng</b>";
+        }
+        document.getElementById("priceText").innerHTML = strTextPrice
+    }
+    function _CheckNoHau() {
+        var nohau = document.getElementById("idNoHauDTKV");
+        var nohauDTXD = document.getElementById("idNoHauDTXD");
+
+        if (document.getElementById("ctl00_ctl00_cphMainContent_cphMainContent_UcMember_RegisterAsset1_chkNoHauDTKV").checked) {
+            nohau.style.display = "block";
+            nohau.style.display = "";
+        }
+        else {
+            nohau.style.display = "none";
+            //nohau.style.display = "";
+        }
+        if (document.getElementById("ctl00_ctl00_cphMainContent_cphMainContent_UcMember_RegisterAsset1_chkNoHauDTXD").checked) {
+            nohauDTXD.style.display = "block";
+            nohauDTXD.style.display = "";
+        }
+        else {
+            nohauDTXD.style.display = "none";
+        }
     }
 </script>   
     <asp:ObjectDataSource ID="RETypeObjectDataSource" runat="server" 
@@ -323,8 +408,6 @@ input {
                         <div class="icoR"></div>
                     </div>
                     <div class="stepsDangTaiSan">
-                        <asp:UpdatePanel ID="MyUpdatePanel" runat="server">
-                            <ContentTemplate>
                                 <p>
                                 <strong>
                                     Điền chính xác các thông tin dưới đây giúp cho 
@@ -332,12 +415,12 @@ input {
                                     việc này giúp cho giao dịch của bạn sẽ nhanh hơn.
                                 </strong>
                             </p>
-                                <div class="alert_error" id="idError"
-                                style="display:none">
-                                <div class="alert_title">
+                                <%--<div class="alert_error" id="idError"
+                                style="display:none">--%>
+                                <%--<div class="alert_title">
                                     Vui lòng cập nhật các thông tin tài sản còn thiếu ( <span class="red">*</span> )
-                                </div>
-                                <ul>
+                                </div>--%>
+                                <%--<ul>
                                     <li id="idLoaiTaiSan" style="display: none">Tuyến đường</li>
                                     <li id="idPhanLoaiTaiSan" style="display: none">Loại địa ốc</li>
                                     <li id="idQuanHuyen" style="display: none">Quận/huyện</li>
@@ -346,13 +429,13 @@ input {
                                     <li id="idPhone" style="display: none">Số điện thoại bàn hoặc di động</li>
                                     <li id="idTieuDe" style="display: none">Vui lòng nhập tiêu đề hoặc chọn lấy tiêu đề
                                         tự động</li>
-                                </ul>
-                                <div class="alert_title">
-                                    <asp:ValidationSummary ID="NewsSaleValidationSummary" runat="server"
-                                        DisplayMode="BulletList" HeaderText="Vui lòng cập nhật các thông tin tài sản còn thiếu:"
-                                        CssClass="failureNotification" ValidationGroup="NewsSaleValidationGroup" />
-                                </div>
-                            </div>
+                                </ul>--%>
+                                <%--<div class="alert_title">--%>
+                                <asp:ValidationSummary ID="NewsSaleValidationSummary" runat="server"
+                                    DisplayMode="BulletList" HeaderText="Vui lòng cập nhật các thông tin tài sản còn thiếu:"
+                                    CssClass="failureNotification" ValidationGroup="NewsSaleValidationGroup" />
+                               <%-- </div>--%>
+                           <%-- </div>--%>
                                 <div class="ttcb">
                                 <asp:Table ID="Table1" runat="server" Width="100%">
                                     <asp:TableRow>
@@ -392,11 +475,18 @@ input {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2" class="kc1">
-                                                        <asp:DropDownList ID="ProjectDropDownList" runat="server"
-                                                            DataSourceID="ProjectsObjectDataSource"
-                                                            DataTextField="Name"
-                                                            DataValueField="ID"></asp:DropDownList>
+                                                    <td colspan="2" class="kc1">                                                    
+                                                        <asp:UpdatePanel ID="MyUpdatePanel" runat="server">
+                                                            <ContentTemplate>
+                                                                <asp:DropDownList ID="ProjectDropDownList" runat="server"
+                                                                    DataSourceID="ProjectsObjectDataSource"
+                                                                    DataTextField="Name"
+                                                                    DataValueField="ID"></asp:DropDownList>
+                                                            </ContentTemplate>
+                                                            <Triggers>
+                                                                <asp:AsyncPostBackTrigger ControlID="ProjectCheckBox" EventName="CheckedChanged" />
+                                                            </Triggers>
+                                                        </asp:UpdatePanel>
                                                     </td>
                                                     <td>
                                                         <asp:CheckBox ID="ProjectCheckBox" runat="server"
@@ -411,7 +501,6 @@ input {
                                     <asp:TableRow>
                                         <asp:TableCell CssClass="kcldo" HorizontalAlign="Right">
                                             <b>Loại Địa ốc:</b>
-                                            <span class="red">*</span>
                                         </asp:TableCell>
                                     </asp:TableRow>
                                     <asp:TableRow>
@@ -429,21 +518,9 @@ input {
                                             <b>Giá:</b>
                                         </asp:TableCell>
                                         <asp:TableCell>
-                                            <asp:TextBox ID="PriceTextBox" runat="server" CssClass="input133"
-                                                Text=""
-                                                ToolTip="Giá trị tài sản"></asp:TextBox>
-                                            <asp:TextBoxWatermarkExtender ID="KeyTextBox_TextBoxWatermarkExtender" 
-                                                runat="server" Enabled="True" TargetControlID="PriceTextBox"
-                                                WatermarkText="0">
-                                            </asp:TextBoxWatermarkExtender>
-                                            <asp:RegularExpressionValidator ID="PriceRegularExpressionValidator" runat="server"
-                                                ControlToValidate="PriceTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*$" ErrorMessage="*"></asp:RegularExpressionValidator>
-                                            <asp:RequiredFieldValidator ID="PriceRequiredFieldValidator" runat="server"
-                                                ControlToValidate="PriceTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ErrorMessage="*" InitialValue=""></asp:RequiredFieldValidator>
+                                            <input name="text" type="text" runat="server" id="PriceInput" class="input113" autocomplete="off"
+                                                onfocusout="ConvertPriceText(this.value)" onblur="ConvertPriceText(this.value)"
+                                                onkeyup="this.value=FormatNumber(this.value);" />
                                             <asp:DropDownList ID="UnitDropDownList" runat="server"
                                                 DataSourceID="UnitObjectDataSource" CssClass="input63"
                                                 DataTextField="Name"
@@ -452,6 +529,7 @@ input {
                                                 DataSourceID="UnitPriceObjectDataSource"
                                                 DataTextField="Name" CssClass="input113"
                                                 DataValueField="ID"></asp:DropDownList>
+                                            <div id="priceText"></div>
                                         </asp:TableCell>
                                     </asp:TableRow>
                                     <asp:TableRow>
@@ -468,7 +546,6 @@ input {
                                     <asp:TableRow>
                                         <asp:TableCell CssClass="kc" HorizontalAlign="Right">
                                             <b>Diện tích sử dụng:</b>
-                                            <span class="red">*</span>
                                         </asp:TableCell>
                                         <asp:TableCell ID="idDes">
                                             <asp:TextBox ID="TotalUseAreaTextBox" runat="server" ToolTip="Tổng diện tích sử dụng"
@@ -476,15 +553,15 @@ input {
                                                 <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" 
                                                     runat="server" Enabled="True" TargetControlID="TotalUseAreaTextBox"
                                                     WatermarkText="0">
-                                                </asp:TextBoxWatermarkExtender>
+                                                </asp:TextBoxWatermarkExtender>m<sup>2</sup>
                                             <asp:RegularExpressionValidator ID="TotalUseAreaRegularExpressionValidator" runat="server"
                                                 ControlToValidate="TotalUseAreaTextBox" CssClass="failureNotification"
                                                 Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*$" ErrorMessage="*"></asp:RegularExpressionValidator>
+                                                ValidationExpression="^[0-9]*\.?[0-9]*$" ErrorMessage="Nhập số vào Diện tích sử dụng"></asp:RegularExpressionValidator>
                                             <asp:RequiredFieldValidator ID="TotalUseAreaRequiredFieldValidator" runat="server"
                                                 ControlToValidate="TotalUseAreaTextBox" CssClass="failureNotification"
                                                 Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ErrorMessage="*" InitialValue=""></asp:RequiredFieldValidator>m<sup>2</sup>
+                                                ErrorMessage="Chưa nhập Diện tích sử dụng" InitialValue=""></asp:RequiredFieldValidator>
                                         </asp:TableCell>
                                     </asp:TableRow>
                                     <asp:TableRow>
@@ -492,31 +569,20 @@ input {
                                             <b>Diện tích khuôn viên:</b>
                                         </asp:TableCell>
                                         <asp:TableCell>
-                                            <asp:TextBox ID="CampusFrontTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều ngang"></asp:TextBox>
-                                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" 
-                                                    runat="server" Enabled="True" TargetControlID="CampusFrontTextBox"
-                                                    WatermarkText="0">
-                                                </asp:TextBoxWatermarkExtender>
-                                            m <b>X</b>
-                                            <asp:RegularExpressionValidator ID="CampusFrontRegularExpressionValidator" runat="server"
-                                                ControlToValidate="CampusFrontTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*\.?[0-9]*$"
-                                                ErrorMessage="*"></asp:RegularExpressionValidator>
-                                            <asp:TextBox ID="CampusLengthTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều dài"></asp:TextBox>
-                                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" 
-                                                    runat="server" Enabled="True" TargetControlID="CampusLengthTextBox"
-                                                    WatermarkText="0">
-                                                </asp:TextBoxWatermarkExtender>
-                                            m
-                                            <asp:RegularExpressionValidator ID="CampusLengthRegularExpressionValidator" runat="server"
-                                                ControlToValidate="CampusLengthTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*$"
-                                                ErrorMessage="*"></asp:RegularExpressionValidator>
-
-                                           <%-- <asp:UpdatePanel ID="CampusOpenBehindUpdatePanel" runat="server">
-                                                <ContentTemplate>--%>
+                                            <asp:UpdatePanel ID="CampusOpenBehindUpdatePanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:TextBox ID="CampusFrontTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều ngang"></asp:TextBox>
+                                                    <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" 
+                                                            runat="server" Enabled="True" TargetControlID="CampusFrontTextBox"
+                                                            WatermarkText="0">
+                                                        </asp:TextBoxWatermarkExtender>
+                                                    m <b>X</b>                                            
+                                                    <asp:TextBox ID="CampusLengthTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều dài"></asp:TextBox>
+                                                    <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender3" 
+                                                            runat="server" Enabled="True" TargetControlID="CampusLengthTextBox"
+                                                            WatermarkText="0">
+                                                        </asp:TextBoxWatermarkExtender>
+                                                    m
                                                     <asp:CheckBox ID="CampusOpenBehindCheckBox" runat="server"
                                                         Text="Nở hậu" Font-Bold="true" AutoPostBack="true"
                                                         oncheckedchanged="CampusOpenBehindCheckBox_CheckedChanged" />
@@ -527,16 +593,27 @@ input {
                                                             WatermarkText="0">
                                                         </asp:TextBoxWatermarkExtender>
                                                     <asp:Label ID="CampusMLabel" runat="server" Visible="false">m</asp:Label>
+                                                    <br />
+                                                    <asp:RegularExpressionValidator ID="CampusFrontRegularExpressionValidator" runat="server"
+                                                        ControlToValidate="CampusFrontTextBox" CssClass="failureNotification"
+                                                        Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
+                                                        ValidationExpression="^[0-9]*\.?[0-9]*\.?[0-9]*$"
+                                                        ErrorMessage="Chiều ngang trước chưa hợp lệ"></asp:RegularExpressionValidator>
+                                                    <asp:RegularExpressionValidator ID="CampusLengthRegularExpressionValidator" runat="server"
+                                                        ControlToValidate="CampusLengthTextBox" CssClass="failureNotification"
+                                                        Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
+                                                        ValidationExpression="^[0-9]*\.?[0-9]*$"
+                                                        ErrorMessage="Chiều dài chưa hợp lệ"></asp:RegularExpressionValidator>
                                                     <asp:RegularExpressionValidator ID="CampusOpenBehindRegularExpressionValidator" runat="server"
                                                         ControlToValidate="CampusBehindTextBox" Enabled="false" CssClass="failureNotification"
                                                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
                                                         ValidationExpression="^[0-9]*$\.?[0-9]*"
-                                                        ErrorMessage="*"></asp:RegularExpressionValidator>
-                                                <%--</ContentTemplate>
+                                                        ErrorMessage="Chiều ngang sau chưa hợp lệ"></asp:RegularExpressionValidator>
+                                                </ContentTemplate>
                                                 <Triggers>
                                                     <asp:AsyncPostBackTrigger ControlID="CampusOpenBehindCheckBox" EventName="checkedchanged" />
                                                 </Triggers>
-                                            </asp:UpdatePanel>--%>
+                                            </asp:UpdatePanel>
                                         </asp:TableCell>
                                     </asp:TableRow>
                                     <asp:TableRow ID="id1">
@@ -544,30 +621,21 @@ input {
                                             <b>Diện tích xây dựng:</b>
                                         </asp:TableCell>
                                         <asp:TableCell>
-                                            <asp:TextBox ID="BuildFrontTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều ngang"></asp:TextBox>
-                                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender5" 
-                                                runat="server" Enabled="True" TargetControlID="BuildFrontTextBox"
-                                                WatermarkText="0">
-                                            </asp:TextBoxWatermarkExtender>
-                                            m <b>X</b>
-                                            <asp:RegularExpressionValidator ID="BuildFrontRegularExpressionValidator" runat="server"
-                                                ControlToValidate="BuildFrontTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*$"
-                                                ErrorMessage="*"></asp:RegularExpressionValidator>
-                                            <asp:TextBox ID="BuildLengthTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều dài"></asp:TextBox>
-                                            <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender6" 
-                                                runat="server" Enabled="True" TargetControlID="BuildLengthTextBox"
-                                                WatermarkText="0">
-                                            </asp:TextBoxWatermarkExtender>
-                                            m
-                                            <asp:RegularExpressionValidator ID="BuildLengthRegularExpressionValidator" runat="server"
-                                                ControlToValidate="BuildLengthTextBox" CssClass="failureNotification"
-                                                Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
-                                                ValidationExpression="^[0-9]*\.?[0-9]*$"
-                                                ErrorMessage="*"></asp:RegularExpressionValidator>
-                                            <%--<asp:UpdatePanel ID="BuildOpenBehindUpdatePanel" runat="server">
-                                                <ContentTemplate>--%>
+                                            <asp:UpdatePanel ID="BuildOpenBehindUpdatePanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:TextBox ID="BuildFrontTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều ngang"></asp:TextBox>
+                                                    <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender5" 
+                                                        runat="server" Enabled="True" TargetControlID="BuildFrontTextBox"
+                                                        WatermarkText="0">
+                                                    </asp:TextBoxWatermarkExtender>
+                                                    m <b>X</b>
+                                            
+                                                    <asp:TextBox ID="BuildLengthTextBox" runat="server" Text="0" CssClass="input102" ToolTip="Chiều dài"></asp:TextBox>
+                                                    <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender6" 
+                                                        runat="server" Enabled="True" TargetControlID="BuildLengthTextBox"
+                                                        WatermarkText="0">
+                                                    </asp:TextBoxWatermarkExtender>
+                                                    m
                                                     <asp:CheckBox ID="BuildOpenBehindCheckBox" runat="server" Text="Nở hậu" Font-Bold="true" 
                                                         AutoPostBack="true"
                                                         OnCheckedChanged="BuildOpenBehindCheckBox_CheckedChanged"/>
@@ -577,27 +645,31 @@ input {
                                                         WatermarkText="0">
                                                     </asp:TextBoxWatermarkExtender>
                                                     <asp:Label ID="BuildMLabel" runat="server" Visible="false">m</asp:Label>
+                                                    <br />
+                                                    <asp:RegularExpressionValidator ID="BuildFrontRegularExpressionValidator" runat="server"
+                                                        ControlToValidate="BuildFrontTextBox" CssClass="failureNotification"
+                                                        Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
+                                                        ValidationExpression="^[0-9]*\.?[0-9]*$"
+                                                        ErrorMessage="Chiều ngang trước chưa hợp lệ"></asp:RegularExpressionValidator>
+                                                    <asp:RegularExpressionValidator ID="BuildLengthRegularExpressionValidator" runat="server"
+                                                        ControlToValidate="BuildLengthTextBox" CssClass="failureNotification"
+                                                        Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
+                                                        ValidationExpression="^[0-9]*\.?[0-9]*$"
+                                                        ErrorMessage="Chiều dài chưa hợp lệ"></asp:RegularExpressionValidator>
                                                     <asp:RegularExpressionValidator ID="BuildOpenBehindRegularExpressionValidator" runat="server"
                                                         ControlToValidate="BuildBehindTextBox" Enabled="false" CssClass="failureNotification"
                                                         Display="Dynamic" ValidationGroup="NewsSaleValidationGroup"
                                                         ValidationExpression="^[0-9]*\.?[0-9]*$"
-                                                        ErrorMessage="*"></asp:RegularExpressionValidator>
-                                                <%--</ContentTemplate>
+                                                        ErrorMessage="Chiều ngang sau chưa hợp lệ"></asp:RegularExpressionValidator>
+                                                </ContentTemplate>
                                                 <Triggers>
                                                     <asp:AsyncPostBackTrigger ControlID="BuildOpenBehindCheckBox" EventName="checkedchanged" />
                                                 </Triggers>
-                                            </asp:UpdatePanel>   --%>                 
+                                            </asp:UpdatePanel>
                                         </asp:TableCell>
                                     </asp:TableRow>
                                 </asp:Table>
                             </div>
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="ProjectCheckBox" EventName="CheckedChanged" />
-                                <asp:AsyncPostBackTrigger ControlID="BuildOpenBehindCheckBox" EventName="checkedchanged" />
-                                <asp:AsyncPostBackTrigger ControlID="CampusOpenBehindCheckBox" EventName="checkedchanged" />
-                            </Triggers>
-                        </asp:UpdatePanel>
                     </div>
                 </li>
                 <li>
@@ -953,7 +1025,7 @@ input {
                                             DataSourceID="UtilityObjectDataSource"
                                             DataTextField="Name"
                                             DataValueField="ID">
-                                            </asp:CheckBoxList>
+                                        </asp:CheckBoxList>
                                     </td>
                                 </tr>
                             </table>

@@ -75,18 +75,6 @@
                 donvi = nguyen;
             }
             strPrice += donvi + ".";
-//            if (nguyen.toString().length > 9) {
-//                ty = nguyen.substr(nguyen.toString().length - 9, 3);
-//                strPrice += ty + ",";
-//            } else if (nguyen.toString().length > 6) {
-//                trieu = nguyen.substr(nguyen.toString().length - 6, 3);
-//                strPrice += trieu + ",";
-//            } else if (nguyen.toString().length > 3) {
-//                ngan = nguyen.substr(nguyen.toString().length - 3, 3);
-//                strPrice += ngan + ",";
-//            } else {
-//                strPrice += nguyen + ".";
-//            }
             return strPrice + thapphan;
         }
         function ConvertPriceTextUSD(price) {
@@ -126,6 +114,12 @@
         }
     </script>
 <style type="text/css">
+table
+{
+    border-collapse: separate;
+    border-spacing: 2px;
+    line-height: 1.1em;
+}
 .listNewsSale
 {
     width:628px;

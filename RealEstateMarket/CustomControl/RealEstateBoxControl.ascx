@@ -2,7 +2,7 @@
 <style type="text/css">
 .box_taisan
 {
-    width:708px;
+    width:710px;
     float:left;
 }
 .boxtaisan1
@@ -25,8 +25,56 @@
     width:280px;
     height:70px;
 }
+.tsmC {
+    float: left;
+    width: 708px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.tsmCtit {
+    width: 710px;
+    height: 25px;
+    overflow: hidden;
+}
+.tsmCtit .tsmCtit1 {
+    float: left;
+    width: 8px;
+    height: 25px;
+    background: url(../../Image/bgd_bdL.gif) no-repeat 0 0;
+}
+.tsmCtit .tsmCtit2 {
+    float: left;
+    width: 694px;
+    height: 19px;
+    padding-top: 6px;
+    background: url(../../Image/bgd_bdC.gif) repeat-x 0 0;
+    font: 11px Arial;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.tsmCtit .tsmCtit3 {
+    float: right;
+    width: 8px;
+    height: 25px;
+    background: url(../../Image/bgd_bdR.gif) no-repeat 0 0;
+}
+.box_taisan .tsmCcon {
+    width: 708px;
+    border-bottom: 1px solid #41A0CC;
+    border-left: 1px solid #41A0CC;
+    border-right: 1px solid #41A0CC;
+}
 </style>
 <div id="box_taisan" class="box_taisan">
+    <div class="tsmCtit">
+        <div class="tsmCtit1"></div>
+        <div class="tsmCtit2">
+            Tài sản mới
+        </div>
+        <div class="tsmCtit3"></div>
+    </div>
+    <div class="tsmCcon">
     <table>
         <tr>
             <td>
@@ -62,4 +110,5 @@
             </td>
         </tr>
     </table>
+    </div>
 </div> 
