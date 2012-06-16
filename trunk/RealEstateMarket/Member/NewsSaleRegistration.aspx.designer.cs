@@ -67,15 +67,6 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.ObjectDataSource LocationObjectDataSource;
         
         /// <summary>
-        /// MyUpdatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel MyUpdatePanel;
-        
-        /// <summary>
         /// NewsSaleValidationSummary control.
         /// </summary>
         /// <remarks>
@@ -130,6 +121,15 @@ namespace RealEstateMarket.Member {
         protected global::RealEstateMarket.CustomControl.AddressControl AddressCustomControl;
         
         /// <summary>
+        /// MyUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel MyUpdatePanel;
+        
+        /// <summary>
         /// ProjectDropDownList control.
         /// </summary>
         /// <remarks>
@@ -148,40 +148,13 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.CheckBox ProjectCheckBox;
         
         /// <summary>
-        /// PriceTextBox control.
+        /// PriceInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PriceTextBox;
-        
-        /// <summary>
-        /// KeyTextBox_TextBoxWatermarkExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TextBoxWatermarkExtender KeyTextBox_TextBoxWatermarkExtender;
-        
-        /// <summary>
-        /// PriceRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator PriceRegularExpressionValidator;
-        
-        /// <summary>
-        /// PriceRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PriceRequiredFieldValidator;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PriceInput;
         
         /// <summary>
         /// UnitDropDownList control.
@@ -256,6 +229,15 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator TotalUseAreaRequiredFieldValidator;
         
         /// <summary>
+        /// CampusOpenBehindUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel CampusOpenBehindUpdatePanel;
+        
+        /// <summary>
         /// CampusFrontTextBox control.
         /// </summary>
         /// <remarks>
@@ -274,15 +256,6 @@ namespace RealEstateMarket.Member {
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender TextBoxWatermarkExtender2;
         
         /// <summary>
-        /// CampusFrontRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusFrontRegularExpressionValidator;
-        
-        /// <summary>
         /// CampusLengthTextBox control.
         /// </summary>
         /// <remarks>
@@ -299,15 +272,6 @@ namespace RealEstateMarket.Member {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender TextBoxWatermarkExtender3;
-        
-        /// <summary>
-        /// CampusLengthRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusLengthRegularExpressionValidator;
         
         /// <summary>
         /// CampusOpenBehindCheckBox control.
@@ -346,6 +310,24 @@ namespace RealEstateMarket.Member {
         protected global::System.Web.UI.WebControls.Label CampusMLabel;
         
         /// <summary>
+        /// CampusFrontRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusFrontRegularExpressionValidator;
+        
+        /// <summary>
+        /// CampusLengthRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator CampusLengthRegularExpressionValidator;
+        
+        /// <summary>
         /// CampusOpenBehindRegularExpressionValidator control.
         /// </summary>
         /// <remarks>
@@ -362,6 +344,15 @@ namespace RealEstateMarket.Member {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableRow id1;
+        
+        /// <summary>
+        /// BuildOpenBehindUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel BuildOpenBehindUpdatePanel;
         
         /// <summary>
         /// BuildFrontTextBox control.
@@ -382,15 +373,6 @@ namespace RealEstateMarket.Member {
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender TextBoxWatermarkExtender5;
         
         /// <summary>
-        /// BuildFrontRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildFrontRegularExpressionValidator;
-        
-        /// <summary>
         /// BuildLengthTextBox control.
         /// </summary>
         /// <remarks>
@@ -407,15 +389,6 @@ namespace RealEstateMarket.Member {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender TextBoxWatermarkExtender6;
-        
-        /// <summary>
-        /// BuildLengthRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildLengthRegularExpressionValidator;
         
         /// <summary>
         /// BuildOpenBehindCheckBox control.
@@ -452,6 +425,24 @@ namespace RealEstateMarket.Member {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label BuildMLabel;
+        
+        /// <summary>
+        /// BuildFrontRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildFrontRegularExpressionValidator;
+        
+        /// <summary>
+        /// BuildLengthRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BuildLengthRegularExpressionValidator;
         
         /// <summary>
         /// BuildOpenBehindRegularExpressionValidator control.

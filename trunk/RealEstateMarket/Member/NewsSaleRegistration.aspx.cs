@@ -151,19 +151,41 @@ namespace RealEstateMarket.Member
                 }
 
                 double totalUseArea = Convert.ToDouble(TotalUseAreaTextBox.Text);
-                double campusFront = Convert.ToDouble(CampusFrontTextBox.Text);
-                double campusLength = Convert.ToDouble(CampusLengthTextBox.Text);
+                double campusFront = 0.0;
+                if (!String.IsNullOrEmpty(CampusFrontTextBox.Text))
+                {
+                    campusFront = Convert.ToDouble(CampusFrontTextBox.Text);
+                }
+                double campusLength = 0.0;
+                if (!String.IsNullOrEmpty(CampusLengthTextBox.Text))
+                {
+                    campusLength = Convert.ToDouble(CampusLengthTextBox.Text);
+                }
                 double? campuBehind = null;
                 double? buildBehind = null;
                 if (CampusOpenBehindCheckBox.Checked)
                 {
-                    campuBehind = Convert.ToDouble(CampusBehindTextBox.Text);
+                    if (!String.IsNullOrEmpty(CampusBehindTextBox.Text))
+                    {
+                        campuBehind = Convert.ToDouble(CampusBehindTextBox.Text);
+                    }
                 }
-                double buildFront = Convert.ToDouble(BuildFrontTextBox.Text);
-                double buildLength = Convert.ToDouble(BuildLengthTextBox.Text);
+                double buildFront = 0.0;
+                if (!String.IsNullOrEmpty(BuildFrontTextBox.Text))
+                {
+                    buildFront = Convert.ToDouble(BuildFrontTextBox.Text);
+                }
+                double buildLength = 0.0;
+                if (!String.IsNullOrEmpty(BuildLengthTextBox.Text))
+                {
+                    buildLength = Convert.ToDouble(BuildLengthTextBox.Text);
+                }
                 if (BuildOpenBehindCheckBox.Checked)
                 {
-                    buildBehind = Convert.ToDouble(BuildBehindTextBox.Text);
+                    if (!String.IsNullOrEmpty(BuildBehindTextBox.Text))
+                    {
+                        buildBehind = Convert.ToDouble(BuildBehindTextBox.Text);
+                    }
                 }
                 int legalID = Convert.ToInt32(LegalDropDownList.SelectedValue);
                 string direction = "";
@@ -177,7 +199,11 @@ namespace RealEstateMarket.Member
                     frontStreet = FrontStreetDropDownList.SelectedValue;
                 }
                 int locationID = Convert.ToInt32(LocationDropDownList.SelectedValue);
-                decimal price = Convert.ToDecimal(PriceTextBox.Text);
+                decimal price = 0;
+                if (!String.IsNullOrEmpty(PriceInput.Value))
+                {
+                    price = Convert.ToDecimal(PriceInput.Value);
+                }
                 int unitID = Convert.ToInt32(UnitDropDownList.SelectedValue);
                 int unitPriceID = Convert.ToInt32(UnitPriceDropDownList.SelectedValue);
                 int? projectID = 0;
@@ -274,6 +300,7 @@ namespace RealEstateMarket.Member
 
         protected void PreviewButton_Click(object sender, EventArgs e)
         {
+            //ErrorLabel.Text = String.IsNullOrEmpty(PriceInput.Value).ToString();
             Response.Redirect("~/Pages/TempPage.aspx");
         }
 

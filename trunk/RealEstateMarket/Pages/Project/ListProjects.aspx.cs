@@ -13,9 +13,7 @@ namespace RealEstateMarket.Pages.Project
         {
             if (!IsPostBack)
             {
-                ProjectsDataList.DataSource = RealEstateMarket._Default.db.GetAllProjects().Skip(0).Take(10).ToList();
-                ProjectsDataList.DataKeyField = "ID";
-                ProjectsDataList.DataBind();
+                
             }            
         }
     }

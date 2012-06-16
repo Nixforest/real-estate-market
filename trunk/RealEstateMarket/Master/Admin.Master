@@ -5,6 +5,7 @@
 <%@ Register TagPrefix="Admin" TagName="NewsSaleManager" Src="~/CustomControl/ManagerNewsSale.ascx" %>
 <%@ Register TagPrefix="Admin" TagName="ProjectManager" Src="~/CustomControl/ManagerProject.ascx" %>
 <%@ Register TagPrefix="Admin" TagName="CompanyManager" Src="~/CustomControl/ManagerCompany.ascx" %>
+<%@ Register TagPrefix="Footer" TagName="FooterControl" Src="~/CustomControl/FooterControl.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,6 +20,20 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+<style type="text/css"">
+.footer
+{
+    float:inherit;
+    width:71.3%;
+    height:200px;
+    text-align:center;
+    font:14px Tahoma bold;
+    color:White;
+    line-height:20px;    
+    margin-top:0.9px;
+    border-radius:0.9px;
+}
+</style>
     <form id="form1" runat="server">
     <div class="page">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -68,6 +83,7 @@
     <div class="footer">
         <asp:ContentPlaceHolder ID="FooterContent" runat="server">
             
+        <Footer:FooterControl ID="footer" runat="server"></Footer:FooterControl>
         </asp:ContentPlaceHolder>
     </div>
     </form>
